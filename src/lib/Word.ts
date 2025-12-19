@@ -19,6 +19,7 @@ export class Word {
 
     for (let i = 0; i < this.letters.length; i++) {
       previosStrLetter = str.length > 0 ? str[str.length - 1] || null : null
+      // @ts-expect-error TS2532
       previosNikud = i > 0 ? this.letters[i - 1]?.nikud : null
 
       str += this.letters[i]!.toWordString(i, this.letters.length, previosStrLetter, previosNikud)
