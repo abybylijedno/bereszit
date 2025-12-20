@@ -1,25 +1,19 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
-import { convert } from './lib/converter'
-import { diffWords } from 'diff'
+import { ref } from 'vue'
+import EnterHebrewTextView from './views/EnterHebrewTextView.vue'
+import CheckKnowledgeView from './views/CheckKnowledgeView.vue'
 
+enum Step {
+  EnterHebrew = 'enterHebrew',
+  CheckKnowledge = 'checkKnowledge',
+}
+
+const currentStep = ref<Step>(Step.EnterHebrew)
 const hebrewText = ref('')
-const userPronunciation = ref('')
 
-const diffedText = reactive<Array<{ value: string; added?: boolean; removed?: boolean }>>([])
-const diffedResult = ref('')
-
-function check() {
-  const appPronunciation = convert(hebrewText.value)
-  const diffs = diffWords(userPronunciation.value, appPronunciation)
-  diffedText.splice(0, diffedText.length, ...diffs)
-
-  // @ts-expect-error TS2532
-  if (diffs.length === 1 && !diffs[0].added && !diffs[0].removed) {
-    diffedResult.value = 'Wszystko dobrze! Brawo! 🤓'
-  } else {
-    diffedResult.value = ''
-  }
+function handleNext(inputHebrewText: string) {
+  hebrewText.value = inputHebrewText
+  currentStep.value = Step.CheckKnowledge
 }
 </script>
 
@@ -32,40 +26,13 @@ function check() {
       <p>Pomocnik przy nauce czytania hebrajskiego</p>
     </header>
 
-    <section class="pure-form">
-      <p>Hebrajski:</p>
-      <textarea
-        class="pure-input-1"
-        v-model="hebrewText"
-        placeholder="Tutaj wpisz hebrajski tekst"
-        style="direction: rtl"
+    <div id="content">
+      <EnterHebrewTextView v-if="currentStep === Step.EnterHebrew" @next="handleNext" />
+      <CheckKnowledgeView
+        v-else-if="currentStep === Step.CheckKnowledge"
+        :hebrewText="hebrewText"
+        @reset="currentStep = Step.EnterHebrew"
       />
-
-      <p>Napisz jakbyś to wypowiedział(a):</p>
-      <textarea
-        class="pure-input-1"
-        v-model="userPronunciation"
-        placeholder="Tutaj wpisz jakbyś to wypowiedział(a). Gardłowe dźwięki, pisz z wielkiej litery."
-      />
-
-      <p>
-        <button class="pure-button" @click="check">Sprawdź!</button>
-      </p>
-    </section>
-
-    <section></section>
-
-    <p>Wynik: {{ diffedResult }}</p>
-    <div>
-      <span
-        v-for="(part, index) in diffedText"
-        :key="index"
-        :style="{
-          backgroundColor: part.added ? '#a6f3a6' : part.removed ? '#f3a6a6' : 'transparent',
-        }"
-      >
-        {{ part.value }}
-      </span>
     </div>
 
     <footer>Marek Sierociński, 2025</footer>
@@ -74,9 +41,14 @@ function check() {
 
 <style scoped>
 main {
-  max-width: 600px;
+  max-width: 960px;
   margin: auto;
   padding: 1rem;
+}
+
+header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2rem;
 }
 
 textarea {
@@ -85,6 +57,7 @@ textarea {
   font-size: 1.6rem;
   padding: 0.1rem;
 }
+
 footer {
   margin-top: 5rem;
   font-size: 0.8rem;

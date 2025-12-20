@@ -3,13 +3,9 @@ import { Logger } from 'tslog'
 import { letters, Szin, type AbstractLetter } from './letters'
 import { nikud } from './nikud'
 import { Word } from './Word'
+import { FINISH_WORD, DAGESZ, SZIN_DOT, SIN_DOT } from './constants'
 
 const log = new Logger({ name: 'converter' })
-
-const FINISH_WORD = [0x0020, 0x002c, 0x002e, 0x003b, 0x007b, 0x007d, 0x05be]
-const DAGESZ = 0x05bc
-const SZIN_DOT = 0x05c1
-const SIN_DOT = 0x05c2
 
 export const convert = (hebrewText: string): string => {
   const words: Word[] = []
