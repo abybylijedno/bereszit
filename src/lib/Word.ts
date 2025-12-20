@@ -1,4 +1,4 @@
-import type { AbstractLetter } from './letters'
+import { type AbstractLetter, Jod, Hej, Waw } from './letters'
 import type { Nikud } from './nikud/Nikud'
 
 export class Word {
@@ -12,7 +12,24 @@ export class Word {
     return this.letters.length > 0
   }
 
+  get isYHWH(): boolean {
+    if (this.letters.length !== 4) return false
+    return (
+      this.letters[0] instanceof Jod &&
+      this.letters[1] instanceof Hej &&
+      this.letters[2] instanceof Waw &&
+      this.letters[3] instanceof Hej
+    )
+  }
+
   toString(): string {
+    // Check YHWH
+    if (this.isYHWH) {
+      // Special case for the Tetragrammaton
+      // In Jewish tradition, it is often pronounced as "Adonai"
+      return 'adonai'
+    }
+
     let str = ''
     let previosStrLetter: string | null = null
     let previosNikud: Nikud | null = null
