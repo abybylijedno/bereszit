@@ -39,7 +39,7 @@ watch(
     let currentWord = ''
     for (const char of newText) {
       const charCode = char.charCodeAt(0)
-      console.log('Char:', char, charCode, FINISH_WORD.includes(charCode))
+      // console.debug('Char:', char, charCode, charCode.toString(16))
       if (FINISH_WORD.includes(charCode)) {
         if (currentWord) {
           words.push(currentWord)
