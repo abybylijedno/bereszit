@@ -5,7 +5,7 @@ export class Bet extends AbstractLetter {
     super('Bet', 'w')
   }
 
-  whenDageszAdded(): void {
-    this.consonant = 'b'
+  get consonant(): string {
+    return this.dagesz ? 'b' : 'w'
   }
 }

@@ -1,10 +1,9 @@
 import { Nikud, Szwa } from '../nikud'
-
-const STR_VOWELS = ['a', 'e', 'i', 'o', 'u']
+import { isVowel } from '../stringUtils'
 
 export abstract class AbstractLetter {
   name: string
-  consonant: string
+  defaultConsonant: string
   nikud: Nikud | null = null
   dagesz: boolean = false
 
@@ -15,7 +14,11 @@ export abstract class AbstractLetter {
    */
   constructor(name: string, consonant: string) {
     this.name = name
-    this.consonant = consonant
+    this.defaultConsonant = consonant
+  }
+
+  get consonant(): string {
+    return this.defaultConsonant
   }
 
   get vowel(): string {
@@ -38,7 +41,7 @@ export abstract class AbstractLetter {
       thisLetterIndex > 0 &&
       thisLetterIndex !== wordLength - 1 &&
       previosStrLetter !== null &&
-      STR_VOWELS.includes(previosStrLetter)
+      isVowel(previosStrLetter)
     ) {
       // Szwa in the middle of the word after a vowel is silent, except at the beginning and end of the word
       return this.consonant
@@ -53,10 +56,5 @@ export abstract class AbstractLetter {
 
   addDagesz(): void {
     this.dagesz = true
-    this.whenDageszAdded()
-  }
-
-  whenDageszAdded(): void {
-    // Override in subclasses if needed
   }
 }

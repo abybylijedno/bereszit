@@ -5,7 +5,7 @@ export class Kaf extends AbstractLetter {
     super('Kaf', 'K')
   }
 
-  whenDageszAdded(): void {
-    this.consonant = 'k'
+  get consonant(): string {
+    return this.dagesz ? 'k' : 'K'
   }
 }

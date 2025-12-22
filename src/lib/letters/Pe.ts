@@ -5,7 +5,7 @@ export class Pe extends AbstractLetter {
     super('Pe', 'f')
   }
 
-  whenDageszAdded(): void {
-    this.consonant = 'p'
+  get consonant(): string {
+    return this.dagesz ? 'p' : 'f'
   }
 }

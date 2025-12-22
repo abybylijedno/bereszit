@@ -7,9 +7,12 @@ export class Szin extends AbstractLetter {
     super('Szin', 'sz')
   }
 
+  get consonant(): string {
+    return this.sinDot ? 's' : 'sz'
+  }
+
   addSinDot(): void {
     this.sinDot = true
     this.name = 'Sin'
-    this.consonant = 's'
   }
 }
