@@ -26,9 +26,9 @@ const emits = defineEmits<{
 
 const hebrewWords = reactive<string[]>([])
 const userPronunciations = reactive<string[]>([])
-const differences = reactive<Array<Array<{ value: string; added?: boolean; removed?: boolean }>>>(
-  [],
-)
+const differences = reactive<
+  Array<Array<{ value: string; added?: boolean; removed?: boolean }> | undefined>
+>([])
 
 // When props.hebrewText is received, split it into words
 watch(
@@ -57,13 +57,22 @@ watch(
   { immediate: true },
 )
 
+const checkSingle = (index: number) => {
+  const userPronunciation = userPronunciations[index] || ''
+  if (!userPronunciation.trim()) {
+    differences[index] = undefined
+    return
+  }
+
+  const hebrewWord = hebrewWords[index]
+  const appPronunciation = hebrewWord?.trim() ? convert(hebrewWord) : ''
+
+  differences[index] = diffChars(userPronunciation, appPronunciation)
+}
+
 const check = () => {
   for (let i = 0; i < hebrewWords.length; i++) {
-    const hebrewWord = hebrewWords[i]
-    const userPronunciation = userPronunciations[i] || ''
-    const appPronunciation = hebrewWord?.trim() ? convert(hebrewWord) : ''
-
-    differences[i] = diffChars(userPronunciation, appPronunciation)
+    checkSingle(i)
   }
 }
 
@@ -97,7 +106,12 @@ const areNoMistakes = (wordDiffs: Array<{ value: string; added?: boolean; remove
       <tr v-for="(word, index) in hebrewWords" :key="index">
         <td style="direction: rtl">{{ word }}</td>
         <td>
-          <input type="text" class="pure-input" v-model="userPronunciations[index]" />
+          <input
+            type="text"
+            class="pure-input"
+            v-model="userPronunciations[index]"
+            @blur="checkSingle(index)"
+          />
         </td>
         <td>
           <span v-if="differences[index] && areNoMistakes(differences[index])">✅</span>
