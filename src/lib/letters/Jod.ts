@@ -13,14 +13,15 @@ export class Jod extends AbstractLetter {
     previosStrLetter: string | null,
     previosNikud: Nikud | null,
   ): string {
-    if (thisLetterIndex == wordLength - 2 && !this.nikud && !this.dagesz) {
+    if (thisLetterIndex != 0 && thisLetterIndex == wordLength - 2 && !this.nikud && !this.dagesz) {
       // Jod at the end of the word without nikud or dagesh is silent
+      // Exception: If Jod is not first letter
       return ''
     } else if (previosNikud === Hirek) {
       // Jod after Hirek is silent
       this.defaultConsonant = ''
     } else {
-      this.defaultConsonant = thisLetterIndex == 0 || isVowel(previosStrLetter || '') ? 'j' : 'i'
+      this.defaultConsonant = isVowel(previosStrLetter || '') ? 'j' : 'i'
     }
 
     return super.toWordString(thisLetterIndex, wordLength, previosStrLetter, previosNikud)
