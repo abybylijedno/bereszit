@@ -93,7 +93,6 @@ const areNoMistakes = (wordDiffs: Array<{ value: string; added?: boolean; remove
     Każdy wiersz w tabelce poniżej odpowiada jednemu hebrajskiemu wyrazowi z podanego tekstu. Wpisz
     w polu swoją wymowę, a następnie kliknij przycisk "Sprawdź!", aby przekonać się jak Ci poszło.
   </p>
-  <p>Gardłowe dźwięki pisz z wielkiej litery.</p>
   <table class="pure-table pure-table-bordered">
     <thead>
       <tr>

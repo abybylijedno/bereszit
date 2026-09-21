@@ -3,7 +3,7 @@ import { Szwa, type Nikud } from '../nikud'
 
 export class KafSofit extends AbstractLetter {
   constructor() {
-    super('Kaf Sofit', 'K')
+    super('Kaf Sofit', 'h')
   }
 
   toWordString(
