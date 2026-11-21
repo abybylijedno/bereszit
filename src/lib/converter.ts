@@ -4,11 +4,12 @@ import { letters, Szin, type AbstractLetter } from './letters'
 import { nikud } from './nikud'
 import { Word } from './Word'
 import { FINISH_WORD, DAGESZ, SZIN_DOT, SIN_DOT } from './constants'
-import { splitWords } from './words'
+import { normalizeHebrew, splitWords } from './words'
 
 const log = new Logger({ name: 'converter' })
 
-const parseWords = (hebrewText: string): Word[] => {
+const parseWords = (input: string): Word[] => {
+  const hebrewText = normalizeHebrew(input)
   const words: Word[] = []
 
   let currentLetter: AbstractLetter | null = null

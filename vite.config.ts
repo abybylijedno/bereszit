@@ -45,7 +45,7 @@ export default defineConfig({
     outDir: '_site',
   },
   test: {
-    include: ['src/**/*.test.ts'],
+    include: ['src/**/*.test.ts', 'scripts/**/*.test.mjs'],
     environment: 'node',
   },
 })

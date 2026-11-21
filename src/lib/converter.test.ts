@@ -54,6 +54,11 @@ describe('convert: phrases', () => {
     expect(convert('כִּי-טוֹב')).toBe('ki tow')
   })
 
+  it('understands presentation forms (tav + dagesh as one character)', () => {
+    expect(convert('תִּרְצָח')).toBe(convert('\uFB4A\u05B4רְצָח'))
+    expect(convert('\uFB4A\u05B4רְצָח')).not.toBe('')
+  })
+
   it('returns an empty string for text without Hebrew letters', () => {
     expect(convert('abc 123')).toBe('')
   })

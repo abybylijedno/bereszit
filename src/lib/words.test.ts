@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { splitWords } from './words'
+import { normalizeHebrew, splitWords } from './words'
 
 describe('splitWords', () => {
   it('splits on spaces and punctuation', () => {
@@ -16,5 +16,13 @@ describe('splitWords', () => {
 
   it('returns an empty array for empty input', () => {
     expect(splitWords('')).toEqual([])
+  })
+})
+
+describe('normalizeHebrew', () => {
+  it('splits presentation forms into letter + mark and leaves other text alone', () => {
+    expect(normalizeHebrew('\uFB4A')).toBe('\u05EA\u05BC')
+    expect(normalizeHebrew('\uFB2A')).toBe('\u05E9\u05C1')
+    expect(normalizeHebrew('בָּרָא abc')).toBe('בָּרָא abc')
   })
 })

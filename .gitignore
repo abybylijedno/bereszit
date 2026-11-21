@@ -36,8 +36,10 @@ coverage
 # Vitest
 __screenshots__/
 
-sandbox
 
 # Playwright
 /test-results/
 /playwright-report/
+
+# Raw pages downloaded by scripts/fetch-books.mjs
+/.cache/
