@@ -1,0 +1,68 @@
+import { expect, test } from '@playwright/test'
+import { expectAccessible } from './helpers'
+
+const tabs = [
+  { name: 'Quiz', heading: 'Quiz', hash: '#/quiz' },
+  { name: 'Litery', heading: 'Litery', hash: '#/litery' },
+  { name: 'Konwerter', heading: 'Konwerter', hash: '#/konwerter' },
+  { name: 'Ustawienia', heading: 'Ustawienia', hash: '#/ustawienia' },
+]
+
+test('opens on the Quiz tab', async ({ page }) => {
+  await page.goto('./')
+  await expect(page).toHaveURL(/#\/quiz$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Quiz' })).toBeVisible()
+})
+
+test('main navigation has four tabs and switches views', async ({ page }) => {
+  await page.goto('./')
+  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' })
+  await expect(nav.getByRole('link')).toHaveCount(4)
+
+  for (const tab of tabs) {
+    await nav.getByRole('link', { name: tab.name }).click()
+    await expect(page).toHaveURL(new RegExp(`${tab.hash}$`))
+    await expect(page.getByRole('heading', { level: 1, name: tab.heading })).toBeVisible()
+    await expect(nav.getByRole('link', { name: tab.name })).toHaveAttribute('aria-current', 'page')
+  }
+})
+
+test('page title follows the active tab', async ({ page }) => {
+  await page.goto('./#/litery')
+  await expect(page).toHaveTitle('Litery – Bereszit')
+})
+
+test('skip link moves focus to the content', async ({ page }) => {
+  await page.goto('./')
+  await page.keyboard.press('Tab')
+  await expect(page.getByRole('link', { name: 'Przejdź do treści' })).toBeFocused()
+  await page.keyboard.press('Enter')
+  await expect(page.locator('#content')).toBeFocused()
+})
+
+test('navigation touch targets are at least 44x44 px', async ({ page }) => {
+  await page.goto('./')
+  const links = page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('link')
+  for (let i = 0; i < 4; i++) {
+    const box = await links.nth(i).boundingBox()
+    expect(box!.width).toBeGreaterThanOrEqual(44)
+    expect(box!.height).toBeGreaterThanOrEqual(44)
+  }
+})
+
+for (const tab of tabs) {
+  test(`${tab.name} view passes axe accessibility checks`, async ({ page }) => {
+    await page.goto(`./${tab.hash}`)
+    await expect(page.getByRole('heading', { level: 1, name: tab.heading })).toBeVisible()
+    await expectAccessible(page)
+  })
+}
+
+for (const tab of tabs) {
+  test(`${tab.name} view passes axe checks in dark mode`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'dark' })
+    await page.goto(`./${tab.hash}`)
+    await expect(page.getByRole('heading', { level: 1, name: tab.heading })).toBeVisible()
+    await expectAccessible(page)
+  })
+}

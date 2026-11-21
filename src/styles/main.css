@@ -1,0 +1,151 @@
+@import '@fontsource/noto-serif-hebrew/hebrew-400.css';
+@import '@fontsource/noto-serif-hebrew/hebrew-700.css';
+
+/* Colour tokens. All text pairs meet WCAG AAA (7:1). */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --text: #16181d;
+  --muted: #444a55;
+  --border: #5c6370;
+  --primary: #0b3a8c;
+  --on-primary: #ffffff;
+  --focus: #b35900;
+  --ok-bg: #cdf0cd;
+  --bad-bg: #ffd3d3;
+  --ok-text: #0a3d0a;
+  --bad-text: #6b0b0b;
+  --nav-h: 4.25rem;
+  --font-he: 'Noto Serif Hebrew', 'SBL Hebrew', 'Times New Roman', serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101216;
+    --surface: #1d2027;
+    --text: #f1f2f4;
+    --muted: #c3c8d0;
+    --border: #9aa1ad;
+    --primary: #a9c8ff;
+    --on-primary: #08121f;
+    --focus: #ffb454;
+    --ok-bg: #12401a;
+    --bad-bg: #4d1414;
+    --ok-text: #d7f7d7;
+    --bad-text: #ffdada;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 112.5%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  word-spacing: 0.05em;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+}
+
+p {
+  max-width: 70ch;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+[lang='he'] {
+  font-family: var(--font-he);
+  line-height: 1.8;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  padding: 0.75rem 1rem;
+  background: var(--primary);
+  color: var(--on-primary);
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* Form controls and buttons */
+.btn,
+button.btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+.field {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
