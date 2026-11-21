@@ -18,7 +18,9 @@ Vitest + Playwright. Krok 2 zrobiony: Konwerter (układ międzywierszowy, rozbi�
 (na razie tylko „Wklej"; wybór/losowanie dojdą tu w kroku 4). `analyze()` w `lib/converter.ts` zwraca rozbiór słów.
 Krok 3 zrobiony: Litery (podtrasy `/litery`, `/litery/nazwy`, `/litery/nikud`; dane z konwertera w `lib/letterData.ts`,
 losowanie ważone błędami w `lib/quiz.ts`, statystyki w `lib/stats.ts` -> localStorage, sesja w `composables/useQuizSession.ts`).
-Ustawienia: na razie czyszczenie postępów i opis (księgi dojdą w kroku 4).
+Krok 4 zrobiony: Tora (5 ksiąg) w `public/books`, `TextSource` ma tryby Wklej / Wybierz fragment / Losuj (1-5 wersetów),
+Ustawienia zarządzają księgami i postępami, baner aktualizacji PWA (`components/UpdateBanner.vue`; **nie ma testu e2e** - wymaga dwóch buildów,
+sprawdź ręcznie po zmianie SW). Reszta Tanachu: patrz „Teksty biblijne".
 Reguła „patach furtivum" (Het + Patach = `aH`) działa tylko na końcu wielowyrazowego słowa.
 Testy quizów są deterministyczne dzięki `Math.random = () => 0` w `page.addInitScript` (pierwsze elementy puli po kolei).
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.
@@ -42,12 +44,17 @@ Liczba wersetów: `<select>` 1-5.
 
 ### Teksty biblijne (Mechon-Mamre)
 
-- Mechon-Mamre **nie wysyła CORS**, więc przeglądarka nie pobierze go na żywo. Dane generujemy **w buildzie**
-  (rozszerzenie skryptu z `sandbox/books/convert_htm_to_json.py`) do statycznych JSON-ów.
-- Jeden plik JSON na księgę + mały `index.json` (lista ksiąg, plik, mapa rozdział -> liczba wersetów). Indeks jest w precache.
-- Księgi ładowane **na żądanie** z GitHub Pages i trzymane w **Cache API** (`caches.open('bereszit-books')`), nie w IndexedDB.
-  Status „pobrana" = `cache.match(url)`; „Pobierz wszystko" = pętla po indeksie; usuwanie = `cache.delete`.
-  Wołamy `navigator.storage.persist()` (iOS czyści dane po ok. 7 dniach nieużywania).
+- Mechon-Mamre **nie wysyła CORS**, więc przeglądarka nie pobierze go na żywo. Dane generuje **`npm run books`**
+  (`scripts/fetch-books.mjs`, Node): pobiera strony rozdziałów po kolei z przerwą, buforuje je w `.cache/` (gitignore),
+  waliduje (numeracja wersetów, zgodność z numeracją angielską, dozwolone znaki) i zapisuje `public/books/<id>.json` + `index.json`.
+  **Wygenerowane JSON-y są w repo** (build jest deterministyczny, CI nie odpytuje cudzego serwera). Odśwież je ręcznie
+  (`npm run books -- --refresh`) tylko gdy trzeba. Nowe księgi: dopisz do `scripts/books/config.mjs` (Samuel, Królewska,
+  Kronik i Ezdrasz/Nehemiasz to po dwie księgi w jednym pliku Mamre, wymagają osobnej obsługi).
+- Numeracja wersetów jest taka jak na stronie (żydowska, np. Wj ma 1209 wersetów).
+- Strona używa form prezentacyjnych Unicode (np. U+FB4A) i znaczników (`{פ}`, odwrócone nuny U+05C6): generator i
+  `normalizeHebrew()` w `lib/words.ts` je rozbijają/usuwają. Konwerter normalizuje też tekst wklejony przez użytkownika.
+- Do SW trafia tylko `books/index.json` (precache); pliki ksiąg lecą na żądanie do **Cache API** (`lib/bible.ts`), nie w IndexedDB.
+  Status „pobrana" = `cache.match(url)`; w Ustawieniach można pobrać/usunąć księgę lub wszystkie; `navigator.storage.persist()`.
 - Start od Tory, architektura ma pozwolić dodać resztę Tanachu bez zmian w kodzie aplikacji.
 - Licencja: autor zweryfikował warunki Mechon-Mamre (tekst biblijny jest własnością publiczną, tłumaczenia Mamre NIE używamy). Mimo to podaj źródło w Ustawieniach.
 

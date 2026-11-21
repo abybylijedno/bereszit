@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import UpdateBanner from '@/components/UpdateBanner.vue'
 
 const tabs = [
   { to: '/quiz', label: 'Quiz', icon: 'M9 9a3 3 0 1 1 4.5 2.6c-1 .6-1.5 1.1-1.5 2.4M12 17.5v.5M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0' },
@@ -42,6 +43,7 @@ const tabs = [
       <footer>Marek Sierociński, 2025</footer>
     </main>
   </div>
+  <UpdateBanner />
 </template>
 
 <style scoped>

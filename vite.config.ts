@@ -31,7 +31,8 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Only books/index.json is precached; the book files are downloaded on demand into the Cache API.
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2}', 'books/index.json'],
       },
     }),
   ],
