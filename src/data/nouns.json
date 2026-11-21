@@ -1,0 +1,3502 @@
+[
+  {
+    "word": "כֹּל",
+    "count": 5415,
+    "pl": "wszystko, cały"
+  },
+  {
+    "word": "בֵּן",
+    "count": 4942,
+    "pl": "syn"
+  },
+  {
+    "word": "אֱלֹהִים",
+    "count": 2602,
+    "pl": "Bóg, bogowie"
+  },
+  {
+    "word": "מֶלֶךְ",
+    "count": 2530,
+    "pl": "król"
+  },
+  {
+    "word": "אֶרֶץ",
+    "count": 2505,
+    "pl": "ziemia, kraj"
+  },
+  {
+    "word": "יוֹם",
+    "count": 2303,
+    "pl": "dzień"
+  },
+  {
+    "word": "אִישׁ",
+    "count": 2187,
+    "pl": "mężczyzna, człowiek"
+  },
+  {
+    "word": "פָּנִים",
+    "count": 2128,
+    "pl": "twarz, oblicze"
+  },
+  {
+    "word": "בַּיִת",
+    "count": 2046,
+    "pl": "dom"
+  },
+  {
+    "word": "עַם",
+    "count": 1867,
+    "pl": "lud"
+  },
+  {
+    "word": "יָד",
+    "count": 1627,
+    "pl": "ręka"
+  },
+  {
+    "word": "דָּבָר",
+    "count": 1454,
+    "pl": "słowo, rzecz"
+  },
+  {
+    "word": "אָב",
+    "count": 1210,
+    "pl": "ojciec"
+  },
+  {
+    "word": "עִיר",
+    "count": 1094,
+    "pl": "miasto"
+  },
+  {
+    "word": "עַיִן",
+    "count": 896,
+    "pl": "oko, źródło"
+  },
+  {
+    "word": "שָׁנָה",
+    "count": 879,
+    "pl": "rok"
+  },
+  {
+    "word": "שֵׁם",
+    "count": 864,
+    "pl": "imię, nazwa"
+  },
+  {
+    "word": "עֶבֶד",
+    "count": 803,
+    "pl": "sługa, niewolnik"
+  },
+  {
+    "word": "אִשָּׁה",
+    "count": 781,
+    "pl": "kobieta, żona"
+  },
+  {
+    "word": "אָדוֹן",
+    "count": 774,
+    "pl": "pan"
+  },
+  {
+    "word": "נֶפֶשׁ",
+    "count": 757,
+    "pl": "dusza, życie"
+  },
+  {
+    "word": "כֹּהֵן",
+    "count": 750,
+    "pl": "kapłan"
+  },
+  {
+    "word": "דֶּרֶךְ",
+    "count": 712,
+    "pl": "droga"
+  },
+  {
+    "word": "אָח",
+    "count": 629,
+    "pl": "brat"
+  },
+  {
+    "word": "לֵב",
+    "count": 601,
+    "pl": "serce"
+  },
+  {
+    "word": "רֹאשׁ",
+    "count": 600,
+    "pl": "głowa, przywódca"
+  },
+  {
+    "word": "בַּת",
+    "count": 588,
+    "pl": "córka"
+  },
+  {
+    "word": "מַיִם",
+    "count": 583,
+    "pl": "woda"
+  },
+  {
+    "word": "גּוֹי",
+    "count": 560,
+    "pl": "naród"
+  },
+  {
+    "word": "הַר",
+    "count": 559,
+    "pl": "góra"
+  },
+  {
+    "word": "אָדָם",
+    "count": 545,
+    "pl": "człowiek"
+  },
+  {
+    "word": "קוֹל",
+    "count": 505,
+    "pl": "głos, dźwięk"
+  },
+  {
+    "word": "פֶּה",
+    "count": 498,
+    "pl": "usta"
+  },
+  {
+    "word": "צָבָא",
+    "count": 486,
+    "pl": "wojsko, zastęp"
+  },
+  {
+    "word": "קֹדֶשׁ",
+    "count": 470,
+    "pl": "świętość, rzecz święta"
+  },
+  {
+    "word": "עוֹלָם",
+    "count": 439,
+    "pl": "wieczność"
+  },
+  {
+    "word": "מִשְׁפָּט",
+    "count": 424,
+    "pl": "sąd, prawo"
+  },
+  {
+    "word": "שַׂר",
+    "count": 421,
+    "pl": "książę, dowódca"
+  },
+  {
+    "word": "שָׁמַיִם",
+    "count": 421,
+    "pl": "niebo, niebiosa"
+  },
+  {
+    "word": "תָּוֶךְ",
+    "count": 420,
+    "pl": "środek"
+  },
+  {
+    "word": "חֶרֶב",
+    "count": 413,
+    "pl": "miecz"
+  },
+  {
+    "word": "כֶּסֶף",
+    "count": 403,
+    "pl": "srebro, pieniądze"
+  },
+  {
+    "word": "מִזְבֵּחַ",
+    "count": 403,
+    "pl": "ołtarz"
+  },
+  {
+    "word": "מָקוֹם",
+    "count": 401,
+    "pl": "miejsce"
+  },
+  {
+    "word": "יָם",
+    "count": 396,
+    "pl": "morze"
+  },
+  {
+    "word": "זָהָב",
+    "count": 389,
+    "pl": "złoto"
+  },
+  {
+    "word": "אֵשׁ",
+    "count": 377,
+    "pl": "ogień"
+  },
+  {
+    "word": "נְאֻם",
+    "count": 376,
+    "pl": "wypowiedź, wyrocznia"
+  },
+  {
+    "word": "שַׁעַר",
+    "count": 373,
+    "pl": "brama"
+  },
+  {
+    "word": "רוּחַ",
+    "count": 363,
+    "pl": "duch, wiatr, tchnienie"
+  },
+  {
+    "word": "דָּם",
+    "count": 361,
+    "pl": "krew"
+  },
+  {
+    "word": "אֹהֶל",
+    "count": 348,
+    "pl": "namiot"
+  },
+  {
+    "word": "עֵץ",
+    "count": 330,
+    "pl": "drzewo"
+  },
+  {
+    "word": "כְּלִי",
+    "count": 325,
+    "pl": "naczynie, narzędzie, broń"
+  },
+  {
+    "word": "שָׂדֶה",
+    "count": 321,
+    "pl": "pole"
+  },
+  {
+    "word": "מִלְחָמָה",
+    "count": 319,
+    "pl": "wojna"
+  },
+  {
+    "word": "נָבִיא",
+    "count": 317,
+    "pl": "prorok"
+  },
+  {
+    "word": "רָעָה",
+    "count": 311,
+    "pl": "zło, nieszczęście"
+  },
+  {
+    "word": "מִשְׁפָּחָה",
+    "count": 304,
+    "pl": "rodzina, ród"
+  },
+  {
+    "word": "חַטָּאת",
+    "count": 298,
+    "pl": "grzech, ofiara za grzech"
+  },
+  {
+    "word": "לֶחֶם",
+    "count": 298,
+    "pl": "chleb, pokarm"
+  },
+  {
+    "word": "עֵת",
+    "count": 296,
+    "pl": "czas"
+  },
+  {
+    "word": "עֹלָה",
+    "count": 288,
+    "pl": "całopalenie"
+  },
+  {
+    "word": "אֹיֵב",
+    "count": 284,
+    "pl": "wróg"
+  },
+  {
+    "word": "בְּרִית",
+    "count": 284,
+    "pl": "przymierze"
+  },
+  {
+    "word": "חֹדֶשׁ",
+    "count": 283,
+    "pl": "miesiąc, nów"
+  },
+  {
+    "word": "אַף",
+    "count": 277,
+    "pl": "nos, gniew"
+  },
+  {
+    "word": "צֹאן",
+    "count": 274,
+    "pl": "trzoda, owce"
+  },
+  {
+    "word": "אֶבֶן",
+    "count": 272,
+    "pl": "kamień"
+  },
+  {
+    "word": "בָּשָׂר",
+    "count": 270,
+    "pl": "ciało, mięso"
+  },
+  {
+    "word": "מִדְבָּר",
+    "count": 270,
+    "pl": "pustynia"
+  },
+  {
+    "word": "חַיִּים",
+    "count": 268,
+    "pl": "życie"
+  },
+  {
+    "word": "לֵבָב",
+    "count": 252,
+    "pl": "serce, umysł"
+  },
+  {
+    "word": "מַטֶּה",
+    "count": 252,
+    "pl": "laska, plemię"
+  },
+  {
+    "word": "רֶגֶל",
+    "count": 251,
+    "pl": "stopa, noga"
+  },
+  {
+    "word": "אַמָּה",
+    "count": 250,
+    "pl": "łokieć (miara)"
+  },
+  {
+    "word": "חֶסֶד",
+    "count": 249,
+    "pl": "łaska, wierność"
+  },
+  {
+    "word": "חַיִל",
+    "count": 245,
+    "pl": "siła, majątek, wojsko"
+  },
+  {
+    "word": "גְּבוּל",
+    "count": 241,
+    "pl": "granica"
+  },
+  {
+    "word": "נַעַר",
+    "count": 240,
+    "pl": "chłopiec, młodzieniec"
+  },
+  {
+    "word": "שָׁלוֹם",
+    "count": 237,
+    "pl": "pokój, pomyślność"
+  },
+  {
+    "word": "אֵל",
+    "count": 236,
+    "pl": "Bóg"
+  },
+  {
+    "word": "מַעֲשֶׂה",
+    "count": 235,
+    "pl": "dzieło, czyn"
+  },
+  {
+    "word": "עָוֹן",
+    "count": 233,
+    "pl": "wina, nieprawość"
+  },
+  {
+    "word": "זֶרַע",
+    "count": 229,
+    "pl": "nasienie, potomstwo"
+  },
+  {
+    "word": "לַיְלָה",
+    "count": 227,
+    "pl": "noc"
+  },
+  {
+    "word": "קֶרֶב",
+    "count": 227,
+    "pl": "wnętrze, środek"
+  },
+  {
+    "word": "מוֹעֵד",
+    "count": 223,
+    "pl": "wyznaczony czas, miejsce spotkania"
+  },
+  {
+    "word": "תּוֹרָה",
+    "count": 223,
+    "pl": "Tora, prawo, nauka"
+  },
+  {
+    "word": "אֲדָמָה",
+    "count": 222,
+    "pl": "ziemia, gleba"
+  },
+  {
+    "word": "נַחֲלָה",
+    "count": 222,
+    "pl": "dziedzictwo, posiadłość"
+  },
+  {
+    "word": "אֵם",
+    "count": 220,
+    "pl": "matka"
+  },
+  {
+    "word": "בֶּגֶד",
+    "count": 216,
+    "pl": "szata"
+  },
+  {
+    "word": "מַחֲנֶה",
+    "count": 215,
+    "pl": "obóz"
+  },
+  {
+    "word": "בֹּקֶר",
+    "count": 213,
+    "pl": "ranek"
+  },
+  {
+    "word": "מַלְאָךְ",
+    "count": 213,
+    "pl": "posłaniec, anioł"
+  },
+  {
+    "word": "מִנְחָה",
+    "count": 211,
+    "pl": "dar, ofiara"
+  },
+  {
+    "word": "אָרוֹן",
+    "count": 202,
+    "pl": "arka, skrzynia"
+  },
+  {
+    "word": "כָּבוֹד",
+    "count": 199,
+    "pl": "chwała, honor"
+  },
+  {
+    "word": "כַּף",
+    "count": 195,
+    "pl": "dłoń"
+  },
+  {
+    "word": "שֶׁמֶן",
+    "count": 193,
+    "pl": "olej, tłuszcz"
+  },
+  {
+    "word": "חָצֵר",
+    "count": 191,
+    "pl": "dziedziniec, wieś"
+  },
+  {
+    "word": "בְּהֵמָה",
+    "count": 190,
+    "pl": "zwierzę, bydło"
+  },
+  {
+    "word": "שֵׁבֶט",
+    "count": 190,
+    "pl": "laska, plemię"
+  },
+  {
+    "word": "אֹזֶן",
+    "count": 188,
+    "pl": "ucho"
+  },
+  {
+    "word": "סֵפֶר",
+    "count": 187,
+    "pl": "księga, pismo"
+  },
+  {
+    "word": "רֵעַ",
+    "count": 187,
+    "pl": "przyjaciel, bliźni"
+  },
+  {
+    "word": "מִצְוָה",
+    "count": 184,
+    "pl": "przykazanie"
+  },
+  {
+    "word": "בָּקָר",
+    "count": 183,
+    "pl": "bydło"
+  },
+  {
+    "word": "שָׂפָה",
+    "count": 178,
+    "pl": "warga, brzeg, język"
+  },
+  {
+    "word": "דּוֹר",
+    "count": 167,
+    "pl": "pokolenie"
+  },
+  {
+    "word": "מְלָאכָה",
+    "count": 167,
+    "pl": "praca, dzieło"
+  },
+  {
+    "word": "חוּץ",
+    "count": 164,
+    "pl": "zewnątrz, ulica"
+  },
+  {
+    "word": "פֶּתַח",
+    "count": 164,
+    "pl": "wejście, otwór"
+  },
+  {
+    "word": "זֶבַח",
+    "count": 162,
+    "pl": "ofiara"
+  },
+  {
+    "word": "אַיִל",
+    "count": 161,
+    "pl": "baran, władca"
+  },
+  {
+    "word": "בַּד",
+    "count": 161,
+    "pl": "samotność, osobno"
+  },
+  {
+    "word": "צְדָקָה",
+    "count": 159,
+    "pl": "sprawiedliwość"
+  },
+  {
+    "word": "מָוֶת",
+    "count": 153,
+    "pl": "śmierć"
+  },
+  {
+    "word": "צָפוֹן",
+    "count": 153,
+    "pl": "północ"
+  },
+  {
+    "word": "רֹב",
+    "count": 153,
+    "pl": "mnogość, obfitość"
+  },
+  {
+    "word": "חָכְמָה",
+    "count": 149,
+    "pl": "mądrość"
+  },
+  {
+    "word": "עֵדָה",
+    "count": 149,
+    "pl": "zgromadzenie"
+  },
+  {
+    "word": "עֲבֹדָה",
+    "count": 145,
+    "pl": "służba, praca"
+  },
+  {
+    "word": "יַיִן",
+    "count": 141,
+    "pl": "wino"
+  },
+  {
+    "word": "יָמִין",
+    "count": 140,
+    "pl": "prawa ręka, południe"
+  },
+  {
+    "word": "מִשְׁכָּן",
+    "count": 139,
+    "pl": "przybytek, mieszkanie"
+  },
+  {
+    "word": "נְחֹשֶׁת",
+    "count": 139,
+    "pl": "brąz, miedź"
+  },
+  {
+    "word": "סוּס",
+    "count": 138,
+    "pl": "koń"
+  },
+  {
+    "word": "נַחַל",
+    "count": 137,
+    "pl": "potok, strumień"
+  },
+  {
+    "word": "כִּסֵּא",
+    "count": 135,
+    "pl": "tron"
+  },
+  {
+    "word": "שֶׁמֶשׁ",
+    "count": 135,
+    "pl": "słońce"
+  },
+  {
+    "word": "מִסְפָּר",
+    "count": 134,
+    "pl": "liczba"
+  },
+  {
+    "word": "עֶרֶב",
+    "count": 134,
+    "pl": "wieczór"
+  },
+  {
+    "word": "חוֹמָה",
+    "count": 133,
+    "pl": "mur"
+  },
+  {
+    "word": "פַּר",
+    "count": 133,
+    "pl": "byk, cielec"
+  },
+  {
+    "word": "חֹק",
+    "count": 131,
+    "pl": "ustawa, przepis"
+  },
+  {
+    "word": "נָשִׂיא",
+    "count": 130,
+    "pl": "przywódca, książę"
+  },
+  {
+    "word": "אֱמֶת",
+    "count": 127,
+    "pl": "prawda"
+  },
+  {
+    "word": "כֹּחַ",
+    "count": 126,
+    "pl": "siła"
+  },
+  {
+    "word": "חֵמָה",
+    "count": 125,
+    "pl": "gniew, żar"
+  },
+  {
+    "word": "חֲצִי",
+    "count": 125,
+    "pl": "połowa"
+  },
+  {
+    "word": "עֶצֶם",
+    "count": 123,
+    "pl": "kość, sam"
+  },
+  {
+    "word": "קָהָל",
+    "count": 123,
+    "pl": "zgromadzenie"
+  },
+  {
+    "word": "בְּכוֹר",
+    "count": 122,
+    "pl": "pierworodny"
+  },
+  {
+    "word": "אוֹר",
+    "count": 120,
+    "pl": "światło"
+  },
+  {
+    "word": "רֶכֶב",
+    "count": 120,
+    "pl": "rydwan, wóz"
+  },
+  {
+    "word": "אָחוֹת",
+    "count": 119,
+    "pl": "siostra"
+  },
+  {
+    "word": "נָהָר",
+    "count": 119,
+    "pl": "rzeka"
+  },
+  {
+    "word": "פְּרִי",
+    "count": 119,
+    "pl": "owoc"
+  },
+  {
+    "word": "צֶדֶק",
+    "count": 119,
+    "pl": "sprawiedliwość"
+  },
+  {
+    "word": "פַּעַם",
+    "count": 118,
+    "pl": "raz, krok"
+  },
+  {
+    "word": "תּוֹעֵבָה",
+    "count": 118,
+    "pl": "obrzydliwość"
+  },
+  {
+    "word": "טוֹב",
+    "count": 117,
+    "pl": "dobro, dobry"
+  },
+  {
+    "word": "לָשׁוֹן",
+    "count": 117,
+    "pl": "język"
+  },
+  {
+    "word": "מַמְלָכָה",
+    "count": 117,
+    "pl": "królestwo"
+  },
+  {
+    "word": "מִגְרָשׁ",
+    "count": 114,
+    "pl": "pastwisko, otwarta przestrzeń"
+  },
+  {
+    "word": "שֶׁקֶר",
+    "count": 113,
+    "pl": "kłamstwo"
+  },
+  {
+    "word": "עַמּוּד",
+    "count": 112,
+    "pl": "słup"
+  },
+  {
+    "word": "שַׁבָּת",
+    "count": 111,
+    "pl": "szabat"
+  },
+  {
+    "word": "עָפָר",
+    "count": 110,
+    "pl": "proch, ziemia"
+  },
+  {
+    "word": "כָּנָף",
+    "count": 109,
+    "pl": "skrzydło, kraniec"
+  },
+  {
+    "word": "כֶּבֶשׂ",
+    "count": 107,
+    "pl": "baranek"
+  },
+  {
+    "word": "בָּמָה",
+    "count": 106,
+    "pl": "wzgórze ofiarne, wyżyna"
+  },
+  {
+    "word": "חֻקָּה",
+    "count": 104,
+    "pl": "ustawa, przepis"
+  },
+  {
+    "word": "מַרְאֶה",
+    "count": 103,
+    "pl": "wygląd, widok"
+  },
+  {
+    "word": "רֹחַב",
+    "count": 101,
+    "pl": "szerokość"
+  },
+  {
+    "word": "רָעָב",
+    "count": 101,
+    "pl": "głód"
+  },
+  {
+    "word": "עוֹר",
+    "count": 99,
+    "pl": "skóra"
+  },
+  {
+    "word": "חַיָּה",
+    "count": 96,
+    "pl": "zwierzę"
+  },
+  {
+    "word": "חֲמוֹר",
+    "count": 96,
+    "pl": "osioł"
+  },
+  {
+    "word": "יֶתֶר",
+    "count": 96,
+    "pl": "reszta, nadmiar"
+  },
+  {
+    "word": "אֹרֶךְ",
+    "count": 95,
+    "pl": "długość"
+  },
+  {
+    "word": "שִׂמְחָה",
+    "count": 94,
+    "pl": "radość"
+  },
+  {
+    "word": "פֶּשַׁע",
+    "count": 93,
+    "pl": "przestępstwo, bunt"
+  },
+  {
+    "word": "גֵּר",
+    "count": 92,
+    "pl": "przybysz, cudzoziemiec"
+  },
+  {
+    "word": "חֵלֶב",
+    "count": 92,
+    "pl": "tłuszcz"
+  },
+  {
+    "word": "כֶּרֶם",
+    "count": 92,
+    "pl": "winnica"
+  },
+  {
+    "word": "עֵבֶר",
+    "count": 92,
+    "pl": "druga strona, za"
+  },
+  {
+    "word": "קָצֶה",
+    "count": 92,
+    "pl": "koniec, kraniec"
+  },
+  {
+    "word": "זְרוֹעַ",
+    "count": 91,
+    "pl": "ramię"
+  },
+  {
+    "word": "כְּרוּב",
+    "count": 91,
+    "pl": "cherub"
+  },
+  {
+    "word": "מַלְכוּת",
+    "count": 91,
+    "pl": "królestwo"
+  },
+  {
+    "word": "יֶלֶד",
+    "count": 90,
+    "pl": "dziecko"
+  },
+  {
+    "word": "עֵצָה",
+    "count": 89,
+    "pl": "rada"
+  },
+  {
+    "word": "דֶּלֶת",
+    "count": 88,
+    "pl": "drzwi"
+  },
+  {
+    "word": "דַּעַת",
+    "count": 88,
+    "pl": "wiedza"
+  },
+  {
+    "word": "שֶׁקֶל",
+    "count": 88,
+    "pl": "szekel"
+  },
+  {
+    "word": "עָנָן",
+    "count": 87,
+    "pl": "chmura"
+  },
+  {
+    "word": "שֶׁלֶם",
+    "count": 87,
+    "pl": "ofiara pokojowa"
+  },
+  {
+    "word": "הָמוֹן",
+    "count": 85,
+    "pl": "tłum, zgiełk"
+  },
+  {
+    "word": "פֵּאָה",
+    "count": 85,
+    "pl": "bok, krawędź, róg"
+  },
+  {
+    "word": "בַּעַל",
+    "count": 84,
+    "pl": "pan, mąż, właściciel"
+  },
+  {
+    "word": "עֵדוּת",
+    "count": 83,
+    "pl": "świadectwo"
+  },
+  {
+    "word": "זָכָר",
+    "count": 82,
+    "pl": "mężczyzna, samiec"
+  },
+  {
+    "word": "הֵיכָל",
+    "count": 80,
+    "pl": "świątynia, pałac"
+  },
+  {
+    "word": "חֹשֶׁךְ",
+    "count": 80,
+    "pl": "ciemność"
+  },
+  {
+    "word": "קָרְבָּן",
+    "count": 80,
+    "pl": "dar ofiarny"
+  },
+  {
+    "word": "אוֹצָר",
+    "count": 79,
+    "pl": "skarb"
+  },
+  {
+    "word": "אוֹת",
+    "count": 79,
+    "pl": "znak"
+  },
+  {
+    "word": "שׁוֹר",
+    "count": 79,
+    "pl": "wół"
+  },
+  {
+    "word": "גּוֹרָל",
+    "count": 78,
+    "pl": "los"
+  },
+  {
+    "word": "יְשׁוּעָה",
+    "count": 78,
+    "pl": "wybawienie, zbawienie"
+  },
+  {
+    "word": "מִשְׁמֶרֶת",
+    "count": 78,
+    "pl": "straż, obowiązek"
+  },
+  {
+    "word": "נֶגַע",
+    "count": 78,
+    "pl": "plaga, znamię"
+  },
+  {
+    "word": "שִׁיר",
+    "count": 78,
+    "pl": "pieśń"
+  },
+  {
+    "word": "אָוֶן",
+    "count": 77,
+    "pl": "nieprawość, zło"
+  },
+  {
+    "word": "תְּפִלָּה",
+    "count": 77,
+    "pl": "modlitwa"
+  },
+  {
+    "word": "בַּרְזֶל",
+    "count": 76,
+    "pl": "żelazo"
+  },
+  {
+    "word": "מִקְנֶה",
+    "count": 76,
+    "pl": "bydło, dobytek"
+  },
+  {
+    "word": "נַעֲרָה",
+    "count": 76,
+    "pl": "dziewczyna"
+  },
+  {
+    "word": "עֹז",
+    "count": 76,
+    "pl": "moc, siła"
+  },
+  {
+    "word": "תְּרוּמָה",
+    "count": 76,
+    "pl": "danina, dar wzniesienia"
+  },
+  {
+    "word": "מִקְדָּשׁ",
+    "count": 75,
+    "pl": "świątynia, miejsce święte"
+  },
+  {
+    "word": "קֶרֶן",
+    "count": 75,
+    "pl": "róg"
+  },
+  {
+    "word": "קֶשֶׁת",
+    "count": 75,
+    "pl": "łuk"
+  },
+  {
+    "word": "מִזְרָח",
+    "count": 74,
+    "pl": "wschód"
+  },
+  {
+    "word": "עֵז",
+    "count": 74,
+    "pl": "koza"
+  },
+  {
+    "word": "שָׁלָל",
+    "count": 74,
+    "pl": "łup"
+  },
+  {
+    "word": "אֶרֶז",
+    "count": 73,
+    "pl": "cedr"
+  },
+  {
+    "word": "הֶבֶל",
+    "count": 73,
+    "pl": "marność, tchnienie"
+  },
+  {
+    "word": "חֶרְפָּה",
+    "count": 73,
+    "pl": "hańba"
+  },
+  {
+    "word": "צוּר",
+    "count": 73,
+    "pl": "skała"
+  },
+  {
+    "word": "קִיר",
+    "count": 73,
+    "pl": "ściana"
+  },
+  {
+    "word": "בֶּטֶן",
+    "count": 72,
+    "pl": "brzuch"
+  },
+  {
+    "word": "שׁוֹפָר",
+    "count": 72,
+    "pl": "róg (trąbka)"
+  },
+  {
+    "word": "גִּבְעָה",
+    "count": 71,
+    "pl": "wzgórze"
+  },
+  {
+    "word": "עוֹף",
+    "count": 71,
+    "pl": "ptak"
+  },
+  {
+    "word": "שֻׁלְחָן",
+    "count": 71,
+    "pl": "stół"
+  },
+  {
+    "word": "בּוֹר",
+    "count": 70,
+    "pl": "dół, cysterna"
+  },
+  {
+    "word": "כְּסִיל",
+    "count": 70,
+    "pl": "głupiec"
+  },
+  {
+    "word": "צַר",
+    "count": 70,
+    "pl": "przeciwnik"
+  },
+  {
+    "word": "צָרָה",
+    "count": 70,
+    "pl": "ucisk, niedola"
+  },
+  {
+    "word": "בְּרָכָה",
+    "count": 69,
+    "pl": "błogosławieństwo"
+  },
+  {
+    "word": "חֵן",
+    "count": 69,
+    "pl": "łaska"
+  },
+  {
+    "word": "עֵד",
+    "count": 69,
+    "pl": "świadek"
+  },
+  {
+    "word": "קָדִים",
+    "count": 69,
+    "pl": "wschód, wiatr wschodni"
+  },
+  {
+    "word": "כִּכָּר",
+    "count": 68,
+    "pl": "talent, okrąg, dolina"
+  },
+  {
+    "word": "טוּב",
+    "count": 67,
+    "pl": "dobroć, dobro"
+  },
+  {
+    "word": "כָּתֵף",
+    "count": 67,
+    "pl": "bark, bok"
+  },
+  {
+    "word": "קֶבֶר",
+    "count": 67,
+    "pl": "grób"
+  },
+  {
+    "word": "קֵץ",
+    "count": 67,
+    "pl": "koniec"
+  },
+  {
+    "word": "אֲחֻזָּה",
+    "count": 66,
+    "pl": "posiadłość"
+  },
+  {
+    "word": "גֶּבֶר",
+    "count": 66,
+    "pl": "mężczyzna"
+  },
+  {
+    "word": "חֵלֶק",
+    "count": 66,
+    "pl": "część, dział"
+  },
+  {
+    "word": "נֶגֶב",
+    "count": 66,
+    "pl": "Negew, południe"
+  },
+  {
+    "word": "שְׁאֵרִית",
+    "count": 66,
+    "pl": "reszta, resztka"
+  },
+  {
+    "word": "אִשֶּׁה",
+    "count": 65,
+    "pl": "ofiara ogniowa"
+  },
+  {
+    "word": "חֲלוֹם",
+    "count": 65,
+    "pl": "sen"
+  },
+  {
+    "word": "עֵמֶק",
+    "count": 65,
+    "pl": "dolina"
+  },
+  {
+    "word": "שְׁאוֹל",
+    "count": 65,
+    "pl": "Szeol"
+  },
+  {
+    "word": "שִׁפְחָה",
+    "count": 63,
+    "pl": "służąca"
+  },
+  {
+    "word": "גְּבוּרָה",
+    "count": 62,
+    "pl": "siła, męstwo"
+  },
+  {
+    "word": "חַג",
+    "count": 62,
+    "pl": "święto"
+  },
+  {
+    "word": "קָנֶה",
+    "count": 62,
+    "pl": "trzcina"
+  },
+  {
+    "word": "רִיב",
+    "count": 62,
+    "pl": "spór, kłótnia"
+  },
+  {
+    "word": "אַחֲרִית",
+    "count": 61,
+    "pl": "koniec, przyszłość"
+  },
+  {
+    "word": "אוּלָם",
+    "count": 61,
+    "pl": "przedsionek"
+  },
+  {
+    "word": "דּוֹד",
+    "count": 61,
+    "pl": "ukochany, wuj"
+  },
+  {
+    "word": "קֶדֶם",
+    "count": 61,
+    "pl": "wschód, dawne czasy"
+  },
+  {
+    "word": "אַלּוּף",
+    "count": 60,
+    "pl": "wódz, przywódca rodu"
+  },
+  {
+    "word": "חָמָס",
+    "count": 60,
+    "pl": "przemoc"
+  },
+  {
+    "word": "מָגֵן",
+    "count": 60,
+    "pl": "tarcza"
+  },
+  {
+    "word": "נֶדֶר",
+    "count": 60,
+    "pl": "ślub"
+  },
+  {
+    "word": "נֶסֶךְ",
+    "count": 60,
+    "pl": "ofiara płynna"
+  },
+  {
+    "word": "עֲרָבָה",
+    "count": 60,
+    "pl": "step, równina pustynna"
+  },
+  {
+    "word": "קְטֹרֶת",
+    "count": 60,
+    "pl": "kadzidło"
+  },
+  {
+    "word": "אֹרַח",
+    "count": 59,
+    "pl": "ścieżka, droga"
+  },
+  {
+    "word": "אֱלוֹהַּ",
+    "count": 58,
+    "pl": "Bóg"
+  },
+  {
+    "word": "סֶלַע",
+    "count": 58,
+    "pl": "skała"
+  },
+  {
+    "word": "רֵיחַ",
+    "count": 58,
+    "pl": "zapach"
+  },
+  {
+    "word": "תְּהִלָּה",
+    "count": 58,
+    "pl": "chwała, pieśń pochwalna"
+  },
+  {
+    "word": "אֶדֶן",
+    "count": 57,
+    "pl": "podstawa, podpórka"
+  },
+  {
+    "word": "מִזְמוֹר",
+    "count": 57,
+    "pl": "psalm"
+  },
+  {
+    "word": "פָּרָשׁ",
+    "count": 57,
+    "pl": "jeździec, koń"
+  },
+  {
+    "word": "אָמָה",
+    "count": 56,
+    "pl": "służąca"
+  },
+  {
+    "word": "יַעַר",
+    "count": 56,
+    "pl": "las"
+  },
+  {
+    "word": "מַחֲשָׁבָה",
+    "count": 56,
+    "pl": "myśl, zamysł"
+  },
+  {
+    "word": "רָצוֹן",
+    "count": 56,
+    "pl": "upodobanie, łaska"
+  },
+  {
+    "word": "שְׁמָמָה",
+    "count": 56,
+    "pl": "spustoszenie"
+  },
+  {
+    "word": "אַלְמָנָה",
+    "count": 55,
+    "pl": "wdowa"
+  },
+  {
+    "word": "גֶּפֶן",
+    "count": 55,
+    "pl": "winorośl"
+  },
+  {
+    "word": "חֵץ",
+    "count": 55,
+    "pl": "strzała"
+  },
+  {
+    "word": "עָמָל",
+    "count": 55,
+    "pl": "trud"
+  },
+  {
+    "word": "שֵׁן",
+    "count": 55,
+    "pl": "ząb, kość słoniowa"
+  },
+  {
+    "word": "גָּמָל",
+    "count": 54,
+    "pl": "wielbłąd"
+  },
+  {
+    "word": "דְּבַשׁ",
+    "count": 54,
+    "pl": "miód"
+  },
+  {
+    "word": "יְרִיעָה",
+    "count": 54,
+    "pl": "kotara, zasłona"
+  },
+  {
+    "word": "מִדָּה",
+    "count": 54,
+    "pl": "miara"
+  },
+  {
+    "word": "מָרוֹם",
+    "count": 54,
+    "pl": "wysokość, wyżyna"
+  },
+  {
+    "word": "עֶרְוָה",
+    "count": 54,
+    "pl": "nagość"
+  },
+  {
+    "word": "שְׂמֹאל",
+    "count": 54,
+    "pl": "lewa strona, północ"
+  },
+  {
+    "word": "שָׁוְא",
+    "count": 54,
+    "pl": "marność, fałsz"
+  },
+  {
+    "word": "מְדִינָה",
+    "count": 53,
+    "pl": "prowincja"
+  },
+  {
+    "word": "מַצָּה",
+    "count": 53,
+    "pl": "chleb przaśny"
+  },
+  {
+    "word": "סֹלֶת",
+    "count": 53,
+    "pl": "mąka pszenna"
+  },
+  {
+    "word": "סֹפֵר",
+    "count": 53,
+    "pl": "pisarz, skryba"
+  },
+  {
+    "word": "צֵל",
+    "count": 53,
+    "pl": "cień"
+  },
+  {
+    "word": "שָׂעִיר",
+    "count": 52,
+    "pl": "kozioł"
+  },
+  {
+    "word": "עֲבוּר",
+    "count": 51,
+    "pl": "plon, ze względu na"
+  },
+  {
+    "word": "קֶרֶשׁ",
+    "count": 51,
+    "pl": "deska"
+  },
+  {
+    "word": "רֵאשִׁית",
+    "count": 51,
+    "pl": "początek, pierwsze"
+  },
+  {
+    "word": "בְּתוּלָה",
+    "count": 50,
+    "pl": "dziewica"
+  },
+  {
+    "word": "טַבַּעַת",
+    "count": 50,
+    "pl": "pierścień"
+  },
+  {
+    "word": "מוּסָר",
+    "count": 50,
+    "pl": "pouczenie, karność"
+  },
+  {
+    "word": "רַב",
+    "count": 50,
+    "pl": "przełożony, wielki"
+  },
+  {
+    "word": "אֱמוּנָה",
+    "count": 49,
+    "pl": "wierność"
+  },
+  {
+    "word": "אֵפוֹד",
+    "count": 49,
+    "pl": "efod"
+  },
+  {
+    "word": "גָּאוֹן",
+    "count": 49,
+    "pl": "duma, majestat"
+  },
+  {
+    "word": "מַעֲלָה",
+    "count": 49,
+    "pl": "wzniesienie, stopień"
+  },
+  {
+    "word": "מִשְׁקָל",
+    "count": 49,
+    "pl": "waga"
+  },
+  {
+    "word": "פַּחַד",
+    "count": 49,
+    "pl": "lęk, strach"
+  },
+  {
+    "word": "פֶּסַח",
+    "count": 49,
+    "pl": "Pascha"
+  },
+  {
+    "word": "קָצִיר",
+    "count": 49,
+    "pl": "żniwo"
+  },
+  {
+    "word": "שְׁבִי",
+    "count": 49,
+    "pl": "niewola, jeniec"
+  },
+  {
+    "word": "תְּכֵלֶת",
+    "count": 49,
+    "pl": "fiolet (błękit)"
+  },
+  {
+    "word": "תִּפְאֶרֶת",
+    "count": 49,
+    "pl": "chwała, piękno"
+  },
+  {
+    "word": "אֵמֶר",
+    "count": 48,
+    "pl": "mowa, wypowiedź"
+  },
+  {
+    "word": "גִּלּוּלִים",
+    "count": 48,
+    "pl": "bożki"
+  },
+  {
+    "word": "חֶבֶל",
+    "count": 48,
+    "pl": "lina, obszar"
+  },
+  {
+    "word": "חֲנִית",
+    "count": 48,
+    "pl": "włócznia"
+  },
+  {
+    "word": "לִשְׁכָּה",
+    "count": 48,
+    "pl": "komnata, pokój"
+  },
+  {
+    "word": "מַכָּה",
+    "count": 48,
+    "pl": "rana, cios"
+  },
+  {
+    "word": "נְבֵלָה",
+    "count": 48,
+    "pl": "padlina, ścierwo"
+  },
+  {
+    "word": "עַד",
+    "count": 48,
+    "pl": "wieczność"
+  },
+  {
+    "word": "שַׂק",
+    "count": 48,
+    "pl": "wór pokutny"
+  },
+  {
+    "word": "אַרְיֵה",
+    "count": 47,
+    "pl": "lew"
+  },
+  {
+    "word": "מָתְנַיִם",
+    "count": 47,
+    "pl": "biodra, lędźwie"
+  },
+  {
+    "word": "שֶׂה",
+    "count": 47,
+    "pl": "owca, jagnię"
+  },
+  {
+    "word": "אָשָׁם",
+    "count": 46,
+    "pl": "ofiara za winę"
+  },
+  {
+    "word": "דֶּבֶר",
+    "count": 46,
+    "pl": "zaraza"
+  },
+  {
+    "word": "מִשְׁכָּב",
+    "count": 46,
+    "pl": "łoże"
+  },
+  {
+    "word": "מִשְׁתֶּה",
+    "count": 46,
+    "pl": "uczta"
+  },
+  {
+    "word": "נְעוּרִים",
+    "count": 46,
+    "pl": "młodość"
+  },
+  {
+    "word": "קוֹמָה",
+    "count": 46,
+    "pl": "wysokość, wzrost"
+  },
+  {
+    "word": "מִגְדָּל",
+    "count": 45,
+    "pl": "wieża"
+  },
+  {
+    "word": "סָרִיס",
+    "count": 45,
+    "pl": "dworzanin, eunuch"
+  },
+  {
+    "word": "בָּחוּר",
+    "count": 44,
+    "pl": "młodzieniec"
+  },
+  {
+    "word": "חָלָב",
+    "count": 44,
+    "pl": "mleko"
+  },
+  {
+    "word": "יִרְאָה",
+    "count": 44,
+    "pl": "bojaźń, lęk"
+  },
+  {
+    "word": "מוֹשָׁב",
+    "count": 44,
+    "pl": "siedziba, miejsce zamieszkania"
+  },
+  {
+    "word": "מֶרְכָּבָה",
+    "count": 44,
+    "pl": "rydwan"
+  },
+  {
+    "word": "מַשָּׂא",
+    "count": 44,
+    "pl": "ciężar, brzemię"
+  },
+  {
+    "word": "נֵר",
+    "count": 44,
+    "pl": "lampa"
+  },
+  {
+    "word": "שֶׁבֶר",
+    "count": 44,
+    "pl": "złamanie, zagłada"
+  },
+  {
+    "word": "אֹכֶל",
+    "count": 43,
+    "pl": "pokarm"
+  },
+  {
+    "word": "אֶפֶס",
+    "count": 43,
+    "pl": "kres, nic"
+  },
+  {
+    "word": "לוּחַ",
+    "count": 43,
+    "pl": "tablica, deska"
+  },
+  {
+    "word": "נָגִיד",
+    "count": 43,
+    "pl": "wódz, władca"
+  },
+  {
+    "word": "נִיחוֹחַ",
+    "count": 43,
+    "pl": "przyjemny zapach"
+  },
+  {
+    "word": "נֶצַח",
+    "count": 43,
+    "pl": "wieczność"
+  },
+  {
+    "word": "קִנְאָה",
+    "count": 43,
+    "pl": "zazdrość, gorliwość"
+  },
+  {
+    "word": "רְחוֹב",
+    "count": 43,
+    "pl": "plac, ulica"
+  },
+  {
+    "word": "תְּבוּאָה",
+    "count": 43,
+    "pl": "plon, zbiór"
+  },
+  {
+    "word": "אֱנוֹשׁ",
+    "count": 42,
+    "pl": "człowiek, śmiertelnik"
+  },
+  {
+    "word": "בֶּטַח",
+    "count": 42,
+    "pl": "bezpieczeństwo"
+  },
+  {
+    "word": "גּוֹלָה",
+    "count": 42,
+    "pl": "wygnanie"
+  },
+  {
+    "word": "חָרְבָּה",
+    "count": 42,
+    "pl": "ruina, pustkowie"
+  },
+  {
+    "word": "יָתוֹם",
+    "count": 42,
+    "pl": "sierota"
+  },
+  {
+    "word": "כִּנּוֹר",
+    "count": 42,
+    "pl": "lira"
+  },
+  {
+    "word": "מַחֲלֹקֶת",
+    "count": 42,
+    "pl": "dział, oddział"
+  },
+  {
+    "word": "מְנוֹרָה",
+    "count": 42,
+    "pl": "świecznik"
+  },
+  {
+    "word": "עֲלִילָה",
+    "count": 42,
+    "pl": "czyn, uczynek"
+  },
+  {
+    "word": "שְׁבוּת",
+    "count": 42,
+    "pl": "niewola, pomyślność"
+  },
+  {
+    "word": "שָׁנִי",
+    "count": 42,
+    "pl": "szkarłat"
+  },
+  {
+    "word": "בִּינָה",
+    "count": 42,
+    "pl": "zrozumienie"
+  },
+  {
+    "word": "אָחוֹר",
+    "count": 41,
+    "pl": "tył"
+  },
+  {
+    "word": "בְּרִיחַ",
+    "count": 41,
+    "pl": "rygiel"
+  },
+  {
+    "word": "גַּן",
+    "count": 41,
+    "pl": "ogród"
+  },
+  {
+    "word": "חֲרוֹן",
+    "count": 41,
+    "pl": "gniew, pałanie"
+  },
+  {
+    "word": "טַף",
+    "count": 41,
+    "pl": "dzieci (małe)"
+  },
+  {
+    "word": "מְעָרָה",
+    "count": 41,
+    "pl": "jaskinia"
+  },
+  {
+    "word": "צַוָּאר",
+    "count": 41,
+    "pl": "kark"
+  },
+  {
+    "word": "תּוֹלַעַת",
+    "count": 41,
+    "pl": "robak, szkarłat"
+  },
+  {
+    "word": "אֵיפָה",
+    "count": 40,
+    "pl": "efa"
+  },
+  {
+    "word": "בַּד",
+    "count": 40,
+    "pl": "drążek"
+  },
+  {
+    "word": "דָּגָן",
+    "count": 40,
+    "pl": "zboże"
+  },
+  {
+    "word": "עֹל",
+    "count": 40,
+    "pl": "jarzmo"
+  },
+  {
+    "word": "צִפּוֹר",
+    "count": 40,
+    "pl": "ptak"
+  },
+  {
+    "word": "רַחֲמִים",
+    "count": 40,
+    "pl": "miłosierdzie"
+  },
+  {
+    "word": "אֲשֵׁרָה",
+    "count": 39,
+    "pl": "aszera"
+  },
+  {
+    "word": "דַּי",
+    "count": 39,
+    "pl": "dość"
+  },
+  {
+    "word": "מִרְמָה",
+    "count": 39,
+    "pl": "podstęp"
+  },
+  {
+    "word": "מָשָׁל",
+    "count": 39,
+    "pl": "przysłowie"
+  },
+  {
+    "word": "שַׁמָּה",
+    "count": 39,
+    "pl": "przerażenie, pustkowie"
+  },
+  {
+    "word": "שֵׁשׁ",
+    "count": 39,
+    "pl": "len"
+  },
+  {
+    "word": "תְּאֵנָה",
+    "count": 39,
+    "pl": "figa"
+  },
+  {
+    "word": "תּוֹלְדוֹת",
+    "count": 39,
+    "pl": "rodowody, pokolenia"
+  },
+  {
+    "word": "אַרְגָּמָן",
+    "count": 38,
+    "pl": "purpura"
+  },
+  {
+    "word": "תְּבוּנָה",
+    "count": 38,
+    "pl": "rozum, zrozumienie"
+  },
+  {
+    "word": "זַיִת",
+    "count": 38,
+    "pl": "oliwka"
+  },
+  {
+    "word": "חֶדֶר",
+    "count": 38,
+    "pl": "pokój, komnata"
+  },
+  {
+    "word": "חֵיק",
+    "count": 38,
+    "pl": "łono"
+  },
+  {
+    "word": "חֵפֶץ",
+    "count": 38,
+    "pl": "upodobanie, pragnienie"
+  },
+  {
+    "word": "מָטָר",
+    "count": 38,
+    "pl": "deszcz"
+  },
+  {
+    "word": "מְלוֹא",
+    "count": 38,
+    "pl": "pełnia"
+  },
+  {
+    "word": "מִלָּה",
+    "count": 38,
+    "pl": "słowo"
+  },
+  {
+    "word": "עֵדֶר",
+    "count": 38,
+    "pl": "trzoda"
+  },
+  {
+    "word": "צֵלָע",
+    "count": 38,
+    "pl": "bok, żebro"
+  },
+  {
+    "word": "תִּירוֹשׁ",
+    "count": 38,
+    "pl": "młode wino"
+  },
+  {
+    "word": "אִמְרָה",
+    "count": 37,
+    "pl": "słowo"
+  },
+  {
+    "word": "בְּאֵר",
+    "count": 37,
+    "pl": "studnia"
+  },
+  {
+    "word": "כּוֹכָב",
+    "count": 37,
+    "pl": "gwiazda"
+  },
+  {
+    "word": "מִבְצָר",
+    "count": 37,
+    "pl": "twierdza"
+  },
+  {
+    "word": "עֹשֶׁר",
+    "count": 37,
+    "pl": "bogactwo"
+  },
+  {
+    "word": "פִּילֶגֶשׁ",
+    "count": 37,
+    "pl": "nałożnica"
+  },
+  {
+    "word": "פֹּעַל",
+    "count": 37,
+    "pl": "dzieło, czyn"
+  },
+  {
+    "word": "שׁוֹעֵר",
+    "count": 37,
+    "pl": "odźwierny"
+  },
+  {
+    "word": "אִי",
+    "count": 36,
+    "pl": "wyspa, wybrzeże"
+  },
+  {
+    "word": "חָרָשׁ",
+    "count": 36,
+    "pl": "rzemieślnik"
+  },
+  {
+    "word": "טֻמְאָה",
+    "count": 36,
+    "pl": "nieczystość"
+  },
+  {
+    "word": "יֶשַׁע",
+    "count": 36,
+    "pl": "wybawienie"
+  },
+  {
+    "word": "מוֹפֵת",
+    "count": 36,
+    "pl": "znak, cud"
+  },
+  {
+    "word": "מָעוֹז",
+    "count": 36,
+    "pl": "twierdza, ostoja"
+  },
+  {
+    "word": "נֵכָר",
+    "count": 36,
+    "pl": "cudzoziemiec, obcy"
+  },
+  {
+    "word": "עֳנִי",
+    "count": 36,
+    "pl": "nędza, ucisk"
+  },
+  {
+    "word": "תֵּבֵל",
+    "count": 36,
+    "pl": "świat"
+  },
+  {
+    "word": "תְּהוֹם",
+    "count": 36,
+    "pl": "głębia"
+  },
+  {
+    "word": "תְּרוּעָה",
+    "count": 36,
+    "pl": "okrzyk, głos trąby"
+  },
+  {
+    "word": "אוֹפָן",
+    "count": 35,
+    "pl": "koło"
+  },
+  {
+    "word": "אֲרִי",
+    "count": 35,
+    "pl": "lew"
+  },
+  {
+    "word": "גֶּשֶׁם",
+    "count": 35,
+    "pl": "deszcz"
+  },
+  {
+    "word": "חָזוֹן",
+    "count": 35,
+    "pl": "wizja"
+  },
+  {
+    "word": "מַלְכָּה",
+    "count": 35,
+    "pl": "królowa"
+  },
+  {
+    "word": "מִשְׁנֶה",
+    "count": 35,
+    "pl": "drugi, podwójny"
+  },
+  {
+    "word": "סֵתֶר",
+    "count": 35,
+    "pl": "tajemnica, kryjówka"
+  },
+  {
+    "word": "עֵגֶל",
+    "count": 35,
+    "pl": "cielec"
+  },
+  {
+    "word": "צָרַעַת",
+    "count": 35,
+    "pl": "trąd"
+  },
+  {
+    "word": "קָצָה",
+    "count": 35,
+    "pl": "kraniec, koniec"
+  },
+  {
+    "word": "אָלָה",
+    "count": 34,
+    "pl": "przysięga, przekleństwo"
+  },
+  {
+    "word": "אָתוֹן",
+    "count": 34,
+    "pl": "oślica"
+  },
+  {
+    "word": "זוֹנָה",
+    "count": 34,
+    "pl": "nierządnica"
+  },
+  {
+    "word": "חֵטְא",
+    "count": 34,
+    "pl": "grzech"
+  },
+  {
+    "word": "יָרֵךְ",
+    "count": 34,
+    "pl": "udo, bok, podstawa"
+  },
+  {
+    "word": "כַּלָּה",
+    "count": 34,
+    "pl": "synowa, panna młoda"
+  },
+  {
+    "word": "מַצֵּבָה",
+    "count": 34,
+    "pl": "słup, pomnik kamienny"
+  },
+  {
+    "word": "עֶבְרָה",
+    "count": 34,
+    "pl": "gniew"
+  },
+  {
+    "word": "עַוְלָה",
+    "count": 34,
+    "pl": "krzywda, bezprawie"
+  },
+  {
+    "word": "שְׂעֹרָה",
+    "count": 34,
+    "pl": "jęczmień"
+  },
+  {
+    "word": "תְּשׁוּעָה",
+    "count": 34,
+    "pl": "wybawienie"
+  },
+  {
+    "word": "גַּיְא",
+    "count": 33,
+    "pl": "dolina"
+  },
+  {
+    "word": "גֹּרֶן",
+    "count": 33,
+    "pl": "klepisko"
+  },
+  {
+    "word": "יוֹנָה",
+    "count": 33,
+    "pl": "gołąb"
+  },
+  {
+    "word": "עֲמִית",
+    "count": 33,
+    "pl": "bliźni, towarzysz"
+  },
+  {
+    "word": "עֵרֶךְ",
+    "count": 33,
+    "pl": "wycena, wartość"
+  },
+  {
+    "word": "עֹרֶף",
+    "count": 33,
+    "pl": "kark"
+  },
+  {
+    "word": "עֵשֶׂב",
+    "count": 33,
+    "pl": "trawa, roślina"
+  },
+  {
+    "word": "עֲשִׂירִית",
+    "count": 33,
+    "pl": "dziesiąta część"
+  },
+  {
+    "word": "צַד",
+    "count": 33,
+    "pl": "bok, strona"
+  },
+  {
+    "word": "קְלָלָה",
+    "count": 33,
+    "pl": "przekleństwo"
+  },
+  {
+    "word": "רִנָּה",
+    "count": 33,
+    "pl": "okrzyk radości"
+  },
+  {
+    "word": "שֹׁרֶשׁ",
+    "count": 33,
+    "pl": "korzeń"
+  },
+  {
+    "word": "אַהֲבָה",
+    "count": 32,
+    "pl": "miłość"
+  },
+  {
+    "word": "אַיִל",
+    "count": 32,
+    "pl": "filar"
+  },
+  {
+    "word": "אֳנִיָּה",
+    "count": 32,
+    "pl": "okręt"
+  },
+  {
+    "word": "אַרְמוֹן",
+    "count": 32,
+    "pl": "pałac"
+  },
+  {
+    "word": "חַלּוֹן",
+    "count": 32,
+    "pl": "okno"
+  },
+  {
+    "word": "טַבָּח",
+    "count": 32,
+    "pl": "strażnik, kucharz"
+  },
+  {
+    "word": "טוֹבָה",
+    "count": 32,
+    "pl": "dobro, dobroć"
+  },
+  {
+    "word": "כֶּלֶב",
+    "count": 32,
+    "pl": "pies"
+  },
+  {
+    "word": "לְבוּשׁ",
+    "count": 32,
+    "pl": "szata"
+  },
+  {
+    "word": "מְאוּמָה",
+    "count": 32,
+    "pl": "cokolwiek, nic"
+  },
+  {
+    "word": "מִזְרָק",
+    "count": 32,
+    "pl": "misa"
+  },
+  {
+    "word": "מָחָר",
+    "count": 32,
+    "pl": "jutro"
+  },
+  {
+    "word": "מֵעֶה",
+    "count": 32,
+    "pl": "wnętrzności, brzuch"
+  },
+  {
+    "word": "מַעֲשֵׂר",
+    "count": 32,
+    "pl": "dziesięcina"
+  },
+  {
+    "word": "נָוֶה",
+    "count": 32,
+    "pl": "pastwisko, mieszkanie"
+  },
+  {
+    "word": "פְּקֻדָּה",
+    "count": 32,
+    "pl": "nadzór, urząd"
+  },
+  {
+    "word": "רִמּוֹן",
+    "count": 32,
+    "pl": "granat"
+  },
+  {
+    "word": "תּוֹדָה",
+    "count": 32,
+    "pl": "dziękczynienie"
+  },
+  {
+    "word": "תִּקְוָה",
+    "count": 32,
+    "pl": "nadzieja"
+  },
+  {
+    "word": "אֶצְבַּע",
+    "count": 31,
+    "pl": "palec"
+  },
+  {
+    "word": "גַּג",
+    "count": 31,
+    "pl": "dach"
+  },
+  {
+    "word": "גְּדוּד",
+    "count": 31,
+    "pl": "oddział, banda"
+  },
+  {
+    "word": "הָדָר",
+    "count": 31,
+    "pl": "dostojeństwo, majestat"
+  },
+  {
+    "word": "טַל",
+    "count": 31,
+    "pl": "rosa"
+  },
+  {
+    "word": "כּוֹס",
+    "count": 31,
+    "pl": "kielich"
+  },
+  {
+    "word": "כָּזָב",
+    "count": 31,
+    "pl": "kłamstwo"
+  },
+  {
+    "word": "כְּלָיוֹת",
+    "count": 31,
+    "pl": "nerki"
+  },
+  {
+    "word": "כְּפִיר",
+    "count": 31,
+    "pl": "lwiątko"
+  },
+  {
+    "word": "לְאֹם",
+    "count": 31,
+    "pl": "lud, naród"
+  },
+  {
+    "word": "מִין",
+    "count": 31,
+    "pl": "rodzaj, gatunek"
+  },
+  {
+    "word": "נָחָשׁ",
+    "count": 31,
+    "pl": "wąż"
+  },
+  {
+    "word": "סֻכָּה",
+    "count": 31,
+    "pl": "szałas"
+  },
+  {
+    "word": "עָב",
+    "count": 31,
+    "pl": "chmura"
+  },
+  {
+    "word": "פֶּסֶל",
+    "count": 31,
+    "pl": "bożek, rzeźba"
+  },
+  {
+    "word": "שִׂמְלָה",
+    "count": 31,
+    "pl": "szata"
+  },
+  {
+    "word": "בְּכִי",
+    "count": 30,
+    "pl": "płacz"
+  },
+  {
+    "word": "בֹּשֶׂם",
+    "count": 30,
+    "pl": "korzenie, wonność"
+  },
+  {
+    "word": "בּוּשָׁה",
+    "count": 30,
+    "pl": "wstyd"
+  },
+  {
+    "word": "חִטָּה",
+    "count": 30,
+    "pl": "pszenica"
+  },
+  {
+    "word": "יַרְכָּה",
+    "count": 30,
+    "pl": "bok, odległa część"
+  },
+  {
+    "word": "כְּלִמָּה",
+    "count": 30,
+    "pl": "hańba"
+  },
+  {
+    "word": "מַאֲכָל",
+    "count": 30,
+    "pl": "pokarm"
+  },
+  {
+    "word": "פִּנָּה",
+    "count": 30,
+    "pl": "róg"
+  },
+  {
+    "word": "רֶחֶם",
+    "count": 30,
+    "pl": "łono"
+  },
+  {
+    "word": "רֶשַׁע",
+    "count": 30,
+    "pl": "niegodziwość"
+  },
+  {
+    "word": "שְׁבוּעָה",
+    "count": 30,
+    "pl": "przysięga"
+  },
+  {
+    "word": "תְּנוּפָה",
+    "count": 30,
+    "pl": "ofiara potrząsania"
+  },
+  {
+    "word": "בָּרָד",
+    "count": 29,
+    "pl": "grad"
+  },
+  {
+    "word": "זִמָּה",
+    "count": 29,
+    "pl": "rozpusta, niegodziwość"
+  },
+  {
+    "word": "חֲצֹצְרָה",
+    "count": 29,
+    "pl": "trąba"
+  },
+  {
+    "word": "חֵרֶם",
+    "count": 29,
+    "pl": "rzecz obłożona klątwą"
+  },
+  {
+    "word": "כֻּתֹּנֶת",
+    "count": 29,
+    "pl": "tunika"
+  },
+  {
+    "word": "מִטָּה",
+    "count": 29,
+    "pl": "łoże"
+  },
+  {
+    "word": "מַעַל",
+    "count": 29,
+    "pl": "niewierność"
+  },
+  {
+    "word": "נִדָּה",
+    "count": 29,
+    "pl": "nieczystość"
+  },
+  {
+    "word": "סִיר",
+    "count": 29,
+    "pl": "garnek"
+  },
+  {
+    "word": "עַתּוּד",
+    "count": 29,
+    "pl": "kozioł"
+  },
+  {
+    "word": "קִרְיָה",
+    "count": 29,
+    "pl": "miasto"
+  },
+  {
+    "word": "שָׂרִיד",
+    "count": 29,
+    "pl": "ocalały"
+  },
+  {
+    "word": "מְעִיל",
+    "count": 28,
+    "pl": "płaszcz"
+  },
+  {
+    "word": "סוּף",
+    "count": 28,
+    "pl": "trzcina"
+  },
+  {
+    "word": "סֶגֶן",
+    "count": 28,
+    "pl": "namiestnik"
+  },
+  {
+    "word": "פְּלֵטָה",
+    "count": 28,
+    "pl": "ocalenie, ocalony"
+  },
+  {
+    "word": "קֶצֶף",
+    "count": 28,
+    "pl": "gniew"
+  },
+  {
+    "word": "רְכוּשׁ",
+    "count": 28,
+    "pl": "dobytek"
+  },
+  {
+    "word": "שָׂכָר",
+    "count": 28,
+    "pl": "zapłata"
+  },
+  {
+    "word": "שֵׂעָר",
+    "count": 28,
+    "pl": "włosy"
+  },
+  {
+    "word": "שִׁטָּה",
+    "count": 28,
+    "pl": "akacja"
+  },
+  {
+    "word": "שִׁקּוּץ",
+    "count": 28,
+    "pl": "obrzydliwość, bożek"
+  },
+  {
+    "word": "תֵּבָה",
+    "count": 28,
+    "pl": "arka, skrzynia"
+  },
+  {
+    "word": "בְּלִיַּעַל",
+    "count": 27,
+    "pl": "nikczemność, nicpoń"
+  },
+  {
+    "word": "יוֹבֵל",
+    "count": 27,
+    "pl": "jubileusz, róg barani"
+  },
+  {
+    "word": "יָרֵחַ",
+    "count": 27,
+    "pl": "księżyc"
+  },
+  {
+    "word": "כַּפֹּרֶת",
+    "count": 27,
+    "pl": "przebłagalnia"
+  },
+  {
+    "word": "מוֹצָא",
+    "count": 27,
+    "pl": "wyjście, źródło"
+  },
+  {
+    "word": "מוֹקֵשׁ",
+    "count": 27,
+    "pl": "sidło"
+  },
+  {
+    "word": "מוֹשִׁיעַ",
+    "count": 27,
+    "pl": "wybawiciel"
+  },
+  {
+    "word": "מְסִלָּה",
+    "count": 27,
+    "pl": "gościniec"
+  },
+  {
+    "word": "נֵבֶל",
+    "count": 27,
+    "pl": "harfa"
+  },
+  {
+    "word": "נְקָמָה",
+    "count": 27,
+    "pl": "zemsta"
+  },
+  {
+    "word": "שָׂטָן",
+    "count": 27,
+    "pl": "oskarżyciel, szatan"
+  },
+  {
+    "word": "שֵׁמַע",
+    "count": 27,
+    "pl": "wieść"
+  },
+  {
+    "word": "אֱוִיל",
+    "count": 26,
+    "pl": "głupiec"
+  },
+  {
+    "word": "בֶּרֶךְ",
+    "count": 26,
+    "pl": "kolano"
+  },
+  {
+    "word": "הוֹן",
+    "count": 26,
+    "pl": "majątek"
+  },
+  {
+    "word": "טוּר",
+    "count": 26,
+    "pl": "rząd"
+  },
+  {
+    "word": "מַגֵּפָה",
+    "count": 26,
+    "pl": "plaga"
+  },
+  {
+    "word": "מַסֵּכָה",
+    "count": 26,
+    "pl": "odlew, bożek odlany"
+  },
+  {
+    "word": "נְדָבָה",
+    "count": 26,
+    "pl": "ofiara dobrowolna"
+  },
+  {
+    "word": "נֶשֶׁר",
+    "count": 26,
+    "pl": "orzeł"
+  },
+  {
+    "word": "עֵזֶר",
+    "count": 26,
+    "pl": "pomoc"
+  },
+  {
+    "word": "פָּרָה",
+    "count": 26,
+    "pl": "krowa"
+  },
+  {
+    "word": "צוֹם",
+    "count": 26,
+    "pl": "post"
+  },
+  {
+    "word": "שְׁאָר",
+    "count": 26,
+    "pl": "reszta"
+  },
+  {
+    "word": "שֹׁד",
+    "count": 26,
+    "pl": "grabież, zniszczenie"
+  },
+  {
+    "word": "אִוֶּלֶת",
+    "count": 25,
+    "pl": "głupota"
+  },
+  {
+    "word": "בַּז",
+    "count": 25,
+    "pl": "łup"
+  },
+  {
+    "word": "דְּמוּת",
+    "count": 25,
+    "pl": "podobieństwo"
+  },
+  {
+    "word": "חֹשֶׁן",
+    "count": 25,
+    "pl": "pektorał"
+  },
+  {
+    "word": "כֵּן",
+    "count": 25,
+    "pl": "podstawa"
+  },
+  {
+    "word": "מָסָךְ",
+    "count": 25,
+    "pl": "zasłona"
+  },
+  {
+    "word": "נֵזֶר",
+    "count": 25,
+    "pl": "poświęcenie, diadem"
+  },
+  {
+    "word": "סַף",
+    "count": 25,
+    "pl": "próg"
+  },
+  {
+    "word": "עֲגָלָה",
+    "count": 25,
+    "pl": "wóz"
+  },
+  {
+    "word": "עָשָׁן",
+    "count": 25,
+    "pl": "dym"
+  },
+  {
+    "word": "פַּח",
+    "count": 25,
+    "pl": "sidło, pułapka"
+  },
+  {
+    "word": "פָּרֹכֶת",
+    "count": 25,
+    "pl": "zasłona przybytku"
+  },
+  {
+    "word": "שֹׁטֵר",
+    "count": 25,
+    "pl": "urzędnik, nadzorca"
+  },
+  {
+    "word": "תּוֹצָאוֹת",
+    "count": 25,
+    "pl": "wyjścia, kresy"
+  },
+  {
+    "word": "תַּחֲנוּן",
+    "count": 25,
+    "pl": "błaganie"
+  },
+  {
+    "word": "אֵבֶל",
+    "count": 24,
+    "pl": "żałoba"
+  },
+  {
+    "word": "אֵיד",
+    "count": 24,
+    "pl": "klęska"
+  },
+  {
+    "word": "אַרְבֶּה",
+    "count": 24,
+    "pl": "szarańcza"
+  },
+  {
+    "word": "הוֹד",
+    "count": 24,
+    "pl": "splendor"
+  },
+  {
+    "word": "זִכָּרוֹן",
+    "count": 24,
+    "pl": "pamiątka"
+  },
+  {
+    "word": "חֳלִי",
+    "count": 24,
+    "pl": "choroba"
+  },
+  {
+    "word": "יָתֵד",
+    "count": 24,
+    "pl": "kołek"
+  },
+  {
+    "word": "כֹּתֶרֶת",
+    "count": 24,
+    "pl": "głowica"
+  },
+  {
+    "word": "מָבוֹא",
+    "count": 24,
+    "pl": "wejście, zachód słońca"
+  },
+  {
+    "word": "מְלוּכָה",
+    "count": 24,
+    "pl": "królowanie, królestwo"
+  },
+  {
+    "word": "מֶלַח",
+    "count": 24,
+    "pl": "sól"
+  },
+  {
+    "word": "נְשָׁמָה",
+    "count": 24,
+    "pl": "tchnienie"
+  },
+  {
+    "word": "מַעֲלָל",
+    "count": 24,
+    "pl": "czyn"
+  },
+  {
+    "word": "פִּקּוּדִים",
+    "count": 24,
+    "pl": "przykazania"
+  },
+  {
+    "word": "תּוֹכַחַת",
+    "count": 24,
+    "pl": "upomnienie"
+  },
+  {
+    "word": "בַּד",
+    "count": 23,
+    "pl": "len"
+  },
+  {
+    "word": "בֶּצַע",
+    "count": 23,
+    "pl": "nieuczciwy zysk"
+  },
+  {
+    "word": "דִּמְעָה",
+    "count": 23,
+    "pl": "łza"
+  },
+  {
+    "word": "זֵכֶר",
+    "count": 23,
+    "pl": "pamięć"
+  },
+  {
+    "word": "חֶלְקָה",
+    "count": 23,
+    "pl": "działka, część"
+  },
+  {
+    "word": "יוֹעֵץ",
+    "count": 23,
+    "pl": "doradca"
+  },
+  {
+    "word": "יִצְהָר",
+    "count": 23,
+    "pl": "oliwa"
+  },
+  {
+    "word": "כִּיּוֹר",
+    "count": 23,
+    "pl": "umywalnia, kocioł"
+  },
+  {
+    "word": "מִישׁוֹר",
+    "count": 23,
+    "pl": "równina, prostota"
+  },
+  {
+    "word": "מַס",
+    "count": 23,
+    "pl": "przymusowa praca, daniny"
+  },
+  {
+    "word": "מַעְיָן",
+    "count": 23,
+    "pl": "źródło"
+  },
+  {
+    "word": "מִקְרָא",
+    "count": 23,
+    "pl": "zgromadzenie, zwołanie"
+  },
+  {
+    "word": "מְרִי",
+    "count": 23,
+    "pl": "bunt"
+  },
+  {
+    "word": "עֲטָרָה",
+    "count": 23,
+    "pl": "korona"
+  },
+  {
+    "word": "פְּסִיל",
+    "count": 23,
+    "pl": "rzeźbiony bożek"
+  },
+  {
+    "word": "צָהֳרַיִם",
+    "count": 23,
+    "pl": "południe"
+  },
+  {
+    "word": "שֹׁחַד",
+    "count": 23,
+    "pl": "łapówka, dar"
+  },
+  {
+    "word": "שַׁחַר",
+    "count": 23,
+    "pl": "jutrzenka"
+  },
+  {
+    "word": "שַׁחַת",
+    "count": 23,
+    "pl": "dół, grób"
+  },
+  {
+    "word": "שֵׁכָר",
+    "count": 23,
+    "pl": "mocny napój"
+  },
+  {
+    "word": "שֵׁנָה",
+    "count": 23,
+    "pl": "sen"
+  },
+  {
+    "word": "תְּחִלָּה",
+    "count": 23,
+    "pl": "początek"
+  },
+  {
+    "word": "תֵּימָן",
+    "count": 23,
+    "pl": "południe"
+  },
+  {
+    "word": "תֹּם",
+    "count": 23,
+    "pl": "nieskazitelność"
+  },
+  {
+    "word": "אֵפֶר",
+    "count": 22,
+    "pl": "popiół"
+  },
+  {
+    "word": "דָּת",
+    "count": 22,
+    "pl": "prawo, dekret"
+  },
+  {
+    "word": "הִין",
+    "count": 22,
+    "pl": "hin"
+  },
+  {
+    "word": "זַעַם",
+    "count": 22,
+    "pl": "oburzenie"
+  },
+  {
+    "word": "חוֹל",
+    "count": 22,
+    "pl": "piasek"
+  },
+  {
+    "word": "טֶרֶף",
+    "count": 22,
+    "pl": "zdobycz"
+  },
+  {
+    "word": "יְאֹר",
+    "count": 22,
+    "pl": "rzeka, Nil"
+  },
+  {
+    "word": "מוֹלֶדֶת",
+    "count": 22,
+    "pl": "ojczyzna"
+  },
+  {
+    "word": "מוּם",
+    "count": 22,
+    "pl": "skaza, wada"
+  },
+  {
+    "word": "מַחְתָּה",
+    "count": 22,
+    "pl": "kadzielnica, łopatka"
+  },
+  {
+    "word": "מַעֲלֶה",
+    "count": 22,
+    "pl": "wzniesienie, podejście"
+  },
+  {
+    "word": "מִשְׁמָר",
+    "count": 22,
+    "pl": "straż, więzienie"
+  },
+  {
+    "word": "מְתִים",
+    "count": 22,
+    "pl": "mężczyźni, nieliczni"
+  },
+  {
+    "word": "נַעַל",
+    "count": 22,
+    "pl": "sandał"
+  },
+  {
+    "word": "נְקֵבָה",
+    "count": 22,
+    "pl": "kobieta, samica"
+  },
+  {
+    "word": "פֶּגֶר",
+    "count": 22,
+    "pl": "zwłoki"
+  },
+  {
+    "word": "רֶגַע",
+    "count": 22,
+    "pl": "chwila"
+  },
+  {
+    "word": "רֶשֶׁת",
+    "count": 22,
+    "pl": "sieć"
+  },
+  {
+    "word": "שָׂשׂוֹן",
+    "count": 22,
+    "pl": "radość"
+  },
+  {
+    "word": "שְׁכֶם",
+    "count": 22,
+    "pl": "bark"
+  },
+  {
+    "word": "זְנוּנִים",
+    "count": 22,
+    "pl": "nierząd"
+  },
+  {
+    "word": "אֱלִיל",
+    "count": 21,
+    "pl": "bożek"
+  },
+  {
+    "word": "בָּרָק",
+    "count": 21,
+    "pl": "błyskawica"
+  },
+  {
+    "word": "חֹתֵן",
+    "count": 21,
+    "pl": "teść"
+  },
+  {
+    "word": "כַּעַס",
+    "count": 21,
+    "pl": "gniew"
+  },
+  {
+    "word": "לְבוֹנָה",
+    "count": 21,
+    "pl": "kadzidło"
+  },
+  {
+    "word": "מְגִלָּה",
+    "count": 21,
+    "pl": "zwój"
+  },
+  {
+    "word": "מְנוּחָה",
+    "count": 21,
+    "pl": "odpoczynek"
+  },
+  {
+    "word": "מִשְׁחָה",
+    "count": 21,
+    "pl": "namaszczenie"
+  },
+  {
+    "word": "נֵס",
+    "count": 21,
+    "pl": "sztandar, znak"
+  },
+  {
+    "word": "נָתִיב",
+    "count": 21,
+    "pl": "ścieżka"
+  },
+  {
+    "word": "סוֹד",
+    "count": 21,
+    "pl": "tajna rada"
+  },
+  {
+    "word": "סֶרֶן",
+    "count": 21,
+    "pl": "władca filistyński"
+  },
+  {
+    "word": "עָוֶל",
+    "count": 21,
+    "pl": "krzywda, bezprawie"
+  },
+  {
+    "word": "פַּרְסָה",
+    "count": 21,
+    "pl": "kopyto"
+  },
+  {
+    "word": "חָזֶה",
+    "count": 21,
+    "pl": "pierś"
+  },
+  {
+    "word": "שַׁחַק",
+    "count": 21,
+    "pl": "chmura, niebo"
+  },
+  {
+    "word": "תַּאֲוָה",
+    "count": 21,
+    "pl": "pożądanie"
+  },
+  {
+    "word": "בְּרוֹשׁ",
+    "count": 20,
+    "pl": "cyprys"
+  },
+  {
+    "word": "דִּין",
+    "count": 20,
+    "pl": "sąd"
+  },
+  {
+    "word": "חָתָן",
+    "count": 20,
+    "pl": "pan młody, zięć"
+  },
+  {
+    "word": "לְחִי",
+    "count": 20,
+    "pl": "policzek, szczęka"
+  },
+  {
+    "word": "מַחֲסֶה",
+    "count": 20,
+    "pl": "schronienie"
+  },
+  {
+    "word": "מָצוֹר",
+    "count": 20,
+    "pl": "oblężenie"
+  },
+  {
+    "word": "מִקְלָט",
+    "count": 20,
+    "pl": "schronienie"
+  },
+  {
+    "word": "מַשָּׂא",
+    "count": 20,
+    "pl": "wyrocznia"
+  },
+  {
+    "word": "מַשְׁחִית",
+    "count": 20,
+    "pl": "zniszczenie"
+  },
+  {
+    "word": "עֲלִיָּה",
+    "count": 20,
+    "pl": "górna izba"
+  },
+  {
+    "word": "צִנָּה",
+    "count": 20,
+    "pl": "tarcza"
+  },
+  {
+    "word": "צְעָקָה",
+    "count": 20,
+    "pl": "krzyk"
+  },
+  {
+    "word": "קַיִץ",
+    "count": 20,
+    "pl": "lato"
+  },
+  {
+    "word": "שָׁבוּעַ",
+    "count": 20,
+    "pl": "tydzień, siódemka"
+  },
+  {
+    "word": "שֶׁלֶג",
+    "count": 20,
+    "pl": "śnieg"
+  },
+  {
+    "word": "שְׁפֵלָה",
+    "count": 20,
+    "pl": "nizina, Szefela"
+  },
+  {
+    "word": "תַּבְנִית",
+    "count": 20,
+    "pl": "wzór, kształt"
+  },
+  {
+    "word": "תֹּהוּ",
+    "count": 20,
+    "pl": "bezład, pustka"
+  },
+  {
+    "word": "תָּמָר",
+    "count": 20,
+    "pl": "palma"
+  },
+  {
+    "word": "אַשְׁמָה",
+    "count": 19,
+    "pl": "wina"
+  },
+  {
+    "word": "בִּקְעָה",
+    "count": 19,
+    "pl": "dolina, równina"
+  },
+  {
+    "word": "גַּאֲוָה",
+    "count": 19,
+    "pl": "duma"
+  },
+  {
+    "word": "גְּמוּל",
+    "count": 19,
+    "pl": "odpłata"
+  },
+  {
+    "word": "דָּג",
+    "count": 19,
+    "pl": "ryba"
+  },
+  {
+    "word": "זָקָן",
+    "count": 19,
+    "pl": "broda"
+  },
+  {
+    "word": "יְסוֹד",
+    "count": 19,
+    "pl": "fundament"
+  },
+  {
+    "word": "יֹפִי",
+    "count": 19,
+    "pl": "piękno"
+  },
+  {
+    "word": "כָּלָה",
+    "count": 19,
+    "pl": "całkowite zniszczenie"
+  },
+  {
+    "word": "לֶהָבָה",
+    "count": 19,
+    "pl": "płomień"
+  },
+  {
+    "word": "מָאוֹר",
+    "count": 19,
+    "pl": "światło, lampa"
+  },
+  {
+    "word": "מְזוּזָה",
+    "count": 19,
+    "pl": "odrzwia"
+  },
+  {
+    "word": "מְזִמָּה",
+    "count": 19,
+    "pl": "zamysł, rozwaga"
+  },
+  {
+    "word": "יֹשֶׁר",
+    "count": 19,
+    "pl": "prawość"
+  },
+  {
+    "word": "מַעֲרָכָה",
+    "count": 19,
+    "pl": "szyk bojowy, układ"
+  },
+  {
+    "word": "מַשְׁקֶה",
+    "count": 19,
+    "pl": "napój, podczaszy"
+  },
+  {
+    "word": "נֹגַהּ",
+    "count": 19,
+    "pl": "blask"
+  },
+  {
+    "word": "עָבוֹת",
+    "count": 19,
+    "pl": "sznur"
+  },
+  {
+    "word": "עֵנָב",
+    "count": 19,
+    "pl": "winogrono"
+  },
+  {
+    "word": "פָּלִיט",
+    "count": 19,
+    "pl": "uciekinier"
+  },
+  {
+    "word": "פֶּרֶץ",
+    "count": 19,
+    "pl": "wyłom"
+  },
+  {
+    "word": "צְבִי",
+    "count": 19,
+    "pl": "piękno, gazela"
+  },
+  {
+    "word": "רֹעַ",
+    "count": 19,
+    "pl": "zło, niegodziwość"
+  },
+  {
+    "word": "שֵׂיבָה",
+    "count": 19,
+    "pl": "siwizna"
+  },
+  {
+    "word": "שְׁגָגָה",
+    "count": 19,
+    "pl": "błąd, nieumyślność"
+  },
+  {
+    "word": "שׁוֹק",
+    "count": 19,
+    "pl": "goleń"
+  },
+  {
+    "word": "שָׁכֵן",
+    "count": 19,
+    "pl": "sąsiad"
+  },
+  {
+    "word": "אָכְלָה",
+    "count": 18,
+    "pl": "pokarm"
+  },
+  {
+    "word": "אָפִיק",
+    "count": 18,
+    "pl": "strumień, koryto"
+  },
+  {
+    "word": "אֹרֶב",
+    "count": 18,
+    "pl": "zasadzka"
+  },
+  {
+    "word": "בִּירָה",
+    "count": 18,
+    "pl": "twierdza, stolica"
+  },
+  {
+    "word": "גַּל",
+    "count": 18,
+    "pl": "stos, fala"
+  },
+  {
+    "word": "זְעָקָה",
+    "count": 18,
+    "pl": "krzyk, wołanie"
+  },
+  {
+    "word": "חֵךְ",
+    "count": 18,
+    "pl": "podniebienie, usta"
+  },
+  {
+    "word": "חָצִיר",
+    "count": 18,
+    "pl": "trawa"
+  },
+  {
+    "word": "יוֹצֵר",
+    "count": 18,
+    "pl": "garncarz"
+  },
+  {
+    "word": "כַּד",
+    "count": 18,
+    "pl": "dzban"
+  },
+  {
+    "word": "כַּפְתּוֹר",
+    "count": 18,
+    "pl": "gałka, głowica"
+  },
+  {
+    "word": "מָדוֹן",
+    "count": 18,
+    "pl": "spór"
+  },
+  {
+    "word": "מִסְגֶּרֶת",
+    "count": 18,
+    "pl": "obramowanie, brzeg"
+  },
+  {
+    "word": "מְצָד",
+    "count": 18,
+    "pl": "twierdza"
+  },
+  {
+    "word": "מָקוֹר",
+    "count": 18,
+    "pl": "źródło"
+  }
+]

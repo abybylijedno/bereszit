@@ -1,0 +1,3308 @@
+[
+  {
+    "root": "אמר",
+    "homonym": 1,
+    "count": 5317,
+    "pl": "mówić"
+  },
+  {
+    "root": "היה",
+    "count": 3576,
+    "pl": "być"
+  },
+  {
+    "root": "עשׂה",
+    "homonym": 1,
+    "count": 2632,
+    "pl": "robić, czynić"
+  },
+  {
+    "root": "בוא",
+    "count": 2579,
+    "pl": "przychodzić, wchodzić"
+  },
+  {
+    "root": "נתן",
+    "count": 2014,
+    "pl": "dawać, kłaść, stawiać"
+  },
+  {
+    "root": "הלך",
+    "count": 1554,
+    "pl": "iść, chodzić"
+  },
+  {
+    "root": "ראה",
+    "count": 1310,
+    "pl": "widzieć"
+  },
+  {
+    "root": "שׁמע",
+    "count": 1165,
+    "pl": "słyszeć"
+  },
+  {
+    "root": "דבר",
+    "homonym": 2,
+    "count": 1135,
+    "pl": "mówić"
+  },
+  {
+    "root": "ישׁב",
+    "count": 1087,
+    "pl": "siedzieć, mieszkać"
+  },
+  {
+    "root": "יצא",
+    "count": 1075,
+    "pl": "wychodzić"
+  },
+  {
+    "root": "שׁוב",
+    "count": 1075,
+    "pl": "wracać"
+  },
+  {
+    "root": "לקח",
+    "count": 966,
+    "pl": "brać"
+  },
+  {
+    "root": "ידע",
+    "count": 952,
+    "pl": "wiedzieć, znać"
+  },
+  {
+    "root": "עלה",
+    "count": 894,
+    "pl": "wstępować, wchodzić w górę"
+  },
+  {
+    "root": "שׁלח",
+    "count": 847,
+    "pl": "posyłać"
+  },
+  {
+    "root": "מות",
+    "count": 845,
+    "pl": "umierać"
+  },
+  {
+    "root": "אכל",
+    "count": 814,
+    "pl": "jeść"
+  },
+  {
+    "root": "קרא",
+    "homonym": 1,
+    "count": 736,
+    "pl": "wołać, nazywać"
+  },
+  {
+    "root": "נשׂא",
+    "count": 658,
+    "pl": "unosić, nieść, brać"
+  },
+  {
+    "root": "קום",
+    "count": 627,
+    "pl": "wstawać, powstawać"
+  },
+  {
+    "root": "שׂים",
+    "count": 588,
+    "pl": "kłaść, stawiać"
+  },
+  {
+    "root": "עבר",
+    "homonym": 1,
+    "count": 554,
+    "pl": "przechodzić"
+  },
+  {
+    "root": "עמד",
+    "count": 524,
+    "pl": "stać"
+  },
+  {
+    "root": "נכה",
+    "count": 501,
+    "pl": "uderzać, bić"
+  },
+  {
+    "root": "צוה",
+    "count": 496,
+    "pl": "rozkazywać"
+  },
+  {
+    "root": "ילד",
+    "count": 495,
+    "pl": "rodzić, płodzić"
+  },
+  {
+    "root": "שׁמר",
+    "count": 469,
+    "pl": "strzec, pilnować, zachowywać"
+  },
+  {
+    "root": "מצא",
+    "count": 457,
+    "pl": "znajdować"
+  },
+  {
+    "root": "נפל",
+    "count": 435,
+    "pl": "upadać"
+  },
+  {
+    "root": "ירד",
+    "count": 382,
+    "pl": "schodzić, zstępować"
+  },
+  {
+    "root": "בנה",
+    "count": 377,
+    "pl": "budować"
+  },
+  {
+    "root": "נגד",
+    "count": 371,
+    "pl": "oznajmiać, mówić"
+  },
+  {
+    "root": "מלך",
+    "homonym": 1,
+    "count": 350,
+    "pl": "być królem, królować"
+  },
+  {
+    "root": "ברך",
+    "homonym": 2,
+    "count": 327,
+    "pl": "błogosławić"
+  },
+  {
+    "root": "ירא",
+    "homonym": 1,
+    "count": 318,
+    "pl": "bać się"
+  },
+  {
+    "root": "ענה",
+    "homonym": 1,
+    "count": 317,
+    "pl": "odpowiadać"
+  },
+  {
+    "root": "פקד",
+    "count": 304,
+    "pl": "liczyć, wyznaczać, nawiedzać"
+  },
+  {
+    "root": "סור",
+    "count": 298,
+    "pl": "zbaczać, zawracać"
+  },
+  {
+    "root": "חזק",
+    "count": 290,
+    "pl": "być silnym"
+  },
+  {
+    "root": "כרת",
+    "count": 289,
+    "pl": "odcinać, zawierać (przymierze)"
+  },
+  {
+    "root": "עבד",
+    "count": 289,
+    "pl": "pracować, służyć"
+  },
+  {
+    "root": "חיה",
+    "count": 287,
+    "pl": "żyć"
+  },
+  {
+    "root": "קרב",
+    "count": 280,
+    "pl": "zbliżać się, składać ofiarę"
+  },
+  {
+    "root": "מלא",
+    "count": 250,
+    "pl": "napełniać"
+  },
+  {
+    "root": "חטא",
+    "count": 239,
+    "pl": "chybić, grzeszyć"
+  },
+  {
+    "root": "ירשׁ",
+    "count": 232,
+    "pl": "posiadać, dziedziczyć"
+  },
+  {
+    "root": "בקשׁ",
+    "count": 225,
+    "pl": "szukać"
+  },
+  {
+    "root": "זכר",
+    "count": 225,
+    "pl": "pamiętać"
+  },
+  {
+    "root": "כתב",
+    "count": 225,
+    "pl": "pisać"
+  },
+  {
+    "root": "כון",
+    "count": 219,
+    "pl": "być mocnym, ustanawiać, przygotowywać"
+  },
+  {
+    "root": "אהב",
+    "count": 217,
+    "pl": "kochać"
+  },
+  {
+    "root": "שׁתה",
+    "count": 217,
+    "pl": "pić"
+  },
+  {
+    "root": "נטה",
+    "count": 216,
+    "pl": "rozciągać, wyciągać"
+  },
+  {
+    "root": "יסף",
+    "count": 215,
+    "pl": "dodawać, czynić znów"
+  },
+  {
+    "root": "עזב",
+    "homonym": 1,
+    "count": 214,
+    "pl": "opuszczać, zostawiać"
+  },
+  {
+    "root": "נצל",
+    "count": 213,
+    "pl": "wyrywać, ratować"
+  },
+  {
+    "root": "שׁכב",
+    "count": 213,
+    "pl": "leżeć, kłaść się"
+  },
+  {
+    "root": "כלה",
+    "count": 208,
+    "pl": "kończyć się, być ukończonym"
+  },
+  {
+    "root": "שׁפט",
+    "count": 204,
+    "pl": "sądzić"
+  },
+  {
+    "root": "אסף",
+    "count": 200,
+    "pl": "zbierać"
+  },
+  {
+    "root": "רום",
+    "count": 195,
+    "pl": "być wysokim, wywyższonym"
+  },
+  {
+    "root": "יכל",
+    "count": 194,
+    "pl": "móc, być zdolnym"
+  },
+  {
+    "root": "גלה",
+    "count": 187,
+    "pl": "odsłaniać, usuwać; iść na wygnanie"
+  },
+  {
+    "root": "שׁבע",
+    "count": 186,
+    "pl": "przysięgać"
+  },
+  {
+    "root": "אבד",
+    "count": 185,
+    "pl": "ginąć, niszczyć"
+  },
+  {
+    "root": "ישׁע",
+    "count": 178,
+    "pl": "ratować, wybawiać"
+  },
+  {
+    "root": "רבה",
+    "homonym": 1,
+    "count": 178,
+    "pl": "być licznym, wielkim"
+  },
+  {
+    "root": "שׁאל",
+    "count": 174,
+    "pl": "pytać, prosić"
+  },
+  {
+    "root": "חוה",
+    "homonym": 2,
+    "count": 173,
+    "pl": "kłaniać się, oddawać cześć"
+  },
+  {
+    "root": "בין",
+    "count": 171,
+    "pl": "rozumieć"
+  },
+  {
+    "root": "לחם",
+    "homonym": 1,
+    "count": 171,
+    "pl": "walczyć"
+  },
+  {
+    "root": "קדשׁ",
+    "count": 171,
+    "pl": "poświęcać"
+  },
+  {
+    "root": "בחר",
+    "homonym": 2,
+    "count": 170,
+    "pl": "wybierać"
+  },
+  {
+    "root": "הרג",
+    "count": 167,
+    "pl": "zabijać"
+  },
+  {
+    "root": "רעה",
+    "homonym": 1,
+    "count": 167,
+    "pl": "paść, pasterzować"
+  },
+  {
+    "root": "דרשׁ",
+    "count": 165,
+    "pl": "szukać, badać"
+  },
+  {
+    "root": "סבב",
+    "count": 163,
+    "pl": "okrążać, chodzić wokoło"
+  },
+  {
+    "root": "טמא",
+    "count": 162,
+    "pl": "być nieczystym"
+  },
+  {
+    "root": "נוס",
+    "count": 160,
+    "pl": "uciekać"
+  },
+  {
+    "root": "שׂמח",
+    "count": 156,
+    "pl": "radować się"
+  },
+  {
+    "root": "כסה",
+    "count": 153,
+    "pl": "okrywać"
+  },
+  {
+    "root": "נגע",
+    "count": 150,
+    "pl": "dotykać, uderzać"
+  },
+  {
+    "root": "שׂנא",
+    "count": 148,
+    "pl": "nienawidzić"
+  },
+  {
+    "root": "שׁבר",
+    "homonym": 1,
+    "count": 148,
+    "pl": "łamać"
+  },
+  {
+    "root": "הלל",
+    "homonym": 2,
+    "count": 146,
+    "pl": "chwalić"
+  },
+  {
+    "root": "נסע",
+    "count": 146,
+    "pl": "wyruszać, ruszać w drogę"
+  },
+  {
+    "root": "רדף",
+    "count": 144,
+    "pl": "ścigać"
+  },
+  {
+    "root": "חנה",
+    "homonym": 1,
+    "count": 143,
+    "pl": "obozować"
+  },
+  {
+    "root": "שׁחת",
+    "count": 142,
+    "pl": "niszczyć, psuć"
+  },
+  {
+    "root": "קרא",
+    "homonym": 2,
+    "count": 139,
+    "pl": "spotykać"
+  },
+  {
+    "root": "פתח",
+    "homonym": 1,
+    "count": 136,
+    "pl": "otwierać"
+  },
+  {
+    "root": "חלל",
+    "homonym": 1,
+    "count": 135,
+    "pl": "znieważać, zaczynać"
+  },
+  {
+    "root": "זבח",
+    "count": 134,
+    "pl": "składać ofiarę"
+  },
+  {
+    "root": "נוח",
+    "homonym": 1,
+    "count": 134,
+    "pl": "odpoczywać"
+  },
+  {
+    "root": "פנה",
+    "count": 134,
+    "pl": "zwracać się, obracać się"
+  },
+  {
+    "root": "קבר",
+    "count": 133,
+    "pl": "grzebać"
+  },
+  {
+    "root": "שׁאר",
+    "count": 133,
+    "pl": "pozostawać"
+  },
+  {
+    "root": "שׁכן",
+    "count": 130,
+    "pl": "mieszkać"
+  },
+  {
+    "root": "קבץ",
+    "count": 127,
+    "pl": "zbierać, gromadzić"
+  },
+  {
+    "root": "בושׁ",
+    "homonym": 1,
+    "count": 125,
+    "pl": "wstydzić się"
+  },
+  {
+    "root": "נגשׁ",
+    "count": 125,
+    "pl": "zbliżać się"
+  },
+  {
+    "root": "שׁלך",
+    "count": 125,
+    "pl": "rzucać"
+  },
+  {
+    "root": "גדל",
+    "count": 123,
+    "pl": "wyrastać, stawać się wielkim"
+  },
+  {
+    "root": "לכד",
+    "count": 121,
+    "pl": "chwytać"
+  },
+  {
+    "root": "יטב",
+    "count": 117,
+    "pl": "być dobrym, miłym"
+  },
+  {
+    "root": "שׁפך",
+    "count": 117,
+    "pl": "wylewać"
+  },
+  {
+    "root": "בטח",
+    "homonym": 1,
+    "count": 116,
+    "pl": "ufać"
+  },
+  {
+    "root": "שׂרף",
+    "homonym": 1,
+    "count": 116,
+    "pl": "palić"
+  },
+  {
+    "root": "שׁלם",
+    "count": 116,
+    "pl": "być pełnym, być całym, płacić, zawierać pokój"
+  },
+  {
+    "root": "נבא",
+    "count": 115,
+    "pl": "prorokować"
+  },
+  {
+    "root": "קטר",
+    "count": 115,
+    "pl": "spalać ofiarę, składać kadzenie"
+  },
+  {
+    "root": "בכה",
+    "count": 114,
+    "pl": "płakać"
+  },
+  {
+    "root": "כבד",
+    "count": 114,
+    "pl": "być ciężkim, czcić"
+  },
+  {
+    "root": "חשׁב",
+    "count": 112,
+    "pl": "myśleć, liczyć"
+  },
+  {
+    "root": "ידה",
+    "homonym": 2,
+    "count": 111,
+    "pl": "chwalić, wyznawać"
+  },
+  {
+    "root": "נחם",
+    "count": 108,
+    "pl": "pocieszać, żałować"
+  },
+  {
+    "root": "ספר",
+    "count": 107,
+    "pl": "liczyć, opowiadać"
+  },
+  {
+    "root": "יתר",
+    "count": 106,
+    "pl": "pozostawać, zostać"
+  },
+  {
+    "root": "גאל",
+    "homonym": 1,
+    "count": 104,
+    "pl": "odkupywać, mścić"
+  },
+  {
+    "root": "רוץ",
+    "count": 104,
+    "pl": "biec"
+  },
+  {
+    "root": "כפר",
+    "count": 102,
+    "pl": "okrywać, dokonywać przebłagania"
+  },
+  {
+    "root": "שׁכח",
+    "count": 102,
+    "pl": "zapominać"
+  },
+  {
+    "root": "שׁרת",
+    "count": 98,
+    "pl": "służyć (w świątyni)"
+  },
+  {
+    "root": "לבשׁ",
+    "count": 97,
+    "pl": "nosić (ubranie), ubierać się"
+  },
+  {
+    "root": "רעע",
+    "homonym": 1,
+    "count": 97,
+    "pl": "czynić zło"
+  },
+  {
+    "root": "שׂבע",
+    "count": 97,
+    "pl": "nasycać, napełniać"
+  },
+  {
+    "root": "אמן",
+    "homonym": 1,
+    "count": 96,
+    "pl": "ufać, wierzyć"
+  },
+  {
+    "root": "הפך",
+    "count": 94,
+    "pl": "obracać, odwracać"
+  },
+  {
+    "root": "טהר",
+    "count": 94,
+    "pl": "być czystym, oczyszczać"
+  },
+  {
+    "root": "מלט",
+    "homonym": 1,
+    "count": 94,
+    "pl": "uciekać, ocalać się"
+  },
+  {
+    "root": "חרה",
+    "homonym": 1,
+    "count": 93,
+    "pl": "płonąć, gniewać się"
+  },
+  {
+    "root": "שׁמם",
+    "count": 92,
+    "pl": "być spustoszonym, osłupieć"
+  },
+  {
+    "root": "שׁמד",
+    "count": 90,
+    "pl": "niszczyć"
+  },
+  {
+    "root": "שׁיר",
+    "count": 88,
+    "pl": "śpiewać"
+  },
+  {
+    "root": "שׁית",
+    "count": 88,
+    "pl": "kłaść, stawiać"
+  },
+  {
+    "root": "למד",
+    "count": 87,
+    "pl": "uczyć się, uczyć"
+  },
+  {
+    "root": "קנה",
+    "count": 85,
+    "pl": "kupować"
+  },
+  {
+    "root": "פלל",
+    "count": 84,
+    "pl": "modlić się"
+  },
+  {
+    "root": "גור",
+    "homonym": 1,
+    "count": 83,
+    "pl": "przebywać jako przybysz, mieszkać"
+  },
+  {
+    "root": "סגר",
+    "count": 82,
+    "pl": "zamykać"
+  },
+  {
+    "root": "סתר",
+    "count": 82,
+    "pl": "ukrywać"
+  },
+  {
+    "root": "עזר",
+    "count": 82,
+    "pl": "pomagać"
+  },
+  {
+    "root": "קלל",
+    "count": 82,
+    "pl": "przeklinać, być lekkim, szybkim"
+  },
+  {
+    "root": "מהר",
+    "homonym": 1,
+    "count": 81,
+    "pl": "śpieszyć się"
+  },
+  {
+    "root": "משׁל",
+    "homonym": 2,
+    "count": 81,
+    "pl": "panować, rządzić"
+  },
+  {
+    "root": "מכר",
+    "count": 80,
+    "pl": "sprzedawać"
+  },
+  {
+    "root": "עור",
+    "homonym": 2,
+    "count": 80,
+    "pl": "budzić, pobudzać, odsłaniać"
+  },
+  {
+    "root": "שׁחט",
+    "homonym": 1,
+    "count": 80,
+    "pl": "zabijać (zwierzę)"
+  },
+  {
+    "root": "ענה",
+    "homonym": 2,
+    "count": 79,
+    "pl": "uciskać, poniżać; być uciśnionym"
+  },
+  {
+    "root": "רכב",
+    "count": 78,
+    "pl": "dosiadać, jechać"
+  },
+  {
+    "root": "חנן",
+    "homonym": 1,
+    "count": 77,
+    "pl": "okazywać łaskę"
+  },
+  {
+    "root": "חלה",
+    "count": 75,
+    "pl": "chorować, błagać"
+  },
+  {
+    "root": "ערך",
+    "count": 75,
+    "pl": "układać, porządkować"
+  },
+  {
+    "root": "זעק",
+    "count": 74,
+    "pl": "wołać, krzyczeć"
+  },
+  {
+    "root": "מאס",
+    "homonym": 1,
+    "count": 74,
+    "pl": "odrzucać"
+  },
+  {
+    "root": "נצב",
+    "homonym": 1,
+    "count": 74,
+    "pl": "stać, stawiać się"
+  },
+  {
+    "root": "אסר",
+    "count": 73,
+    "pl": "wiązać"
+  },
+  {
+    "root": "חפץ",
+    "homonym": 1,
+    "count": 73,
+    "pl": "mieć upodobanie"
+  },
+  {
+    "root": "פלא",
+    "count": 73,
+    "pl": "być cudownym"
+  },
+  {
+    "root": "רחץ",
+    "count": 72,
+    "pl": "myć, kąpać się"
+  },
+  {
+    "root": "שׁבת",
+    "count": 71,
+    "pl": "przestawać, odpoczywać"
+  },
+  {
+    "root": "לין",
+    "count": 70,
+    "pl": "nocować, przenocować"
+  },
+  {
+    "root": "משׁח",
+    "count": 70,
+    "pl": "namaszczać"
+  },
+  {
+    "root": "נבט",
+    "count": 70,
+    "pl": "patrzeć"
+  },
+  {
+    "root": "ריב",
+    "count": 70,
+    "pl": "spierać się, procesować się"
+  },
+  {
+    "root": "רפא",
+    "count": 69,
+    "pl": "leczyć"
+  },
+  {
+    "root": "תקע",
+    "count": 69,
+    "pl": "uderzać, wbijać; dąć"
+  },
+  {
+    "root": "פרשׂ",
+    "count": 67,
+    "pl": "rozpościerać"
+  },
+  {
+    "root": "פוץ",
+    "count": 66,
+    "pl": "rozpraszać, przelewać się"
+  },
+  {
+    "root": "כשׁל",
+    "count": 65,
+    "pl": "potykać się"
+  },
+  {
+    "root": "נצח",
+    "count": 65,
+    "pl": "kierować (muzyką), nadzorować"
+  },
+  {
+    "root": "צלח",
+    "count": 65,
+    "pl": "powodzić się, odnosić sukces"
+  },
+  {
+    "root": "שׁכם",
+    "count": 65,
+    "pl": "wstawać wcześnie"
+  },
+  {
+    "root": "תפשׂ",
+    "count": 65,
+    "pl": "chwytać"
+  },
+  {
+    "root": "אחז",
+    "homonym": 1,
+    "count": 64,
+    "pl": "trzymać"
+  },
+  {
+    "root": "תמם",
+    "count": 64,
+    "pl": "być kompletnym"
+  },
+  {
+    "root": "ארר",
+    "count": 63,
+    "pl": "przeklinać"
+  },
+  {
+    "root": "ברח",
+    "homonym": 1,
+    "count": 63,
+    "pl": "uciekać"
+  },
+  {
+    "root": "דרך",
+    "count": 63,
+    "pl": "deptać, iść"
+  },
+  {
+    "root": "קרע",
+    "count": 63,
+    "pl": "rozdzierać"
+  },
+  {
+    "root": "נצר",
+    "count": 62,
+    "pl": "strzec, pilnować"
+  },
+  {
+    "root": "שׁקה",
+    "count": 62,
+    "pl": "poić"
+  },
+  {
+    "root": "בער",
+    "homonym": 1,
+    "count": 60,
+    "pl": "płonąć, palić"
+  },
+  {
+    "root": "זנה",
+    "homonym": 1,
+    "count": 60,
+    "pl": "uprawiać nierząd"
+  },
+  {
+    "root": "פדה",
+    "count": 60,
+    "pl": "odkupywać"
+  },
+  {
+    "root": "שׂכל",
+    "homonym": 1,
+    "count": 60,
+    "pl": "być mądrym, roztropnym, rozumieć"
+  },
+  {
+    "root": "יבשׁ",
+    "count": 59,
+    "pl": "być suchym, usychać"
+  },
+  {
+    "root": "יכח",
+    "count": 59,
+    "pl": "rozstrzygać, upominać"
+  },
+  {
+    "root": "נחל",
+    "count": 59,
+    "pl": "dziedziczyć, posiadać"
+  },
+  {
+    "root": "נטע",
+    "count": 59,
+    "pl": "sadzić"
+  },
+  {
+    "root": "רחק",
+    "count": 58,
+    "pl": "być dalekim"
+  },
+  {
+    "root": "שׁדד",
+    "count": 58,
+    "pl": "pustoszyć"
+  },
+  {
+    "root": "יעץ",
+    "count": 57,
+    "pl": "radzić"
+  },
+  {
+    "root": "פעל",
+    "count": 57,
+    "pl": "robić, czynić"
+  },
+  {
+    "root": "צרר",
+    "homonym": 1,
+    "count": 57,
+    "pl": "wiązać, ściskać, uciskać"
+  },
+  {
+    "root": "זרע",
+    "count": 56,
+    "pl": "siać"
+  },
+  {
+    "root": "צעק",
+    "count": 56,
+    "pl": "wołać, krzyczeć"
+  },
+  {
+    "root": "חדל",
+    "homonym": 1,
+    "count": 55,
+    "pl": "przestawać, zaniechać"
+  },
+  {
+    "root": "חזה",
+    "count": 55,
+    "pl": "widzieć"
+  },
+  {
+    "root": "חלק",
+    "homonym": 2,
+    "count": 55,
+    "pl": "dzielić, rozdawać"
+  },
+  {
+    "root": "כעס",
+    "count": 55,
+    "pl": "gniewać się"
+  },
+  {
+    "root": "אבה",
+    "count": 54,
+    "pl": "chcieć, być skłonnym"
+  },
+  {
+    "root": "דבק",
+    "count": 54,
+    "pl": "przylgnąć"
+  },
+  {
+    "root": "חתת",
+    "count": 53,
+    "pl": "być przerażonym"
+  },
+  {
+    "root": "יצק",
+    "count": 53,
+    "pl": "wylewać, odlewać"
+  },
+  {
+    "root": "רנן",
+    "count": 53,
+    "pl": "wyśpiewywać radośnie"
+  },
+  {
+    "root": "מדד",
+    "count": 52,
+    "pl": "mierzyć"
+  },
+  {
+    "root": "בקע",
+    "count": 51,
+    "pl": "rozszczepiać, rozłupywać"
+  },
+  {
+    "root": "כבס",
+    "count": 51,
+    "pl": "prać"
+  },
+  {
+    "root": "נדח",
+    "homonym": 1,
+    "count": 51,
+    "pl": "wypędzać, rozpraszać"
+  },
+  {
+    "root": "תעה",
+    "count": 51,
+    "pl": "błądzić"
+  },
+  {
+    "root": "חרם",
+    "homonym": 1,
+    "count": 50,
+    "pl": "obłożyć klątwą, poświęcać, niszczyć"
+  },
+  {
+    "root": "נכר",
+    "count": 50,
+    "pl": "rozpoznawać, udawać obcego, traktować jak obcego"
+  },
+  {
+    "root": "נשׂג",
+    "count": 50,
+    "pl": "dosięgać, doganiać"
+  },
+  {
+    "root": "בגד",
+    "count": 49,
+    "pl": "postępować zdradziecko"
+  },
+  {
+    "root": "נגף",
+    "count": 49,
+    "pl": "uderzać"
+  },
+  {
+    "root": "ברא",
+    "homonym": 1,
+    "count": 48,
+    "pl": "tworzyć, stwarzać"
+  },
+  {
+    "root": "יצב",
+    "count": 48,
+    "pl": "stawać"
+  },
+  {
+    "root": "סמך",
+    "count": 48,
+    "pl": "opierać się, podpierać"
+  },
+  {
+    "root": "רצה",
+    "homonym": 1,
+    "count": 48,
+    "pl": "przyjmować, mieć upodobanie"
+  },
+  {
+    "root": "גיל",
+    "count": 47,
+    "pl": "radować się"
+  },
+  {
+    "root": "חיל",
+    "homonym": 1,
+    "count": 47,
+    "pl": "wić się z bólu, oczekiwać"
+  },
+  {
+    "root": "חרשׁ",
+    "homonym": 2,
+    "count": 47,
+    "pl": "być głuchym, milczeć"
+  },
+  {
+    "root": "סלח",
+    "count": 47,
+    "pl": "przebaczać"
+  },
+  {
+    "root": "פרר",
+    "homonym": 1,
+    "count": 47,
+    "pl": "łamać"
+  },
+  {
+    "root": "צפה",
+    "homonym": 2,
+    "count": 47,
+    "pl": "pokrywać, powlekać"
+  },
+  {
+    "root": "קוה",
+    "homonym": 1,
+    "count": 47,
+    "pl": "oczekiwać, mieć nadzieję"
+  },
+  {
+    "root": "רחם",
+    "count": 47,
+    "pl": "mieć litość, kochać"
+  },
+  {
+    "root": "רצח",
+    "count": 47,
+    "pl": "mordować"
+  },
+  {
+    "root": "שׁבה",
+    "count": 47,
+    "pl": "brać do niewoli"
+  },
+  {
+    "root": "ירה",
+    "homonym": 3,
+    "count": 46,
+    "pl": "nauczać, wskazywać"
+  },
+  {
+    "root": "מאן",
+    "count": 46,
+    "pl": "odmawiać"
+  },
+  {
+    "root": "עצר",
+    "count": 46,
+    "pl": "powstrzymywać"
+  },
+  {
+    "root": "פגע",
+    "count": 46,
+    "pl": "spotykać"
+  },
+  {
+    "root": "פרץ",
+    "homonym": 1,
+    "count": 46,
+    "pl": "przełamywać, przebijać"
+  },
+  {
+    "root": "קשׁב",
+    "count": 46,
+    "pl": "uważać, słuchać"
+  },
+  {
+    "root": "רפה",
+    "count": 46,
+    "pl": "słabnąć, opadać, zostawiać"
+  },
+  {
+    "root": "גרשׁ",
+    "homonym": 1,
+    "count": 45,
+    "pl": "wypędzać"
+  },
+  {
+    "root": "זמר",
+    "homonym": 1,
+    "count": 45,
+    "pl": "śpiewać chwałę"
+  },
+  {
+    "root": "יצר",
+    "count": 45,
+    "pl": "kształtować, planować, lepić z gliny"
+  },
+  {
+    "root": "בלל",
+    "count": 44,
+    "pl": "mieszać, dawać paszę"
+  },
+  {
+    "root": "חגר",
+    "count": 44,
+    "pl": "przepasywać"
+  },
+  {
+    "root": "חלץ",
+    "count": 44,
+    "pl": "ratować, wyzwalać, uzbrajać"
+  },
+  {
+    "root": "מרה",
+    "count": 44,
+    "pl": "buntować się"
+  },
+  {
+    "root": "נקה",
+    "count": 44,
+    "pl": "być bez winy, być czystym, być wolnym"
+  },
+  {
+    "root": "קשׁר",
+    "count": 44,
+    "pl": "wiązać, spiskować"
+  },
+  {
+    "root": "רוע",
+    "count": 44,
+    "pl": "wołać radośnie"
+  },
+  {
+    "root": "אור",
+    "count": 43,
+    "pl": "być jasnym, świecić"
+  },
+  {
+    "root": "בזז",
+    "count": 43,
+    "pl": "łupić"
+  },
+  {
+    "root": "הרה",
+    "count": 43,
+    "pl": "poczynać, zajść w ciążę"
+  },
+  {
+    "root": "הרס",
+    "count": 43,
+    "pl": "niszczyć, burzyć"
+  },
+  {
+    "root": "יחל",
+    "count": 43,
+    "pl": "oczekiwać, mieć nadzieję"
+  },
+  {
+    "root": "פשׁט",
+    "count": 43,
+    "pl": "rozbierać, najeżdżać"
+  },
+  {
+    "root": "בדל",
+    "count": 42,
+    "pl": "oddzielać się"
+  },
+  {
+    "root": "בזה",
+    "count": 42,
+    "pl": "gardzić"
+  },
+  {
+    "root": "זוב",
+    "count": 42,
+    "pl": "płynąć"
+  },
+  {
+    "root": "יסד",
+    "homonym": 1,
+    "count": 42,
+    "pl": "zakładać fundament, ustanawiać"
+  },
+  {
+    "root": "נוע",
+    "count": 42,
+    "pl": "trząść się; wędrować"
+  },
+  {
+    "root": "נתץ",
+    "count": 42,
+    "pl": "rozbijać, burzyć"
+  },
+  {
+    "root": "שׁקט",
+    "count": 42,
+    "pl": "być cichym"
+  },
+  {
+    "root": "אזן",
+    "homonym": 1,
+    "count": 41,
+    "pl": "słuchać"
+  },
+  {
+    "root": "אמץ",
+    "count": 41,
+    "pl": "być mocnym"
+  },
+  {
+    "root": "בלע",
+    "homonym": 1,
+    "count": 41,
+    "pl": "połykać"
+  },
+  {
+    "root": "מוט",
+    "count": 41,
+    "pl": "chwiać się, potykać"
+  },
+  {
+    "root": "פשׁע",
+    "count": 41,
+    "pl": "występować, buntować się"
+  },
+  {
+    "root": "צדק",
+    "count": 41,
+    "pl": "być sprawiedliwym"
+  },
+  {
+    "root": "רגז",
+    "count": 41,
+    "pl": "drżeć, być poruszonym"
+  },
+  {
+    "root": "גנב",
+    "count": 40,
+    "pl": "kraść"
+  },
+  {
+    "root": "חמל",
+    "count": 40,
+    "pl": "litować się"
+  },
+  {
+    "root": "יסר",
+    "homonym": 1,
+    "count": 40,
+    "pl": "pouczać, ostrzegać, karcić"
+  },
+  {
+    "root": "נטשׁ",
+    "count": 40,
+    "pl": "opuszczać, porzucać"
+  },
+  {
+    "root": "עוד",
+    "homonym": 2,
+    "count": 40,
+    "pl": "ostrzegać, świadczyć"
+  },
+  {
+    "root": "בהל",
+    "count": 39,
+    "pl": "przerażać, śpieszyć"
+  },
+  {
+    "root": "חרד",
+    "count": 39,
+    "pl": "drżeć, bać się"
+  },
+  {
+    "root": "נחה",
+    "homonym": 1,
+    "count": 39,
+    "pl": "prowadzić"
+  },
+  {
+    "root": "קהל",
+    "count": 39,
+    "pl": "zgromadzać"
+  },
+  {
+    "root": "זרה",
+    "homonym": 1,
+    "count": 38,
+    "pl": "rozrzucać, rozpraszać"
+  },
+  {
+    "root": "חרף",
+    "homonym": 2,
+    "count": 38,
+    "pl": "hańbić, urągać"
+  },
+  {
+    "root": "כול",
+    "count": 38,
+    "pl": "mieścić, zawierać"
+  },
+  {
+    "root": "כלם",
+    "count": 38,
+    "pl": "być upokorzonym"
+  },
+  {
+    "root": "צפה",
+    "homonym": 1,
+    "count": 38,
+    "pl": "patrzeć, wypatrywać"
+  },
+  {
+    "root": "גמל",
+    "count": 37,
+    "pl": "nagradzać, odstawiać od piersi"
+  },
+  {
+    "root": "חסה",
+    "count": 37,
+    "pl": "szukać schronienia"
+  },
+  {
+    "root": "לקט",
+    "count": 37,
+    "pl": "zbierać, zbierać resztki"
+  },
+  {
+    "root": "עשׁק",
+    "homonym": 1,
+    "count": 37,
+    "pl": "uciskać"
+  },
+  {
+    "root": "חרב",
+    "homonym": 1,
+    "count": 36,
+    "pl": "być suchym, być spustoszonym"
+  },
+  {
+    "root": "כנע",
+    "count": 36,
+    "pl": "korzyć, poskramiać"
+  },
+  {
+    "root": "כרע",
+    "count": 36,
+    "pl": "kłaniać się, padać na kolana"
+  },
+  {
+    "root": "מעל",
+    "count": 36,
+    "pl": "postępować niewiernie"
+  },
+  {
+    "root": "משׁך",
+    "count": 36,
+    "pl": "ciągnąć"
+  },
+  {
+    "root": "נסה",
+    "count": 36,
+    "pl": "próbować, wystawiać na próbę"
+  },
+  {
+    "root": "קצר",
+    "homonym": 1,
+    "count": 36,
+    "pl": "żąć"
+  },
+  {
+    "root": "שׂחק",
+    "count": 36,
+    "pl": "bawić się; szydzić"
+  },
+  {
+    "root": "אשׁם",
+    "count": 35,
+    "pl": "być winnym"
+  },
+  {
+    "root": "נקם",
+    "count": 35,
+    "pl": "mścić się"
+  },
+  {
+    "root": "רשׁע",
+    "count": 35,
+    "pl": "być bezbożnym, potępiać"
+  },
+  {
+    "root": "ארך",
+    "count": 34,
+    "pl": "być długim"
+  },
+  {
+    "root": "גבה",
+    "count": 34,
+    "pl": "być wysokim"
+  },
+  {
+    "root": "המה",
+    "count": 34,
+    "pl": "ryczeć, szumieć"
+  },
+  {
+    "root": "זרק",
+    "homonym": 1,
+    "count": 34,
+    "pl": "rzucać, kropić"
+  },
+  {
+    "root": "חבא",
+    "count": 34,
+    "pl": "ukrywać"
+  },
+  {
+    "root": "מחה",
+    "homonym": 1,
+    "count": 34,
+    "pl": "ścierać, zmazywać"
+  },
+  {
+    "root": "נוף",
+    "homonym": 1,
+    "count": 34,
+    "pl": "machać"
+  },
+  {
+    "root": "פרח",
+    "homonym": 1,
+    "count": 34,
+    "pl": "rozwijać się, kiełkować, wybuchać"
+  },
+  {
+    "root": "צפן",
+    "count": 34,
+    "pl": "ukrywać"
+  },
+  {
+    "root": "צרף",
+    "count": 34,
+    "pl": "oczyszczać, przetapiać"
+  },
+  {
+    "root": "קנא",
+    "count": 34,
+    "pl": "być zazdrosnym"
+  },
+  {
+    "root": "קצף",
+    "count": 34,
+    "pl": "gniewać się"
+  },
+  {
+    "root": "חבשׁ",
+    "count": 33,
+    "pl": "wiązać"
+  },
+  {
+    "root": "יהב",
+    "count": 33,
+    "pl": "dawać, przychodzić"
+  },
+  {
+    "root": "צמח",
+    "count": 33,
+    "pl": "rosnąć, kiełkować"
+  },
+  {
+    "root": "כחד",
+    "count": 32,
+    "pl": "ukrywać"
+  },
+  {
+    "root": "צור",
+    "homonym": 1,
+    "count": 32,
+    "pl": "oblegać, wiązać"
+  },
+  {
+    "root": "אבל",
+    "homonym": 1,
+    "count": 31,
+    "pl": "opłakiwać"
+  },
+  {
+    "root": "טמן",
+    "count": 31,
+    "pl": "ukrywać"
+  },
+  {
+    "root": "ילל",
+    "count": 31,
+    "pl": "zawodzić"
+  },
+  {
+    "root": "מול",
+    "homonym": 1,
+    "count": 31,
+    "pl": "obrzezywać"
+  },
+  {
+    "root": "נאף",
+    "count": 31,
+    "pl": "cudzołożyć"
+  },
+  {
+    "root": "נדר",
+    "count": 31,
+    "pl": "składać ślub"
+  },
+  {
+    "root": "נשׁק",
+    "homonym": 1,
+    "count": 31,
+    "pl": "całować"
+  },
+  {
+    "root": "שׁטף",
+    "count": 31,
+    "pl": "zalewać, spłukiwać"
+  },
+  {
+    "root": "אוה",
+    "count": 30,
+    "pl": "pragnąć"
+  },
+  {
+    "root": "גזל",
+    "count": 30,
+    "pl": "grabić, rabować"
+  },
+  {
+    "root": "דמה",
+    "homonym": 1,
+    "count": 30,
+    "pl": "być podobnym, zamierzać"
+  },
+  {
+    "root": "נהג",
+    "homonym": 1,
+    "count": 30,
+    "pl": "pędzić, prowadzić"
+  },
+  {
+    "root": "ספד",
+    "count": 30,
+    "pl": "opłakiwać"
+  },
+  {
+    "root": "רבץ",
+    "count": 30,
+    "pl": "leżeć, spoczywać"
+  },
+  {
+    "root": "שׁפל",
+    "count": 30,
+    "pl": "być niskim, upokorzonym"
+  },
+  {
+    "root": "חלם",
+    "count": 29,
+    "pl": "śnić, być silnym"
+  },
+  {
+    "root": "יעד",
+    "count": 29,
+    "pl": "wyznaczać, spotykać się"
+  },
+  {
+    "root": "ירה",
+    "homonym": 1,
+    "count": 29,
+    "pl": "strzelać, rzucać"
+  },
+  {
+    "root": "מנע",
+    "count": 29,
+    "pl": "powstrzymywać"
+  },
+  {
+    "root": "פרה",
+    "count": 29,
+    "pl": "owocować"
+  },
+  {
+    "root": "רעשׁ",
+    "homonym": 1,
+    "count": 29,
+    "pl": "trząść się, drżeć"
+  },
+  {
+    "root": "בחן",
+    "count": 28,
+    "pl": "badać, próbować"
+  },
+  {
+    "root": "בשׁל",
+    "count": 28,
+    "pl": "gotować"
+  },
+  {
+    "root": "חבר",
+    "homonym": 2,
+    "count": 28,
+    "pl": "łączyć, przyłączać się"
+  },
+  {
+    "root": "חכם",
+    "count": 28,
+    "pl": "być mądrym"
+  },
+  {
+    "root": "חשׂך",
+    "count": 28,
+    "pl": "oszczędzać, powstrzymywać się"
+  },
+  {
+    "root": "מנה",
+    "count": 28,
+    "pl": "liczyć, wyznaczać"
+  },
+  {
+    "root": "נדד",
+    "count": 28,
+    "pl": "uciekać, wędrować"
+  },
+  {
+    "root": "קשׁה",
+    "count": 28,
+    "pl": "być twardym"
+  },
+  {
+    "root": "תלה",
+    "count": 28,
+    "pl": "wieszać"
+  },
+  {
+    "root": "בער",
+    "homonym": 2,
+    "count": 27,
+    "pl": "usuwać, wypalać"
+  },
+  {
+    "root": "זקן",
+    "count": 27,
+    "pl": "być starym"
+  },
+  {
+    "root": "חלף",
+    "homonym": 1,
+    "count": 27,
+    "pl": "przemijać, zmieniać się"
+  },
+  {
+    "root": "חקר",
+    "count": 27,
+    "pl": "badać"
+  },
+  {
+    "root": "חרשׁ",
+    "homonym": 1,
+    "count": 27,
+    "pl": "orać, rytować, planować"
+  },
+  {
+    "root": "חתם",
+    "count": 27,
+    "pl": "pieczętować"
+  },
+  {
+    "root": "יצת",
+    "count": 27,
+    "pl": "zapalać, palić"
+  },
+  {
+    "root": "ישׁר",
+    "count": 27,
+    "pl": "być gładkim, prostym, słusznym"
+  },
+  {
+    "root": "נתק",
+    "count": 27,
+    "pl": "odrywać; zwodzić"
+  },
+  {
+    "root": "עוף",
+    "homonym": 1,
+    "count": 27,
+    "pl": "latać"
+  },
+  {
+    "root": "עלם",
+    "homonym": 1,
+    "count": 27,
+    "pl": "być ukrytym"
+  },
+  {
+    "root": "פלט",
+    "count": 27,
+    "pl": "uchodzić, ratować"
+  },
+  {
+    "root": "פתה",
+    "homonym": 1,
+    "count": 27,
+    "pl": "być prostym, zwodzić, oszukiwać"
+  },
+  {
+    "root": "שׂושׂ",
+    "count": 27,
+    "pl": "radować się"
+  },
+  {
+    "root": "יגע",
+    "count": 26,
+    "pl": "trudzić się, być znużonym"
+  },
+  {
+    "root": "פרד",
+    "count": 26,
+    "pl": "oddzielać"
+  },
+  {
+    "root": "צרר",
+    "homonym": 2,
+    "count": 26,
+    "pl": "być wrogim"
+  },
+  {
+    "root": "קדם",
+    "count": 26,
+    "pl": "wychodzić naprzeciw, uprzedzać"
+  },
+  {
+    "root": "רגל",
+    "count": 26,
+    "pl": "chodzić pieszo, szpiegować"
+  },
+  {
+    "root": "גבר",
+    "count": 25,
+    "pl": "być silnym, przemagać"
+  },
+  {
+    "root": "הגה",
+    "homonym": 1,
+    "count": 25,
+    "pl": "rozmyślać, jęczeć, mówić"
+  },
+  {
+    "root": "טרף",
+    "count": 25,
+    "pl": "rozszarpywać"
+  },
+  {
+    "root": "מרד",
+    "count": 25,
+    "pl": "buntować się"
+  },
+  {
+    "root": "נוד",
+    "count": 25,
+    "pl": "poruszać się, błąkać się, opłakiwać"
+  },
+  {
+    "root": "נסך",
+    "homonym": 1,
+    "count": 25,
+    "pl": "wylewać"
+  },
+  {
+    "root": "פחד",
+    "count": 25,
+    "pl": "bać się, lękać się"
+  },
+  {
+    "root": "רחב",
+    "count": 25,
+    "pl": "być szerokim, poszerzać"
+  },
+  {
+    "root": "שׁלף",
+    "count": 25,
+    "pl": "dobywać (miecza)"
+  },
+  {
+    "root": "בשׂר",
+    "count": 24,
+    "pl": "przynosić wieść"
+  },
+  {
+    "root": "גוע",
+    "count": 24,
+    "pl": "umierać"
+  },
+  {
+    "root": "חוס",
+    "count": 24,
+    "pl": "litować się"
+  },
+  {
+    "root": "כבה",
+    "count": 24,
+    "pl": "gasić"
+  },
+  {
+    "root": "נאץ",
+    "count": 24,
+    "pl": "pogardzać"
+  },
+  {
+    "root": "נזה",
+    "count": 24,
+    "pl": "skrapiać"
+  },
+  {
+    "root": "סוג",
+    "homonym": 1,
+    "count": 24,
+    "pl": "cofać się"
+  },
+  {
+    "root": "רושׁ",
+    "count": 24,
+    "pl": "być ubogim"
+  },
+  {
+    "root": "שׁכל",
+    "count": 24,
+    "pl": "osierocać, pozbawiać dzieci"
+  },
+  {
+    "root": "תור",
+    "count": 24,
+    "pl": "badać, szpiegować"
+  },
+  {
+    "root": "ארב",
+    "count": 23,
+    "pl": "czyhać w zasadzce"
+  },
+  {
+    "root": "גלח",
+    "count": 23,
+    "pl": "golić"
+  },
+  {
+    "root": "דין",
+    "count": 23,
+    "pl": "sądzić"
+  },
+  {
+    "root": "חפשׂ",
+    "count": 23,
+    "pl": "przeszukiwać, przebierać się"
+  },
+  {
+    "root": "יעל",
+    "count": 23,
+    "pl": "przynosić korzyść"
+  },
+  {
+    "root": "כהן",
+    "count": 23,
+    "pl": "być kapłanem, pełnić urząd kapłana"
+  },
+  {
+    "root": "נגשׂ",
+    "count": 23,
+    "pl": "uciskać"
+  },
+  {
+    "root": "שׁקל",
+    "count": 23,
+    "pl": "ważyć"
+  },
+  {
+    "root": "גדע",
+    "count": 22,
+    "pl": "ścinać"
+  },
+  {
+    "root": "זהר",
+    "homonym": 2,
+    "count": 22,
+    "pl": "ostrzegać"
+  },
+  {
+    "root": "חמם",
+    "count": 22,
+    "pl": "ogrzewać"
+  },
+  {
+    "root": "חסר",
+    "count": 22,
+    "pl": "brakować, zmniejszać się"
+  },
+  {
+    "root": "חפר",
+    "homonym": 1,
+    "count": 22,
+    "pl": "kopać, badać"
+  },
+  {
+    "root": "טוב",
+    "count": 22,
+    "pl": "być miłym, dobrym"
+  },
+  {
+    "root": "כחשׁ",
+    "count": 22,
+    "pl": "zwodzić, zaprzeczać"
+  },
+  {
+    "root": "מסס",
+    "count": 22,
+    "pl": "topnieć"
+  },
+  {
+    "root": "מעט",
+    "count": 22,
+    "pl": "być małym, nielicznym"
+  },
+  {
+    "root": "סקל",
+    "count": 22,
+    "pl": "kamienować"
+  },
+  {
+    "root": "עתר",
+    "count": 22,
+    "pl": "błagać"
+  },
+  {
+    "root": "פשׂה",
+    "count": 22,
+    "pl": "rozpościerać"
+  },
+  {
+    "root": "קיץ",
+    "homonym": 2,
+    "count": 22,
+    "pl": "budzić się"
+  },
+  {
+    "root": "קסם",
+    "count": 22,
+    "pl": "wróżyć"
+  },
+  {
+    "root": "קרה",
+    "homonym": 1,
+    "count": 22,
+    "pl": "przydarzać się, zdarzać się"
+  },
+  {
+    "root": "רבב",
+    "homonym": 1,
+    "count": 22,
+    "pl": "być licznym, wielkim"
+  },
+  {
+    "root": "רדה",
+    "homonym": 1,
+    "count": 22,
+    "pl": "panować"
+  },
+  {
+    "root": "שׁען",
+    "count": 22,
+    "pl": "opierać się"
+  },
+  {
+    "root": "שׁקף",
+    "count": 22,
+    "pl": "wyglądać, spoglądać"
+  },
+  {
+    "root": "תעב",
+    "count": 22,
+    "pl": "brzydzić się"
+  },
+  {
+    "root": "אתה",
+    "count": 21,
+    "pl": "przychodzić, przynosić"
+  },
+  {
+    "root": "גרע",
+    "homonym": 1,
+    "count": 21,
+    "pl": "zmniejszać"
+  },
+  {
+    "root": "חמד",
+    "count": 21,
+    "pl": "pragnąć"
+  },
+  {
+    "root": "מושׁ",
+    "homonym": 2,
+    "count": 21,
+    "pl": "odchodzić"
+  },
+  {
+    "root": "נתך",
+    "count": 21,
+    "pl": "wylewać"
+  },
+  {
+    "root": "נתשׁ",
+    "count": 21,
+    "pl": "wyrywać"
+  },
+  {
+    "root": "סחר",
+    "count": 21,
+    "pl": "handlować"
+  },
+  {
+    "root": "פקח",
+    "count": 21,
+    "pl": "otwierać (oczy)"
+  },
+  {
+    "root": "צום",
+    "count": 21,
+    "pl": "pościć"
+  },
+  {
+    "root": "שׁאג",
+    "count": 21,
+    "pl": "ryczeć"
+  },
+  {
+    "root": "שׁבר",
+    "homonym": 2,
+    "count": 21,
+    "pl": "kupować zboże"
+  },
+  {
+    "root": "שׁגה",
+    "count": 21,
+    "pl": "błądzić"
+  },
+  {
+    "root": "שׁוע",
+    "count": 21,
+    "pl": "wołać o pomoc"
+  },
+  {
+    "root": "שׁזר",
+    "count": 21,
+    "pl": "skręcać, splatać"
+  },
+  {
+    "root": "תמך",
+    "count": 21,
+    "pl": "trzymać, podpierać"
+  },
+  {
+    "root": "יחשׂ",
+    "count": 20,
+    "pl": "być wpisanym w rodowód"
+  },
+  {
+    "root": "צרע",
+    "count": 20,
+    "pl": "być trędowatym"
+  },
+  {
+    "root": "שׂגב",
+    "count": 20,
+    "pl": "być wywyższonym"
+  },
+  {
+    "root": "שׂיח",
+    "count": 20,
+    "pl": "rozmyślać, mówić"
+  },
+  {
+    "root": "שׂכר",
+    "count": 20,
+    "pl": "najmować"
+  },
+  {
+    "root": "דמם",
+    "homonym": 1,
+    "count": 19,
+    "pl": "milczeć, być niemym"
+  },
+  {
+    "root": "זנח",
+    "homonym": 2,
+    "count": 19,
+    "pl": "odrzucać"
+  },
+  {
+    "root": "חקק",
+    "count": 19,
+    "pl": "rytować, ustanawiać"
+  },
+  {
+    "root": "ינה",
+    "count": 19,
+    "pl": "uciskać, krzywdzić"
+  },
+  {
+    "root": "לאה",
+    "count": 19,
+    "pl": "być zmęczonym"
+  },
+  {
+    "root": "לחץ",
+    "count": 19,
+    "pl": "ciemiężyć"
+  },
+  {
+    "root": "נבל",
+    "homonym": 1,
+    "count": 19,
+    "pl": "więdnąć, usychać, opadać"
+  },
+  {
+    "root": "נקב",
+    "count": 19,
+    "pl": "wyznaczać, przeklinać, przebijać"
+  },
+  {
+    "root": "עלל",
+    "homonym": 1,
+    "count": 19,
+    "pl": "postępować surowo, zbierać resztki"
+  },
+  {
+    "root": "ריק",
+    "count": 19,
+    "pl": "opróżniać"
+  },
+  {
+    "root": "רמס",
+    "count": 19,
+    "pl": "deptać"
+  },
+  {
+    "root": "רצץ",
+    "count": 19,
+    "pl": "miażdżyć"
+  },
+  {
+    "root": "שׁאב",
+    "count": 19,
+    "pl": "czerpać"
+  },
+  {
+    "root": "אחר",
+    "count": 18,
+    "pl": "zwlekać, opóźniać"
+  },
+  {
+    "root": "באשׁ",
+    "count": 18,
+    "pl": "śmierdzieć, być wstrętnym"
+  },
+  {
+    "root": "גלל",
+    "count": 18,
+    "pl": "toczyć"
+  },
+  {
+    "root": "דכא",
+    "count": 18,
+    "pl": "miażdżyć"
+  },
+  {
+    "root": "זרח",
+    "count": 18,
+    "pl": "wschodzić"
+  },
+  {
+    "root": "חושׁ",
+    "homonym": 1,
+    "count": 18,
+    "pl": "śpieszyć się"
+  },
+  {
+    "root": "יאל",
+    "homonym": 2,
+    "count": 18,
+    "pl": "podejmować się, chcieć"
+  },
+  {
+    "root": "יבל",
+    "count": 18,
+    "pl": "przynosić, nieść"
+  },
+  {
+    "root": "לון",
+    "homonym": 1,
+    "count": 18,
+    "pl": "szemrać, narzekać"
+  },
+  {
+    "root": "לעג",
+    "count": 18,
+    "pl": "szydzić"
+  },
+  {
+    "root": "משׁל",
+    "homonym": 1,
+    "count": 18,
+    "pl": "być podobnym, mówić przypowieść"
+  },
+  {
+    "root": "נטף",
+    "count": 18,
+    "pl": "kapać"
+  },
+  {
+    "root": "נפץ",
+    "homonym": 1,
+    "count": 18,
+    "pl": "rozbijać"
+  },
+  {
+    "root": "נשׁא",
+    "homonym": 1,
+    "count": 18,
+    "pl": "być zadłużonym"
+  },
+  {
+    "root": "סות",
+    "count": 18,
+    "pl": "podburzać, zwodzić"
+  },
+  {
+    "root": "שׁכר",
+    "count": 18,
+    "pl": "być pijanym"
+  },
+  {
+    "root": "תכן",
+    "count": 18,
+    "pl": "ważyć, regulować, naprawiać"
+  },
+  {
+    "root": "חפר",
+    "homonym": 2,
+    "count": 17,
+    "pl": "wstydzić się"
+  },
+  {
+    "root": "חשׁך",
+    "count": 17,
+    "pl": "być ciemnym"
+  },
+  {
+    "root": "יצג",
+    "count": 17,
+    "pl": "ustawiać, stawiać"
+  },
+  {
+    "root": "כלא",
+    "count": 17,
+    "pl": "powstrzymywać"
+  },
+  {
+    "root": "כתת",
+    "count": 17,
+    "pl": "bić, miażdżyć"
+  },
+  {
+    "root": "מוג",
+    "count": 17,
+    "pl": "topić się, chwiać się"
+  },
+  {
+    "root": "מטר",
+    "count": 17,
+    "pl": "padać (o deszczu)"
+  },
+  {
+    "root": "נדב",
+    "count": 17,
+    "pl": "ofiarować dobrowolnie"
+  },
+  {
+    "root": "נקף",
+    "homonym": 2,
+    "count": 17,
+    "pl": "otaczać"
+  },
+  {
+    "root": "ספה",
+    "count": 17,
+    "pl": "zmiatać"
+  },
+  {
+    "root": "סרר",
+    "count": 17,
+    "pl": "być krnąbrnym, uporczywym"
+  },
+  {
+    "root": "עוה",
+    "count": 17,
+    "pl": "zginać, popełniać nieprawość"
+  },
+  {
+    "root": "עלז",
+    "count": 17,
+    "pl": "radować się, wykrzykiwać"
+  },
+  {
+    "root": "עצם",
+    "homonym": 1,
+    "count": 17,
+    "pl": "być potężnym"
+  },
+  {
+    "root": "ערב",
+    "homonym": 1,
+    "count": 17,
+    "pl": "poręczać, wymieniać"
+  },
+  {
+    "root": "עשׁר",
+    "count": 17,
+    "pl": "być bogatym"
+  },
+  {
+    "root": "צוד",
+    "count": 17,
+    "pl": "polować"
+  },
+  {
+    "root": "קדר",
+    "count": 17,
+    "pl": "być ciemnym, pogrążyć się w żałobie"
+  },
+  {
+    "root": "רכל",
+    "count": 17,
+    "pl": "handlować"
+  },
+  {
+    "root": "רמשׂ",
+    "count": 17,
+    "pl": "pełzać, czołgać się"
+  },
+  {
+    "root": "שׁחח",
+    "count": 17,
+    "pl": "kłaniać się, korzyć się"
+  },
+  {
+    "root": "אזר",
+    "count": 16,
+    "pl": "przepasywać"
+  },
+  {
+    "root": "בלה",
+    "count": 16,
+    "pl": "zużywać się"
+  },
+  {
+    "root": "בעל",
+    "count": 16,
+    "pl": "poślubiać"
+  },
+  {
+    "root": "בעת",
+    "count": 16,
+    "pl": "przerażać"
+  },
+  {
+    "root": "בצע",
+    "count": 16,
+    "pl": "odcinać, zdobywać przemocą"
+  },
+  {
+    "root": "דושׁ",
+    "count": 16,
+    "pl": "młócić, deptać"
+  },
+  {
+    "root": "חגג",
+    "count": 16,
+    "pl": "obchodzić święto"
+  },
+  {
+    "root": "חצב",
+    "homonym": 1,
+    "count": 16,
+    "pl": "ciosać"
+  },
+  {
+    "root": "חשׁה",
+    "count": 16,
+    "pl": "milczeć, być cicho"
+  },
+  {
+    "root": "טבל",
+    "count": 16,
+    "pl": "zanurzać"
+  },
+  {
+    "root": "ינק",
+    "count": 16,
+    "pl": "ssać"
+  },
+  {
+    "root": "ישׁן",
+    "homonym": 1,
+    "count": 16,
+    "pl": "spać"
+  },
+  {
+    "root": "כזב",
+    "count": 16,
+    "pl": "kłamać"
+  },
+  {
+    "root": "מרר",
+    "count": 16,
+    "pl": "być gorzkim"
+  },
+  {
+    "root": "סכך",
+    "homonym": 1,
+    "count": 16,
+    "pl": "okrywać"
+  },
+  {
+    "root": "ענה",
+    "homonym": 4,
+    "count": 16,
+    "pl": "śpiewać, wołać"
+  },
+  {
+    "root": "פרע",
+    "count": 16,
+    "pl": "puszczać wolno, zaniedbywać, odsłaniać"
+  },
+  {
+    "root": "רגם",
+    "count": 16,
+    "pl": "kamienować"
+  },
+  {
+    "root": "שׁוה",
+    "homonym": 1,
+    "count": 16,
+    "pl": "być podobnym, porównywać"
+  },
+  {
+    "root": "אמל",
+    "homonym": 1,
+    "count": 15,
+    "pl": "omdlewać"
+  },
+  {
+    "root": "גזז",
+    "count": 15,
+    "pl": "strzyc"
+  },
+  {
+    "root": "גרה",
+    "count": 15,
+    "pl": "drażnić"
+  },
+  {
+    "root": "הלל",
+    "homonym": 3,
+    "count": 15,
+    "pl": "szaleć, chełpić się"
+  },
+  {
+    "root": "חצה",
+    "count": 15,
+    "pl": "dzielić"
+  },
+  {
+    "root": "כבשׁ",
+    "count": 15,
+    "pl": "podbijać"
+  },
+  {
+    "root": "נגן",
+    "count": 15,
+    "pl": "grać (na instrumencie)"
+  },
+  {
+    "root": "עצב",
+    "homonym": 2,
+    "count": 15,
+    "pl": "smucić, ranić"
+  },
+  {
+    "root": "ערה",
+    "count": 15,
+    "pl": "być nagim, pustym"
+  },
+  {
+    "root": "ערץ",
+    "count": 15,
+    "pl": "lękać się, drżeć"
+  },
+  {
+    "root": "פצה",
+    "count": 15,
+    "pl": "otwierać"
+  },
+  {
+    "root": "צמת",
+    "count": 15,
+    "pl": "niszczyć"
+  },
+  {
+    "root": "קדד",
+    "count": 15,
+    "pl": "chylić się"
+  },
+  {
+    "root": "שׁור",
+    "homonym": 1,
+    "count": 15,
+    "pl": "spoglądać"
+  },
+  {
+    "root": "אנף",
+    "count": 14,
+    "pl": "gniewać się"
+  },
+  {
+    "root": "בוז",
+    "count": 14,
+    "pl": "gardzić"
+  },
+  {
+    "root": "ברר",
+    "homonym": 1,
+    "count": 14,
+    "pl": "oczyszczać"
+  },
+  {
+    "root": "גער",
+    "count": 14,
+    "pl": "karcić"
+  },
+  {
+    "root": "זמם",
+    "count": 14,
+    "pl": "zamierzać"
+  },
+  {
+    "root": "חכה",
+    "count": 14,
+    "pl": "czekać"
+  },
+  {
+    "root": "טול",
+    "count": 14,
+    "pl": "rzucać"
+  },
+  {
+    "root": "כרה",
+    "homonym": 1,
+    "count": 14,
+    "pl": "kopać"
+  },
+  {
+    "root": "לוה",
+    "homonym": 2,
+    "count": 14,
+    "pl": "pożyczać"
+  },
+  {
+    "root": "מור",
+    "count": 14,
+    "pl": "zmieniać"
+  },
+  {
+    "root": "מחץ",
+    "count": 14,
+    "pl": "rozbijać, roztrzaskiwać"
+  },
+  {
+    "root": "מרט",
+    "count": 14,
+    "pl": "wygładzać, polerować"
+  },
+  {
+    "root": "נשׁא",
+    "homonym": 2,
+    "count": 14,
+    "pl": "zwodzić"
+  },
+  {
+    "root": "עכר",
+    "count": 14,
+    "pl": "niepokoić"
+  },
+  {
+    "root": "פגשׁ",
+    "count": 14,
+    "pl": "spotykać"
+  },
+  {
+    "root": "פרס",
+    "count": 14,
+    "pl": "dzielić"
+  },
+  {
+    "root": "צבא",
+    "count": 14,
+    "pl": "prowadzić wojnę, służyć"
+  },
+  {
+    "root": "קבב",
+    "count": 14,
+    "pl": "przeklinać"
+  },
+  {
+    "root": "קבל",
+    "count": 14,
+    "pl": "przyjmować"
+  },
+  {
+    "root": "קצץ",
+    "count": 14,
+    "pl": "odcinać"
+  },
+  {
+    "root": "קצר",
+    "homonym": 2,
+    "count": 14,
+    "pl": "być krótkim"
+  },
+  {
+    "root": "רוה",
+    "count": 14,
+    "pl": "być nasyconym, pić"
+  },
+  {
+    "root": "רוח",
+    "count": 14,
+    "pl": "być szerokim, odetchnąć, wąchać"
+  },
+  {
+    "root": "שׁאף",
+    "count": 14,
+    "pl": "dyszeć, deptać"
+  },
+  {
+    "root": "שׁלל",
+    "homonym": 2,
+    "count": 14,
+    "pl": "łupić, grabić"
+  },
+  {
+    "root": "שׁנה",
+    "homonym": 1,
+    "count": 14,
+    "pl": "zmieniać"
+  },
+  {
+    "root": "שׁרץ",
+    "count": 14,
+    "pl": "roić się"
+  },
+  {
+    "root": "אנח",
+    "count": 13,
+    "pl": "wzdychać"
+  },
+  {
+    "root": "אפה",
+    "count": 13,
+    "pl": "piec"
+  },
+  {
+    "root": "ארג",
+    "count": 13,
+    "pl": "tkać"
+  },
+  {
+    "root": "דקק",
+    "count": 13,
+    "pl": "miażdżyć"
+  },
+  {
+    "root": "המם",
+    "homonym": 1,
+    "count": 13,
+    "pl": "robić hałas, wprawiać w zamieszanie"
+  },
+  {
+    "root": "חבל",
+    "homonym": 2,
+    "count": 13,
+    "pl": "brać zastaw"
+  },
+  {
+    "root": "חבק",
+    "count": 13,
+    "pl": "obejmować"
+  },
+  {
+    "root": "סתם",
+    "count": 13,
+    "pl": "zamykać, ukrywać"
+  },
+  {
+    "root": "עטה",
+    "homonym": 1,
+    "count": 13,
+    "pl": "owijać, okrywać"
+  },
+  {
+    "root": "פאר",
+    "homonym": 2,
+    "count": 13,
+    "pl": "upiększać, wysławiać"
+  },
+  {
+    "root": "צחק",
+    "count": 13,
+    "pl": "śmiać się"
+  },
+  {
+    "root": "רגע",
+    "count": 13,
+    "pl": "być w spokoju, niepokoić"
+  },
+  {
+    "root": "רעב",
+    "count": 13,
+    "pl": "być głodnym"
+  },
+  {
+    "root": "שׁוט",
+    "homonym": 1,
+    "count": 13,
+    "pl": "błąkać się, biegać, chłostać, gardzić"
+  },
+  {
+    "root": "בוס",
+    "count": 12,
+    "pl": "deptać"
+  },
+  {
+    "root": "גזר",
+    "homonym": 1,
+    "count": 12,
+    "pl": "odcinać, dzielić"
+  },
+  {
+    "root": "דמה",
+    "homonym": 3,
+    "count": 12,
+    "pl": "być zniszczonym, wytępionym"
+  },
+  {
+    "root": "זעם",
+    "count": 12,
+    "pl": "być oburzonym"
+  },
+  {
+    "root": "חפה",
+    "count": 12,
+    "pl": "okrywać"
+  },
+  {
+    "root": "חצר",
+    "count": 12,
+    "pl": "trąbić"
+  },
+  {
+    "root": "לוה",
+    "homonym": 1,
+    "count": 12,
+    "pl": "łączyć"
+  },
+  {
+    "root": "נפח",
+    "count": 12,
+    "pl": "dmuchać, oddychać"
+  },
+  {
+    "root": "סלל",
+    "count": 12,
+    "pl": "usypywać"
+  },
+  {
+    "root": "סעד",
+    "count": 12,
+    "pl": "podpierać, wspierać"
+  },
+  {
+    "root": "עות",
+    "count": 12,
+    "pl": "być pochylonym, wypaczać, podtrzymywać"
+  },
+  {
+    "root": "צוק",
+    "homonym": 1,
+    "count": 12,
+    "pl": "uciskać"
+  },
+  {
+    "root": "רבע",
+    "homonym": 2,
+    "count": 12,
+    "pl": "być czworokątnym"
+  },
+  {
+    "root": "שׁחר",
+    "homonym": 2,
+    "count": 12,
+    "pl": "gorliwie szukać"
+  },
+  {
+    "root": "שׁעה",
+    "count": 12,
+    "pl": "spoglądać"
+  },
+  {
+    "root": "שׁקד",
+    "count": 12,
+    "pl": "czuwać"
+  },
+  {
+    "root": "שׁרק",
+    "count": 12,
+    "pl": "syczeć, gwizdać"
+  },
+  {
+    "root": "ארשׂ",
+    "count": 11,
+    "pl": "zaręczać"
+  },
+  {
+    "root": "גאל",
+    "homonym": 2,
+    "count": 11,
+    "pl": "splugawić"
+  },
+  {
+    "root": "דקר",
+    "count": 11,
+    "pl": "przebijać"
+  },
+  {
+    "root": "דשׁן",
+    "count": 11,
+    "pl": "być tłustym, usuwać popiół"
+  },
+  {
+    "root": "הדף",
+    "count": 11,
+    "pl": "pchać"
+  },
+  {
+    "root": "חבל",
+    "homonym": 3,
+    "count": 11,
+    "pl": "niszczyć"
+  },
+  {
+    "root": "חנף",
+    "count": 11,
+    "pl": "plugawić"
+  },
+  {
+    "root": "חשׁק",
+    "count": 11,
+    "pl": "miłować, przywiązywać"
+  },
+  {
+    "root": "חתן",
+    "count": 11,
+    "pl": "żenić się, wżenić się"
+  },
+  {
+    "root": "טבח",
+    "count": 11,
+    "pl": "rzezić"
+  },
+  {
+    "root": "טוח",
+    "count": 11,
+    "pl": "tynkować"
+  },
+  {
+    "root": "טעם",
+    "count": 11,
+    "pl": "smakować"
+  },
+  {
+    "root": "יקץ",
+    "count": 11,
+    "pl": "budzić się"
+  },
+  {
+    "root": "יקר",
+    "count": 11,
+    "pl": "być drogocennym"
+  },
+  {
+    "root": "כנס",
+    "count": 11,
+    "pl": "zbierać"
+  },
+  {
+    "root": "נבע",
+    "count": 11,
+    "pl": "tryskać, wypowiadać, wylewać"
+  },
+  {
+    "root": "נגח",
+    "count": 11,
+    "pl": "bodnąć, trącać"
+  },
+  {
+    "root": "נזל",
+    "count": 11,
+    "pl": "płynąć"
+  },
+  {
+    "root": "נחשׁ",
+    "count": 11,
+    "pl": "wróżyć"
+  },
+  {
+    "root": "נער",
+    "homonym": 2,
+    "count": 11,
+    "pl": "trząść"
+  },
+  {
+    "root": "נשׁך",
+    "homonym": 1,
+    "count": 11,
+    "pl": "gryźć"
+  },
+  {
+    "root": "עזז",
+    "count": 11,
+    "pl": "być mocnym"
+  },
+  {
+    "root": "עטף",
+    "homonym": 2,
+    "count": 11,
+    "pl": "być omdlałym, słabym"
+  },
+  {
+    "root": "עמל",
+    "count": 11,
+    "pl": "trudzić się"
+  },
+  {
+    "root": "ענן",
+    "count": 11,
+    "pl": "czarować, chmura"
+  },
+  {
+    "root": "רעם",
+    "homonym": 1,
+    "count": 11,
+    "pl": "grzmieć"
+  },
+  {
+    "root": "רקע",
+    "count": 11,
+    "pl": "wykuwać, tupać, rozpościerać"
+  },
+  {
+    "root": "שׁסה",
+    "count": 11,
+    "pl": "łupić"
+  },
+  {
+    "root": "אדם",
+    "count": 10,
+    "pl": "być czerwonym"
+  },
+  {
+    "root": "אוץ",
+    "count": 10,
+    "pl": "śpieszyć się, ponaglać; być ciasnym"
+  },
+  {
+    "root": "אשׁר",
+    "homonym": 2,
+    "count": 10,
+    "pl": "nazywać błogosławionym"
+  },
+  {
+    "root": "גדר",
+    "count": 10,
+    "pl": "budować mur"
+  },
+  {
+    "root": "גור",
+    "homonym": 3,
+    "count": 10,
+    "pl": "lękać się"
+  },
+  {
+    "root": "געל",
+    "count": 10,
+    "pl": "brzydzić się"
+  },
+  {
+    "root": "געשׁ",
+    "count": 10,
+    "pl": "trząść się"
+  },
+  {
+    "root": "זיד",
+    "count": 10,
+    "pl": "kipieć, postępować zuchwale"
+  },
+  {
+    "root": "חדשׁ",
+    "count": 10,
+    "pl": "odnawiać"
+  },
+  {
+    "root": "חול",
+    "count": 10,
+    "pl": "wirować, tańczyć, wić się"
+  },
+  {
+    "root": "חפז",
+    "count": 10,
+    "pl": "śpieszyć się"
+  },
+  {
+    "root": "חרץ",
+    "homonym": 1,
+    "count": 10,
+    "pl": "postanawiać, ciąć"
+  },
+  {
+    "root": "חשׂף",
+    "homonym": 1,
+    "count": 10,
+    "pl": "obnażać, czerpać"
+  },
+  {
+    "root": "טבע",
+    "count": 10,
+    "pl": "tonąć"
+  },
+  {
+    "root": "להט",
+    "homonym": 1,
+    "count": 10,
+    "pl": "płonąć"
+  },
+  {
+    "root": "מקק",
+    "count": 10,
+    "pl": "gnić"
+  },
+  {
+    "root": "נהל",
+    "count": 10,
+    "pl": "prowadzić, kierować"
+  },
+  {
+    "root": "נזר",
+    "count": 10,
+    "pl": "poświęcać"
+  },
+  {
+    "root": "נחת",
+    "count": 10,
+    "pl": "schodzić"
+  },
+  {
+    "root": "סוך",
+    "homonym": 2,
+    "count": 10,
+    "pl": "namaszczać"
+  },
+  {
+    "root": "סכן",
+    "homonym": 1,
+    "count": 10,
+    "pl": "być pożytecznym, być narażonym"
+  },
+  {
+    "root": "ענג",
+    "count": 10,
+    "pl": "być miękkim, rozkoszować się"
+  },
+  {
+    "root": "עשׂר",
+    "count": 10,
+    "pl": "płacić dziesięcinę"
+  },
+  {
+    "root": "פוח",
+    "homonym": 2,
+    "count": 10,
+    "pl": "świadczyć"
+  },
+  {
+    "root": "פזר",
+    "count": 10,
+    "pl": "rozrzucać"
+  },
+  {
+    "root": "פרק",
+    "count": 10,
+    "pl": "odrywać"
+  },
+  {
+    "root": "צמא",
+    "count": 10,
+    "pl": "pragnąć pić"
+  },
+  {
+    "root": "שׁמט",
+    "count": 10,
+    "pl": "upuścić, zwolnić"
+  },
+  {
+    "root": "שׁתל",
+    "count": 10,
+    "pl": "sadzić"
+  }
+]
