@@ -16,7 +16,11 @@ Zrobione (krok 1): dolne menu / pasek boczny (>= 56rem), router hash-history, 4 
 (`src/styles/main.css`, tokeny), Quiz jako karty, PWA (vite-plugin-pwa, `registerType: 'prompt'`; baner aktualizacji jeszcze **niezrobiony**),
 Vitest + Playwright. Krok 2 zrobiony: Konwerter (układ międzywierszowy, rozbiór litera po literze, kopiowanie) i wspólny `components/TextSource.vue`
 (na razie tylko „Wklej"; wybór/losowanie dojdą tu w kroku 4). `analyze()` w `lib/converter.ts` zwraca rozbiór słów.
-Litery i Ustawienia to na razie `ComingSoon`.
+Krok 3 zrobiony: Litery (podtrasy `/litery`, `/litery/nazwy`, `/litery/nikud`; dane z konwertera w `lib/letterData.ts`,
+losowanie ważone błędami w `lib/quiz.ts`, statystyki w `lib/stats.ts` -> localStorage, sesja w `composables/useQuizSession.ts`).
+Ustawienia: na razie czyszczenie postępów i opis (księgi dojdą w kroku 4).
+Reguła „patach furtivum" (Het + Patach = `aH`) działa tylko na końcu wielowyrazowego słowa.
+Testy quizów są deterministyczne dzięki `Math.random = () => 0` w `page.addInitScript` (pierwsze elementy puli po kolei).
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.
 
 Komendy testów: `npm test` (Vitest), `npm run test:e2e` (Playwright; sam buduje i startuje `vite preview`), `npm run icons` (PNG z `icon.svg`).

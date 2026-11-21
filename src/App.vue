@@ -13,11 +13,20 @@ const tabs = [
   <a class="skip-link" href="#content">Przejdź do treści</a>
   <div class="shell">
     <nav class="tabs" aria-label="Główna nawigacja">
-      <RouterLink v-for="tab in tabs" :key="tab.to" :to="tab.to" class="tab">
-        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-          <path :d="tab.icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <span>{{ tab.label }}</span>
+      <RouterLink v-for="tab in tabs" :key="tab.to" :to="tab.to" custom v-slot="{ href, navigate, isActive }">
+        <!-- Custom link: the tab stays "current" on nested routes too (e.g. /litery/nazwy). -->
+        <a
+          :href="href"
+          class="tab"
+          :class="{ 'router-link-active': isActive }"
+          :aria-current="isActive ? 'page' : undefined"
+          @click="navigate"
+        >
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+            <path :d="tab.icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>{{ tab.label }}</span>
+        </a>
       </RouterLink>
     </nav>
 

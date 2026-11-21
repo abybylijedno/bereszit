@@ -8,7 +8,16 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/quiz' },
     { path: '/quiz', name: 'quiz', component: () => import('@/views/QuizView.vue'), meta: { title: 'Quiz' } },
-    { path: '/litery', name: 'letters', component: () => import('@/views/LettersView.vue'), meta: { title: 'Litery' } },
+    {
+      path: '/litery',
+      component: () => import('@/views/LettersView.vue'),
+      meta: { title: 'Litery' },
+      children: [
+        { path: '', name: 'letters', component: () => import('@/views/letters/AlphabetPanel.vue') },
+        { path: 'nazwy', name: 'letters-names', component: () => import('@/views/letters/NameQuizPanel.vue') },
+        { path: 'nikud', name: 'letters-nikud', component: () => import('@/views/letters/SyllableQuizPanel.vue') },
+      ],
+    },
     { path: '/konwerter', name: 'converter', component: () => import('@/views/ConverterView.vue'), meta: { title: 'Konwerter' } },
     { path: '/ustawienia', name: 'settings', component: () => import('@/views/SettingsView.vue'), meta: { title: 'Ustawienia' } },
   ],
