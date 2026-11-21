@@ -2,16 +2,16 @@ import { expect, test } from '@playwright/test'
 import { expectAccessible } from './helpers'
 
 const tabs = [
-  { name: 'Quiz', heading: 'Quiz', hash: '#/quiz' },
-  { name: 'Litery', heading: 'Litery', hash: '#/litery' },
-  { name: 'Konwerter', heading: 'Konwerter', hash: '#/konwerter' },
+  { name: 'Fonetyka', heading: 'Fonetyka', hash: '#/fonetyka/alfabet' },
+  { name: 'Gramatyka', heading: 'Gramatyka', hash: '#/gramatyka' },
+  { name: 'Słowa', heading: 'Słowa', hash: '#/slowa/czasowniki' },
   { name: 'Ustawienia', heading: 'Ustawienia', hash: '#/ustawienia' },
 ]
 
-test('opens on the Quiz tab', async ({ page }) => {
+test('opens on the Fonetyka tab', async ({ page }) => {
   await page.goto('./')
-  await expect(page).toHaveURL(/#\/quiz$/)
-  await expect(page.getByRole('heading', { level: 1, name: 'Quiz' })).toBeVisible()
+  await expect(page).toHaveURL(/#\/fonetyka\/alfabet$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Fonetyka' })).toBeVisible()
 })
 
 test('main navigation has four tabs and switches views', async ({ page }) => {
@@ -28,8 +28,8 @@ test('main navigation has four tabs and switches views', async ({ page }) => {
 })
 
 test('page title follows the active tab', async ({ page }) => {
-  await page.goto('./#/litery')
-  await expect(page).toHaveTitle('Litery – Bereszit')
+  await page.goto('./#/fonetyka/alfabet')
+  await expect(page).toHaveTitle('Fonetyka – Bereszit')
 })
 
 test('skip link moves focus to the content', async ({ page }) => {

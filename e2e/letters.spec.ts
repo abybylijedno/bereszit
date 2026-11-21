@@ -6,7 +6,7 @@ const deterministic = (page: Page) => page.addInitScript(() => (Math.random = ()
 
 test.describe('alphabet', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('./#/litery')
+    await page.goto('./#/fonetyka/alfabet')
   })
 
   test('shows 27 letters: 22 regular and 5 final', async ({ page }) => {
@@ -23,14 +23,24 @@ test.describe('alphabet', () => {
     await expect(page.locator('.letter').filter({ hasText: /^ש\s*Szin/ })).toContainText('sin): s')
   })
 
-  test('sub-mode links show the active mode and the Litery tab stays current', async ({ page }) => {
-    const modes = page.getByRole('navigation', { name: 'Tryby ćwiczenia liter' })
-    await expect(modes.getByRole('link', { name: 'Alfabet' })).toHaveAttribute('aria-current', 'page')
+  test('sub-mode links show the active mode and the Fonetyka tab stays current', async ({
+    page,
+  }) => {
+    const modes = page.getByRole('navigation', { name: 'Rodzaje ćwiczeń z fonetyki' })
+    await expect(modes.getByRole('link', { name: 'Alfabet' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
     await modes.getByRole('link', { name: 'Nazwy liter' }).click()
-    await expect(page).toHaveURL(/#\/litery\/nazwy$/)
-    await expect(modes.getByRole('link', { name: 'Nazwy liter' })).toHaveAttribute('aria-current', 'page')
+    await expect(page).toHaveURL(/#\/fonetyka\/nazwy$/)
+    await expect(modes.getByRole('link', { name: 'Nazwy liter' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
     await expect(
-      page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('link', { name: 'Litery' }),
+      page
+        .getByRole('navigation', { name: 'Główna nawigacja' })
+        .getByRole('link', { name: 'Fonetyka' }),
     ).toHaveAttribute('aria-current', 'page')
   })
 })
@@ -38,13 +48,15 @@ test.describe('alphabet', () => {
 test.describe('name quiz', () => {
   test.beforeEach(async ({ page }) => {
     await deterministic(page)
-    await page.goto('./#/litery/nazwy')
+    await page.goto('./#/fonetyka/nazwy')
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
   })
 
   test('shows a letter and 4 distinct name choices', async ({ page }) => {
     await expect(page.getByText('Pytanie 1 z 10')).toBeVisible()
-    const choices = page.getByRole('group', { name: 'Jak nazywa się ta litera?' }).getByRole('button')
+    const choices = page
+      .getByRole('group', { name: 'Jak nazywa się ta litera?' })
+      .getByRole('button')
     await expect(choices).toHaveCount(4)
     expect(new Set(await choices.allTextContents()).size).toBe(4)
   })
@@ -92,7 +104,7 @@ test.describe('name quiz', () => {
 test.describe('letters with nikud quiz', () => {
   test.beforeEach(async ({ page }) => {
     await deterministic(page)
-    await page.goto('./#/litery/nikud')
+    await page.goto('./#/fonetyka/nikud')
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
   })
 
@@ -121,7 +133,9 @@ test.describe('letters with nikud quiz', () => {
     await expect(input).toHaveValue('')
   })
 
-  test('remembers mistakes, lists them on the start screen, and settings can clear them', async ({ page }) => {
+  test('remembers mistakes, lists them on the start screen, and settings can clear them', async ({
+    page,
+  }) => {
     for (let i = 0; i < 10; i++) {
       await page.getByLabel('Jak się to czyta?').fill('x')
       await page.keyboard.press('Enter')
@@ -136,7 +150,7 @@ test.describe('letters with nikud quiz', () => {
     await page.getByRole('button', { name: 'Wyczyść postępy' }).click()
     await expect(page.getByText('Postępy zostały wyczyszczone.')).toBeVisible()
 
-    await page.getByRole('link', { name: 'Litery' }).click()
+    await page.getByRole('link', { name: 'Fonetyka' }).click()
     await page.getByRole('link', { name: 'Litery z nikudem' }).click()
     await expect(page.getByText('Najtrudniejsze dla Ciebie')).toHaveCount(0)
   })
@@ -153,9 +167,9 @@ test.describe('letters with nikud quiz', () => {
 
 test('quiz screens have no horizontal scroll at 320 px', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 })
-  for (const route of ['litery', 'litery/nazwy', 'litery/nikud']) {
+  for (const route of ['fonetyka/alfabet', 'fonetyka/nazwy', 'fonetyka/nikud']) {
     await page.goto(`./#/${route}`)
-    await page.getByRole('heading', { level: 1, name: 'Litery' }).waitFor()
+    await page.getByRole('heading', { level: 1, name: 'Fonetyka' }).waitFor()
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
     )
@@ -164,9 +178,9 @@ test('quiz screens have no horizontal scroll at 320 px', async ({ page }) => {
 })
 
 test('alphabet and intro screens pass axe checks (light and dark)', async ({ page }) => {
-  for (const route of ['litery', 'litery/nazwy', 'litery/nikud']) {
+  for (const route of ['fonetyka/alfabet', 'fonetyka/nazwy', 'fonetyka/nikud']) {
     await page.goto(`./#/${route}`)
-    await page.getByRole('heading', { level: 1, name: 'Litery' }).waitFor()
+    await page.getByRole('heading', { level: 1, name: 'Fonetyka' }).waitFor()
     await expectAccessible(page)
     await page.emulateMedia({ colorScheme: 'dark' })
     await expectAccessible(page)

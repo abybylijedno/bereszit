@@ -3,9 +3,9 @@ import { RouterLink, RouterView } from 'vue-router'
 import UpdateBanner from '@/components/UpdateBanner.vue'
 
 const tabs = [
-  { to: '/quiz', label: 'Quiz', icon: 'M9 9a3 3 0 1 1 4.5 2.6c-1 .6-1.5 1.1-1.5 2.4M12 17.5v.5M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0' },
-  { to: '/litery', label: 'Litery', icon: 'M5 19 12 5l7 14M8 14h8' },
-  { to: '/konwerter', label: 'Konwerter', icon: 'M4 8h13l-3-3M20 16H7l3 3' },
+  { to: '/fonetyka', label: 'Fonetyka', icon: 'M3 12h3l3-7 4 14 3-10 2 3h3' },
+  { to: '/gramatyka', label: 'Gramatyka', icon: 'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4zM8 17h11' },
+  { to: '/slowa', label: 'Słowa', icon: 'M4 5h16v11H9l-5 4V5z' },
   { to: '/ustawienia', label: 'Ustawienia', icon: 'M4 7h10M18 7h2M4 17h2M10 17h10M16 4v6M8 14v6' },
 ]
 </script>
@@ -65,17 +65,21 @@ main:focus {
 }
 
 .tab {
-  flex: 1;
+  flex: 1 1 0;
+  /* Five tabs must fit in 320 px: the label may shrink and, if needed, wrap. */
+  min-width: 0;
   min-height: var(--nav-h);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.15rem;
-  padding: 0.25rem;
-  font-size: 0.8rem;
+  padding: 0.25rem 0.1rem;
+  font-size: clamp(0.62rem, 3.1vw, 0.8rem);
   font-weight: 600;
   color: var(--text);
+  text-align: center;
+  overflow-wrap: anywhere;
   text-decoration: none;
 }
 

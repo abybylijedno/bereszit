@@ -4,15 +4,17 @@ import { expectAccessible } from './helpers'
 const GENESIS_1_1_START = 'בְּרֵאשִׁית'
 
 const openMode = async (page: Page, mode: 'Wybierz fragment' | 'Losuj') => {
-  await page.getByRole('radio', { name: mode }).check({ force: true })
+  await page.getByRole('radio', { name: mode }).check()
 }
 
 const cachedFiles = (page: Page) =>
-  page.evaluate(async () => (await (await caches.open('bereszit-books')).keys()).map((r) => new URL(r.url).pathname))
+  page.evaluate(async () =>
+    (await (await caches.open('bereszit-books')).keys()).map((r) => new URL(r.url).pathname),
+  )
 
 test.describe('text source', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('./#/quiz')
+    await page.goto('./#/fonetyka/teksty?tryb=quiz')
   })
 
   test('offers three modes and starts with pasting', async ({ page }) => {
@@ -32,7 +34,9 @@ test.describe('text source', () => {
   test('picks a passage and puts it in the text field', async ({ page }) => {
     await openMode(page, 'Wybierz fragment')
     await page.getByRole('button', { name: 'Pokaż fragment' }).click()
-    await expect(page.getByLabel('Hebrajski tekst')).toHaveValue(new RegExp(`^${GENESIS_1_1_START}`))
+    await expect(page.getByLabel('Hebrajski tekst')).toHaveValue(
+      new RegExp(`^${GENESIS_1_1_START}`),
+    )
     await expect(page.getByRole('status').filter({ hasText: 'Wstawiono' })).toHaveText(
       'Wstawiono: Księga Rodzaju 1:1',
     )
@@ -112,8 +116,10 @@ test.describe('text source', () => {
   })
 })
 
-test('the converter can use a drawn passage and every word gets a pronunciation', async ({ page }) => {
-  await page.goto('./#/konwerter')
+test('the converter can use a drawn passage and every word gets a pronunciation', async ({
+  page,
+}) => {
+  await page.goto('./#/fonetyka/teksty?tryb=konwerter')
   await openMode(page, 'Wybierz fragment')
   await page.getByLabel('Księga').selectOption({ label: 'Szemot (Księga Wyjścia)' })
   await page.getByLabel('Rozdział').selectOption('20')
@@ -162,7 +168,7 @@ test.describe('settings: books', () => {
   })
 
   test('using a book from the text source downloads it automatically', async ({ page }) => {
-    await page.goto('./#/konwerter')
+    await page.goto('./#/fonetyka/teksty?tryb=konwerter')
     await openMode(page, 'Losuj')
     await page.getByRole('button', { name: 'Losuj fragment' }).click()
     await expect(page.getByText('Wstawiono:')).toBeVisible()
@@ -185,13 +191,15 @@ test('a downloaded book works offline', async ({ page, context }) => {
   await page.evaluate(
     () =>
       navigator.serviceWorker.controller ||
-      new Promise((resolve) => navigator.serviceWorker.addEventListener('controllerchange', resolve)),
+      new Promise((resolve) =>
+        navigator.serviceWorker.addEventListener('controllerchange', resolve),
+      ),
   )
   await page.getByRole('button', { name: 'Pobierz Bereszit' }).click()
   await expect(page.getByText('Pobrano: Bereszit.')).toBeVisible()
 
   await context.setOffline(true)
-  await page.goto('./#/quiz')
+  await page.goto('./#/fonetyka/teksty?tryb=quiz')
   await page.reload()
   await openMode(page, 'Wybierz fragment')
   await page.getByRole('button', { name: 'Pokaż fragment' }).click()

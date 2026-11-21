@@ -214,3 +214,28 @@ button.btn {
 .btn + .btn {
   margin-left: 0.75rem;
 }
+
+/* Sub-navigation pills (Litery, Słowa) */
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.subnav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  background: var(--surface);
+  font-weight: 600;
+  text-decoration: none;
+}
+.subnav-link.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}

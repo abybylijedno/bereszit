@@ -136,6 +136,15 @@ const downloadAll = async () => {
       hebrajskiego, bez tłumaczeń.
     </p>
 
+    <h2>Listy słów</h2>
+    <p>
+      Zakładka „Słowa" korzysta z list frekwencyjnych Biblii hebrajskiej. Rdzenie czasowników,
+      rzeczowniki i liczby wystąpień pochodzą z listy G. Brooke'a Lestera („Frequency List for
+      Biblical Hebrew", 2011). Nikud rzeczowników sprawdziliśmy z listą prof. Marcina Majewskiego
+      (Codex Leningradensis). Polskie znaczenia opracowaliśmy sami, dlatego mogą się różnić od
+      Twojego słownika.
+    </p>
+
     <h2>Postępy w ćwiczeniach</h2>
     <p>
       Aplikacja zapamiętuje w tej przeglądarce, które litery sprawiają Ci kłopot, i częściej je

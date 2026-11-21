@@ -30,41 +30,56 @@ const expectNoOverflow = async (page: Page, label: string) => {
   expect(result.px, `${label}: ${result.wide.join(', ')}`).toBeLessThanOrEqual(0)
 }
 
-const ROUTES = ['quiz', 'litery', 'litery/nazwy', 'litery/nikud', 'konwerter', 'ustawienia']
+const ROUTES = [
+  'fonetyka/teksty?tryb=quiz',
+  'fonetyka/teksty?tryb=konwerter',
+  'gramatyka',
+  'fonetyka/alfabet',
+  'fonetyka/nazwy',
+  'fonetyka/nikud',
+  'slowa/czasowniki',
+  'slowa/rzeczowniki',
+  'ustawienia',
+]
 
 const scenarios: Record<string, (page: Page) => Promise<void>> = {
   'converter breakdown table': async (page) => {
-    await page.goto('./#/konwerter')
-    await page.getByLabel('Hebrajski tekst').fill('וַיִּקְרָא אֱלֹהִים לָאוֹר יוֹם, וְלַחֹשֶׁךְ קָרָא לָיְלָה')
+    await page.goto('./#/fonetyka/teksty?tryb=konwerter')
+    await page
+      .getByLabel('Hebrajski tekst')
+      .fill('וַיִּקְרָא אֱלֹהִים לָאוֹר יוֹם, וְלַחֹשֶׁךְ קָרָא לָיְלָה')
     await page.getByRole('button', { name: /wajikra/ }).click()
   },
   'quiz cards with feedback': async (page) => {
-    await page.goto('./#/quiz')
+    await page.goto('./#/fonetyka/teksty?tryb=quiz')
     await page.getByLabel('Hebrajski tekst').fill(GENESIS_1_1)
     await page.getByRole('button', { name: 'Dalej' }).click()
     await page.getByLabel('Wymowa wyrazu 1', { exact: true }).fill('bera')
     await page.getByRole('button', { name: 'Sprawdź!' }).click()
-    await page.getByRole('button', { name: /Pokaż odpowiedź/ }).first().click()
+    await page
+      .getByRole('button', { name: /Pokaż odpowiedź/ })
+      .first()
+      .click()
   },
   'text source: pick a passage': async (page) => {
-    await page.goto('./#/quiz')
-    await page.getByRole('radio', { name: 'Wybierz fragment' }).check({ force: true })
+    await page.goto('./#/fonetyka/teksty?tryb=quiz')
+    await page.getByRole('radio', { name: 'Wybierz fragment' }).check()
     await page.getByRole('button', { name: 'Pokaż fragment' }).click()
     await expect(page.getByText('Wstawiono:')).toBeVisible()
   },
   'text source: draw a passage': async (page) => {
-    await page.goto('./#/quiz')
-    await page.getByRole('radio', { name: 'Losuj' }).check({ force: true })
+    await page.goto('./#/fonetyka/teksty?tryb=quiz')
+    await page.getByRole('radio', { name: 'Losuj' }).check()
     await page.getByRole('button', { name: 'Losuj fragment' }).click()
     await expect(page.getByText('Wstawiono:')).toBeVisible()
   },
   'letter name quiz': async (page) => {
-    await page.goto('./#/litery/nazwy')
+    await page.goto('./#/fonetyka/nazwy')
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await page.getByRole('group').getByRole('button').first().click()
   },
   'letter nikud quiz': async (page) => {
-    await page.goto('./#/litery/nikud')
+    await page.goto('./#/fonetyka/nikud')
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await page.getByLabel('Jak się to czyta?').fill('x')
     await page.keyboard.press('Enter')
@@ -77,6 +92,8 @@ for (const font of FONTS) {
   test.describe(`font: ${font}`, () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('./')
+      // Let the app finish its start-up redirects before the scenario navigates elsewhere.
+      await page.getByRole('heading', { level: 1 }).waitFor()
       await page.addStyleTag({ content: stress(font) })
     })
 

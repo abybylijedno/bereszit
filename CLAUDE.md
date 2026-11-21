@@ -12,15 +12,22 @@ Node wg `.nvmrc`. Komendy: `npm run dev | build | type-check | lint | format`.
 
 ## Stan obecny vs. plan
 
-Zrobione (krok 1): dolne menu / pasek boczny (>= 56rem), router hash-history, 4 zakładki, własny CSS z motywem jasnym/ciemnym
+Zrobione (krok 1): dolne menu / pasek boczny (>= 56rem), router hash-history, zakładki, własny CSS z motywem jasnym/ciemnym
 (`src/styles/main.css`, tokeny), Quiz jako karty, PWA (vite-plugin-pwa, `registerType: 'prompt'`; baner aktualizacji jeszcze **niezrobiony**),
-Vitest + Playwright. Krok 2 zrobiony: Konwerter (układ międzywierszowy, rozbiór litera po literze, kopiowanie) i wspólny `components/TextSource.vue`
+Vitest + Playwright. Krok 2 zrobiony: Konwerter (obecnie tryb zakładki Fonetyka; układ międzywierszowy, rozbiór litera po literze, kopiowanie) i wspólny `components/TextSource.vue`
 (na razie tylko „Wklej"; wybór/losowanie dojdą tu w kroku 4). `analyze()` w `lib/converter.ts` zwraca rozbiór słów.
-Krok 3 zrobiony: Litery (podtrasy `/litery`, `/litery/nazwy`, `/litery/nikud`; dane z konwertera w `lib/letterData.ts`,
+Krok 3 zrobiony: Litery (obecnie część zakładki Fonetyka: `/fonetyka/alfabet`, `/fonetyka/nazwy`, `/fonetyka/nikud`; dane z konwertera w `lib/letterData.ts`,
 losowanie ważone błędami w `lib/quiz.ts`, statystyki w `lib/stats.ts` -> localStorage, sesja w `composables/useQuizSession.ts`).
 Krok 4 zrobiony: Tora (5 ksiąg) w `public/books`, `TextSource` ma tryby Wklej / Wybierz fragment / Losuj (1-5 wersetów),
 Ustawienia zarządzają księgami i postępami, baner aktualizacji PWA (`components/UpdateBanner.vue`; **nie ma testu e2e** - wymaga dwóch buildów,
 sprawdź ręcznie po zmianie SW). Reszta Tanachu: patrz „Teksty biblijne".
+Menu (4 zakładki): **Fonetyka** (scalone Litery + Quiz + Konwerter; `views/PhoneticsView.vue` z podmenu, panele w `views/phonetics/`), **Gramatyka** (pusta,
+`views/GrammarView.vue`), **Słowa**, **Ustawienia**. Aplikacja startuje na `/fonetyka/alfabet`. Stare adresy `/litery*`, `/quiz`, `/konwerter` przekierowują. Wspólne przyciski trybu: `components/PillRadios.vue`, podmenu: klasy `.subnav`.
+Zakładka **Słowa** (podtrasy `/slowa/czasowniki`, `/slowa/rzeczowniki`): listy frekwencyjne z wyszukiwaniem i sortowaniem
+(`lib/wordList.ts`, widoki `views/WordsView.vue` + `views/words/WordListPanel.vue`), dane w `src/data/verbs.json` (629 rdzeni) i `src/data/nouns.json`
+(700 rzeczowników z nikudem). Dane zrobiono **jednorazowo** z dostarczonych przez autora PDF-ów (lista G. B. Lestera + lista M. Majewskiego); skryptu importu
+w repo nie ma i nie będzie. Polskie znaczenia i nikud rzeczowników są opracowane ręcznie (nikud sprawdzony z listą Majewskiego). Bez ćwiczeń gramatycznych
+(rodzaj, liczba) - autor ich na razie nie chce. Atrybucja list jest w Ustawieniach.
 Reguła „patach furtivum" (Het + Patach = `aH`) działa tylko na końcu wielowyrazowego słowa.
 Testy quizów są deterministyczne dzięki `Math.random = () => 0` w `page.addInitScript` (pierwsze elementy puli po kolei).
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.
@@ -30,16 +37,16 @@ Node: `.nvmrc` (24); w tym środowisku `export PATH=$HOME/.nvm/versions/node/v24
 
 ## Architektura docelowa
 
-Dolne menu (na desktopie może być paskiem bocznym), 4 zakładki, routing **hash-history** (`/#/quiz`), bo GitHub Pages nie ma fallbacku SPA:
+Dolne menu (na desktopie może być paskiem bocznym), 4 zakładki, routing **hash-history** (`/#/fonetyka`), bo GitHub Pages nie ma fallbacku SPA:
 
 | Zakładka | Zawartość |
 |---|---|
-| **Quiz** | Źródło tekstu -> lista kart (słowo he, pole na fonetykę, wynik po `blur`), „Pokaż odpowiedź", podsumowanie. |
-| **Litery** | (1) Alfabet: siatka 27 liter (22 + 5 końcowych) jako ściągawka; (2) quiz **nazw liter** (alef, bet...), odpowiedź z 4 przycisków; (3) quiz **litera + nikud -> fonetyka** (tu dagesz, szwa, szin/sin; litera bez nikudu np. alef jest nieme, więc fonetykę sprawdzamy tylko z nikudem). Sesje po 10 pytań. |
-| **Konwerter** | Źródło tekstu + wynik na żywo, układ międzywierszowy (he nad fonetyką, RTL), dotknięcie słowa = rozbiór litera po literze, „Kopiuj fonetykę". Bez quizu. |
+| **Fonetyka** | Podmenu: **Alfabet** (domyślna podstrona) \| **Nazwy liter** \| **Litery z nikudem** \| **Teksty**. *Alfabet*: siatka 27 liter (22 + 5 końcowych) jako ściągawka. *Nazwy liter*: quiz nazw (alef, bet...), odpowiedź z 4 przycisków. *Litery z nikudem*: quiz litera + nikud -> fonetyka (tu dagesz, szwa, szin/sin; litera bez nikudu np. alef jest nieme, więc fonetykę sprawdzamy tylko z nikudem); sesje po 10 pytań. *Teksty*: wybór **Trybu** (przed „Źródłem tekstu"): *Quiz* albo *Konwerter*; tryb jest w URL (`?tryb=quiz\|konwerter`), oba panele żyją pod `<KeepAlive>` (wklejony tekst i postęp quizu nie giną przy przełączaniu). Quiz tekstu: źródło tekstu -> lista kart (słowo he, pole na fonetykę, wynik po `blur`), „Pokaż odpowiedź", podsumowanie. Konwerter: źródło tekstu + wynik na żywo, układ międzywierszowy (he nad fonetyką, RTL), dotknięcie słowa = rozbiór litera po literze, „Kopiuj wymowę". |
+| **Gramatyka** | Na razie pusta strona („w przygotowaniu"). Plan: podstrony m.in. Quiz, Czasy, Formy (czasy: na lekcjach tylko perfectum i imperfectum; „forma" = binjan, na razie zawsze kal). Bez ćwiczeń z rzeczownikami. |
+| **Słowa** | Listy frekwencyjne: najczęstsze czasowniki (rdzeń + znaczenie w bezokoliczniku) i rzeczowniki (z nikudem i wymową). Wyszukiwanie po polsku, wymowie lub hebrajskich literach; sortowanie. Na razie tylko przeglądanie. |
 | **Ustawienia** | Zarządzanie pobranymi księgami, (opcjonalnie) rozmiar czcionki, o aplikacji, licencje i atrybucja Mechon-Mamre. Motyw podąża za systemem (`prefers-color-scheme`). |
 
-**Wspólny komponent „Źródło tekstu"** (Quiz i Konwerter): zakładki *Wklej* / *Wybierz fragment* (księga -> rozdział -> werset od-do) / *Losuj*.
+**Wspólny komponent „Źródło tekstu"** (Fonetyka > Teksty: Quiz i Konwerter): zakładki *Wklej* / *Wybierz fragment* (księga -> rozdział -> werset od-do) / *Losuj*.
 Liczba wersetów: `<select>` 1-5.
 
 ### Teksty biblijne (Mechon-Mamre)
@@ -93,7 +100,7 @@ Quiz liter powtarza częściej litery z błędami.
 
 - **Vitest** (`src/**/*.test.ts`): jednostkowe dla `lib/`. Przypadki oparte na słowach z Księgi Rodzaju; oczekiwane wartości
   wygenerowane obecnym konwerterem (snapshot-like, zatwierdzone przez autora) - chronią przed regresją przy zmianie reguł.
-- **Playwright** (`e2e/`): projekty desktop (chromium) i mobile (Pixel 7); przepływy Quiz/Litery/Konwerter/Ustawienia,
+- **Playwright** (`e2e/`): projekty desktop (chromium) i mobile (Pixel 7); przepływy Fonetyka (Alfabet/Litery/Teksty)/Słowa/Ustawienia,
   nawigacja dolna, `@axe-core/playwright` (tagi wcag2a, wcag2aa, wcag21aa, wcag22aa + `color-contrast-enhanced`),
   PWA (manifest, SW, offline). Dane biblijne w testach mockowane małym fixture, nie pełnym korpusem.
   Axe nie pokrywa całego AAA, reszta wg listy powyżej (ręcznie). **Uwaga:** axe 4.14 uznawał kontrast 3,2:1 za zaliczony dla

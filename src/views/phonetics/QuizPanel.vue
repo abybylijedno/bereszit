@@ -61,9 +61,7 @@ const summary = computed(() => {
 </script>
 
 <template>
-  <section>
-    <h1>Quiz</h1>
-
+  <div>
     <form v-if="!words" @submit.prevent="start">
       <p>
         Wpisz lub wklej hebrajski tekst z nikudem. Potem wpiszesz wymowę każdego wyrazu
@@ -131,7 +129,7 @@ const summary = computed(() => {
         <button type="button" class="btn" @click="reset">Od nowa</button>
       </p>
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped>

@@ -16,7 +16,12 @@ test('manifest is linked and valid', async ({ page, request }) => {
 })
 
 test('icons are reachable', async ({ request, baseURL }) => {
-  for (const file of ['icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png']) {
+  for (const file of [
+    'icon-192.png',
+    'icon-512.png',
+    'icon-maskable-512.png',
+    'apple-touch-icon.png',
+  ]) {
     const res = await request.get(new URL(file, baseURL).toString())
     expect(res.ok(), file).toBe(true)
   }
@@ -32,20 +37,23 @@ test('works offline after the service worker takes over', async ({ page, context
   await page.evaluate(
     () =>
       navigator.serviceWorker.controller ||
-      new Promise((resolve) => navigator.serviceWorker.addEventListener('controllerchange', resolve)),
+      new Promise((resolve) =>
+        navigator.serviceWorker.addEventListener('controllerchange', resolve),
+      ),
   )
 
   await context.setOffline(true)
   await page.reload()
-  await expect(page.getByRole('heading', { level: 1, name: 'Quiz' })).toBeVisible()
-  await page.getByRole('link', { name: 'Litery' }).click()
-  await expect(page.getByRole('heading', { level: 1, name: 'Litery' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: 'Fonetyka' })).toBeVisible()
+  await page.getByRole('link', { name: 'Słowa' }).click()
+  await expect(page.getByRole('heading', { level: 1, name: 'Słowa' })).toBeVisible()
 })
 
 test('makes no requests to external hosts', async ({ page, baseURL }) => {
   const external: string[] = []
   page.on('request', (r) => {
-    if (!r.url().startsWith(new URL(baseURL!).origin) && !r.url().startsWith('data:')) external.push(r.url())
+    if (!r.url().startsWith(new URL(baseURL!).origin) && !r.url().startsWith('data:'))
+      external.push(r.url())
   })
   await page.goto('./')
   await page.waitForLoadState('networkidle')

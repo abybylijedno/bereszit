@@ -37,8 +37,7 @@ const copy = async () => {
 </script>
 
 <template>
-  <section>
-    <h1>Konwerter</h1>
+  <div>
     <p>
       Wpisz lub wklej hebrajski tekst z nikudem. Pod każdym wyrazem zobaczysz jego wymowę. Wybierz
       wyraz, aby zobaczyć, jak powstała wymowa litera po literze.
@@ -102,7 +101,7 @@ const copy = async () => {
     <p v-else-if="hebrewText.trim()" role="status">
       Nie znaleziono hebrajskich liter w podanym tekście.
     </p>
-  </section>
+  </div>
 </template>
 
 <style scoped>

@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import { expectAccessible, GENESIS_1_1 } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('./#/quiz')
+  await page.goto('./#/fonetyka/teksty?tryb=quiz')
 })
 
 test('refuses to continue without text', async ({ page }) => {

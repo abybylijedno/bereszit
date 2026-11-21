@@ -14,6 +14,7 @@ import {
   type BookIndex,
   type Passage,
 } from '@/lib/bible'
+import PillRadios from '@/components/PillRadios.vue'
 
 const text = defineModel<string>({ required: true })
 
@@ -103,13 +104,7 @@ const draw = () => {
 
 <template>
   <div class="text-source">
-    <fieldset class="modes">
-      <legend>Źródło tekstu</legend>
-      <label v-for="m in modes" :key="m.value" class="mode">
-        <input v-model="mode" type="radio" :name="`${id}-mode`" :value="m.value" />
-        <span>{{ m.label }}</span>
-      </label>
-    </fieldset>
+    <PillRadios v-model="mode" legend="Źródło tekstu" :options="modes" />
 
     <div v-if="mode !== 'paste'" class="panel card">
       <p v-if="!index && !loadError" role="status">Wczytywanie listy ksiąg…</p>
@@ -187,48 +182,6 @@ label {
   margin: 0.5rem 0 0.25rem;
 }
 
-fieldset.modes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  border: 0;
-  padding: 0;
-  margin: 0 0 1rem;
-}
-.modes legend {
-  font-weight: 600;
-  padding: 0;
-  margin-bottom: 0.4rem;
-}
-
-.mode {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  margin: 0;
-  padding: 0.4rem 1rem;
-  border: 2px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  cursor: pointer;
-}
-.mode input {
-  position: absolute;
-  opacity: 0;
-  inset: 0;
-  margin: 0;
-  cursor: pointer;
-}
-.mode:has(input:checked) {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--on-primary);
-}
-.mode:has(input:focus-visible) {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
 
 .panel {
   margin-bottom: 1rem;
