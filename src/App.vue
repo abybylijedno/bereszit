@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import UpdateBanner from '@/components/UpdateBanner.vue'
 
 const tabs = [
-  { to: '/fonetyka', label: 'Fonetyka', icon: 'M3 12h3l3-7 4 14 3-10 2 3h3' },
+  { to: '/fonetyka', label: 'Fonetyka', icon: 'M2.5 12C5 9.5 7 8 9 8c1.5 0 2.5 1 3 1.5C12.5 9 13.5 8 15 8c2 0 4 1.5 6.5 4-2.5 3-5 5.5-9.5 5.5S5 15 2.5 12ZM2.5 12c4.5 1.4 14.5 1.4 19 0' },
   { to: '/gramatyka', label: 'Gramatyka', icon: 'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4zM8 17h11' },
   { to: '/slowa', label: 'Słowa', icon: 'M4 5h16v11H9l-5 4V5z' },
   { to: '/ustawienia', label: 'Ustawienia', icon: 'M4 7h10M18 7h2M4 17h2M10 17h10M16 4v6M8 14v6' },
