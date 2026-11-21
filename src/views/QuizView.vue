@@ -7,6 +7,7 @@ import { computed, reactive, ref } from 'vue'
 import { diffChars, type Change } from 'diff'
 import { convert } from '@/lib/converter'
 import { splitWords } from '@/lib/words'
+import TextSource from '@/components/TextSource.vue'
 
 const hebrewInput = ref('')
 const words = ref<string[] | null>(null)
@@ -68,18 +69,7 @@ const summary = computed(() => {
         Wpisz lub wklej hebrajski tekst z nikudem. Potem wpiszesz wymowę każdego wyrazu
         osobno.
       </p>
-      <label for="hebrew-input">Hebrajski tekst</label>
-      <textarea
-        id="hebrew-input"
-        v-model="hebrewInput"
-        class="field he-input"
-        lang="he"
-        dir="rtl"
-        rows="5"
-        :aria-describedby="error ? 'hebrew-error' : undefined"
-        :aria-invalid="error ? 'true' : undefined"
-      />
-      <p v-if="error" id="hebrew-error" class="error" role="alert">{{ error }}</p>
+      <TextSource v-model="hebrewInput" :error="error" />
       <p><button type="submit" class="btn btn-primary">Dalej</button></p>
     </form>
 
@@ -149,19 +139,6 @@ label {
   display: block;
   font-weight: 600;
   margin: 0.5rem 0 0.25rem;
-}
-
-.he-input {
-  font-size: 1.6rem;
-  min-height: 8rem;
-  resize: vertical;
-}
-
-.error {
-  color: var(--bad-text);
-  background: var(--bad-bg);
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
 }
 
 .cards {

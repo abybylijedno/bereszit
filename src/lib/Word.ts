@@ -22,25 +22,40 @@ export class Word {
     )
   }
 
-  toString(): string {
-    // Check YHWH
+  /** Hebrew text of the word as built from its letters. */
+  get source(): string {
+    return this.letters.map((l) => l.source).join('')
+  }
+
+  /**
+   * Phonetics of every letter separately (for the letter-by-letter breakdown).
+   * The Tetragrammaton is a single part, because it is read as a whole.
+   */
+  parts(): string[] {
     if (this.isYHWH) {
-      // Special case for the Tetragrammaton
-      // In Jewish tradition, it is often pronounced as "Adonai"
-      return 'adonai'
+      // In Jewish tradition, the Tetragrammaton is read as "Adonai"
+      return ['adonai']
     }
 
-    let str = ''
-    let previosStrLetter: string | null = null
-    let previosNikud: Nikud | null = null
+    const parts: string[] = []
+    let previousNikud: Nikud | null = null
 
     for (let i = 0; i < this.letters.length; i++) {
-      previosStrLetter = str.length > 0 ? str[str.length - 1] || null : null
-      // @ts-expect-error TS2532
-      previosNikud = i > 0 ? this.letters[i - 1]?.nikud : null
-
-      str += this.letters[i]!.toWordString(i, this.letters.length, previosStrLetter, previosNikud)
+      const previousStr = parts.join('')
+      const previousStrLetter = previousStr.length > 0 ? previousStr[previousStr.length - 1]! : null
+      const part = this.letters[i]!.toWordString(
+        i,
+        this.letters.length,
+        previousStrLetter,
+        previousNikud,
+      )
+      parts.push(part)
+      previousNikud = this.letters[i]!.nikud
     }
-    return str
+    return parts
+  }
+
+  toString(): string {
+    return this.parts().join('')
   }
 }

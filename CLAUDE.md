@@ -14,7 +14,9 @@ Node wg `.nvmrc`. Komendy: `npm run dev | build | type-check | lint | format`.
 
 Zrobione (krok 1): dolne menu / pasek boczny (>= 56rem), router hash-history, 4 zakładki, własny CSS z motywem jasnym/ciemnym
 (`src/styles/main.css`, tokeny), Quiz jako karty, PWA (vite-plugin-pwa, `registerType: 'prompt'`; baner aktualizacji jeszcze **niezrobiony**),
-Vitest + Playwright. Litery, Konwerter, Ustawienia to na razie `ComingSoon`.
+Vitest + Playwright. Krok 2 zrobiony: Konwerter (układ międzywierszowy, rozbiór litera po literze, kopiowanie) i wspólny `components/TextSource.vue`
+(na razie tylko „Wklej"; wybór/losowanie dojdą tu w kroku 4). `analyze()` w `lib/converter.ts` zwraca rozbiór słów.
+Litery i Ustawienia to na razie `ComingSoon`.
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.
 
 Komendy testów: `npm test` (Vitest), `npm run test:e2e` (Playwright; sam buduje i startuje `vite preview`), `npm run icons` (PNG z `icon.svg`).

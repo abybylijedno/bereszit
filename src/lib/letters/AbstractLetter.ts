@@ -6,6 +6,8 @@ export abstract class AbstractLetter {
   defaultConsonant: string
   nikud: Nikud | null = null
   dagesz: boolean = false
+  /** Hebrew characters (letter, dots, nikud) this letter was built from. */
+  source: string = ''
 
   /**
    * Constructor
