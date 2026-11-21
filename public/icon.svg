@@ -7,11 +7,10 @@
    viewBox="0 0 256 256.00001"
    version="1.1"
    id="svg1"
-   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    sodipodi:docname="icon.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -25,50 +24,28 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="1.025"
-     inkscape:cx="9.7560976"
-     inkscape:cy="92.195122"
-     inkscape:window-width="1920"
-     inkscape:window-height="1140"
+     inkscape:cx="54.146341"
+     inkscape:cy="215.12195"
+     inkscape:window-width="2560"
+     inkscape:window-height="1412"
      inkscape:window-x="0"
-     inkscape:window-y="32"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs1">
-    <linearGradient
-       id="linearGradient1"
-       inkscape:collect="always">
-      <stop
-         style="stop-color:#717171;stop-opacity:1;"
-         offset="0"
-         id="stop1" />
-      <stop
-         style="stop-color:#7a7a7a;stop-opacity:1;"
-         offset="1"
-         id="stop2" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1"
-       id="linearGradient2"
-       x1="0"
-       y1="256"
-       x2="243.92355"
-       y2="20.141514"
-       gradientUnits="userSpaceOnUse" />
-  </defs>
+     id="defs1" />
   <g
      inkscape:label="Warstwa 1"
      inkscape:groupmode="layer"
      id="layer1">
     <path
        id="rect1"
-       style="fill:url(#linearGradient2);stroke-width:1.973;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill"
+       style="fill:#0b3a8c;stroke-width:1.973;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill;fill-opacity:1.0"
        d="M 54.395683,0 H 201.60432 C 231.73953,0 256,24.260475 256,54.395683 V 201.60432 C 256,231.73953 231.73953,256 201.60432,256 H 54.395683 C 24.260475,256 0,231.73953 0,201.60432 V 54.395683 C 0,24.260475 24.260475,0 54.395683,0 Z" />
     <path
-       d="m 50.229458,213.65814 6.449136,-44.60652 Q 59.634448,147.01707 68.233295,130.35681 76.832143,113.69654 96.448264,104.02283 83.818707,88.168709 73.338861,75.001724 62.859015,61.834738 56.141166,54.310746 h 29.827253 q 7.523991,8.867562 16.660271,20.690978 9.13627,11.823415 20.95969,26.871396 4.83685,6.71785 9.94241,13.70442 5.10557,6.98656 10.47985,14.24184 13.70441,-7.25528 19.88484,-20.15355 6.44913,-12.898273 8.06142,-30.095969 l 2.41842,-25.259115 h 24.72169 l -2.41843,26.065257 q -2.14971,22.034547 -12.09213,38.426097 -9.6737,16.39156 -29.55854,26.06526 11.55471,16.39155 23.37812,33.85796 11.82342,17.1977 22.30326,34.93282 h -28.21497 q -15.58541,-26.60268 -32.24568,-50.51823 -16.39155,-24.18426 -31.97696,-44.60652 -13.704414,7.52399 -19.347408,20.69098 -5.374279,13.16698 -7.792705,30.63339 l -6.449136,43.80038 z"
-       id="text1"
-       style="font-size:268.714px;line-height:1.25;font-family:Lato;-inkscape-font-specification:'Lato, Normal';font-variant-ligatures:none;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#f9f9f9;stroke-width:0.999999"
+       style="font-size:263.714px;line-height:1.25;font-family:'Noto Serif Hebrew';-inkscape-font-specification:'Noto Serif Hebrew, Normal';font-variant-ligatures:none;letter-spacing:0px;word-spacing:0px;fill:#ffffff;stroke-width:14.6509"
+       d="m 62.467049,211.65698 v -12.13084 h 2.373426 q 6.065421,0 7.911419,-2.10971 2.109712,-2.37343 0.791142,-7.38399 L 69.059898,170.78131 Q 66.159044,157.85933 66.686472,147.57448 67.2139,137.02592 73.80675,126.47736 L 86.465022,105.64396 71.433324,88.502549 q -6.592849,-7.383991 -7.911419,-14.240555 -1.054856,-7.120278 -1.054856,-9.757418 0,-7.647705 2.109712,-12.658271 2.109711,-5.010566 4.483137,-10.812274 h 6.329136 v 1.054856 q 0,3.95571 2.109712,9.493704 2.109712,5.537994 9.493704,13.976841 l 55.64365,63.291358 q 0.52743,-4.21942 2.63714,-10.02113 2.37343,-5.80171 4.74685,-10.28485 l 13.44942,-24.789112 -6.06543,-1.054856 q -6.59284,-1.054856 -10.02113,-3.95571 -3.16456,-3.164568 -3.16456,-12.921986 0,-4.483137 1.31857,-10.812273 1.58228,-6.329136 5.01056,-13.976842 h 7.12028 v 1.582284 q 0,6.065422 2.90085,8.966276 2.90086,2.63714 8.17514,3.691996 l 14.50427,2.373426 q 10.28484,1.582284 10.28484,14.240555 0,2.63714 -0.52743,6.065422 -0.26371,3.164568 -1.58228,10.284845 l -16.61398,-2.637139 -13.1857,24.525404 q -4.48314,8.70256 -6.32914,16.61398 -1.58228,7.91142 -1.58228,14.76798 l 27.42625,31.38197 q 5.27428,6.06542 7.12028,11.3397 1.846,5.27428 1.846,10.54856 0,8.43884 -3.16457,12.65827 -2.90085,3.95571 -6.06542,6.85656 h -3.692 q -0.26371,-3.42828 -2.37342,-6.85656 -2.10971,-3.692 -7.38399,-9.49371 l -73.576207,-83.86104 -5.801707,10.81227 q -4.746852,8.96628 -5.27428,16.61398 -0.527428,7.64771 3.95571,17.66884 l 10.021131,22.15197 q 6.856563,15.55913 0,30.32711 z"
+       id="text2"
        aria-label="א" />
   </g>
 </svg>
