@@ -77,6 +77,10 @@ p {
   font-family: var(--font-he);
   line-height: 1.8;
 }
+/* Form fields set `font: inherit`, which would otherwise win over the rule above. */
+.field[lang='he'] {
+  font-family: var(--font-he);
+}
 
 .sr-only {
   position: absolute;

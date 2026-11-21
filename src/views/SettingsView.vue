@@ -72,6 +72,14 @@ const downloadAll = async () => {
 
 <template>
   <section>
+    <header class="app-header">
+      <img src="/icon.svg" alt="" width="48" height="48" />
+      <div>
+        <p class="brand">Bereszit</p>
+        <p class="tagline">Pomocnik przy nauce czytania hebrajskiego</p>
+      </div>
+    </header>
+
     <h1>Ustawienia</h1>
 
     <h2>Teksty biblijne</h2>
@@ -141,10 +149,33 @@ const downloadAll = async () => {
       Bereszit to pomocnik w nauce czytania starohebrajskiego z nikudem. Wymowa jest zapisywana
       polskimi literami według zasad z lekcji hebrajskiego.
     </p>
+    <p class="author">Autor: Marek Sierociński, 2025.</p>
   </section>
 </template>
 
 <style scoped>
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+.app-header p {
+  margin: 0;
+}
+.brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.tagline {
+  color: var(--muted);
+}
+.author {
+  margin-top: 2rem;
+  color: var(--muted);
+}
 .books {
   list-style: none;
   padding: 0;

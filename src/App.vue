@@ -32,15 +32,7 @@ const tabs = [
     </nav>
 
     <main id="content" tabindex="-1">
-      <header class="app-header">
-        <img src="/icon.svg" alt="" width="32" height="32" />
-        <div>
-          <p class="brand">Bereszit</p>
-          <p class="tagline">Pomocnik przy nauce czytania hebrajskiego</p>
-        </div>
-      </header>
       <RouterView />
-      <footer>Marek Sierociński, 2025</footer>
     </main>
   </div>
   <UpdateBanner />
@@ -58,32 +50,6 @@ main {
 }
 main:focus {
   outline: none;
-}
-
-.app-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-}
-.app-header p {
-  margin: 0;
-}
-.brand {
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-.tagline {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-footer {
-  margin-top: 4rem;
-  font-size: 0.85rem;
-  color: var(--muted);
 }
 
 .tabs {
