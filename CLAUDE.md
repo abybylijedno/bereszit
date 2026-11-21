@@ -97,5 +97,9 @@ Quiz liter powtarza częściej litery z błędami.
 
 ## Zasady pracy
 
-- Nie wdrażaj funkcji spoza tego dokumentu bez uzgodnienia. Commity po polsku/krótko, jak w historii repo.
+- Nie wdrażaj funkcji spoza tego dokumentu bez uzgodnienia.
+- **Commity:** format Conventional Commits (`feat:`, `fix:`, `test:`, `docs:`, `refactor:`, `chore:` ...), opis po polsku, krótko.
+  Autorem commita jest zawsze Claude: `git commit --author="Claude <noreply@anthropic.com>"` (committer zostaje użytkownik).
+  Na końcu wiadomości trailer `Co-Authored-By` zgodny z bieżącą instrukcją środowiska. Commituj tylko na prośbę, nie pushuj bez polecenia
+  (push na `master` uruchamia deploy).
 - Nie wysyłaj danych użytkownika do usług zewnętrznych; aplikacja ma działać w pełni offline po pobraniu.
