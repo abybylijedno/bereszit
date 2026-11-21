@@ -28,6 +28,10 @@ Zakładka **Słowa** (podtrasy `/slowa/czasowniki`, `/slowa/rzeczowniki`): listy
 (700 rzeczowników z nikudem). Dane zrobiono **jednorazowo** z dostarczonych przez autora PDF-ów (lista G. B. Lestera + lista M. Majewskiego); skryptu importu
 w repo nie ma i nie będzie. Polskie znaczenia i nikud rzeczowników są opracowane ręcznie (nikud sprawdzony z listą Majewskiego). Bez ćwiczeń gramatycznych
 (rodzaj, liczba) - autor ich na razie nie chce. Atrybucja list jest w Ustawieniach.
+Wyszukiwanie po hebrajsku bez klawiatury hebrajskiej: przycisk `א` przy polu „Szukaj” otwiera `components/HebrewKeyboard.vue` (modal `<dialog>` jak w
+nawigacji samochodowej): aktywne są tylko litery prowadzące do jakiegoś słowa (`nextLetters` w `lib/wordList.ts`, 22 litery, końcowe traktowane jak zwykłe).
+Modal zostaje otwarty po każdej literze i zamyka się sam: czasowniki po 3 literach (rdzeń), rzeczowniki gdy zostają ≤ 3 słowa (`isKeyboardDone`).
+Start czyści pole; „Cofnij” kasuje ostatnią literę, „Anuluj” / Esc przywraca poprzednie wyszukiwanie.
 Reguła „patach furtivum" (Het + Patach = `aH`) działa tylko na końcu wielowyrazowego słowa.
 Testy quizów są deterministyczne dzięki `Math.random = () => 0` w `page.addInitScript` (pierwsze elementy puli po kolei).
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.

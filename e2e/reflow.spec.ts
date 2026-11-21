@@ -78,6 +78,11 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await page.getByRole('group').getByRole('button').first().click()
   },
+  'Hebrew search keyboard': async (page) => {
+    await page.goto('./#/slowa/czasowniki')
+    await page.getByRole('button', { name: 'Otwórz klawiaturę hebrajską' }).click()
+    await page.getByRole('dialog', { name: 'Klawiatura hebrajska' }).waitFor()
+  },
   'letter nikud quiz': async (page) => {
     await page.goto('./#/fonetyka/nikud')
     await page.getByRole('button', { name: 'Zaczynamy' }).click()

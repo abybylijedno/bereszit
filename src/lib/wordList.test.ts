@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { filterWords, fold, getWords, hebrewSkeleton, sortWords } from './wordList'
+import {
+  filterWords,
+  fold,
+  getKeyboardLetters,
+  getWords,
+  hebrewSkeleton,
+  isKeyboardDone,
+  nextLetters,
+  sortWords,
+} from './wordList'
 
 describe('getWords', () => {
   it('loads the verb and noun lists', () => {
@@ -68,10 +77,78 @@ describe('sortWords', () => {
 })
 
 describe('helpers', () => {
-  it('strips marks from Hebrew', () => {
-    expect(hebrewSkeleton('מֶלֶךְ')).toBe('מלך')
+  it('strips marks from Hebrew and writes final letters as regular ones', () => {
+    expect(hebrewSkeleton('מֶלֶךְ')).toBe('מלכ')
+    expect(hebrewSkeleton('שָׁלוֹם')).toBe('שלומ')
   })
   it('folds Polish letters', () => {
     expect(fold('Żółć')).toBe('zolc')
+  })
+})
+
+describe('search keyboard', () => {
+  const verbs = getWords('verbs')
+  const nouns = getWords('nouns')
+
+  it('has the 22 regular letters in alphabet order', () => {
+    const letters = getKeyboardLetters().map((l) => l.hebrew)
+    expect(letters).toHaveLength(22)
+    expect(letters[0]).toBe('א')
+    expect(letters[letters.length - 1]).toBe('ת')
+  })
+
+  it('enables every letter at the start, because all of them occur in verb roots', () => {
+    expect(nextLetters(verbs, '').size).toBe(22)
+  })
+
+  it('enables only letters that lead to some root', () => {
+    const afterAlef = nextLetters(verbs, 'אמ')
+    expect(afterAlef.has('ר')).toBe(true) // אמר
+    const afterGimel = nextLetters(verbs, 'ג')
+    expect(afterGimel.has('ק')).toBe(false)
+    expect(afterGimel.size).toBeGreaterThan(0)
+    expect(afterGimel.size).toBeLessThan(22)
+  })
+
+  it('agrees with filterWords: an enabled letter always leaves a match, a dimmed one never', () => {
+    for (const typed of ['', 'מ', 'שׁ', 'אמ']) {
+      const enabled = nextLetters(verbs, typed)
+      for (const { hebrew } of getKeyboardLetters()) {
+        const matches = filterWords(verbs, typed + hebrew).length
+        expect(enabled.has(hebrew), `${typed}${hebrew}`).toBe(matches > 0)
+      }
+    }
+  })
+
+  it('treats final letters like regular ones when matching typed text', () => {
+    expect(filterWords(verbs, 'מלך').length).toBe(filterWords(verbs, 'מלכ').length)
+    expect(filterWords(verbs, 'מלכ').length).toBeGreaterThan(0)
+  })
+
+  it('finishes a verb search after three letters', () => {
+    expect(isKeyboardDone('verbs', 'אמ', 2, 5)).toBe(false)
+    expect(isKeyboardDone('verbs', 'אמר', 1, 5)).toBe(true)
+  })
+
+  it('finishes a noun search when at most three words match', () => {
+    expect(isKeyboardDone('nouns', 'מ', 40, 20)).toBe(false)
+    expect(isKeyboardDone('nouns', 'מלכ', 3, 5)).toBe(true)
+    expect(isKeyboardDone('nouns', 'מלכ', 1, 5)).toBe(true)
+  })
+
+  it('finishes when no letter can follow', () => {
+    expect(isKeyboardDone('verbs', 'מר', 1, 0)).toBe(true)
+  })
+
+  it('narrows nouns to three or fewer words within six letters', () => {
+    // Walking the first enabled letter each time must end in a handful of steps.
+    let typed = ''
+    for (let step = 0; step < 6; step++) {
+      const matches = filterWords(nouns, typed).length
+      const enabled = nextLetters(nouns, typed)
+      if (isKeyboardDone('nouns', typed, matches, enabled.size) && typed) break
+      typed += [...enabled][0] ?? ''
+    }
+    expect(filterWords(nouns, typed).length).toBeGreaterThan(0)
   })
 })

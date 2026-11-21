@@ -3,7 +3,8 @@
  * A searchable, sortable list of the most frequent Hebrew verbs or nouns.
  * Verbs are listed as roots (three consonants); nouns as vocalized words with phonetics.
  */
-import { computed, ref } from 'vue'
+import { computed, ref, useTemplateRef } from 'vue'
+import HebrewKeyboard from '@/components/HebrewKeyboard.vue'
 import { filterWords, getWords, sortWords, type WordKind, type WordSort } from '@/lib/wordList'
 
 const props = defineProps<{ kind: WordKind }>()
@@ -13,6 +14,19 @@ const sort = ref<WordSort>('count')
 
 const all = getWords(props.kind)
 const visible = computed(() => sortWords(filterWords(all, query.value), sort.value))
+
+const keyboard = useTemplateRef<InstanceType<typeof HebrewKeyboard>>('keyboard')
+let queryBeforeKeyboard = ''
+
+// Like a car navigation: the keyboard starts from an empty search and narrows it letter by letter.
+const openKeyboard = () => {
+  queryBeforeKeyboard = query.value
+  query.value = ''
+  keyboard.value?.open()
+}
+const cancelKeyboard = () => {
+  query.value = queryBeforeKeyboard
+}
 
 const isVerbs = props.kind === 'verbs'
 const title = isVerbs ? 'Czasowniki' : 'Rzeczowniki'
@@ -34,18 +48,30 @@ const title = isVerbs ? 'Czasowniki' : 'Rzeczowniki'
     <div class="controls">
       <div>
         <label for="word-search">Szukaj</label>
-        <input
-          id="word-search"
-          v-model="query"
-          type="search"
-          class="field"
-          autocomplete="off"
-          autocapitalize="none"
-          spellcheck="false"
-          aria-describedby="word-search-hint"
-        />
+        <div class="search-row">
+          <input
+            id="word-search"
+            v-model="query"
+            type="search"
+            class="field"
+            dir="auto"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-describedby="word-search-hint"
+          />
+          <button
+            type="button"
+            class="kbd-button"
+            aria-label="Otwórz klawiaturę hebrajską"
+            @click="openKeyboard"
+          >
+            <span lang="he" aria-hidden="true">א</span>
+          </button>
+        </div>
         <p id="word-search-hint" class="hint">
-          Wpisz polskie znaczenie, wymowę albo hebrajskie litery.
+          Wpisz polskie znaczenie, wymowę albo hebrajskie litery. Przycisk z literą alef otwiera
+          klawiaturę hebrajską.
         </p>
       </div>
       <div>
@@ -56,6 +82,14 @@ const title = isVerbs ? 'Czasowniki' : 'Rzeczowniki'
         </select>
       </div>
     </div>
+
+    <HebrewKeyboard
+      ref="keyboard"
+      :entries="all"
+      :kind="kind"
+      @change="query = $event"
+      @cancel="cancelKeyboard"
+    />
 
     <p role="status" class="count">
       <template v-if="visible.length === 0">Brak wyników. Spróbuj innego słowa.</template>
@@ -86,6 +120,27 @@ label {
   display: block;
   font-weight: 600;
   margin: 0 0 0.25rem;
+}
+.search-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+.search-row .field {
+  flex: 1;
+  min-width: 0;
+}
+.kbd-button {
+  flex: none;
+  width: 48px;
+  min-height: 48px;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--on-primary);
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 .hint {
   margin: 0.25rem 0 0;
