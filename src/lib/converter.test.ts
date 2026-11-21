@@ -32,6 +32,12 @@ describe('convert: single words', () => {
     expect(convert(hebrew)).toBe(phonetics)
   })
 
+  it('reads Het with Patach as "aH" only at the end of a word (furtive patach)', () => {
+    expect(convert('מָשִׁיחַ')).toBe('masziaH')
+    expect(convert('חַיַּת')).toBe('Hajat')
+    expect(convert('חַ')).toBe('Ha')
+  })
+
   it('reads the Tetragrammaton as "adonai"', () => {
     expect(convert('יְהוָה')).toBe('adonai')
   })
