@@ -43,3 +43,6 @@ __screenshots__/
 
 # Raw pages downloaded by scripts/fetch-books.mjs
 /.cache/
+
+# Input
+input/
