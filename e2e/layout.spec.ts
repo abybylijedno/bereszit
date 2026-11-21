@@ -71,3 +71,35 @@ test.describe('Hebrew fields use the same font as the rest of the Hebrew text', 
     expect(family).not.toContain(FONT)
   })
 })
+
+test.describe('navigation layout', () => {
+  test('on a wide screen the side menu spans the full height of the window', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 })
+    await page.goto('./#/quiz')
+    const nav = page.getByRole('navigation', { name: 'Główna nawigacja' })
+    const box = await nav.boundingBox()
+    expect(box!.x).toBe(0)
+    expect(box!.y).toBe(0)
+    expect(box!.height).toBe(720)
+  })
+
+  test('the side menu stays full height when the page is taller than the window', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 500 })
+    await page.goto('./#/litery')
+    await page.getByRole('heading', { level: 1, name: 'Litery' }).waitFor()
+    await page.mouse.wheel(0, 2000)
+    const box = await page.getByRole('navigation', { name: 'Główna nawigacja' }).boundingBox()
+    expect(box!.y).toBe(0)
+    expect(box!.height).toBe(500)
+  })
+
+  test('on a phone the menu is a bar at the bottom', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 800 })
+    await page.goto('./#/quiz')
+    const box = await page.getByRole('navigation', { name: 'Główna nawigacja' }).boundingBox()
+    expect(box!.x).toBe(0)
+    expect(box!.width).toBe(390)
+    expect(box!.y + box!.height).toBe(800)
+    expect(box!.height).toBeLessThan(120)
+  })
+})

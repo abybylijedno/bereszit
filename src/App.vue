@@ -93,7 +93,7 @@ main:focus {
   .tabs {
     top: 0;
     right: auto;
-    bottom: auto;
+    bottom: 0;
     width: 11rem;
     flex-direction: column;
     justify-content: flex-start;
