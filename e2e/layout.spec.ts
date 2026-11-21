@@ -15,7 +15,7 @@ for (const route of [
     await page.getByRole('heading', { level: 1 }).waitFor()
     await expect(page.locator('#content header')).toHaveCount(0)
     await expect(page.getByRole('contentinfo')).toHaveCount(0)
-    await expect(page.getByText('Pomocnik przy nauce czytania hebrajskiego')).toHaveCount(0)
+    await expect(page.getByText('Pomocnik przy nauce czytania biblijnego hebrajskiego')).toHaveCount(0)
     await expect(page.getByText('Marek Sierociński')).toHaveCount(0)
   })
 }
@@ -24,7 +24,7 @@ test('settings: starts with the logo header, ends with the author', async ({ pag
   await page.goto('./#/ustawienia')
   const header = page.locator('#content header')
   await expect(header).toContainText('Bereszit')
-  await expect(header).toContainText('Pomocnik przy nauce czytania hebrajskiego')
+  await expect(header).toContainText('Pomocnik przy nauce czytania biblijnego hebrajskiego')
 
   const order = await page.evaluate(() => {
     const main = document.querySelector('#content')!

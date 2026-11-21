@@ -17,7 +17,7 @@ export default defineConfig({
       manifest: {
         name: 'Bereszit',
         short_name: 'Bereszit',
-        description: 'Pomocnik przy nauce czytania starohebrajskiego',
+        description: 'Pomocnik przy nauce czytania biblijnego hebrajskiego',
         lang: 'pl',
         start_url: '/bereszit/',
         scope: '/bereszit/',
@@ -27,7 +27,12 @@ export default defineConfig({
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: 'icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          {
+            src: 'icon-maskable-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
         ],
       },
       workbox: {

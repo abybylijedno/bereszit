@@ -25,7 +25,9 @@ const bookError = ref('')
 
 const books = computed(() => index.value?.books ?? [])
 const kb = (bytes: number) => `${Math.round(bytes / 1024)} KB`
-const allDownloaded = computed(() => books.value.length > 0 && downloaded.value.size === books.value.length)
+const allDownloaded = computed(
+  () => books.value.length > 0 && downloaded.value.size === books.value.length,
+)
 
 const refresh = async () => {
   if (index.value) downloaded.value = await downloadedBookIds(index.value)
@@ -76,7 +78,7 @@ const downloadAll = async () => {
       <img src="/icon.svg" alt="" width="48" height="48" />
       <div>
         <p class="brand">Bereszit</p>
-        <p class="tagline">Pomocnik przy nauce czytania hebrajskiego</p>
+        <p class="tagline">Pomocnik przy nauce czytania biblijnego hebrajskiego</p>
       </div>
     </header>
 
@@ -132,8 +134,8 @@ const downloadAll = async () => {
     <p v-if="bookError" class="error" role="alert">{{ bookError }}</p>
     <p v-if="index" class="source">
       Źródło tekstu hebrajskiego:
-      <a :href="index.source.url" rel="noopener">{{ index.source.name }}</a>. Używamy samego tekstu
-      hebrajskiego, bez tłumaczeń.
+      <a :href="index.source.url" rel="noopener">{{ index.source.name }}</a
+      >. Używamy samego tekstu hebrajskiego, bez tłumaczeń.
     </p>
 
     <h2>Listy słów</h2>
@@ -155,8 +157,8 @@ const downloadAll = async () => {
 
     <h2>O aplikacji</h2>
     <p>
-      Bereszit to pomocnik w nauce czytania starohebrajskiego z nikudem. Wymowa jest zapisywana
-      polskimi literami według zasad z lekcji hebrajskiego.
+      Bereszit to aplikacja, która ma pomóc przy nauce języka starohebrajskiego używanego w Biblii.
+      Wymowa jest zapisywana polskimi literami według zasad z lekcji hebrajskiego na SIB.
     </p>
     <p class="author">Autor: Marek Sierociński, 2025.</p>
   </section>
