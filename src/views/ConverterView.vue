@@ -158,12 +158,19 @@ const copy = async () => {
 table {
   border-collapse: collapse;
   width: 100%;
+  table-layout: fixed;
 }
 th,
 td {
   text-align: left;
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 0.4rem;
   border-bottom: 1px solid var(--border);
+  /* Never wider than the card, whatever the fallback font is (WCAG 1.4.10 reflow). */
+  overflow-wrap: anywhere;
+}
+th:first-child,
+td:first-child {
+  width: 22%;
 }
 .glyph {
   font-size: 1.8rem;
