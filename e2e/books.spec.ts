@@ -172,7 +172,8 @@ test.describe('settings: books', () => {
     await openMode(page, 'Losuj')
     await page.getByRole('button', { name: 'Losuj fragment' }).click()
     await expect(page.getByText('Wstawiono:')).toBeVisible()
-    expect((await cachedFiles(page)).length).toBe(1)
+    // The cache write may finish a moment after the text is shown.
+    await expect.poll(async () => (await cachedFiles(page)).length).toBe(1)
   })
 
   test('passes axe checks with downloaded books (light and dark)', async ({ page }) => {

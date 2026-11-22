@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import { computed, onMounted, ref } from 'vue'
 import {
   downloadedBookIds,
@@ -160,6 +161,7 @@ const downloadAll = async () => {
       Bereszit to aplikacja, która ma pomóc przy nauce języka starohebrajskiego używanego w Biblii.
       Wymowa jest zapisywana polskimi literami według zasad z lekcji hebrajskiego na SIB.
     </p>
+    <p><RouterLink to="/ustawienia/licencje">Licencje bibliotek open source</RouterLink></p>
   </section>
 </template>
 

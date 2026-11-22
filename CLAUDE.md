@@ -32,6 +32,11 @@ Wyszukiwanie po hebrajsku bez klawiatury hebrajskiej: przycisk `א` przy polu �
 nawigacji samochodowej): aktywne są tylko litery prowadzące do jakiegoś słowa (`nextLetters` w `lib/wordList.ts`, 22 litery, końcowe traktowane jak zwykłe).
 Modal zostaje otwarty po każdej literze i zamyka się sam: czasowniki po 3 literach (rdzeń), rzeczowniki gdy zostają ≤ 3 słowa (`isKeyboardDone`).
 Start czyści pole; „Cofnij” kasuje ostatnią literę, „Anuluj” / Esc przywraca poprzednie wyszukiwanie.
+
+Licencje bibliotek: link w Ustawieniach > „O aplikacji” prowadzi do `/ustawienia/licencje` (`views/LicensesView.vue`). Dane w `src/data/licenses.json`
+generuje `npm run licenses` (`scripts/licenses.mjs`): paczki faktycznie wchodzące do aplikacji (zależności produkcyjne + workbox z service workera +
+runtime Vue), każda z pełnym tekstem licencji; pomija typy, kompilator Vue i `@vue/devtools-api` (wycinany z buildu). Po zmianie zależności uruchom
+`npm run licenses`; test w `scripts/licenses.test.mjs` pada, gdy plik jest nieaktualny. Nowa biblioteka w kodzie aplikacji spoza `dependencies` -> dopisz do `SHIPPED_EXTRAS`.
 Reguła „patach furtivum" (Het + Patach = `aH`) działa tylko na końcu wielowyrazowego słowa.
 Testy quizów są deterministyczne dzięki `Math.random = () => 0` w `page.addInitScript` (pierwsze elementy puli po kolei).
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.

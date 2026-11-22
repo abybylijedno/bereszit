@@ -15,35 +15,39 @@ for (const route of [
     await page.getByRole('heading', { level: 1 }).waitFor()
     await expect(page.locator('#content header')).toHaveCount(0)
     await expect(page.getByRole('contentinfo')).toHaveCount(0)
-    await expect(page.getByText('Pomocnik przy nauce czytania biblijnego hebrajskiego')).toHaveCount(0)
+    await expect(
+      page.getByText('Pomocnik przy nauce czytania biblijnego hebrajskiego'),
+    ).toHaveCount(0)
     await expect(page.getByText('Marek Sierociński')).toHaveCount(0)
   })
 }
 
-test('settings: starts with the logo header, ends with the author', async ({ page }) => {
+test('settings: the logo and the author are in the "O aplikacji" section', async ({ page }) => {
   await page.goto('./#/ustawienia')
   const header = page.locator('#content header')
+  await expect(header).toHaveCount(1)
   await expect(header).toContainText('Bereszit')
   await expect(header).toContainText('Pomocnik przy nauce czytania biblijnego hebrajskiego')
+  await expect(header).toContainText('Autor: Marek Sierociński, 2025')
 
   const order = await page.evaluate(() => {
     const main = document.querySelector('#content')!
+    const about = [...main.querySelectorAll('h2')].find((h) => h.textContent === 'O aplikacji')!
     const header = main.querySelector('header')!
     const h1 = main.querySelector('h1')!
-    const author = [...main.querySelectorAll('p')].find((p) =>
-      p.textContent?.includes('Marek Sierociński'),
-    )!
     const before = (a: Element, b: Element) =>
       !!(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING)
-    const last = [...main.querySelectorAll('section > *')].at(-1)!
     return {
-      headerFirst: before(header, h1),
-      authorAfterH1: before(h1, author),
-      authorIsLast: last === author,
+      headerAfterAboutHeading: before(about, header),
+      aboutIsAfterH1: before(h1, about),
+      aboutIsLastSection: [...main.querySelectorAll('h2')].at(-1) === about,
     }
   })
-  expect(order).toEqual({ headerFirst: true, authorAfterH1: true, authorIsLast: true })
-  await expect(page.getByText('Autor: Marek Sierociński, 2025.')).toBeVisible()
+  expect(order).toEqual({
+    headerAfterAboutHeading: true,
+    aboutIsAfterH1: true,
+    aboutIsLastSection: true,
+  })
 })
 
 test('settings page passes axe checks (light and dark)', async ({ page }) => {

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, RouterView } from 'vue-router'
 
 /**
  * Hash history: GitHub Pages has no SPA fallback, so deep links must live in the hash.
@@ -70,10 +70,23 @@ const router = createRouter({
       ],
     },
     {
+      // A parent route keeps the "Ustawienia" tab current on its subpages too.
       path: '/ustawienia',
-      name: 'settings',
-      component: () => import('@/views/SettingsView.vue'),
-      meta: { title: 'Ustawienia' },
+      component: RouterView,
+      children: [
+        {
+          path: '',
+          name: 'settings',
+          component: () => import('@/views/SettingsView.vue'),
+          meta: { title: 'Ustawienia' },
+        },
+        {
+          path: 'licencje',
+          name: 'licenses',
+          component: () => import('@/views/LicensesView.vue'),
+          meta: { title: 'Licencje' },
+        },
+      ],
     },
   ],
 })

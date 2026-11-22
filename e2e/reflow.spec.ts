@@ -40,6 +40,7 @@ const ROUTES = [
   'slowa/czasowniki',
   'slowa/rzeczowniki',
   'ustawienia',
+  'ustawienia/licencje',
 ]
 
 const scenarios: Record<string, (page: Page) => Promise<void>> = {
