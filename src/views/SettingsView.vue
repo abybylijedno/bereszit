@@ -74,14 +74,6 @@ const downloadAll = async () => {
 
 <template>
   <section>
-    <header class="app-header">
-      <img src="/icon.svg" alt="" width="48" height="48" />
-      <div>
-        <p class="brand">Bereszit</p>
-        <p class="tagline">Pomocnik przy nauce czytania biblijnego hebrajskiego</p>
-      </div>
-    </header>
-
     <h1>Ustawienia</h1>
 
     <h2>Teksty biblijne</h2>
@@ -156,22 +148,27 @@ const downloadAll = async () => {
     <p role="status">{{ message }}</p>
 
     <h2>O aplikacji</h2>
+    <header class="app-header">
+      <img src="/icon.svg" alt="" width="48" height="48" />
+      <div>
+        <p class="brand">Bereszit</p>
+        <p class="tagline">Pomocnik przy nauce czytania biblijnego hebrajskiego</p>
+        <p class="author">Autor: Marek Sierociński, 2025</p>
+      </div>
+    </header>
     <p>
       Bereszit to aplikacja, która ma pomóc przy nauce języka starohebrajskiego używanego w Biblii.
       Wymowa jest zapisywana polskimi literami według zasad z lekcji hebrajskiego na SIB.
     </p>
-    <p class="author">Autor: Marek Sierociński, 2025.</p>
   </section>
 </template>
 
 <style scoped>
 .app-header {
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 0.75rem;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
 }
 .app-header p {
   margin: 0;
