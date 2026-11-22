@@ -51,6 +51,11 @@ for (const temat of [
   'zaimki',
   'rzeczowniki',
   'przyrostki',
+  'inne',
+  'imperfectum&forma=hitpael',
+  'perfectum&forma=hifil',
+  'inne&forma=nifal',
+  'inne&forma=pual',
 ]) {
   test(`the ${temat} sheet passes axe checks (light and dark)`, async ({ page }) => {
     await page.goto(`./#/gramatyka/sciagawki?temat=${temat}`)
@@ -116,6 +121,7 @@ test('the topic picker lists verbs first, then the other cheat sheets', async ({
     'Czasowniki: formy',
     'Perfectum',
     'Imperfectum',
+    'Rozkaz, bezokolicznik, imiesłów',
     'Przedimek i spójnik',
     'Przyimki',
     'Zaimki',
@@ -184,4 +190,72 @@ test('the suffixes sheet has both tables with the noun and its endings', async (
   await expect(page.getByRole('list', { name: 'Przyrostki przy przyimkach' })).toContainText(
     'we mnie',
   )
+})
+
+test('verb form picker: all seven forms, shown only for the verb tables', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=perfectum')
+  const forms = page.getByRole('group', { name: 'Forma czasownika' })
+  await expect(forms.getByRole('radio')).toHaveCount(7)
+  await expect(forms.getByRole('radio', { name: 'Kal' })).toBeChecked()
+  await page.getByRole('radio', { name: 'Przyimki' }).check()
+  await expect(page.getByRole('group', { name: 'Forma czasownika' })).toHaveCount(0)
+})
+
+test('the chosen verb form stays when the topic changes and survives a reload', async ({
+  page,
+}) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=perfectum')
+  await page.getByRole('radio', { name: 'Hifil' }).check()
+  await expect(page).toHaveURL(/forma=hifil/)
+  await page.getByRole('radio', { name: 'Imperfectum', exact: true }).check()
+  await expect(page.getByRole('radio', { name: 'Hifil' })).toBeChecked()
+  await page.reload()
+  await expect(page.getByRole('radio', { name: 'Hifil' })).toBeChecked()
+  await expect(page.getByRole('heading', { level: 3, name: /forma hifil/ })).toBeVisible()
+})
+
+test('hifil perfect: the textbook forms, with the added yod highlighted', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=perfectum&forma=hifil')
+  const table = page.getByRole('table', { name: /perfectum, forma hifil/ })
+  await expect(table.getByRole('row')).toHaveCount(6)
+  const first = table.getByRole('row', { name: /^3 os\. r\. męski/ })
+  await expect(first).toContainText('הִקְטִיל')
+  await expect(first.locator('.affix').first()).toHaveText('הִ')
+  await expect(first.locator('.affix').nth(1)).toHaveText('י')
+  await expect(table.getByRole('row', { name: /^1 os\./ })).toContainText('הִקְטַלְנוּ')
+})
+
+test('every form has its imperfect table with "tak samo" notes', async ({ page }) => {
+  for (const [forma, third] of [
+    ['nifal', 'יִקָּטֵל'],
+    ['piel', 'יְקַטֵּל'],
+    ['pual', 'יְקֻטַּל'],
+    ['hofal', 'יָקְטַל'],
+    ['hitpael', 'יִתְקַטֵּל'],
+  ]) {
+    await page.goto(`./#/gramatyka/sciagawki?temat=imperfectum&forma=${forma}`)
+    await page.reload()
+    const table = page.getByRole('table', { name: /imperfectum/ })
+    await expect(table.getByRole('row', { name: /^3 os\. r\. męski/ })).toContainText(third)
+    await expect(table.getByRole('row', { name: /^3 os\. r\. żeński/ })).toContainText(
+      'tak samo jak: 2 os. r. męski',
+    )
+  }
+})
+
+test('imperative, infinitive and participle: kal and nifal have them, the rest say so', async ({
+  page,
+}) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=inne&forma=kal')
+  await expect(page.getByRole('list', { name: 'Tryb rozkazujący (imperativus)' })).toContainText(
+    'קְטֹלְנָה',
+  )
+  await expect(page.getByRole('list', { name: 'Bezokolicznik (inf.)' })).toContainText('קָטוֹל')
+  await expect(
+    page.getByRole('list', { name: 'Imiesłów (part.)' }).getByRole('listitem'),
+  ).toHaveCount(2)
+  await page.getByRole('radio', { name: 'Nifal' }).check()
+  await expect(page.getByRole('list', { name: 'Imiesłów (part.)' })).toContainText('נִקְטָל')
+  await page.getByRole('radio', { name: 'Piel' }).check()
+  await expect(page.getByText('Tych form nie ma jeszcze w materiałach')).toBeVisible()
 })

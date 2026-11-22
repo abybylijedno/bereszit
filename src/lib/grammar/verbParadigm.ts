@@ -99,16 +99,18 @@ const ROW_ORDER: [Person, Gender][] = [
   [1, 'c'],
 ]
 
-export const getRows = (tense: Tense): ParadigmRow[] => {
-  const forms = tense === 'perfect' ? perfect : imperfect
-  return ROW_ORDER.map(([person, gender]) => ({
+/** Rows of a table (3rd person first) for any list of forms, in any verb form (binyan). */
+export const buildRows = (forms: VerbForm[]): ParadigmRow[] =>
+  ROW_ORDER.map(([person, gender]) => ({
     label: personLabel(person, gender),
     person,
     gender,
     singular: pick(forms, person, gender, 'sg'),
     plural: pick(forms, person, gender, 'pl'),
   }))
-}
+
+export const getRows = (tense: Tense): ParadigmRow[] =>
+  buildRows(tense === 'perfect' ? perfect : imperfect)
 
 export const getForm = (tense: Tense, id: string): VerbForm | undefined =>
   (tense === 'perfect' ? perfect : imperfect).find((x) => x.id === id)

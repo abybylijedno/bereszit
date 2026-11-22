@@ -1,21 +1,23 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { analyze } from '@/lib/converter'
 import RootWord from '@/components/RootWord.vue'
 import {
-  getForm,
-  getRows,
-  personLabel,
-  PARADIGM_ROOT,
-  type Tense,
-  type VerbForm,
-} from '@/lib/grammar/verbParadigm'
+  BINYAN_NAMES,
+  getBinyanRows,
+  getParadigm,
+  type BinyanId,
+} from '@/lib/grammar/binyanParadigms'
+import { personLabel, PARADIGM_ROOT, type Tense, type VerbForm } from '@/lib/grammar/verbParadigm'
 
-const props = defineProps<{ tense: Tense }>()
+const props = withDefaults(defineProps<{ tense: Tense; binyan?: BinyanId }>(), { binyan: 'kal' })
 
-const rows = getRows(props.tense)
+const rows = computed(() => getBinyanRows(props.binyan, props.tense))
+const forms = computed(() => getParadigm(props.binyan, props.tense))
+const name = computed(() => BINYAN_NAMES[props.binyan])
 const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
 const sameAsLabel = (form: VerbForm) => {
-  const other = form.sameAs ? getForm(props.tense, form.sameAs) : undefined
+  const other = form.sameAs ? forms.value.find((x) => x.id === form.sameAs) : undefined
   return other ? personLabel(other.person, other.gender) : ''
 }
 </script>
@@ -23,19 +25,20 @@ const sameAsLabel = (form: VerbForm) => {
 <template>
   <div>
     <template v-if="tense === 'perfect'">
-      <h3>Perfectum (forma kal)</h3>
+      <h3>Perfectum (forma {{ name.toLowerCase() }})</h3>
       <p>
         Perfectum zazwyczaj odpowiada polskiemu czasowi przeszłemu. Wzorzec to czasownik mocny
-        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> (zabijać). Perfectum dodaje końcówki na
-        końcu rdzenia.
+        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> (zabijać) w formie
+        {{ name.toLowerCase() }}. Perfectum dodaje końcówki na końcu rdzenia.
       </p>
     </template>
     <template v-else>
-      <h3>Imperfectum, czyli futurum (forma kal)</h3>
+      <h3>Imperfectum, czyli futurum (forma {{ name.toLowerCase() }})</h3>
       <p>
         Imperfectum zazwyczaj odpowiada polskiemu czasowi przyszłemu. Wzorzec to czasownik mocny
-        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> (zabijać). Imperfectum dodaje
-        przedrostki na początku rdzenia, a czasem też końcówki.
+        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> (zabijać) w formie
+        {{ name.toLowerCase() }}. Imperfectum dodaje przedrostki na początku rdzenia, a czasem też
+        końcówki.
       </p>
     </template>
     <p class="note">
@@ -44,8 +47,8 @@ const sameAsLabel = (form: VerbForm) => {
     </p>
 
     <p class="legend">
-      <span class="affix-sample">Ten kolor</span> oznacza dodatki: przedrostki i końcówki dodane do
-      rdzenia. Rdzeń (spółgłoski <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span
+      <span class="affix-sample">Ten kolor</span> oznacza dodatki: przedrostki, końcówki i litery
+      wstawione w środku. Rdzeń (spółgłoski <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span
       >) ma zwykły kolor.
     </p>
 
@@ -56,6 +59,9 @@ const sameAsLabel = (form: VerbForm) => {
         w
         {{
           tense === 'perfect' ? 'perfectum' : 'imperfectum'
+        }}, forma
+        {{
+          name.toLowerCase()
         }}
       </caption>
       <thead role="rowgroup">
@@ -85,18 +91,22 @@ const sameAsLabel = (form: VerbForm) => {
       </tbody>
     </table>
 
-    <h3>Melodia samogłosek</h3>
-    <template v-if="tense === 'perfect'">
-      <p>
+    <template v-if="binyan === 'kal'">
+      <h3>Melodia samogłosek</h3>
+      <p v-if="tense === 'perfect'">
         Każdy czas ma swój charakterystyczny dźwięk samogłosek. Perfectum to melodia
         <strong>A-A</strong>, na przykład szAmArtA, kAtAwtA.
       </p>
-    </template>
-    <template v-else>
-      <p>
+      <p v-else>
         Każdy czas ma swój charakterystyczny dźwięk samogłosek. Imperfectum to melodia
         <strong>I-O</strong>, na przykład I-ktO-w, tI-szmOr. Samogłoska „o" to klucz do przyszłości.
       </p>
+    </template>
+    <p v-else class="note">
+      W każdej formie czasownik ma inne przedrostki i samogłoski. Po nich poznajesz, w jakiej formie
+      jest słowo.
+    </p>
+    <template v-if="tense === 'imperfect'">
       <h3>Akronim E-I-T-A-N</h3>
       <p>
         Imię <span lang="he" dir="rtl">אֵיתָן</span> (Etan) przypomina o literach
