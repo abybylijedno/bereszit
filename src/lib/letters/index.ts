@@ -8,7 +8,7 @@ import { Waw } from './Waw'
 import { Zajn } from './Zajn'
 import { Het } from './Het'
 import { Tet } from './Tet'
-import { Jod } from './Jod'
+import { Jud } from './Jud'
 import { KafSofit } from './KafSofit'
 import { Kaf } from './Kaf'
 import { Lamed } from './Lamed'
@@ -37,7 +37,7 @@ const letters = new Map<number, new () => AbstractLetter>([
   [0x05d6, Zajn],
   [0x05d7, Het],
   [0x05d8, Tet],
-  [0x05d9, Jod],
+  [0x05d9, Jud],
   [0x05da, KafSofit],
   [0x05db, Kaf],
   [0x05dc, Lamed],
@@ -69,7 +69,7 @@ export {
   Zajn,
   Het,
   Tet,
-  Jod,
+  Jud,
   KafSofit,
   Kaf,
   Lamed,

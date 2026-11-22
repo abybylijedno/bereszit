@@ -1,4 +1,4 @@
-import { type AbstractLetter, Jod, Hej, Waw } from './letters'
+import { type AbstractLetter, Jud, Hej, Waw } from './letters'
 import type { Nikud } from './nikud/Nikud'
 
 export class Word {
@@ -15,7 +15,7 @@ export class Word {
   get isYHWH(): boolean {
     if (this.letters.length !== 4) return false
     return (
-      this.letters[0] instanceof Jod &&
+      this.letters[0] instanceof Jud &&
       this.letters[1] instanceof Hej &&
       this.letters[2] instanceof Waw &&
       this.letters[3] instanceof Hej

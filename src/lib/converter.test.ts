@@ -75,7 +75,7 @@ describe('analyze', () => {
 
   it('describes every letter and joins back to the word phonetics', () => {
     const [word] = analyze('בְּרֵאשִׁית')
-    expect(word!.letters.map((l) => l.name)).toEqual(['Bet', 'Resz', 'Alef', 'Szin', 'Jod', 'Taw'])
+    expect(word!.letters.map((l) => l.name)).toEqual(['Bet', 'Resz', 'Alef', 'Szin', 'Jud', 'Taw'])
     expect(word!.letters.map((l) => l.phonetics).join('')).toBe(word!.phonetics)
     // The first letter keeps its dagesz and nikud in the Hebrew rendering.
     expect(word!.letters[0]!.hebrew).toBe('בְּ')

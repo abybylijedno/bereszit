@@ -2,9 +2,9 @@ import { AbstractLetter } from './AbstractLetter'
 import { Hirek, type Nikud } from '../nikud'
 import { isVowel } from '../stringUtils'
 
-export class Jod extends AbstractLetter {
+export class Jud extends AbstractLetter {
   constructor() {
-    super('Jod', 'i')
+    super('Jud', 'i')
   }
 
   toWordString(
@@ -14,11 +14,11 @@ export class Jod extends AbstractLetter {
     previosNikud: Nikud | null,
   ): string {
     if (thisLetterIndex != 0 && thisLetterIndex == wordLength - 2 && !this.nikud && !this.dagesz) {
-      // Jod at the end of the word without nikud or dagesh is silent
-      // Exception: If Jod is not first letter
+      // Jud at the end of the word without nikud or dagesh is silent
+      // Exception: If Jud is not first letter
       return ''
     } else if (previosNikud === Hirek) {
-      // Jod after Hirek is silent
+      // Jud after Hirek is silent
       this.defaultConsonant = ''
     } else {
       this.defaultConsonant = isVowel(previosStrLetter || '') ? 'j' : 'i'
