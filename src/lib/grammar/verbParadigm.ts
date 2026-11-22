@@ -9,6 +9,7 @@ export type Num = 'sg' | 'pl'
 export interface VerbForm {
   /** Stable id, e.g. "perfect-3-m-sg". */
   id: string
+  tense: Tense
   person: Person
   /** `c` = common (both genders use the same form). */
   gender: Gender
@@ -32,6 +33,7 @@ const f = (
   sameAs?: string,
 ): VerbForm => ({
   id: `${tense}-${person}-${gender}-${number}`,
+  tense,
   person,
   gender,
   number,

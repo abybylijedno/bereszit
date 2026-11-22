@@ -82,6 +82,21 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await page.getByRole('group').getByRole('button').first().click()
   },
+  'grammar exercise: recognise question with feedback': async (page) => {
+    await page.goto('./#/gramatyka/cwiczenia')
+    await page.getByRole('radio', { name: 'Oba czasy' }).check()
+    await page.getByRole('button', { name: 'Zaczynamy' }).click()
+    await page.locator('.choices .choice').first().click()
+  },
+  'grammar exercise: build question with feedback': async (page) => {
+    await page.addInitScript(() => (Math.random = () => 0))
+    await page.goto('./#/gramatyka/cwiczenia')
+    await page.getByRole('radio', { name: 'Oba czasy' }).check()
+    await page.getByRole('button', { name: 'Zaczynamy' }).click()
+    await page.locator('.choices .choice').first().click()
+    await page.getByRole('button', { name: 'Dalej' }).click()
+    await page.locator('.choices .choice').first().click()
+  },
   'Hebrew search keyboard': async (page) => {
     await page.goto('./#/slowa/czasowniki')
     await page.getByRole('button', { name: 'Otwórz klawiaturę hebrajską' }).click()

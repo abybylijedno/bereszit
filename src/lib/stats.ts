@@ -1,4 +1,4 @@
-export type Bucket = 'names' | 'syllables'
+export type Bucket = 'names' | 'syllables' | 'grammar'
 export interface Stat {
   ok: number
   bad: number
@@ -9,7 +9,7 @@ type StorageLike = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>
 
 const KEY = 'bereszit:stats:v1'
 
-const empty = (): StatsData => ({ names: {}, syllables: {} })
+const empty = (): StatsData => ({ names: {}, syllables: {}, grammar: {} })
 
 /**
  * Practice statistics kept in localStorage. Storage can be unavailable or blocked
@@ -21,7 +21,11 @@ export const createStats = (getStorage: () => StorageLike | undefined) => {
       const raw = getStorage()?.getItem(KEY)
       if (!raw) return empty()
       const parsed = JSON.parse(raw) as Partial<StatsData>
-      return { names: parsed.names ?? {}, syllables: parsed.syllables ?? {} }
+      return {
+        names: parsed.names ?? {},
+        syllables: parsed.syllables ?? {},
+        grammar: parsed.grammar ?? {},
+      }
     } catch {
       return empty()
     }
