@@ -75,7 +75,7 @@ const downloadAll = async () => {
 
 <template>
   <section>
-    <h1>Ustawienia</h1>
+    <h1 class="sr-only">Ustawienia</h1>
 
     <h2>Teksty biblijne</h2>
     <p>

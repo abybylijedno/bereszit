@@ -66,3 +66,20 @@ for (const tab of tabs) {
     await expectAccessible(page)
   })
 }
+
+test('tab pages keep an h1 for screen readers but do not show it', async ({ page }) => {
+  for (const tab of tabs) {
+    await page.goto(`./${tab.hash}`)
+    const h1 = page.getByRole('heading', { level: 1, name: tab.heading })
+    await expect(h1).toBeAttached()
+    const box = await h1.boundingBox()
+    expect(box!.width).toBeLessThanOrEqual(1)
+    expect(box!.height).toBeLessThanOrEqual(1)
+  }
+})
+
+test('the licences page shows its h1', async ({ page }) => {
+  await page.goto('./#/ustawienia/licencje')
+  const box = await page.getByRole('heading', { level: 1, name: 'Licencje' }).boundingBox()
+  expect(box!.height).toBeGreaterThan(10)
+})

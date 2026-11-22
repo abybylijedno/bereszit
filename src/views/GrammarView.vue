@@ -9,7 +9,7 @@ const sections = [
 
 <template>
   <section>
-    <h1>Gramatyka</h1>
+    <h1 class="sr-only">Gramatyka</h1>
     <nav class="subnav" aria-label="Części gramatyki">
       <RouterLink
         v-for="section in sections"

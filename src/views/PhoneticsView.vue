@@ -11,7 +11,7 @@ const modes = [
 
 <template>
   <section>
-    <h1>Fonetyka</h1>
+    <h1 class="sr-only">Fonetyka</h1>
     <nav class="subnav" aria-label="Rodzaje ćwiczeń z fonetyki">
       <RouterLink
         v-for="mode in modes"

@@ -9,7 +9,7 @@ const modes = [
 
 <template>
   <section>
-    <h1>Słowa</h1>
+    <h1 class="sr-only">Słowa</h1>
     <nav class="subnav" aria-label="Rodzaje słów">
       <RouterLink
         v-for="mode in modes"
