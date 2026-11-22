@@ -38,8 +38,9 @@ runtime Vue), każda z pełnym tekstem licencji; pomija typy, kompilator Vue i `
 `npm run licenses`; test w `scripts/licenses.test.mjs` pada, gdy plik jest nieaktualny. Nowa biblioteka w kodzie aplikacji spoza `dependencies` -> dopisz do `SHIPPED_EXTRAS`.
 Reguła „patach furtivum" (Het + Patach = `aH`) działa tylko na końcu wielowyrazowego słowa.
 Testy quizów są deterministyczne dzięki `Math.random = () => 0` w `page.addInitScript` (pierwsze elementy puli po kolei).
-Gramatyka (w toku, uzgodniona z autorem): **Ściągawki** (wybór tematu `?temat=`: formy, perfectum, imperfectum; dalej przedimek/spójnik, przyimki,
-zaimki, rzeczowniki, przyrostki zaimkowe) i **Ćwiczenia** (`views/grammar/ExercisesPanel.vue`; temat: perfectum / imperfectum / oba czasy; pula = forma × rodzaj pytania („jaka to forma?” i „które słowo to…?”), sesje po 10 pytań, statystyki w buckecie `grammar`, przełącznik „Zaznacz dodatki kolorem”; logika w `lib/grammar/verbQuiz.ts`; kolejne tematy dojdą po ściągawkach). Dane ręcznie przepisane z ściągawek autora
+Gramatyka (w toku, uzgodniona z autorem): **Ściągawki** (wybór tematu `?temat=`: formy, perfectum, imperfectum, przedimek (+ spójnik, nota accusativi), przyimki, zaimki,
+rzeczowniki; z ściągawki „Gramatyka”; do zrobienia: przyrostki zaimkowe z „Gramatyka cz 2”, inne formy (nifal…); dane w `lib/grammar/sheets.ts`,
+wyróżnienie dodatku: `components/AffixWord.vue`) i **Ćwiczenia** (`views/grammar/ExercisesPanel.vue`; temat: perfectum / imperfectum / oba czasy; pula = forma × rodzaj pytania („jaka to forma?” i „które słowo to…?”), sesje po 10 pytań, statystyki w buckecie `grammar`, przełącznik „Zaznacz dodatki kolorem”; logika w `lib/grammar/verbQuiz.ts`; kolejne tematy dojdą po ściągawkach). Dane ręcznie przepisane z ściągawek autora
 (PDF-y w `input/`, gitignore) i slajdów z lekcji: `lib/grammar/verbParadigm.ts` (kal perfectum/imperfectum wzorca `קטל`), `lib/grammar/binyanim.ts`.
 Tylko czasownik mocny; słabych jeszcze nie było na lekcjach. Każdą tabelę autor sprawdza po przepisaniu.
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.

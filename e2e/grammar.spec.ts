@@ -42,7 +42,15 @@ test('the topic is kept in the address and survives a reload', async ({ page }) 
   await expect(page.getByRole('radio', { name: 'Imperfectum', exact: true })).toBeChecked()
 })
 
-for (const temat of ['formy', 'perfectum', 'imperfectum']) {
+for (const temat of [
+  'formy',
+  'perfectum',
+  'imperfectum',
+  'przedimek',
+  'przyimki',
+  'zaimki',
+  'rzeczowniki',
+]) {
   test(`the ${temat} sheet passes axe checks (light and dark)`, async ({ page }) => {
     await page.goto(`./#/gramatyka/sciagawki?temat=${temat}`)
     await page.getByRole('heading', { level: 3 }).first().waitFor()
@@ -95,4 +103,66 @@ test('each division of verbs shows its two halves side by side, even on a narrow
     expect(Math.abs(a!.y - b!.y), heading).toBeLessThan(2)
     expect(b!.x).toBeGreaterThan(a!.x)
   }
+})
+
+test('the topic picker lists verbs first, then the other cheat sheets', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki')
+  const labels = await page
+    .getByRole('group', { name: 'Temat' })
+    .getByRole('radio')
+    .evaluateAll((inputs) => inputs.map((i) => i.closest('label')!.textContent!.trim()))
+  expect(labels).toEqual([
+    'Czasowniki: formy',
+    'Perfectum',
+    'Imperfectum',
+    'Przedimek i spójnik',
+    'Przyimki',
+    'Zaimki',
+    'Rzeczowniki',
+  ])
+})
+
+test('the article sheet highlights the added prefix and lists the exceptions', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=przedimek')
+  const example = page.getByRole('list', { name: 'Przykłady przedimka' }).getByRole('listitem')
+  await expect(example).toHaveCount(3)
+  await expect(example.first().locator('.affix')).toHaveText('הַ')
+  await expect(example.first()).toContainText('ten pisarz')
+  const exceptions = page.getByRole('list', { name: 'Słowa zaczynające się od waw' })
+  await expect(exceptions.getByRole('listitem')).toHaveCount(3)
+  await expect(exceptions.locator('.affix')).toHaveCount(0)
+  await expect(page.getByRole('list', { name: 'Części zdania' })).toContainText('kogo? co?')
+})
+
+test('the prepositions sheet has all four prepositions with examples', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=przyimki')
+  await expect(page.getByRole('heading', { level: 4 })).toHaveCount(4)
+  const article = page.getByRole('list', { name: 'Przykłady: w, za pomocą' })
+  await expect(article).toContainText('w człowieku')
+  await expect(article.locator('.affix').first()).toHaveText('בְּ')
+  await expect(page.getByRole('list', { name: 'Przykłady: z czegoś' })).toContainText(
+    'z ziemi Izraela',
+  )
+})
+
+test('the pronouns sheet has the personal pronoun table with alternative forms', async ({
+  page,
+}) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=zaimki')
+  const table = page.getByRole('table', { name: 'Zaimki osobowe' })
+  await expect(table.getByRole('row')).toHaveCount(6)
+  const first = table.getByRole('row', { name: /^1 os\./ })
+  await expect(first).toContainText('אָנֹכִי')
+  await expect(first).toContainText('אֲנִי')
+  await expect(first).toContainText('lub')
+  await expect(page.getByRole('list', { name: 'Zaimki pytające' })).toContainText('kto?')
+})
+
+test('the nouns sheet shows how plurals are made', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=rzeczowniki')
+  const plural = page.getByRole('list', { name: 'Tworzenie liczby mnogiej' })
+  await expect(plural.getByRole('listitem')).toHaveCount(2)
+  await expect(plural.getByRole('listitem').first()).toContainText('r. męski')
+  await expect(plural.getByRole('listitem').first()).toContainText('konie')
+  await expect(plural.locator('.affix').first()).toHaveText('ים')
 })
