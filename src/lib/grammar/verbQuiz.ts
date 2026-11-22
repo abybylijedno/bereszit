@@ -1,5 +1,6 @@
-import { makeChoices, type Rng } from '../quiz'
+import { makeChoices, shuffle, type Rng } from '../quiz'
 import { BINYAN_IDS, BINYAN_NAMES, getParadigm } from './binyanParadigms'
+import { generateForm, type StrongRoot } from './strongVerbs'
 import type { BinyanId, Tense, VerbForm } from './verbParadigm'
 
 export type VerbTopic = 'perfectum' | 'imperfectum' | 'oba'
@@ -113,13 +114,37 @@ export const buildChoices = (form: VerbForm, pool: VerbForm[], rng?: Rng): strin
 export interface Question {
   form: VerbForm
   kind: QuestionKind
+  /** The regular verb the form was made from; none means the paradigm verb קטל. */
+  root?: StrongRoot
 }
 
 export const questionKey = (q: Question): string => `${q.form.id}:${q.kind}`
 
-/** Every form can be asked both ways, so even the smallest topic has more than 10 questions. */
-export const questionsFor = (topic: VerbTopic, binyan: FormChoice = 'kal'): Question[] =>
-  formsFor(topic, binyan).flatMap((form) => [
+/**
+ * Every form can be asked both ways, so even the smallest topic has more than 10 questions.
+ * With `roots`, each question gets a root from that list (shuffled, so roots do not repeat
+ * until all were used) and its form is made from that root.
+ */
+export const questionsFor = (
+  topic: VerbTopic,
+  binyan: FormChoice = 'kal',
+  roots?: StrongRoot[],
+  rng?: Rng,
+): Question[] => {
+  const base = formsFor(topic, binyan).flatMap((form) => [
     { form, kind: 'recognize' as const },
     { form, kind: 'build' as const },
   ])
+  if (!roots?.length) return base
+  const order = shuffle(roots, rng)
+  return base.map((q, i) => {
+    const root = order[i % order.length]!
+    return { ...q, form: generateForm(q.form, root), root }
+  })
+}
+
+/** All forms of the question's verb: the choices of a question are made from these. */
+export const poolOf = (q: Question, topic: VerbTopic, binyan: FormChoice): VerbForm[] => {
+  const forms = formsFor(topic, binyan)
+  return q.root ? forms.map((f) => generateForm(f, q.root!)) : forms
+}

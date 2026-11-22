@@ -163,3 +163,96 @@ test('exercises with all verb forms pass axe checks (light and dark)', async ({ 
   await page.locator('.choices .choice').first().click()
   await expectAccessible(page)
 })
+
+/** Consonants only: no vowels, dots or dagesh. */
+const letters = (he: string) => he.normalize('NFD').replace(/\p{M}/gu, '').replace(/\s+/g, '')
+const containsInOrder = (word: string, root: string) => {
+  let next = 0
+  for (const ch of letters(word)) if (ch === root[next]) next++
+  return next === root.length
+}
+const unfinal = (s: string) =>
+  s.replace(/ך/g, 'כ').replace(/ם/g, 'מ').replace(/ן/g, 'נ').replace(/ף/g, 'פ').replace(/ץ/g, 'צ')
+
+test('the verb source: the paradigm verb or a random one', async ({ page }) => {
+  const group = page.getByRole('group', { name: 'Czasownik', exact: true })
+  await expect(group.getByRole('radio')).toHaveCount(2)
+  await expect(group.getByRole('radio', { name: 'Wzorzec (zabijać)' })).toBeChecked()
+  await group.getByRole('radio', { name: 'Losowy czasownik' }).check()
+  await expect(page.getByText(/Do wyboru jest \d+ czasowników/)).toBeVisible()
+})
+
+test('the number of random verbs follows the verb form', async ({ page }) => {
+  await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
+  const count = async () =>
+    Number((await page.getByText(/Do wyboru jest \d+ czasowników/).textContent())!.match(/\d+/)![0])
+  const kal = await count()
+  await page.getByRole('radio', { name: 'Hitpael' }).check()
+  const hitpael = await count()
+  expect(kal).toBeGreaterThanOrEqual(50)
+  expect(hitpael).toBeGreaterThanOrEqual(30)
+  expect(hitpael).toBeLessThan(kal)
+})
+
+test('a random verb: the question names it with its meaning, the word is made from it', async ({
+  page,
+}) => {
+  await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
+  await start(page)
+  const question = page.locator('#question')
+  await expect(question).toContainText('(kal, perfectum)')
+  await expect(question).toContainText('„')
+  const root = letters((await question.locator('[lang="he"]').first().textContent()) ?? '')
+  expect(root).toHaveLength(3)
+  expect(root).not.toBe('קטל')
+  const word = (await page.locator('.word').textContent())!
+  expect(containsInOrder(unfinal(word), unfinal(root))).toBe(true)
+  const choices = page.getByRole('group', { name: /Jaka to forma/ }).getByRole('button')
+  await choices.filter({ hasText: '3 os. r. męski, l. poj.' }).click()
+  await expect(page.getByText('Poprawnie!')).toBeVisible()
+})
+
+test('a random verb: every answer of a build question is a form of that verb', async ({ page }) => {
+  await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
+  await page.getByRole('radio', { name: 'Hifil' }).check()
+  await start(page)
+  await page.locator('.choices .choice').first().click()
+  await page.getByRole('button', { name: 'Dalej' }).click()
+  const question = page.locator('#question')
+  await expect(question).toContainText('Które słowo to:')
+  await expect(question).toContainText('od czasownika')
+  const root = unfinal(letters((await question.locator('[lang="he"]').first().textContent()) ?? ''))
+  const words = await page.locator('.choices .choice').allTextContents()
+  expect(words).toHaveLength(4)
+  expect(new Set(words.map((w) => w.trim())).size).toBe(4)
+  for (const w of words) expect(containsInOrder(unfinal(w), root), w).toBe(true)
+})
+
+test('a random verb with all forms: sessions run to the end and list the verb in mistakes', async ({
+  page,
+}) => {
+  await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
+  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await page.getByRole('radio', { name: 'Oba czasy' }).check()
+  await start(page)
+  for (let i = 1; i <= 10; i++) {
+    await expect(page.getByText(`Pytanie ${i} z 10`)).toBeVisible()
+    await page.locator('.choices .choice').first().click()
+    await page.getByRole('button', { name: i === 10 ? 'Pokaż wynik' : 'Dalej' }).click()
+  }
+  await expect(page.getByRole('status').filter({ hasText: 'Wynik:' })).toContainText('z 10')
+  await expect(page.locator('.mistakes li').first()).toContainText('(od ')
+})
+
+test('random verbs pass axe checks (light and dark)', async ({ page }) => {
+  await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
+  await expectAccessible(page)
+  await start(page)
+  await page.emulateMedia({ colorScheme: 'dark' })
+  await expectAccessible(page)
+  await page.locator('.choices .choice').first().click()
+  await expectAccessible(page)
+  await page.emulateMedia({ colorScheme: 'light' })
+  await page.getByRole('button', { name: 'Dalej' }).click()
+  await expectAccessible(page)
+})

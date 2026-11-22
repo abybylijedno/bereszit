@@ -106,6 +106,21 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
     await page.getByRole('button', { name: 'Dalej' }).click()
     await page.locator('.choices .choice').first().click()
   },
+  // A whole session with random verbs in all forms: the longest forms must fit, too.
+  'grammar exercise: random verbs, whole session': async (page) => {
+    await page.goto('./#/gramatyka/cwiczenia')
+    await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
+    await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+    await page.getByRole('radio', { name: 'Oba czasy' }).check()
+    await page.getByRole('button', { name: 'Zaczynamy' }).click()
+    for (let i = 1; i <= 10; i++) {
+      await page.getByText(`Pytanie ${i} z 10`).waitFor()
+      await expectNoOverflow(page, `question ${i}`)
+      await page.locator('.choices .choice').first().click()
+      await expectNoOverflow(page, `answer ${i}`)
+      await page.getByRole('button', { name: i === 10 ? 'Pokaż wynik' : 'Dalej' }).click()
+    }
+  },
   'Hebrew search keyboard': async (page) => {
     await page.goto('./#/slowa/czasowniki')
     await page.getByRole('button', { name: 'Otwórz klawiaturę hebrajską' }).click()

@@ -8,6 +8,7 @@ import PillRadios from '@/components/PillRadios.vue'
 import RootWord from '@/components/RootWord.vue'
 import { useQuizSession } from '@/composables/useQuizSession'
 import { analyze } from '@/lib/converter'
+import { rootsFor } from '@/lib/grammar/strongVerbs'
 import { PARADIGM_ROOT, type VerbForm } from '@/lib/grammar/verbParadigm'
 import {
   allDescriptions,
@@ -17,7 +18,7 @@ import {
   describeForm,
   fixedPart,
   FORM_LABELS,
-  formsFor,
+  poolOf,
   questionKey,
   questionsFor,
   recognizeChoices,
@@ -39,7 +40,15 @@ const formOptions = (Object.keys(FORM_LABELS) as FormChoice[]).map((value) => ({
   value,
   label: FORM_LABELS[value],
 }))
-const pool = computed(() => formsFor(topic.value, binyan.value))
+type VerbSource = 'wzorzec' | 'losowy'
+const source = ref<VerbSource>('wzorzec')
+const sourceOptions: { value: VerbSource; label: string }[] = [
+  { value: 'wzorzec', label: 'Wzorzec (zabijać)' },
+  { value: 'losowy', label: 'Losowy czasownik' },
+]
+/** Regular verbs that work in the chosen verb form. */
+const roots = computed(() => rootsFor(binyan.value))
+
 /** What a description has to name; the rest is fixed by the question. */
 const ctx = computed(() => contextFor(topic.value, binyan.value))
 const fixed = computed(() => fixedPart(topic.value, binyan.value))
@@ -48,7 +57,8 @@ const FULL: Context = { tense: true, binyan: true }
 
 const session = useQuizSession<Question>({
   bucket: 'grammar',
-  getPool: () => questionsFor(topic.value, binyan.value),
+  getPool: () =>
+    questionsFor(topic.value, binyan.value, source.value === 'losowy' ? roots.value : undefined),
   keyOf: questionKey,
 })
 const { phase, current, index, total, score, mistakes, lastCorrect } = session
@@ -62,6 +72,10 @@ const showAffixes = ref(false)
 const nextButton = ref<HTMLButtonElement | null>(null)
 const weakest = ref<VerbForm[]>([])
 
+/** The root of the current question: the verb it is made from, or the paradigm verb. */
+const rootLetters = computed(() => current.value?.root?.letters ?? PARADIGM_ROOT)
+const rootHe = computed(() => current.value?.root?.he ?? PARADIGM_ROOT)
+const rootMeaning = computed(() => current.value?.root?.pl)
 const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
 const answered = computed(() => phase.value === 'answered')
 const currentLabel = computed(() => (form.value ? describeForm(form.value, ctx.value) : ''))
@@ -78,13 +92,15 @@ refreshWeakest()
 const prepare = () => {
   chosen.value = null
   const f = form.value
-  if (!f) return
+  const q = current.value
+  if (!f || !q) return
+  const forms = poolOf(q, topic.value, binyan.value)
   if (kind.value === 'recognize') {
     correctChoice.value = describeForm(f, ctx.value)
-    choices.value = recognizeChoices(f, pool.value, ctx.value)
+    choices.value = recognizeChoices(f, forms, ctx.value)
   } else {
     correctChoice.value = f.he
-    choices.value = buildChoices(f, pool.value)
+    choices.value = buildChoices(f, forms)
   }
 }
 
@@ -115,22 +131,28 @@ const backToStart = () => {
 const explanation = computed(() => {
   const f = form.value
   if (!f) return ''
-  return allDescriptions(f, pool.value, ctx.value).join(' lub ')
+  return allDescriptions(f, poolOf(current.value!, topic.value, binyan.value), ctx.value).join(
+    ' lub ',
+  )
 })
 </script>
 
 <template>
   <div>
-    <h2>
-      Ćwiczenia: czasownik <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span>
-    </h2>
+    <h2>Ćwiczenia: odmiana czasownika</h2>
 
     <div v-if="phase === 'intro'">
       <p>
-        Ćwiczysz odmianę czasownika mocnego. Wybierz formę czasownika i czas. Pytania są dwojakie:
-        raz widzisz słowo i wybierasz, jaka to forma (osoba, rodzaj, liczba), raz widzisz opis i
-        wybierasz słowo. Sesja ma 10 pytań i nie ma limitu czasu. Formy, które sprawiają Ci kłopot,
-        będą wracać częściej.
+        Ćwiczysz odmianę czasowników mocnych, czyli takich, w których żadna litera rdzenia nie
+        zmienia odmiany. Wybierz czasownik, jego formę i czas. Pytania są dwojakie: raz widzisz
+        słowo i wybierasz, jaka to forma (osoba, rodzaj, liczba), raz widzisz opis i wybierasz
+        słowo. Sesja ma 10 pytań i nie ma limitu czasu. Formy, które sprawiają Ci kłopot, będą
+        wracać częściej.
+      </p>
+      <PillRadios v-model="source" legend="Czasownik" :options="sourceOptions" />
+      <p v-if="source === 'losowy'" class="note">
+        Do wyboru jest {{ roots.length }} czasowników z listy w zakładce „Słowa", bez „słabych"
+        liter. Polskie znaczenie pokazujemy przy pytaniu.
       </p>
       <PillRadios v-model="binyan" legend="Forma czasownika" :options="formOptions" />
       <PillRadios v-model="topic" legend="Temat" :options="topicOptions" />
@@ -150,7 +172,7 @@ const explanation = computed(() => {
 
       <template v-if="kind === 'recognize'">
         <p class="word">
-          <RootWord v-if="showAffixes || answered" :word="form!.he" :root="PARADIGM_ROOT" />
+          <RootWord v-if="showAffixes || answered" :word="form!.he" :root="rootLetters" />
           <span v-else lang="he" dir="rtl">{{ form?.he }}</span>
         </p>
         <p>
@@ -160,13 +182,16 @@ const explanation = computed(() => {
           </label>
         </p>
         <p id="question">
-          Jaka to forma czasownika <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span
+          Jaka to forma czasownika <span lang="he" dir="rtl">{{ rootHe }}</span
+          ><template v-if="rootMeaning"> („{{ rootMeaning }}")</template
           ><template v-if="fixed"> ({{ fixed }})</template>?
         </p>
       </template>
       <p v-else id="question">
         Które słowo to: <strong>{{ currentLabel }}</strong
-        ><template v-if="fixed"> ({{ fixed }})</template>?
+        ><template v-if="fixed"> ({{ fixed }})</template>, od czasownika
+        <span lang="he" dir="rtl">{{ rootHe }}</span
+        ><template v-if="rootMeaning"> („{{ rootMeaning }}")</template>?
       </p>
 
       <div class="choices" role="group" aria-labelledby="question">
@@ -216,6 +241,10 @@ const explanation = computed(() => {
           <li v-for="m in mistakes" :key="questionKey(m.item)">
             <span lang="he" dir="rtl" class="mini-glyph">{{ m.item.form.he }}</span> –
             {{ describeForm(m.item.form, FULL) }}
+            <template v-if="m.item.root">
+              (od <span lang="he" dir="rtl">{{ m.item.root.he }}</span
+              >)</template
+            >
           </li>
         </ul>
       </template>
@@ -230,7 +259,9 @@ const explanation = computed(() => {
 
 <style scoped>
 .word {
-  font-size: 3.5rem;
+  /* The longest forms (Hitpael, 2nd person plural) must fit in 320px; wide screens get 3.5rem. */
+  font-size: clamp(2rem, 9vw, 3.5rem);
+  overflow-wrap: anywhere;
   line-height: 1.4;
   margin: 0;
   text-align: center;

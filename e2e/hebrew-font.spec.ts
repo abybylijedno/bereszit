@@ -76,6 +76,18 @@ test('the Hebrew search keyboard uses one typeface', async ({ page }) => {
   await expectHebrewFont(page)
 })
 
+test('grammar exercises with a random verb use one typeface', async ({ page }) => {
+  await page.goto('./#/gramatyka/cwiczenia')
+  await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
+  await page.getByRole('button', { name: 'Zaczynamy' }).click()
+  await expectHebrewFont(page)
+  await page.locator('.choices .choice').first().click()
+  await page.getByRole('button', { name: 'Dalej' }).click()
+  await expectHebrewFont(page)
+  await page.locator('.choices .choice').first().click()
+  await expectHebrewFont(page)
+})
+
 test('grammar exercises: question words and answer buttons use one typeface', async ({ page }) => {
   await page.goto('./#/gramatyka/cwiczenia')
   await page.getByRole('button', { name: 'Zaczynamy' }).click()

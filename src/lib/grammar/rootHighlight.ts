@@ -41,17 +41,26 @@ export const splitClusters = (word: string): string[] => {
   return clusters
 }
 
-export const splitRoot = (word: string, root: string): WordPart[] => {
+export interface RootCluster {
+  cluster: string
+  /** Which letter of the root this is (0, 1, 2 ...), or -1 when it was added to the root. */
+  slot: number
+}
+
+/** Letter clusters of a word, each with the root letter it carries (matched in order). */
+export const rootClusters = (word: string, root: string): RootCluster[] => {
   const rootCodes = [...root].map((c) => FINAL_TO_REGULAR[c.charCodeAt(0)] ?? c.charCodeAt(0))
   let next = 0
-  const flags = splitClusters(word).map((cluster) => {
+  return splitClusters(word).map((cluster) => {
     const matches = next < rootCodes.length && baseCode(cluster) === rootCodes[next]
-    if (matches) next++
-    return { cluster, isRoot: matches }
+    return { cluster, slot: matches ? next++ : -1 }
   })
+}
 
+export const splitRoot = (word: string, root: string): WordPart[] => {
   const parts: WordPart[] = []
-  for (const { cluster, isRoot } of flags) {
+  for (const { cluster, slot } of rootClusters(word, root)) {
+    const isRoot = slot >= 0
     const last = parts[parts.length - 1]
     if (last && last.isRoot === isRoot) last.text += cluster
     else parts.push({ text: cluster, isRoot })
