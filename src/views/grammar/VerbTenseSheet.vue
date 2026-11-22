@@ -44,9 +44,8 @@ const sameAsLabel = (form: VerbForm) => {
     </p>
 
     <p class="legend">
-      <span class="affix-sample">Kolor i pogrubienie</span> oznaczają dodatki: przedrostki i
-      końcówki dodane do rdzenia. Rdzeń (spółgłoski
-      <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span
+      <span class="affix-sample">Ten kolor</span> oznacza dodatki: przedrostki i końcówki dodane do
+      rdzenia. Rdzeń (spółgłoski <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span
       >) ma zwykły kolor.
     </p>
 
@@ -112,9 +111,8 @@ const sameAsLabel = (form: VerbForm) => {
 <style scoped>
 .affix-sample {
   color: var(--affix);
-  font-weight: 700;
-  /* Large bold text (>= 14pt) needs only 4.5:1 for AAA, as the highlighted Hebrew affixes do. */
-  font-size: 1.2rem;
+  /* Large text (>= 24px) needs only 4.5:1 for AAA, as the highlighted Hebrew affixes do. */
+  font-size: 1.5rem;
 }
 .paradigm {
   border-collapse: collapse;

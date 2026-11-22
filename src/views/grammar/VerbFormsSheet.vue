@@ -15,8 +15,8 @@ const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
       3 osobie liczby pojedynczej rodzaju męskiego.
     </p>
     <p>
-      <span class="affix-sample">Kolor i pogrubienie</span> oznaczają dodatki: przedrostki dodane do
-      rdzenia. Rdzeń ma zwykły kolor.
+      <span class="affix-sample">Ten kolor</span> oznacza dodatki: przedrostki dodane do rdzenia.
+      Rdzeń ma zwykły kolor.
     </p>
     <ul class="forms">
       <li v-for="b in binyanim" :key="b.name" class="card">
@@ -81,9 +81,8 @@ const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
 <style scoped>
 .affix-sample {
   color: var(--affix);
-  font-weight: 700;
-  /* Large bold text (>= 14pt) needs only 4.5:1 for AAA, as the highlighted Hebrew affixes do. */
-  font-size: 1.2rem;
+  /* Large text (>= 24px) needs only 4.5:1 for AAA, as the highlighted Hebrew affixes do. */
+  font-size: 1.5rem;
 }
 .forms {
   list-style: none;

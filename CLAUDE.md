@@ -107,7 +107,9 @@ Quiz liter powtarza częściej litery z błędami.
 - Brak limitów czasowych (2.2.3), `prefers-reduced-motion`, bez migotania.
 - Tekst: linie <= 80 znaków, bez justowania, skalowanie do 200% bez utraty funkcji, reflow od 320 px.
 - Etykiety pól (`<label>`), komunikaty wyników w `aria-live="polite"`, sensowna hierarchia nagłówków, nawigacja jako `<nav>` z `aria-current`.
-- Znane odstępstwa od AAA: token `--affix` (kolor dodatków do rdzenia: przedrostków i końcówek, `#bd21c0` / `#ec83f1`) ma kontrast ok. 4,6-8:1, czyli AAA tylko dla dużego pogrubionego tekstu (>= 14 pt, 1.4.6). Używaj go wyłącznie tak (hebrajskie dodatki w `RootWord`, próbka w legendzie); `e2e/helpers.ts` to egzekwuje.
+- Znane odstępstwa od AAA / WCAG (uzgodnione z autorem):
+  - Token `--affix` (kolor dodatków do rdzenia: przedrostków i końcówek, `#bd21c0` / `#ec83f1`) ma kontrast ok. 4,6-8:1, czyli AAA tylko dla dużego tekstu (>= 24 px, 1.4.6). Używaj go wyłącznie dla dużego tekstu (hebrajskie dodatki w `RootWord`, próbka w legendzie); `e2e/helpers.ts` to egzekwuje.
+  - Dodatki w `RootWord` wyróżnia **sam kolor** (bez pogrubienia, bo zmieniało wygląd liter): to odstępstwo od 1.4.1 (kolor nie jako jedyny sygnał). Łagodzą je: legenda w tekście i to, że w ćwiczeniach wyróżnienie jest opcjonalną podpowiedzią.
 
 ## Testy
 

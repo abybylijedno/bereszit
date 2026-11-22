@@ -60,16 +60,24 @@ test('prefixes and endings are highlighted and the root is not', async ({ page }
   const word = row.locator('.he').first()
   await expect(word.locator('.affix')).toHaveText(['תִּ', 'י'])
   await expect(word).toHaveText('תִּקְטְלִי')
-  await expect(page.getByText('Kolor i pogrubienie')).toBeVisible()
-  // Not colour alone: the affixes are also bold, the root is not.
-  const weight = (el: Parameters<typeof word.locator>[0]) =>
+  await expect(page.getByText('Ten kolor')).toBeVisible()
+  // Affixes differ in colour only; they keep the weight and size of the root.
+  const style = (selector: string) =>
     word
-      .locator(el)
+      .locator(selector)
       .first()
-      .evaluate((node) => getComputedStyle(node).fontWeight)
-  expect(Number(await weight('.affix'))).toBeGreaterThanOrEqual(700)
-  const rootWeight = await word.evaluate((node) => getComputedStyle(node).fontWeight)
-  expect(Number(rootWeight)).toBeLessThan(700)
+      .evaluate((node) => {
+        const cs = getComputedStyle(node)
+        return { color: cs.color, weight: cs.fontWeight, size: cs.fontSize }
+      })
+  const affix = await style('.affix')
+  const whole = await word.evaluate((node) => {
+    const cs = getComputedStyle(node)
+    return { color: cs.color, weight: cs.fontWeight, size: cs.fontSize }
+  })
+  expect(affix.color).not.toBe(whole.color)
+  expect(affix.weight).toBe(whole.weight)
+  expect(affix.size).toBe(whole.size)
 })
 
 test('each division of verbs shows its two halves side by side, even on a narrow screen', async ({

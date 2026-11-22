@@ -1,7 +1,8 @@
 <script setup lang="ts">
 /**
- * A Hebrew word with what was added to its root (prefixes and endings) highlighted: colour
- * plus bold, so it is visible without relying on colour alone. The root keeps the normal style.
+ * A Hebrew word with what was added to its root (prefixes and endings) highlighted by colour
+ * only. No bold: it changes the look of the letters. Known exception to WCAG 1.4.1, see CLAUDE.md.
+ * The root keeps the normal style.
  */
 import { computed } from 'vue'
 import { splitRoot } from '@/lib/grammar/rootHighlight'
@@ -22,6 +23,5 @@ const parts = computed(() => splitRoot(props.word, props.root))
 <style scoped>
 .affix {
   color: var(--affix);
-  font-weight: 700;
 }
 </style>
