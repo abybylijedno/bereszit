@@ -8,6 +8,7 @@ import ArticleSheet from './ArticleSheet.vue'
 import PrepositionsSheet from './PrepositionsSheet.vue'
 import PronounsSheet from './PronounsSheet.vue'
 import NounsSheet from './NounsSheet.vue'
+import SuffixesSheet from './SuffixesSheet.vue'
 
 const TOPICS = [
   { value: 'formy', label: 'Czasowniki: formy' },
@@ -17,6 +18,7 @@ const TOPICS = [
   { value: 'przyimki', label: 'Przyimki' },
   { value: 'zaimki', label: 'Zaimki' },
   { value: 'rzeczowniki', label: 'Rzeczowniki' },
+  { value: 'przyrostki', label: 'Przyrostki zaimkowe' },
 ] as const
 type Topic = (typeof TOPICS)[number]['value']
 
@@ -42,6 +44,7 @@ const topic = computed<Topic>({
     <ArticleSheet v-else-if="topic === 'przedimek'" />
     <PrepositionsSheet v-else-if="topic === 'przyimki'" />
     <PronounsSheet v-else-if="topic === 'zaimki'" />
-    <NounsSheet v-else />
+    <NounsSheet v-else-if="topic === 'rzeczowniki'" />
+    <SuffixesSheet v-else />
   </div>
 </template>

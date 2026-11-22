@@ -42,6 +42,7 @@ for (const route of [
   'gramatyka/sciagawki?temat=przyimki',
   'gramatyka/sciagawki?temat=zaimki',
   'gramatyka/sciagawki?temat=rzeczowniki',
+  'gramatyka/sciagawki?temat=przyrostki',
   'slowa/czasowniki',
   'slowa/rzeczowniki',
   'ustawienia',

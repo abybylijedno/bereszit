@@ -255,3 +255,52 @@ button.btn {
 .note {
   color: var(--muted);
 }
+
+/* Data tables (paradigms): a real table on wide screens, one block per row on narrow ones.
+   Roles are set in the markup, so the table semantics survive `display: block`. */
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+.data-table th,
+.data-table td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: start;
+  vertical-align: top;
+}
+@media (max-width: 40rem) {
+  .data-table,
+  .data-table tbody,
+  .data-table tr,
+  .data-table th,
+  .data-table td {
+    display: block;
+  }
+  .data-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .data-table tr {
+    border: 1px solid var(--border);
+    margin-bottom: 0.75rem;
+  }
+  .data-table th[scope='row'] {
+    border: 0;
+    font-size: 1.1rem;
+  }
+  .data-table td {
+    border: 0;
+    border-top: 1px solid var(--border);
+  }
+  .data-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+}

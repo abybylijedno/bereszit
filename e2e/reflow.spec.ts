@@ -40,6 +40,7 @@ const ROUTES = [
   'gramatyka/sciagawki?temat=przyimki',
   'gramatyka/sciagawki?temat=zaimki',
   'gramatyka/sciagawki?temat=rzeczowniki',
+  'gramatyka/sciagawki?temat=przyrostki',
   'gramatyka/cwiczenia',
   'fonetyka/alfabet',
   'fonetyka/nazwy',

@@ -50,6 +50,7 @@ for (const temat of [
   'przyimki',
   'zaimki',
   'rzeczowniki',
+  'przyrostki',
 ]) {
   test(`the ${temat} sheet passes axe checks (light and dark)`, async ({ page }) => {
     await page.goto(`./#/gramatyka/sciagawki?temat=${temat}`)
@@ -119,6 +120,7 @@ test('the topic picker lists verbs first, then the other cheat sheets', async ({
     'Przyimki',
     'Zaimki',
     'Rzeczowniki',
+    'Przyrostki zaimkowe',
   ])
 })
 
@@ -165,4 +167,21 @@ test('the nouns sheet shows how plurals are made', async ({ page }) => {
   await expect(plural.getByRole('listitem').first()).toContainText('r. męski')
   await expect(plural.getByRole('listitem').first()).toContainText('konie')
   await expect(plural.locator('.affix').first()).toHaveText('ים')
+})
+
+test('the suffixes sheet has both tables with the noun and its endings', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=przyrostki')
+  const single = page.getByRole('table', { name: /Jeden koń/ })
+  await expect(single.getByRole('row')).toHaveCount(11)
+  const my = single.getByRole('row', { name: /^mój/ })
+  await expect(my).toContainText('סוּסִי')
+  await expect(my.locator('.affix').last()).toHaveText('י')
+  const them = single.getByRole('row', { name: /^ich \(r\. męski\)/ })
+  await expect(them).toContainText('lub')
+  await expect(them).toContainText('סוּסָם')
+  const many = page.getByRole('table', { name: /Wiele koni/ })
+  await expect(many.getByRole('row', { name: /^jego/ })).toContainText('סוּסָיו')
+  await expect(page.getByRole('list', { name: 'Przyrostki przy przyimkach' })).toContainText(
+    'we mnie',
+  )
 })
