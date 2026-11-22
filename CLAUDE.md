@@ -103,6 +103,7 @@ Quiz liter powtarza częściej litery z błędami.
 - Wynik nigdy tylko kolorem (ikona + tekst „poprawnie"/„błąd").
 - Cele dotykowe >= 44x44 px (2.5.5). Widoczny fokus (2.4.7/2.4.13). Pełna obsługa klawiaturą.
 - `lang="pl"` na stronie, `lang="he" dir="rtl"` na każdym hebrajskim tekście.
+- **Jedna czcionka dla hebrajskiego wszędzie** (Noto Serif Hebrew, token `--font-he`), także w przyciskach, polach i tabelach: zmiana kroju utrudnia naukę liter. Reguła `:root [lang='he']` w `main.css` ma podwyższoną specyficzność, żeby `font: inherit` jej nie nadpisało; `e2e/hebrew-font.spec.ts` sprawdza każdy widok (krój i `lang="he"`). Nowy widok z hebrajskim = dodaj go tam.
 - Brak limitów czasowych (2.2.3), `prefers-reduced-motion`, bez migotania.
 - Tekst: linie <= 80 znaków, bez justowania, skalowanie do 200% bez utraty funkcji, reflow od 320 px.
 - Etykiety pól (`<label>`), komunikaty wyników w `aria-live="polite"`, sensowna hierarchia nagłówków, nawigacja jako `<nav>` z `aria-current`.

@@ -81,13 +81,17 @@ p {
   outline-offset: 2px;
 }
 
-[lang='he'] {
+/*
+ * One typeface for all Hebrew, everywhere: a different face makes the letters harder to learn.
+ * `:root` raises the specificity so that `font: inherit` on buttons and fields cannot win.
+ * An e2e test (hebrew-font.spec.ts) checks every view.
+ */
+:root [lang='he'] {
   font-family: var(--font-he);
-  line-height: 1.8;
 }
-/* Form fields set `font: inherit`, which would otherwise win over the rule above. */
-.field[lang='he'] {
-  font-family: var(--font-he);
+/* Low specificity on purpose, so classes such as .glyph can set their own line height. */
+[lang='he'] {
+  line-height: 1.8;
 }
 
 .sr-only {

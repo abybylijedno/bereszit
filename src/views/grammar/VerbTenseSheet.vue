@@ -53,9 +53,7 @@ const sameAsLabel = (form: VerbForm) => {
     <table class="paradigm" role="table">
       <caption class="sr-only">
         Odmiana czasownika
-        {{
-          PARADIGM_ROOT
-        }}
+        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span>
         w
         {{
           tense === 'perfect' ? 'perfectum' : 'imperfectum'
