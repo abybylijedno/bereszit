@@ -21,7 +21,7 @@ export class Jud extends AbstractLetter {
       // Jud after Hirek is silent
       this.defaultConsonant = ''
     } else {
-      this.defaultConsonant = isVowel(previosStrLetter || '') ? 'j' : 'i'
+      this.defaultConsonant = thisLetterIndex === 0 || isVowel(previosStrLetter || '') ? 'j' : 'i'
     }
 
     return super.toWordString(thisLetterIndex, wordLength, previosStrLetter, previosNikud)

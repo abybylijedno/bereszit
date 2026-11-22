@@ -32,6 +32,16 @@ describe('convert: single words', () => {
     expect(convert(hebrew)).toBe(phonetics)
   })
 
+  it.each([
+    ['יָד', 'jad'],
+    ['יוֹם', 'jom'],
+    ['יַעֲקֹב', 'jaakow'],
+    ['יִשְׂרָאֵל', 'jisrael'],
+    ['יִקְטֹל', 'jiktol'],
+  ])('reads Jud at the start of a word as "j": %s -> %s', (hebrew, phonetics) => {
+    expect(convert(hebrew)).toBe(phonetics)
+  })
+
   it('reads Het with Patach as "aH" only at the end of a word (furtive patach)', () => {
     expect(convert('מָשִׁיחַ')).toBe('masziaH')
     expect(convert('חַיַּת')).toBe('Hajat')
