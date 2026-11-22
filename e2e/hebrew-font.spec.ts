@@ -76,6 +76,22 @@ test('the Hebrew search keyboard uses one typeface', async ({ page }) => {
   await expectHebrewFont(page)
 })
 
+test('small-word exercises use one typeface for Hebrew', async ({ page }) => {
+  for (const section of ['Przedimek i spójnik', 'Przyimki', 'Zaimki', 'Przyrostki zaimkowe']) {
+    await page.goto('./#/gramatyka/cwiczenia')
+    await page.reload()
+    await page.getByRole('radio', { name: section, exact: true }).check()
+    await expectHebrewFont(page)
+    await page.getByRole('button', { name: 'Zaczynamy' }).click()
+    await expectHebrewFont(page)
+    await page.locator('.choices .choice').first().click()
+    await expectHebrewFont(page)
+    await page.getByRole('button', { name: 'Dalej' }).click()
+    await page.locator('.choices .choice').first().click()
+    await expectHebrewFont(page)
+  }
+})
+
 test('grammar exercises with a random verb use one typeface', async ({ page }) => {
   await page.goto('./#/gramatyka/cwiczenia')
   await page.getByRole('radio', { name: 'Losowy czasownik' }).check()

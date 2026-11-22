@@ -121,6 +121,22 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
       await page.getByRole('button', { name: i === 10 ? 'Pokaż wynik' : 'Dalej' }).click()
     }
   },
+  // Whole sessions of the small-word exercises: long Hebrew words must fit in 320px as answers.
+  'grammar word exercises: whole sessions': async (page) => {
+    for (const section of ['Przedimek i spójnik', 'Przyimki', 'Zaimki', 'Przyrostki zaimkowe']) {
+      await page.goto('./#/gramatyka/cwiczenia')
+      await page.reload()
+      await page.getByRole('radio', { name: section, exact: true }).check()
+      await page.getByRole('button', { name: 'Zaczynamy' }).click()
+      for (let i = 1; i <= 10; i++) {
+        await page.getByText(`Pytanie ${i} z 10`).waitFor()
+        await expectNoOverflow(page, `${section} question ${i}`)
+        await page.locator('.choices .choice').first().click()
+        await expectNoOverflow(page, `${section} answer ${i}`)
+        await page.getByRole('button', { name: i === 10 ? 'Pokaż wynik' : 'Dalej' }).click()
+      }
+    }
+  },
   'Hebrew search keyboard': async (page) => {
     await page.goto('./#/slowa/czasowniki')
     await page.getByRole('button', { name: 'Otwórz klawiaturę hebrajską' }).click()
