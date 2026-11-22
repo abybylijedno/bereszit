@@ -3,7 +3,7 @@ import { expectAccessible } from './helpers'
 
 const tabs = [
   { name: 'Fonetyka', heading: 'Fonetyka', hash: '#/fonetyka/alfabet' },
-  { name: 'Gramatyka', heading: 'Gramatyka', hash: '#/gramatyka' },
+  { name: 'Gramatyka', heading: 'Gramatyka', hash: '#/gramatyka/sciagawki' },
   { name: 'Słowa', heading: 'Słowa', hash: '#/slowa/czasowniki' },
   { name: 'Ustawienia', heading: 'Ustawienia', hash: '#/ustawienia' },
 ]

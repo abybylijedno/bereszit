@@ -45,9 +45,21 @@ const router = createRouter({
     { path: '/konwerter', redirect: { path: '/fonetyka/teksty', query: { tryb: 'konwerter' } } },
     {
       path: '/gramatyka',
-      name: 'grammar',
       component: () => import('@/views/GrammarView.vue'),
       meta: { title: 'Gramatyka' },
+      redirect: '/gramatyka/sciagawki',
+      children: [
+        {
+          path: 'sciagawki',
+          name: 'grammar-cheatsheets',
+          component: () => import('@/views/grammar/CheatsheetsPanel.vue'),
+        },
+        {
+          path: 'cwiczenia',
+          name: 'grammar-exercises',
+          component: () => import('@/views/grammar/ExercisesPanel.vue'),
+        },
+      ],
     },
     {
       path: '/slowa',

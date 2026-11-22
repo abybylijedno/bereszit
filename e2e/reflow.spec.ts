@@ -33,7 +33,10 @@ const expectNoOverflow = async (page: Page, label: string) => {
 const ROUTES = [
   'fonetyka/teksty?tryb=quiz',
   'fonetyka/teksty?tryb=konwerter',
-  'gramatyka',
+  'gramatyka/sciagawki?temat=formy',
+  'gramatyka/sciagawki?temat=perfectum',
+  'gramatyka/sciagawki?temat=imperfectum',
+  'gramatyka/cwiczenia',
   'fonetyka/alfabet',
   'fonetyka/nazwy',
   'fonetyka/nikud',

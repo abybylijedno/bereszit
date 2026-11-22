@@ -21,8 +21,7 @@ losowanie ważone błędami w `lib/quiz.ts`, statystyki w `lib/stats.ts` -> loca
 Krok 4 zrobiony: Tora (5 ksiąg) w `public/books`, `TextSource` ma tryby Wklej / Wybierz fragment / Losuj (1-5 wersetów),
 Ustawienia zarządzają księgami i postępami, baner aktualizacji PWA (`components/UpdateBanner.vue`; **nie ma testu e2e** - wymaga dwóch buildów,
 sprawdź ręcznie po zmianie SW). Reszta Tanachu: patrz „Teksty biblijne".
-Menu (4 zakładki): **Fonetyka** (scalone Litery + Quiz + Konwerter; `views/PhoneticsView.vue` z podmenu, panele w `views/phonetics/`), **Gramatyka** (pusta,
-`views/GrammarView.vue`), **Słowa**, **Ustawienia**. Aplikacja startuje na `/fonetyka/alfabet`. Stare adresy `/litery*`, `/quiz`, `/konwerter` przekierowują. Wspólne przyciski trybu: `components/PillRadios.vue`, podmenu: klasy `.subnav`.
+Menu (4 zakładki): **Fonetyka** (scalone Litery + Quiz + Konwerter; `views/PhoneticsView.vue` z podmenu, panele w `views/phonetics/`), **Gramatyka** (podmenu Ściągawki / Ćwiczenia, `views/GrammarView.vue`, panele w `views/grammar/`; patrz niżej), **Słowa**, **Ustawienia**. Aplikacja startuje na `/fonetyka/alfabet`. Stare adresy `/litery*`, `/quiz`, `/konwerter` przekierowują. Wspólne przyciski trybu: `components/PillRadios.vue`, podmenu: klasy `.subnav`.
 Zakładka **Słowa** (podtrasy `/slowa/czasowniki`, `/slowa/rzeczowniki`): listy frekwencyjne z wyszukiwaniem i sortowaniem
 (`lib/wordList.ts`, widoki `views/WordsView.vue` + `views/words/WordListPanel.vue`), dane w `src/data/verbs.json` (629 rdzeni) i `src/data/nouns.json`
 (700 rzeczowników z nikudem). Dane zrobiono **jednorazowo** z dostarczonych przez autora PDF-ów (lista G. B. Lestera + lista M. Majewskiego); skryptu importu
@@ -39,6 +38,10 @@ runtime Vue), każda z pełnym tekstem licencji; pomija typy, kompilator Vue i `
 `npm run licenses`; test w `scripts/licenses.test.mjs` pada, gdy plik jest nieaktualny. Nowa biblioteka w kodzie aplikacji spoza `dependencies` -> dopisz do `SHIPPED_EXTRAS`.
 Reguła „patach furtivum" (Het + Patach = `aH`) działa tylko na końcu wielowyrazowego słowa.
 Testy quizów są deterministyczne dzięki `Math.random = () => 0` w `page.addInitScript` (pierwsze elementy puli po kolei).
+Gramatyka (w toku, uzgodniona z autorem): **Ściągawki** (wybór tematu `?temat=`: formy, perfectum, imperfectum; dalej przedimek/spójnik, przyimki,
+zaimki, rzeczowniki, przyrostki zaimkowe) i **Ćwiczenia** (wybór tematu, sesje po 10 pytań; jeszcze niezrobione). Dane ręcznie przepisane z ściągawek autora
+(PDF-y w `input/`, gitignore) i slajdów z lekcji: `lib/grammar/verbParadigm.ts` (kal perfectum/imperfectum wzorca `קטל`), `lib/grammar/binyanim.ts`.
+Tylko czasownik mocny; słabych jeszcze nie było na lekcjach. Każdą tabelę autor sprawdza po przepisaniu.
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.
 
 Komendy testów: `npm test` (Vitest), `npm run test:e2e` (Playwright; sam buduje i startuje `vite preview`), `npm run icons` (PNG z `icon.svg`).
@@ -51,7 +54,7 @@ Dolne menu (na desktopie może być paskiem bocznym), 4 zakładki, routing **has
 | Zakładka | Zawartość |
 |---|---|
 | **Fonetyka** | Podmenu: **Alfabet** (domyślna podstrona) \| **Nazwy liter** \| **Litery z nikudem** \| **Teksty**. *Alfabet*: siatka 27 liter (22 + 5 końcowych) jako ściągawka. *Nazwy liter*: quiz nazw (alef, bet...), odpowiedź z 4 przycisków. *Litery z nikudem*: quiz litera + nikud -> fonetyka (tu dagesz, szwa, szin/sin; litera bez nikudu np. alef jest nieme, więc fonetykę sprawdzamy tylko z nikudem); sesje po 10 pytań. *Teksty*: wybór **Trybu** (przed „Źródłem tekstu"): *Quiz* albo *Konwerter*; tryb jest w URL (`?tryb=quiz\|konwerter`), oba panele żyją pod `<KeepAlive>` (wklejony tekst i postęp quizu nie giną przy przełączaniu). Quiz tekstu: źródło tekstu -> lista kart (słowo he, pole na fonetykę, wynik po `blur`), „Pokaż odpowiedź", podsumowanie. Konwerter: źródło tekstu + wynik na żywo, układ międzywierszowy (he nad fonetyką, RTL), dotknięcie słowa = rozbiór litera po literze, „Kopiuj wymowę". |
-| **Gramatyka** | Na razie pusta strona („w przygotowaniu"). Plan: podstrony m.in. Quiz, Czasy, Formy (czasy: na lekcjach tylko perfectum i imperfectum; „forma" = binjan, na razie zawsze kal). Bez ćwiczeń z rzeczownikami. |
+| **Gramatyka** | Podmenu **Ściągawki** (domyślna) \| **Ćwiczenia**. Ściągawki tematyczne (czasowniki: formy/perfectum/imperfectum, przedimek i spójnik, przyimki, zaimki, rzeczowniki, przyrostki zaimkowe); ćwiczenia z wyborem tematu. Czasy: na lekcjach tylko perfectum i imperfectum; „forma" = binjan, na razie zawsze kal. Bez ćwiczeń z rzeczownikami. |
 | **Słowa** | Listy frekwencyjne: najczęstsze czasowniki (rdzeń + znaczenie w bezokoliczniku) i rzeczowniki (z nikudem i wymową). Wyszukiwanie po polsku, wymowie lub hebrajskich literach; sortowanie. Na razie tylko przeglądanie. |
 | **Ustawienia** | Zarządzanie pobranymi księgami, (opcjonalnie) rozmiar czcionki, o aplikacji, licencje i atrybucja Mechon-Mamre. Motyw podąża za systemem (`prefers-color-scheme`). |
 
@@ -103,7 +106,7 @@ Quiz liter powtarza częściej litery z błędami.
 - Brak limitów czasowych (2.2.3), `prefers-reduced-motion`, bez migotania.
 - Tekst: linie <= 80 znaków, bez justowania, skalowanie do 200% bez utraty funkcji, reflow od 320 px.
 - Etykiety pól (`<label>`), komunikaty wyników w `aria-live="polite"`, sensowna hierarchia nagłówków, nawigacja jako `<nav>` z `aria-current`.
-- Znane odstępstwa od AAA: (uzupełniaj tutaj)
+- Znane odstępstwa od AAA: token `--affix` (kolor dodatków do rdzenia: przedrostków i końcówek, `#bd21c0` / `#ec83f1`) ma kontrast ok. 4,6-8:1, czyli AAA tylko dla dużego pogrubionego tekstu (>= 14 pt, 1.4.6). Używaj go wyłącznie tak (hebrajskie dodatki w `RootWord`, próbka w legendzie); `e2e/helpers.ts` to egzekwuje.
 
 ## Testy
 

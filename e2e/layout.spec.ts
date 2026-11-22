@@ -4,7 +4,7 @@ import { expectAccessible, GENESIS_1_1 } from './helpers'
 for (const route of [
   'fonetyka/teksty?tryb=quiz',
   'fonetyka/teksty?tryb=konwerter',
-  'gramatyka',
+  'gramatyka/sciagawki',
   'fonetyka/alfabet',
   'fonetyka/nazwy',
   'slowa/czasowniki',

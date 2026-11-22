@@ -91,9 +91,3 @@ test('the mode picker is keyboard operable and accessible', async ({ page }) => 
   await expect(page.getByRole('radio', { name: 'Konwerter' })).toBeChecked()
   await expectAccessible(page)
 })
-
-test('Gramatyka is a placeholder for now', async ({ page }) => {
-  await page.goto('./#/gramatyka')
-  await expect(page.getByRole('heading', { level: 1, name: 'Gramatyka' })).toBeVisible()
-  await expect(page.getByText('Ta część aplikacji jest w przygotowaniu.')).toBeVisible()
-})
