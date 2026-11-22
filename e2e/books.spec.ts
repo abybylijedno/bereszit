@@ -168,6 +168,8 @@ test.describe('settings: books', () => {
   })
 
   test('using a book from the text source downloads it automatically', async ({ page }) => {
+    // Let the first route finish: two hash-only navigations in a row can swallow the second one.
+    await expect(page.getByRole('heading', { level: 1, name: 'Ustawienia' })).toBeAttached()
     await page.goto('./#/fonetyka/teksty?tryb=konwerter')
     await openMode(page, 'Losuj')
     await page.getByRole('button', { name: 'Losuj fragment' }).click()
