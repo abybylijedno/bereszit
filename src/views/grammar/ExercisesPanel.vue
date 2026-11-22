@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /**
- * Verb exercises (Kal, strong verb קטל). Two kinds of questions alternate:
- * "which form is this word?" and "which word has this description?".
+ * Verb exercises (strong verb קטל, any of the seven verb forms). Two kinds of questions are
+ * mixed: "which form is this word?" and "which word has this description?".
  */
 import { computed, nextTick, ref } from 'vue'
 import PillRadios from '@/components/PillRadios.vue'
@@ -13,12 +13,17 @@ import {
   allDescriptions,
   allForms,
   buildChoices,
+  contextFor,
   describeForm,
+  fixedPart,
+  FORM_LABELS,
   formsFor,
   questionKey,
   questionsFor,
   recognizeChoices,
   TOPIC_LABELS,
+  type Context,
+  type FormChoice,
   type Question,
   type VerbTopic,
 } from '@/lib/grammar/verbQuiz'
@@ -29,12 +34,21 @@ const topicOptions = (Object.keys(TOPIC_LABELS) as VerbTopic[]).map((value) => (
   value,
   label: TOPIC_LABELS[value],
 }))
-const withTense = computed(() => topic.value === 'oba')
-const pool = computed(() => formsFor(topic.value))
+const binyan = ref<FormChoice>('kal')
+const formOptions = (Object.keys(FORM_LABELS) as FormChoice[]).map((value) => ({
+  value,
+  label: FORM_LABELS[value],
+}))
+const pool = computed(() => formsFor(topic.value, binyan.value))
+/** What a description has to name; the rest is fixed by the question. */
+const ctx = computed(() => contextFor(topic.value, binyan.value))
+const fixed = computed(() => fixedPart(topic.value, binyan.value))
+/** Lists of mistakes show everything, because they are not tied to one choice. */
+const FULL: Context = { tense: true, binyan: true }
 
 const session = useQuizSession<Question>({
   bucket: 'grammar',
-  getPool: () => questionsFor(topic.value),
+  getPool: () => questionsFor(topic.value, binyan.value),
   keyOf: questionKey,
 })
 const { phase, current, index, total, score, mistakes, lastCorrect } = session
@@ -50,7 +64,7 @@ const weakest = ref<VerbForm[]>([])
 
 const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
 const answered = computed(() => phase.value === 'answered')
-const currentLabel = computed(() => (form.value ? describeForm(form.value, withTense.value) : ''))
+const currentLabel = computed(() => (form.value ? describeForm(form.value, ctx.value) : ''))
 
 const refreshWeakest = () => {
   weakest.value = stats
@@ -66,8 +80,8 @@ const prepare = () => {
   const f = form.value
   if (!f) return
   if (kind.value === 'recognize') {
-    correctChoice.value = describeForm(f, withTense.value)
-    choices.value = recognizeChoices(f, pool.value, withTense.value)
+    correctChoice.value = describeForm(f, ctx.value)
+    choices.value = recognizeChoices(f, pool.value, ctx.value)
   } else {
     correctChoice.value = f.he
     choices.value = buildChoices(f, pool.value)
@@ -101,28 +115,30 @@ const backToStart = () => {
 const explanation = computed(() => {
   const f = form.value
   if (!f) return ''
-  return allDescriptions(f, pool.value, withTense.value).join(' lub ')
+  return allDescriptions(f, pool.value, ctx.value).join(' lub ')
 })
 </script>
 
 <template>
   <div>
     <h2>
-      Ćwiczenia: czasownik <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> w formie kal
+      Ćwiczenia: czasownik <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span>
     </h2>
 
     <div v-if="phase === 'intro'">
       <p>
-        Ćwiczysz odmianę czasownika mocnego w formie kal. Pytania są dwojakie: raz widzisz słowo i
-        wybierasz, jaka to forma (osoba, rodzaj, liczba), raz widzisz opis i wybierasz słowo. Sesja
-        ma 10 pytań i nie ma limitu czasu. Formy, które sprawiają Ci kłopot, będą wracać częściej.
+        Ćwiczysz odmianę czasownika mocnego. Wybierz formę czasownika i czas. Pytania są dwojakie:
+        raz widzisz słowo i wybierasz, jaka to forma (osoba, rodzaj, liczba), raz widzisz opis i
+        wybierasz słowo. Sesja ma 10 pytań i nie ma limitu czasu. Formy, które sprawiają Ci kłopot,
+        będą wracać częściej.
       </p>
+      <PillRadios v-model="binyan" legend="Forma czasownika" :options="formOptions" />
       <PillRadios v-model="topic" legend="Temat" :options="topicOptions" />
       <p v-if="weakest.length">
         Najtrudniejsze dla Ciebie:
         <template v-for="(f, i) in weakest" :key="f.id">
           <span lang="he" dir="rtl" class="mini-glyph">{{ f.he }}</span> ({{
-            describeForm(f, true)
+            describeForm(f, FULL)
           }}){{ i < weakest.length - 1 ? ', ' : '.' }}
         </template>
       </p>
@@ -145,16 +161,12 @@ const explanation = computed(() => {
         </p>
         <p id="question">
           Jaka to forma czasownika <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span
-          ><template v-if="!withTense">
-            w {{ form?.tense === 'perfect' ? 'perfectum' : 'imperfectum' }}</template
-          >?
+          ><template v-if="fixed"> ({{ fixed }})</template>?
         </p>
       </template>
       <p v-else id="question">
         Które słowo to: <strong>{{ currentLabel }}</strong
-        ><template v-if="!withTense">
-          ({{ form?.tense === 'perfect' ? 'perfectum' : 'imperfectum' }})</template
-        >?
+        ><template v-if="fixed"> ({{ fixed }})</template>?
       </p>
 
       <div class="choices" role="group" aria-labelledby="question">
@@ -203,7 +215,7 @@ const explanation = computed(() => {
         <ul class="mistakes">
           <li v-for="m in mistakes" :key="questionKey(m.item)">
             <span lang="he" dir="rtl" class="mini-glyph">{{ m.item.form.he }}</span> –
-            {{ describeForm(m.item.form, true) }}
+            {{ describeForm(m.item.form, FULL) }}
           </li>
         </ul>
       </template>

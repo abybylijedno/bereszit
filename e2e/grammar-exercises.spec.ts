@@ -105,3 +105,61 @@ test('exercises pass axe checks in every phase (light and dark)', async ({ page 
     await page.reload()
   }
 })
+
+test('intro offers the seven verb forms and "Wszystkie formy", Kal first', async ({ page }) => {
+  const forms = page.getByRole('group', { name: 'Forma czasownika' })
+  await expect(forms.getByRole('radio')).toHaveCount(8)
+  await expect(forms.getByRole('radio', { name: 'Kal', exact: true })).toBeChecked()
+  await expect(forms.getByRole('radio', { name: 'Wszystkie formy' })).toBeVisible()
+})
+
+test('a chosen verb form is practised and named in the question', async ({ page }) => {
+  await page.getByRole('radio', { name: 'Hifil' }).check()
+  await start(page)
+  await expect(page.getByText('Pytanie 1 z 10')).toBeVisible()
+  await expect(page.locator('#question')).toContainText('(hifil, perfectum)')
+  await expect(page.locator('.word')).toContainText('הִקְטִיל')
+  const choices = page.getByRole('group', { name: /Jaka to forma/ }).getByRole('button')
+  await choices.filter({ hasText: '3 os. r. męski, l. poj.' }).click()
+  await expect(page.getByText('Poprawnie!')).toBeVisible()
+  await page.getByRole('button', { name: 'Dalej' }).click()
+  await expect(page.locator('#question')).toContainText('(hifil, perfectum)')
+  await page.getByRole('button', { name: 'הִקְטִיל', exact: true }).click()
+  await expect(page.getByText('Poprawnie!')).toBeVisible()
+})
+
+test('"Wszystkie formy": answers name the verb form', async ({ page }) => {
+  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await start(page)
+  await expect(page.locator('#question')).toContainText('(perfectum)')
+  const choices = page.locator('.choices .choice')
+  await expect(choices).toHaveCount(4)
+  await expect(choices.filter({ hasText: 'kal, 3 os. r. męski, l. poj.' })).toHaveCount(1)
+  for (const text of await choices.allTextContents()) expect(text).toMatch(/[a-z]+, \d os\./)
+})
+
+test('"Wszystkie formy" with both tenses names the tense as well', async ({ page }) => {
+  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await page.getByRole('radio', { name: 'Oba czasy' }).check()
+  await start(page)
+  await expect(page.locator('#question')).not.toContainText('(')
+  await expect(page.locator('.choices .choice').first()).toContainText(
+    /[a-z]+, (perfectum|imperfectum), \d os\./,
+  )
+})
+
+test('exercises with all verb forms pass axe checks (light and dark)', async ({ page }) => {
+  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await page.getByRole('radio', { name: 'Oba czasy' }).check()
+  for (const scheme of ['light', 'dark'] as const) {
+    await page.emulateMedia({ colorScheme: scheme })
+    await expectAccessible(page)
+  }
+  await start(page)
+  for (const scheme of ['light', 'dark'] as const) {
+    await page.emulateMedia({ colorScheme: scheme })
+    await expectAccessible(page)
+  }
+  await page.locator('.choices .choice').first().click()
+  await expectAccessible(page)
+})

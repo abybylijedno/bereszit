@@ -6,10 +6,14 @@ export type Person = 1 | 2 | 3
 export type Gender = 'm' | 'f' | 'c'
 export type Num = 'sg' | 'pl'
 
+export type BinyanId = 'kal' | 'nifal' | 'piel' | 'pual' | 'hifil' | 'hofal' | 'hitpael'
+
 export interface VerbForm {
   /** Stable id, e.g. "perfect-3-m-sg". */
   id: string
   tense: Tense
+  /** The verb form; every form here is a kal form unless a table says otherwise. */
+  binyan: BinyanId
   person: Person
   /** `c` = common (both genders use the same form). */
   gender: Gender
@@ -34,6 +38,7 @@ const f = (
 ): VerbForm => ({
   id: `${tense}-${person}-${gender}-${number}`,
   tense,
+  binyan: 'kal',
   person,
   gender,
   number,

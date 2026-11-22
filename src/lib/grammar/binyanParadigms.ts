@@ -9,12 +9,13 @@ import {
   buildRows,
   imperfect as kalImperfect,
   perfect as kalPerfect,
+  type BinyanId,
   type ParadigmRow,
   type Tense,
   type VerbForm,
 } from './verbParadigm'
 
-export type BinyanId = 'kal' | 'nifal' | 'piel' | 'pual' | 'hifil' | 'hofal' | 'hitpael'
+export type { BinyanId }
 
 export const BINYAN_NAMES: Record<BinyanId, string> = {
   kal: 'Kal',
@@ -190,6 +191,7 @@ const withHebrew = (kal: VerbForm[], hebrew: string[], binyan: BinyanId): VerbFo
   kal.map((form, i) => ({
     ...form,
     id: `${binyan}-${form.id}`,
+    binyan,
     he: hebrew[i]!.normalize('NFC'),
     sameAs: form.sameAs ? `${binyan}-${form.sameAs}` : undefined,
   }))

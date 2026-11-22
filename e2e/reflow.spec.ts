@@ -92,6 +92,7 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
   },
   'grammar exercise: recognise question with feedback': async (page) => {
     await page.goto('./#/gramatyka/cwiczenia')
+    await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
     await page.getByRole('radio', { name: 'Oba czasy' }).check()
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await page.locator('.choices .choice').first().click()
