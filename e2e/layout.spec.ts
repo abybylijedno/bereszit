@@ -122,14 +122,38 @@ test.describe('navigation layout', () => {
     expect(box!.height).toBe(500)
   })
 
-  test('on a phone the path bar is docked at the bottom, full width', async ({ page }) => {
+  test('on a phone the path bar is docked at the top, full width', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 800 })
     await page.goto('./#/fonetyka/teksty?tryb=quiz')
     const box = await pathBar(page).boundingBox()
     expect(box!.x).toBe(0)
+    expect(box!.y).toBe(0)
     expect(box!.width).toBe(390)
-    expect(box!.y + box!.height).toBe(800)
     expect(box!.height).toBeLessThan(120)
+    // The content starts below the bar, and the bar stays when the page is scrolled.
+    const heading = await page.locator('#content legend').first().boundingBox()
+    expect(heading!.y).toBeGreaterThanOrEqual(box!.y + box!.height)
+    await page.mouse.wheel(0, 600)
+    await expect.poll(async () => (await pathBar(page).boundingBox())!.y).toBe(0)
+  })
+
+  test('a focused element is not left hidden under the path bar', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 600 })
+    await page.goto('./#/gramatyka/zaimki')
+    await page.getByRole('heading', { level: 3, name: 'Zaimki' }).waitFor()
+    const bar = await pathBar(page).boundingBox()
+    const mode = page.getByRole('group', { name: 'Tryb' })
+    // Scroll so that the mode switch sits right under the top edge, behind the fixed bar.
+    await page.evaluate(() => {
+      const label = [...document.querySelectorAll('.pill span')].find(
+        (el) => el.textContent === 'Ściągawka',
+      )!
+      window.scrollTo(0, label.getBoundingClientRect().top + window.scrollY - 10)
+      ;(document.activeElement as HTMLElement | null)?.blur()
+    })
+    await mode.getByRole('radio', { name: 'Ściągawka' }).focus()
+    const label = await mode.getByText('Ściągawka', { exact: true }).boundingBox()
+    expect(label!.y).toBeGreaterThanOrEqual(bar!.y + bar!.height)
   })
 
   test('on a wide screen the path bar is at the top of the content, next to the sidebar', async ({

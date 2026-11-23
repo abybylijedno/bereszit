@@ -12,7 +12,7 @@ Node wg `.nvmrc`. Komendy: `npm run dev | build | type-check | lint | format`.
 
 ## Stan obecny vs. plan
 
-Zrobione (krok 1): pasek ścieżki na dole / pasek boczny (>= 56rem), router hash-history, zakładki, własny CSS z motywem jasnym/ciemnym
+Zrobione (krok 1): pasek ścieżki na górze / pasek boczny (>= 56rem), router hash-history, zakładki, własny CSS z motywem jasnym/ciemnym
 (`src/styles/main.css`, tokeny), Quiz jako karty, PWA (vite-plugin-pwa, `registerType: 'prompt'`; baner aktualizacji jeszcze **niezrobiony**),
 Vitest + Playwright. Krok 2 zrobiony: Konwerter (obecnie tryb zakładki Fonetyka; układ międzywierszowy, rozbiór litera po literze, kopiowanie) i wspólny `components/TextSource.vue`
 (na razie tylko „Wklej"; wybór/losowanie dojdą tu w kroku 4). `analyze()` w `lib/converter.ts` zwraca rozbiór słów.
@@ -24,8 +24,8 @@ sprawdź ręcznie po zmianie SW). Reszta Tanachu: patrz „Teksty biblijne".
 Menu (4 zakładki): **Fonetyka** (scalone Litery + Quiz + Konwerter; `views/PhoneticsView.vue`, panele w `views/phonetics/`), **Gramatyka** (`views/GrammarView.vue`, temat w `views/grammar/GrammarTopicView.vue`; patrz niżej), **Słowa**, **Ustawienia**. Aplikacja startuje na `/fonetyka/alfabet`. Stare adresy `/litery*`, `/quiz`, `/konwerter`, `/gramatyka/sciagawki?temat=`, `/gramatyka/cwiczenia?dzial=` przekierowują.
 
 **Nawigacja = pasek ścieżki** (`components/PathBar.vue`, mapa aplikacji w `lib/navigation.ts`): zakładka › temat › (dla perfectum/imperfectum/rozkazu) forma czasownika. Każdy poziom to natywny `<select>`
-przełączający rodzeństwo; wybór jest w adresie (ścieżka = zakładka i temat, `?forma=`, `?tryb=`). Na telefonie pasek jest zadokowany na dole i ma wszystkie poziomy; od 56rem zakładki są w pasku bocznym,
-a pasek (bez zakładki) leży na górze treści. Gdy robi się za wąski (< 17,5 rem: mały telefon albo duży tekst; zapytanie kontenerowe w `rem`, bez JS) zwija się do ikony zakładki i jednego przycisku „Gdzie jestem”,
+przełączający rodzeństwo; wybór jest w adresie (ścieżka = zakładka i temat, `?forma=`, `?tryb=`). Pasek jest zadokowany **na górze** (tam, gdzie i tak są przełączniki trybów w treści, więc kciuk działa w jednej strefie) i na telefonie ma wszystkie poziomy; od 56rem zakładki są w pasku bocznym,
+a pasek (bez zakładki) zaczyna się obok niego. `html` ma `scroll-padding-top`, żeby fokus i kotwice nie chowały się pod paskiem (WCAG 2.4.11). Gdy robi się za wąski (< 17,5 rem: mały telefon albo duży tekst; zapytanie kontenerowe w `rem`, bez JS) zwija się do ikony zakładki i jednego przycisku „Gdzie jestem”,
 który otwiera okno ze wszystkimi poziomami. Przy trzech poziomach zakładka pokazuje tylko ikonę. Powrót do zakładki ląduje w ostatnim temacie (`remember`).
 **Zasada: pasek = gdzie jestem (nawigacja); ustawienia ćwiczenia i tryby w treści (`PillRadios`: Tryb, Źródło tekstu, Czas, Czasownik) to nie nawigacja.** Nie dodawaj nowych podmenu ani grup pigułek do nawigowania
 po stronie; nowy temat = wpis w `SECTIONS` (+ trasa). Testy e2e wybierają poziomy przez `openTab` / `openTopic` / `openForma` z `e2e/helpers.ts` (obsługują też zwiniętą wersję paska).
@@ -67,7 +67,7 @@ Node: `.nvmrc` (24); w tym środowisku `export PATH=$HOME/.nvm/versions/node/v24
 
 ## Architektura docelowa
 
-Pasek ścieżki na dole (na desktopie pasek boczny z zakładkami + pasek ścieżki na górze), 4 zakładki, routing **hash-history** (`/#/fonetyka`), bo GitHub Pages nie ma fallbacku SPA:
+Pasek ścieżki na górze (na desktopie pasek boczny z zakładkami + pasek ścieżki obok niego), 4 zakładki, routing **hash-history** (`/#/fonetyka`), bo GitHub Pages nie ma fallbacku SPA:
 
 | Zakładka | Zawartość |
 |---|---|

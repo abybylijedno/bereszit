@@ -1,8 +1,9 @@
 <script setup lang="ts">
 /**
  * The path bar: one navigation for the whole app. It shows where you are (tab › topic › verb
- * form) and every part is a select that switches its siblings. On a phone it is docked at the
- * bottom; from 56rem the sidebar holds the tabs and the bar sits on top of the content.
+ * form) and every part is a select that switches its siblings. It is docked at the top, where
+ * the mode pickers of the pages are too, so the thumb stays in one zone; from 56rem the sidebar
+ * holds the tabs and the bar starts next to it.
  * When it gets too narrow (small screen, large text) it shrinks to the tab and one "where am I"
  * button that opens all levels in a dialog. The choice lives in the address.
  */
@@ -132,10 +133,10 @@ const goForma = (event: Event) => {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
   background: var(--surface);
-  border-top: 2px solid var(--border);
-  padding: 0.4rem 0.5rem calc(0.4rem + env(safe-area-inset-bottom));
+  border-bottom: 2px solid var(--border);
+  padding: calc(0.4rem + env(safe-area-inset-top)) 0.5rem 0.4rem;
 }
 
 .row {
@@ -255,13 +256,14 @@ option {
 dialog {
   width: 100%;
   max-width: none;
-  margin: auto 0 0;
+  /* A sheet that drops from the top, where the bar is. */
+  margin: 0 0 auto;
   border: 0;
-  border-top: 2px solid var(--border);
-  border-radius: 1rem 1rem 0 0;
+  border-bottom: 2px solid var(--border);
+  border-radius: 0 0 1rem 1rem;
   background: var(--bg);
   color: var(--text);
-  padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+  padding: calc(1rem + env(safe-area-inset-top)) 1rem 1rem;
 }
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
@@ -289,14 +291,10 @@ dialog .btn {
 }
 
 @media (min-width: 56rem) {
-  /* Sidebar has the tabs: the bar moves to the top of the content and drops its first segment. */
+  /* Sidebar has the tabs: the bar starts next to it and drops its first segment. */
   .pathbar {
-    top: 0;
-    bottom: auto;
     /* Flush against the sidebar (11rem); the padding lines the selects up with the content. */
     left: 11rem;
-    border-top: 0;
-    border-bottom: 2px solid var(--border);
     padding: 0.5rem 1rem 0.5rem 2rem;
   }
   .section,

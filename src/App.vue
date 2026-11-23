@@ -56,7 +56,8 @@ import { SECTIONS, sectionTarget } from '@/lib/navigation'
 main {
   max-width: 60rem;
   margin: 0 auto;
-  padding: 1rem 1rem calc(var(--nav-h) + 2rem + env(safe-area-inset-bottom));
+  padding: calc(var(--path-h) + env(safe-area-inset-top) + 1rem) 1rem
+    calc(2rem + env(safe-area-inset-bottom));
 }
 main:focus {
   outline: none;

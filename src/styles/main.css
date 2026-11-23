@@ -25,9 +25,8 @@
   --bad-text: #6b0b0b;
   /* Highlight of prefixes and endings: >= 4.5:1 only, so use it for large bold text (>= 14pt) alone. */
   --affix: #bd21c0;
-  --nav-h: 4.25rem;
-  /* Height of the path bar when it sits on top of the content (wide screens). */
-  --path-h: 4.75rem;
+  /* Height of the path bar docked at the top (add the safe-area inset where it matters). */
+  --path-h: 4.25rem;
   --font-he: 'Noto Serif Hebrew', 'SBL Hebrew', 'Times New Roman', serif;
   --font-ui: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
@@ -59,6 +58,8 @@
 html {
   font-size: 112.5%;
   -webkit-text-size-adjust: 100%;
+  /* The path bar is fixed at the top: scrolling to a focused element or an anchor keeps it clear. */
+  scroll-padding-top: calc(var(--path-h) + env(safe-area-inset-top) + 0.5rem);
 }
 
 body {

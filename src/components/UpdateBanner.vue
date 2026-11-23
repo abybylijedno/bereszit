@@ -10,7 +10,9 @@ const dismissed = ref(false)
 <template>
   <div v-if="needRefresh && !dismissed" class="banner" role="status">
     <span>Dostępna jest nowa wersja aplikacji.</span>
-    <button type="button" class="btn btn-primary" @click="updateServiceWorker(true)">Odśwież</button>
+    <button type="button" class="btn btn-primary" @click="updateServiceWorker(true)">
+      Odśwież
+    </button>
     <button type="button" class="btn" @click="dismissed = true">Później</button>
   </div>
 </template>
@@ -21,7 +23,7 @@ const dismissed = ref(false)
   z-index: 20;
   left: 0.75rem;
   right: 0.75rem;
-  bottom: calc(var(--nav-h) + 0.75rem + env(safe-area-inset-bottom));
+  bottom: calc(0.75rem + env(safe-area-inset-bottom));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
