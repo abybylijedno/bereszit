@@ -141,7 +141,7 @@ const goForma = (event: Event) => {
 .row {
   display: flex;
   align-items: stretch;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 .compact {
   display: none;
@@ -157,19 +157,19 @@ const goForma = (event: Event) => {
   flex: 0 0 auto;
 }
 .seg.topic {
-  flex: 3 1 0;
+  flex: 4 1 0;
 }
 .seg.forma {
-  flex: 2 1 0;
+  flex: 3 1 0;
 }
 .seg::after {
   content: '▾';
   position: absolute;
-  right: 0.4rem;
+  right: 0.35rem;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 .seg.where::after {
   content: none;
@@ -185,13 +185,13 @@ select,
 .where button {
   width: 100%;
   min-height: 3rem;
-  padding: 0 1.4rem 0 0.5rem;
+  padding: 0 1.2rem 0 0.4rem;
   border: 2px solid var(--border);
   border-radius: 0.6rem;
   background: var(--bg);
   color: var(--text);
   font: inherit;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   text-align: start;
   white-space: nowrap;
@@ -233,11 +233,11 @@ option {
   stroke-linejoin: round;
 }
 .section.icon-only {
-  width: 3.7rem;
+  width: 3.4rem;
 }
 .section.icon-only select {
   color: transparent;
-  padding-right: 1.4rem;
+  padding-right: 1.2rem;
 }
 .section select option {
   color: var(--text);

@@ -21,6 +21,7 @@
     "licenses": "node scripts/licenses.mjs"
   },
   "dependencies": {
+    "@fontsource/noto-sans": "^5.3.0",
     "@fontsource/noto-serif-hebrew": "^5.3.0",
     "@types/diff": "^7.0.2",
     "diff": "^8.0.2",

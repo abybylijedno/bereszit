@@ -116,3 +116,25 @@ test('grammar exercises: question words and answer buttons use one typeface', as
   await page.locator('.choices .choice').first().click()
   await expectHebrewFont(page)
 })
+
+test('Latin text uses the Noto Sans that ships with the app, on every device', async ({ page }) => {
+  await page.goto('./#/gramatyka/perfectum')
+  await page.getByRole('heading', { level: 3 }).first().waitFor()
+  await page.evaluate(() => document.fonts.ready)
+  const result = await page.evaluate(() => {
+    const family = (selector: string) =>
+      getComputedStyle(document.querySelector(selector)!).fontFamily
+    return {
+      body: family('body'),
+      bar: family('.pathbar select'),
+      button: family('.pill span'),
+      // Faces really loaded from the app (not a system font that happens to share the name).
+      loaded: [...document.fonts].filter((f) => f.family === 'Noto Sans' && f.status === 'loaded')
+        .length,
+    }
+  })
+  expect(result.body).toMatch(/^"?Noto Sans"?,/)
+  expect(result.bar).toMatch(/^"?Noto Sans"?,/)
+  expect(result.button).toMatch(/^"?Noto Sans"?,/)
+  expect(result.loaded).toBeGreaterThan(0)
+})

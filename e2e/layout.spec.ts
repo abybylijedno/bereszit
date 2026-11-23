@@ -156,6 +156,8 @@ test.describe('navigation layout', () => {
     }) => {
       await page.setViewportSize({ width, height: 640 })
       await page.goto('./#/gramatyka/imperfectum?forma=hitpael')
+      // The font is part of the app, so these widths are the same on every machine.
+      await page.evaluate(() => document.fonts.ready)
       const bar = pathBar(page)
       const selects = [
         bar.getByRole('combobox', { name: 'Zakładka' }),

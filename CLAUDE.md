@@ -98,7 +98,7 @@ Liczba wersetów: `<select>` 1-5.
 ### PWA
 
 `vite-plugin-pwa`: manifest, ikony PNG 192/512 + maskable (generowane z `public/icon.svg`), service worker, działanie offline,
-baner „Nowa wersja, odśwież". Wszystkie zasoby lokalnie (czcionki hebrajskie self-hosted: Noto Serif Hebrew lub Frank Ruhl Libre; żadnych CDN).
+baner „Nowa wersja, odśwież". Wszystkie zasoby lokalnie (czcionki self-hosted przez `@fontsource`: Noto Serif Hebrew dla hebrajskiego i **Noto Sans dla łacińskiego**, żeby układ mierzył się tak samo na każdym urządzeniu i w CI; żadnych CDN, żadnych czcionek systemowych jako pierwszych w stosie).
 
 ### Postępy
 
