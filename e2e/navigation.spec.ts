@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test'
-import { expectAccessible } from './helpers'
+import { expectAccessible, hasSidebar, openTab, pathBar } from './helpers'
 
 const tabs = [
-  { name: 'Fonetyka', heading: 'Fonetyka', hash: '#/fonetyka/alfabet' },
-  { name: 'Gramatyka', heading: 'Gramatyka', hash: '#/gramatyka/sciagawki' },
-  { name: 'Słowa', heading: 'Słowa', hash: '#/slowa/czasowniki' },
-  { name: 'Ustawienia', heading: 'Ustawienia', hash: '#/ustawienia' },
+  { id: 'fonetyka', name: 'Fonetyka', heading: 'Fonetyka', hash: '#/fonetyka/alfabet' },
+  { id: 'gramatyka', name: 'Gramatyka', heading: 'Gramatyka', hash: '#/gramatyka/formy' },
+  { id: 'slowa', name: 'Słowa', heading: 'Słowa', hash: '#/slowa/czasowniki' },
+  { id: 'ustawienia', name: 'Ustawienia', heading: 'Ustawienia', hash: '#/ustawienia' },
 ]
 
 test('opens on the Fonetyka tab', async ({ page }) => {
@@ -14,17 +14,40 @@ test('opens on the Fonetyka tab', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1, name: 'Fonetyka' })).toBeVisible()
 })
 
-test('main navigation has four tabs and switches views', async ({ page }) => {
+test('the four tabs switch views (sidebar on a wide screen, path bar on a phone)', async ({
+  page,
+}) => {
   await page.goto('./')
-  const nav = page.getByRole('navigation', { name: 'Główna nawigacja' })
-  await expect(nav.getByRole('link')).toHaveCount(4)
+  if (await hasSidebar(page)) {
+    await expect(
+      page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('link'),
+    ).toHaveCount(4)
+  } else {
+    await expect(
+      pathBar(page).getByRole('combobox', { name: 'Zakładka' }).locator('option'),
+    ).toHaveText(['Fonetyka', 'Gramatyka', 'Słowa', 'Ustawienia'])
+  }
 
   for (const tab of tabs) {
-    await nav.getByRole('link', { name: tab.name }).click()
-    await expect(page).toHaveURL(new RegExp(`${tab.hash}$`))
-    await expect(page.getByRole('heading', { level: 1, name: tab.heading })).toBeVisible()
-    await expect(nav.getByRole('link', { name: tab.name })).toHaveAttribute('aria-current', 'page')
+    await openTab(page, tab.name)
+    await expect(page.getByRole('heading', { level: 1, name: tab.heading })).toBeAttached()
+    if (await hasSidebar(page)) {
+      await expect(
+        page
+          .getByRole('navigation', { name: 'Główna nawigacja' })
+          .getByRole('link', { name: tab.name }),
+      ).toHaveAttribute('aria-current', 'page')
+    } else {
+      await expect(pathBar(page).getByRole('combobox', { name: 'Zakładka' })).toHaveValue(tab.id)
+    }
   }
+})
+
+test('choosing a tab again returns to the topic you left there', async ({ page }) => {
+  await page.goto('./#/gramatyka/zaimki')
+  await openTab(page, 'Słowa')
+  await openTab(page, 'Gramatyka')
+  await expect(page).toHaveURL(/#\/gramatyka\/zaimki$/)
 })
 
 test('page title follows the active tab', async ({ page }) => {
@@ -41,10 +64,20 @@ test('skip link moves focus to the content', async ({ page }) => {
 })
 
 test('navigation touch targets are at least 44x44 px', async ({ page }) => {
-  await page.goto('./')
-  const links = page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('link')
-  for (let i = 0; i < 4; i++) {
-    const box = await links.nth(i).boundingBox()
+  await page.goto('./#/gramatyka/perfectum?forma=hifil')
+  const bar = pathBar(page)
+  const controls = [
+    bar.getByRole('combobox', { name: 'Temat' }),
+    bar.getByRole('combobox', { name: 'Forma czasownika' }),
+  ]
+  if (await hasSidebar(page)) {
+    const links = page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('link')
+    for (let i = 0; i < 4; i++) controls.push(links.nth(i))
+  } else {
+    controls.push(bar.getByRole('combobox', { name: 'Zakładka' }))
+  }
+  for (const control of controls) {
+    const box = await control.boundingBox()
     expect(box!.width).toBeGreaterThanOrEqual(44)
     expect(box!.height).toBeGreaterThanOrEqual(44)
   }

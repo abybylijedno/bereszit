@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test'
-import { expectAccessible, GENESIS_1_1 } from './helpers'
+import { expectAccessible, GENESIS_1_1, pathBar } from './helpers'
 
 for (const route of [
   'fonetyka/teksty?tryb=quiz',
   'fonetyka/teksty?tryb=konwerter',
-  'gramatyka/sciagawki',
+  'gramatyka/formy',
   'fonetyka/alfabet',
   'fonetyka/nazwy',
   'slowa/czasowniki',
@@ -122,33 +122,87 @@ test.describe('navigation layout', () => {
     expect(box!.height).toBe(500)
   })
 
-  test('on a phone the menu is a bar at the bottom', async ({ page }) => {
+  test('on a phone the path bar is docked at the bottom, full width', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 800 })
     await page.goto('./#/fonetyka/teksty?tryb=quiz')
-    const box = await page.getByRole('navigation', { name: 'Główna nawigacja' }).boundingBox()
+    const box = await pathBar(page).boundingBox()
     expect(box!.x).toBe(0)
     expect(box!.width).toBe(390)
     expect(box!.y + box!.height).toBe(800)
     expect(box!.height).toBeLessThan(120)
   })
 
-  for (const width of [320, 360, 390]) {
-    test(`on a ${width} px phone all four tabs fit in the bottom bar with their labels`, async ({
+  test('on a wide screen the path bar is at the top of the content, next to the sidebar', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 720 })
+    await page.goto('./#/gramatyka/perfectum')
+    const box = await pathBar(page).boundingBox()
+    const side = await page.getByRole('navigation', { name: 'Główna nawigacja' }).boundingBox()
+    expect(box!.y).toBe(0)
+    // No gap between the sidebar and the bar, and the bar reaches the right edge.
+    expect(box!.x).toBe(side!.x + side!.width)
+    expect(box!.x + box!.width).toBe(1280)
+    // The first select lines up with the content below it.
+    const topic = await pathBar(page).getByRole('combobox', { name: 'Temat' }).boundingBox()
+    const content = await page.locator('#content h3').first().boundingBox()
+    expect(Math.abs(topic!.x - content!.x)).toBeLessThanOrEqual(2)
+    await expect(pathBar(page).getByRole('combobox', { name: 'Zakładka' })).toBeHidden()
+  })
+
+  for (const width of [360, 390]) {
+    test(`on a ${width} px phone all three levels fit, with whole names of short topics`, async ({
       page,
     }) => {
       await page.setViewportSize({ width, height: 640 })
-      await page.goto('./#/fonetyka/teksty?tryb=quiz')
-      const links = page.getByRole('navigation', { name: 'Główna nawigacja' }).getByRole('link')
-      await expect(links).toHaveCount(4)
-      for (const link of await links.all()) {
-        const label = await link.innerText()
-        const box = await link.boundingBox()
-        expect(box!.x, label).toBeGreaterThanOrEqual(0)
-        expect(box!.x + box!.width, label).toBeLessThanOrEqual(width)
-        expect(box!.width, label).toBeGreaterThanOrEqual(44)
-        const clipped = await link.evaluate((el) => el.scrollWidth > el.clientWidth)
-        expect(clipped, `${label} is clipped`).toBe(false)
+      await page.goto('./#/gramatyka/imperfectum?forma=hitpael')
+      const bar = pathBar(page)
+      const selects = [
+        bar.getByRole('combobox', { name: 'Zakładka' }),
+        bar.getByRole('combobox', { name: 'Temat' }),
+        bar.getByRole('combobox', { name: 'Forma czasownika' }),
+      ]
+      for (const select of selects) {
+        const box = await select.boundingBox()
+        expect(box!.x).toBeGreaterThanOrEqual(0)
+        expect(box!.x + box!.width).toBeLessThanOrEqual(width)
+        expect(box!.height).toBeGreaterThanOrEqual(44)
+      }
+      // The text of the short names must not be cut: measure the text against the box.
+      for (const name of ['Temat', 'Forma czasownika']) {
+        const fits = await bar.getByRole('combobox', { name }).evaluate((el) => {
+          const select = el as HTMLSelectElement
+          const probe = document.createElement('span')
+          const style = getComputedStyle(select)
+          probe.style.cssText = `position:absolute;visibility:hidden;white-space:nowrap;font:${style.font}`
+          probe.textContent = select.selectedOptions[0]!.textContent
+          document.body.append(probe)
+          const text = probe.getBoundingClientRect().width
+          probe.remove()
+          const inner =
+            select.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+          return text <= inner
+        })
+        expect(fits, `${name} is cut on ${width}px`).toBe(true)
       }
     })
   }
+
+  test('on a 320 px phone or with large text the bar shrinks to the tab and one button', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 320, height: 640 })
+    await page.goto('./#/gramatyka/imperfectum?forma=hitpael')
+    const bar = pathBar(page)
+    await expect(bar.getByRole('combobox', { name: 'Temat' })).toBeHidden()
+    const where = bar.getByRole('button', { name: 'Imperfectum · Hitpael' })
+    await expect(where).toBeVisible()
+    await where.click()
+    const dialog = page.getByRole('dialog', { name: 'Gdzie jestem' })
+    await expect(dialog.getByLabel('Temat')).toHaveValue('imperfectum')
+    await dialog.getByLabel('Forma czasownika').selectOption({ label: 'Piel' })
+    await expect(page).toHaveURL(/forma=piel/)
+    await dialog.getByRole('button', { name: 'Gotowe' }).click()
+    await expect(bar.getByRole('button', { name: 'Imperfectum · Piel' })).toBeVisible()
+  })
 })

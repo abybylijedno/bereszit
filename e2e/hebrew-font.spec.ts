@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { openTopic } from './helpers'
 
 /**
  * Rule: all Hebrew text uses one typeface (Noto Serif Hebrew), in every view and state,
@@ -35,17 +36,17 @@ for (const route of [
   'fonetyka/alfabet',
   'fonetyka/nazwy',
   'fonetyka/nikud',
-  'gramatyka/sciagawki?temat=formy',
-  'gramatyka/sciagawki?temat=perfectum',
-  'gramatyka/sciagawki?temat=imperfectum',
-  'gramatyka/sciagawki?temat=przedimek',
-  'gramatyka/sciagawki?temat=przyimki',
-  'gramatyka/sciagawki?temat=zaimki',
-  'gramatyka/sciagawki?temat=rzeczowniki',
-  'gramatyka/sciagawki?temat=przyrostki',
-  'gramatyka/sciagawki?temat=inne',
-  'gramatyka/sciagawki?temat=inne&forma=nifal',
-  'gramatyka/sciagawki?temat=imperfectum&forma=hitpael',
+  'gramatyka/formy',
+  'gramatyka/perfectum',
+  'gramatyka/imperfectum',
+  'gramatyka/przedimek',
+  'gramatyka/przyimki',
+  'gramatyka/zaimki',
+  'gramatyka/rzeczowniki',
+  'gramatyka/przyrostki',
+  'gramatyka/rozkaz',
+  'gramatyka/rozkaz?forma=nifal',
+  'gramatyka/imperfectum?forma=hitpael',
   'slowa/czasowniki',
   'slowa/rzeczowniki',
   'ustawienia',
@@ -78,9 +79,9 @@ test('the Hebrew search keyboard uses one typeface', async ({ page }) => {
 
 test('small-word exercises use one typeface for Hebrew', async ({ page }) => {
   for (const section of ['Przedimek i spójnik', 'Przyimki', 'Zaimki', 'Przyrostki zaimkowe']) {
-    await page.goto('./#/gramatyka/cwiczenia')
+    await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
     await page.reload()
-    await page.getByRole('radio', { name: section, exact: true }).check()
+    await openTopic(page, section)
     await expectHebrewFont(page)
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await expectHebrewFont(page)
@@ -93,7 +94,7 @@ test('small-word exercises use one typeface for Hebrew', async ({ page }) => {
 })
 
 test('grammar exercises with a random verb use one typeface', async ({ page }) => {
-  await page.goto('./#/gramatyka/cwiczenia')
+  await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
   await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
   await page.getByRole('button', { name: 'Zaczynamy' }).click()
   await expectHebrewFont(page)
@@ -105,7 +106,7 @@ test('grammar exercises with a random verb use one typeface', async ({ page }) =
 })
 
 test('grammar exercises: question words and answer buttons use one typeface', async ({ page }) => {
-  await page.goto('./#/gramatyka/cwiczenia')
+  await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
   await page.getByRole('button', { name: 'Zaczynamy' }).click()
   await expectHebrewFont(page)
   await page.locator('.choices .choice').first().click()

@@ -1,25 +1,37 @@
 import { expect, test } from '@playwright/test'
-import { expectAccessible } from './helpers'
+import { expectAccessible, openForma, openTopic, pathBar } from './helpers'
 
-test('Gramatyka opens on the cheat sheets', async ({ page }) => {
+test('Gramatyka opens on the verb forms cheat sheet', async ({ page }) => {
   await page.goto('./#/gramatyka')
-  await expect(page).toHaveURL(/#\/gramatyka\/sciagawki$/)
-  const nav = page.getByRole('navigation', { name: 'Części gramatyki' })
-  await expect(nav.getByRole('link', { name: 'Ściągawki' })).toHaveAttribute('aria-current', 'page')
-  await expect(page.getByRole('radio', { name: 'Czasowniki: formy' })).toBeChecked()
+  await expect(page).toHaveURL(/#\/gramatyka\/formy$/)
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' })).toHaveValue('formy')
+  await expect(
+    page.getByRole('heading', { level: 3, name: 'Czasownik: formy (koniugacje)' }),
+  ).toBeVisible()
+})
+
+test('old addresses of cheat sheets and exercises still work', async ({ page }) => {
+  await page.goto('./#/gramatyka/sciagawki?temat=inne&forma=nifal')
+  await expect(page).toHaveURL(/#\/gramatyka\/rozkaz\?forma=nifal$/)
+  await page.goto('./#/gramatyka/sciagawki')
+  await expect(page).toHaveURL(/#\/gramatyka\/formy$/)
+  await page.goto('./#/gramatyka/cwiczenia?dzial=przyimki')
+  await expect(page).toHaveURL(/#\/gramatyka\/przyimki\?tryb=cwiczenia$/)
+  await page.goto('./#/gramatyka/cwiczenia')
+  await expect(page).toHaveURL(/#\/gramatyka\/perfectum\?tryb=cwiczenia$/)
 })
 
 test('the verb forms sheet lists all seven forms', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki')
+  await page.goto('./#/gramatyka/formy')
   for (const name of ['Kal', 'Nifal', 'Piel', 'Pual', 'Hifil', 'Hofal', 'Hitpael']) {
     await expect(page.getByRole('heading', { level: 4, name, exact: true })).toBeVisible()
   }
 })
 
 test('the perfect table has the Kal forms of the strong verb', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki')
-  await page.getByRole('radio', { name: 'Perfectum', exact: true }).check()
-  await expect(page).toHaveURL(/temat=perfectum/)
+  await page.goto('./#/gramatyka/formy')
+  await openTopic(page, 'Perfectum')
+  await expect(page).toHaveURL(/#\/gramatyka\/perfectum$/)
   const table = page.getByRole('table', { name: /perfectum/ })
   await expect(table.getByRole('row')).toHaveCount(6)
   await expect(table.getByRole('row', { name: /3 os\. r\. męski/ })).toContainText('קָטַל')
@@ -27,7 +39,7 @@ test('the perfect table has the Kal forms of the strong verb', async ({ page }) 
 })
 
 test('the imperfect table marks forms that sound the same', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=imperfectum')
+  await page.goto('./#/gramatyka/imperfectum')
   const table = page.getByRole('table', { name: /imperfectum/ })
   await expect(table.getByRole('row', { name: /3 os\. r\. żeński/ })).toContainText(
     'tak samo jak: 2 os. r. męski',
@@ -36,13 +48,14 @@ test('the imperfect table marks forms that sound the same', async ({ page }) => 
 })
 
 test('the topic is kept in the address and survives a reload', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=imperfectum')
-  await expect(page.getByRole('radio', { name: 'Imperfectum', exact: true })).toBeChecked()
+  await page.goto('./#/gramatyka/imperfectum')
+  const topic = pathBar(page).getByRole('combobox', { name: 'Temat' })
+  await expect(topic).toHaveValue('imperfectum')
   await page.reload()
-  await expect(page.getByRole('radio', { name: 'Imperfectum', exact: true })).toBeChecked()
+  await expect(topic).toHaveValue('imperfectum')
 })
 
-for (const temat of [
+for (const address of [
   'formy',
   'perfectum',
   'imperfectum',
@@ -51,14 +64,14 @@ for (const temat of [
   'zaimki',
   'rzeczowniki',
   'przyrostki',
-  'inne',
-  'imperfectum&forma=hitpael',
-  'perfectum&forma=hifil',
-  'inne&forma=nifal',
-  'inne&forma=pual',
+  'rozkaz',
+  'imperfectum?forma=hitpael',
+  'perfectum?forma=hifil',
+  'rozkaz?forma=nifal',
+  'rozkaz?forma=pual',
 ]) {
-  test(`the ${temat} sheet passes axe checks (light and dark)`, async ({ page }) => {
-    await page.goto(`./#/gramatyka/sciagawki?temat=${temat}`)
+  test(`the ${address} sheet passes axe checks (light and dark)`, async ({ page }) => {
+    await page.goto(`./#/gramatyka/${address}`)
     await page.getByRole('heading', { level: 3 }).first().waitFor()
     await expectAccessible(page)
     await page.emulateMedia({ colorScheme: 'dark' })
@@ -67,7 +80,7 @@ for (const temat of [
 }
 
 test('prefixes and endings are highlighted and the root is not', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=imperfectum')
+  await page.goto('./#/gramatyka/imperfectum')
   const row = page
     .getByRole('table', { name: /imperfectum/ })
     .getByRole('row', { name: /^2 os\. r\. żeński/ })
@@ -98,7 +111,7 @@ test('each division of verbs shows its two halves side by side, even on a narrow
   page,
 }) => {
   await page.setViewportSize({ width: 320, height: 800 })
-  await page.goto('./#/gramatyka/sciagawki?temat=formy')
+  await page.goto('./#/gramatyka/formy')
   for (const [heading, left, right] of [
     ['Podział 1: spółgłoski rdzenne', 'Mocny', 'Słaby'],
     ['Podział 2: znaczenie', 'Aktywny', 'Statyczny'],
@@ -112,26 +125,24 @@ test('each division of verbs shows its two halves side by side, even on a narrow
 })
 
 test('the topic picker lists verbs first, then the other cheat sheets', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki')
-  const labels = await page
-    .getByRole('group', { name: 'Temat' })
-    .getByRole('radio')
-    .evaluateAll((inputs) => inputs.map((i) => i.closest('label')!.textContent!.trim()))
-  expect(labels).toEqual([
-    'Czasowniki: formy',
-    'Perfectum',
-    'Imperfectum',
-    'Rozkaz, bezokolicznik, imiesłów',
-    'Przedimek i spójnik',
-    'Przyimki',
-    'Zaimki',
-    'Rzeczowniki',
-    'Przyrostki zaimkowe',
-  ])
+  await page.goto('./#/gramatyka/formy')
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' }).locator('option')).toHaveText(
+    [
+      'Czasowniki: formy',
+      'Perfectum',
+      'Imperfectum',
+      'Rozkaz, bezokolicznik, imiesłów',
+      'Przedimek i spójnik',
+      'Przyimki',
+      'Zaimki',
+      'Rzeczowniki',
+      'Przyrostki zaimkowe',
+    ],
+  )
 })
 
 test('the article sheet highlights the added prefix and lists the exceptions', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=przedimek')
+  await page.goto('./#/gramatyka/przedimek')
   const example = page.getByRole('list', { name: 'Przykłady przedimka' }).getByRole('listitem')
   await expect(example).toHaveCount(3)
   await expect(example.first().locator('.affix')).toHaveText('הַ')
@@ -143,7 +154,7 @@ test('the article sheet highlights the added prefix and lists the exceptions', a
 })
 
 test('the prepositions sheet has all four prepositions with examples', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=przyimki')
+  await page.goto('./#/gramatyka/przyimki')
   await expect(page.getByRole('heading', { level: 4 })).toHaveCount(4)
   const article = page.getByRole('list', { name: 'Przykłady: w, za pomocą' })
   await expect(article).toContainText('w człowieku')
@@ -156,7 +167,7 @@ test('the prepositions sheet has all four prepositions with examples', async ({ 
 test('the pronouns sheet has the personal pronoun table with alternative forms', async ({
   page,
 }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=zaimki')
+  await page.goto('./#/gramatyka/zaimki')
   const table = page.getByRole('table', { name: 'Zaimki osobowe' })
   await expect(table.getByRole('row')).toHaveCount(6)
   const first = table.getByRole('row', { name: /^1 os\./ })
@@ -167,7 +178,7 @@ test('the pronouns sheet has the personal pronoun table with alternative forms',
 })
 
 test('the nouns sheet shows how plurals are made', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=rzeczowniki')
+  await page.goto('./#/gramatyka/rzeczowniki')
   const plural = page.getByRole('list', { name: 'Tworzenie liczby mnogiej' })
   await expect(plural.getByRole('listitem')).toHaveCount(2)
   await expect(plural.getByRole('listitem').first()).toContainText('r. męski')
@@ -176,7 +187,7 @@ test('the nouns sheet shows how plurals are made', async ({ page }) => {
 })
 
 test('the suffixes sheet has both tables with the noun and its endings', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=przyrostki')
+  await page.goto('./#/gramatyka/przyrostki')
   const single = page.getByRole('table', { name: /Jeden koń/ })
   await expect(single.getByRole('row')).toHaveCount(11)
   const my = single.getByRole('row', { name: /^mój/ })
@@ -193,29 +204,38 @@ test('the suffixes sheet has both tables with the noun and its endings', async (
 })
 
 test('verb form picker: all seven forms, shown only for the verb tables', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=perfectum')
-  const forms = page.getByRole('group', { name: 'Forma czasownika' })
-  await expect(forms.getByRole('radio')).toHaveCount(7)
-  await expect(forms.getByRole('radio', { name: 'Kal' })).toBeChecked()
-  await page.getByRole('radio', { name: 'Przyimki' }).check()
-  await expect(page.getByRole('group', { name: 'Forma czasownika' })).toHaveCount(0)
+  await page.goto('./#/gramatyka/perfectum')
+  const forms = pathBar(page).getByRole('combobox', { name: 'Forma czasownika' })
+  await expect(forms.locator('option')).toHaveText([
+    'Kal',
+    'Nifal',
+    'Piel',
+    'Pual',
+    'Hifil',
+    'Hofal',
+    'Hitpael',
+  ])
+  await expect(forms).toHaveValue('kal')
+  await openTopic(page, 'Przyimki')
+  await expect(pathBar(page).getByRole('combobox', { name: 'Forma czasownika' })).toHaveCount(0)
 })
 
 test('the chosen verb form stays when the topic changes and survives a reload', async ({
   page,
 }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=perfectum')
-  await page.getByRole('radio', { name: 'Hifil' }).check()
+  await page.goto('./#/gramatyka/perfectum')
+  await openForma(page, 'Hifil')
   await expect(page).toHaveURL(/forma=hifil/)
-  await page.getByRole('radio', { name: 'Imperfectum', exact: true }).check()
-  await expect(page.getByRole('radio', { name: 'Hifil' })).toBeChecked()
+  await openTopic(page, 'Imperfectum')
+  const forms = pathBar(page).getByRole('combobox', { name: 'Forma czasownika' })
+  await expect(forms).toHaveValue('hifil')
   await page.reload()
-  await expect(page.getByRole('radio', { name: 'Hifil' })).toBeChecked()
+  await expect(forms).toHaveValue('hifil')
   await expect(page.getByRole('heading', { level: 3, name: /forma hifil/ })).toBeVisible()
 })
 
 test('hifil perfect: the textbook forms, with the added yod highlighted', async ({ page }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=perfectum&forma=hifil')
+  await page.goto('./#/gramatyka/perfectum?forma=hifil')
   const table = page.getByRole('table', { name: /perfectum, forma hifil/ })
   await expect(table.getByRole('row')).toHaveCount(6)
   const first = table.getByRole('row', { name: /^3 os\. r\. męski/ })
@@ -233,7 +253,7 @@ test('every form has its imperfect table with "tak samo" notes', async ({ page }
     ['hofal', 'יָקְטַל'],
     ['hitpael', 'יִתְקַטֵּל'],
   ]) {
-    await page.goto(`./#/gramatyka/sciagawki?temat=imperfectum&forma=${forma}`)
+    await page.goto(`./#/gramatyka/imperfectum?forma=${forma}`)
     await page.reload()
     const table = page.getByRole('table', { name: /imperfectum/ })
     await expect(table.getByRole('row', { name: /^3 os\. r\. męski/ })).toContainText(third)
@@ -246,7 +266,7 @@ test('every form has its imperfect table with "tak samo" notes', async ({ page }
 test('imperative, infinitive and participle: kal and nifal have them, the rest say so', async ({
   page,
 }) => {
-  await page.goto('./#/gramatyka/sciagawki?temat=inne&forma=kal')
+  await page.goto('./#/gramatyka/rozkaz?forma=kal')
   await expect(page.getByRole('list', { name: 'Tryb rozkazujący (imperativus)' })).toContainText(
     'קְטֹלְנָה',
   )
@@ -254,8 +274,8 @@ test('imperative, infinitive and participle: kal and nifal have them, the rest s
   await expect(
     page.getByRole('list', { name: 'Imiesłów (part.)' }).getByRole('listitem'),
   ).toHaveCount(2)
-  await page.getByRole('radio', { name: 'Nifal' }).check()
+  await openForma(page, 'Nifal')
   await expect(page.getByRole('list', { name: 'Imiesłów (part.)' })).toContainText('נִקְטָל')
-  await page.getByRole('radio', { name: 'Piel' }).check()
+  await openForma(page, 'Piel')
   await expect(page.getByText('Tych form nie ma jeszcze w materiałach')).toBeVisible()
 })

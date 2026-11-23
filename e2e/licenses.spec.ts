@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { expectAccessible } from './helpers'
+import { expectAccessible, openTopic, pathBar } from './helpers'
 
 test('Settings links to the licenses page', async ({ page }) => {
   await page.goto('./#/ustawienia')
@@ -9,13 +9,11 @@ test('Settings links to the licenses page', async ({ page }) => {
   await expect(page).toHaveTitle('Licencje – Bereszit')
 })
 
-test('the Ustawienia tab stays current on the licenses page', async ({ page }) => {
+test('the path bar shows the licenses topic in the Ustawienia tab', async ({ page }) => {
   await page.goto('./#/ustawienia/licencje')
-  await expect(
-    page
-      .getByRole('navigation', { name: 'Główna nawigacja' })
-      .getByRole('link', { name: 'Ustawienia' }),
-  ).toHaveAttribute('aria-current', 'page')
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' })).toHaveValue('licencje')
+  await openTopic(page, 'Ogólne')
+  await expect(page).toHaveURL(/#\/ustawienia$/)
 })
 
 test('lists the libraries, each with its full license text', async ({ page }) => {

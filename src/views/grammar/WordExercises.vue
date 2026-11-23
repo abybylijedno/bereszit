@@ -3,7 +3,7 @@
  * Exercises on the small words of the grammar sheets (article and conjunction, prepositions,
  * pronouns, pronominal suffixes): translate a word, build a word, name the beginning of a word.
  */
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import AffixWord from '@/components/AffixWord.vue'
 import { useQuizSession } from '@/composables/useQuizSession'
 import { analyze } from '@/lib/converter'
@@ -18,7 +18,6 @@ import {
 import { stats } from '@/lib/stats'
 
 const props = defineProps<{ topic: WordTopic }>()
-const emit = defineEmits<{ active: [boolean] }>()
 
 const session = useQuizSession<WordItem>({
   bucket: 'grammar',
@@ -26,7 +25,6 @@ const session = useQuizSession<WordItem>({
   keyOf: (item) => item.key,
 })
 const { phase, current, index, total, score, mistakes, lastCorrect } = session
-watch(phase, (value) => emit('active', value !== 'intro'), { immediate: true })
 
 const prepared = ref<Prepared>({ question: '', choices: [], correct: '', hebrew: false })
 const chosen = ref<string | null>(null)

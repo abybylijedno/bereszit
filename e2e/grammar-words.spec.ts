@@ -1,46 +1,54 @@
 import { expect, test, type Page } from '@playwright/test'
-import { expectAccessible } from './helpers'
+import { expectAccessible, openTopic, pathBar } from './helpers'
 
 // Math.random = 0 picks the questions of the pool in order, so the first ones are known.
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => (Math.random = () => 0))
-  await page.goto('./#/gramatyka/cwiczenia')
+  await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
 })
 
 const open = async (page: Page, section: string) => {
-  await page.getByRole('radio', { name: section, exact: true }).check()
+  await openTopic(page, section)
   await page.getByRole('button', { name: 'Zaczynamy' }).click()
   await expect(page.getByText('Pytanie 1 z 10')).toBeVisible()
 }
 const answer = (page: Page, text: string | RegExp) =>
   page.locator('.choices .choice').filter({ hasText: text })
 
-test('the section picker offers verbs and the four word topics, verbs first', async ({ page }) => {
-  const group = page.getByRole('group', { name: 'Dział' })
-  const labels = await group
-    .getByRole('radio')
-    .evaluateAll((inputs) => inputs.map((i) => i.closest('label')!.textContent!.trim()))
-  expect(labels).toEqual([
-    'Czasowniki',
-    'Przedimek i spójnik',
-    'Przyimki',
-    'Zaimki',
-    'Przyrostki zaimkowe',
-  ])
-  await expect(group.getByRole('radio', { name: 'Czasowniki' })).toBeChecked()
-})
-
-test('the section is kept in the address and survives a reload', async ({ page }) => {
-  await page.getByRole('radio', { name: 'Zaimki', exact: true }).check()
-  await expect(page).toHaveURL(/dzial=zaimki/)
+test('choosing a topic keeps the exercises mode and the topic is in the address', async ({
+  page,
+}) => {
+  await openTopic(page, 'Zaimki')
+  await expect(page).toHaveURL(/#\/gramatyka\/zaimki\?tryb=cwiczenia$/)
+  await expect(
+    page.getByRole('group', { name: 'Tryb' }).getByRole('radio', { name: 'Ćwiczenia' }),
+  ).toBeChecked()
   await page.reload()
-  await expect(page.getByRole('radio', { name: 'Zaimki', exact: true })).toBeChecked()
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' })).toHaveValue('zaimki')
   await expect(page.getByRole('heading', { level: 3, name: /zaimki/ })).toBeVisible()
 })
 
-test('the section picker is hidden while a session runs', async ({ page }) => {
+test('topics without exercises have no mode switch and show their sheet', async ({ page }) => {
+  await openTopic(page, 'Rzeczowniki')
+  await expect(page.getByRole('group', { name: 'Tryb' })).toHaveCount(0)
+  await expect(page.getByRole('heading', { level: 3, name: 'Rzeczowniki' })).toBeVisible()
+})
+
+test('the path bar stays during a session and changing the topic ends it', async ({ page }) => {
   await open(page, 'Przyimki')
-  await expect(page.getByRole('group', { name: 'Dział' })).toHaveCount(0)
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' })).toHaveValue('przyimki')
+  await openTopic(page, 'Zaimki')
+  await expect(page.getByRole('button', { name: 'Zaczynamy' })).toBeVisible()
+})
+
+test('the mode switch changes between the cheat sheet and the exercises of a topic', async ({
+  page,
+}) => {
+  await openTopic(page, 'Przyimki')
+  await expect(page.getByRole('button', { name: 'Zaczynamy' })).toBeVisible()
+  await page.getByRole('group', { name: 'Tryb' }).getByRole('radio', { name: 'Ściągawka' }).check()
+  await expect(page).toHaveURL(/#\/gramatyka\/przyimki$/)
+  await expect(page.getByRole('list', { name: 'Przykłady: w, za pomocą' })).toBeVisible()
 })
 
 test('article and conjunction: classify the beginning, translate, build', async ({ page }) => {
@@ -121,11 +129,11 @@ for (const section of ['Przedimek i spójnik', 'Przyimki', 'Zaimki', 'Przyrostki
     }
     await expect(page.getByRole('status').filter({ hasText: 'Wynik:' })).toContainText('z 10')
     await page.getByRole('button', { name: 'Koniec' }).click()
-    await expect(page.getByRole('group', { name: 'Dział' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Zaczynamy' })).toBeVisible()
   })
 
   test(`${section}: passes axe checks in every phase (light and dark)`, async ({ page }) => {
-    await page.getByRole('radio', { name: section, exact: true }).check()
+    await openTopic(page, section)
     for (const scheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme: scheme })
       await expectAccessible(page)
@@ -150,6 +158,6 @@ test('mistakes are remembered per topic and shown on the intro', async ({ page }
   await page.getByRole('button', { name: 'Dalej' }).click()
   await page.reload()
   await expect(page.getByText('Najtrudniejsze dla Ciebie')).toBeVisible()
-  await page.getByRole('radio', { name: 'Przyimki', exact: true }).check()
+  await openTopic(page, 'Przyimki')
   await expect(page.getByText('Najtrudniejsze dla Ciebie')).toHaveCount(0)
 })

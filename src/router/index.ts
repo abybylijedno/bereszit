@@ -1,4 +1,19 @@
 import { createRouter, createWebHashHistory, RouterView } from 'vue-router'
+import { remember } from '@/lib/navigation'
+
+/** Topic names of the old cheat sheet address (`?temat=`) in the new addresses. */
+const LEGACY_SHEET_TOPICS: Record<string, string> = {
+  formy: 'formy',
+  perfectum: 'perfectum',
+  imperfectum: 'imperfectum',
+  inne: 'rozkaz',
+  przedimek: 'przedimek',
+  przyimki: 'przyimki',
+  zaimki: 'zaimki',
+  rzeczowniki: 'rzeczowniki',
+  przyrostki: 'przyrostki',
+}
+const LEGACY_EXERCISE_TOPICS = ['przedimek', 'przyimki', 'zaimki', 'przyrostki']
 
 /**
  * Hash history: GitHub Pages has no SPA fallback, so deep links must live in the hash.
@@ -47,17 +62,27 @@ const router = createRouter({
       path: '/gramatyka',
       component: () => import('@/views/GrammarView.vue'),
       meta: { title: 'Gramatyka' },
-      redirect: '/gramatyka/sciagawki',
+      redirect: '/gramatyka/formy',
       children: [
+        // Old addresses: cheat sheets were /gramatyka/sciagawki?temat=..., exercises /gramatyka/cwiczenia?dzial=...
         {
           path: 'sciagawki',
-          name: 'grammar-cheatsheets',
-          component: () => import('@/views/grammar/CheatsheetsPanel.vue'),
+          redirect: (to) => ({
+            path: `/gramatyka/${LEGACY_SHEET_TOPICS[String(to.query.temat)] ?? 'formy'}`,
+            query: to.query.forma ? { forma: to.query.forma } : {},
+          }),
         },
         {
           path: 'cwiczenia',
-          name: 'grammar-exercises',
-          component: () => import('@/views/grammar/ExercisesPanel.vue'),
+          redirect: (to) => ({
+            path: `/gramatyka/${LEGACY_EXERCISE_TOPICS.includes(String(to.query.dzial)) ? to.query.dzial : 'perfectum'}`,
+            query: { tryb: 'cwiczenia' },
+          }),
+        },
+        {
+          path: ':topic(formy|perfectum|imperfectum|rozkaz|przedimek|przyimki|zaimki|rzeczowniki|przyrostki)',
+          name: 'grammar-topic',
+          component: () => import('@/views/grammar/GrammarTopicView.vue'),
         },
       ],
     },
@@ -104,6 +129,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
+  remember(to.path)
   document.title = `${to.meta.title as string} – Bereszit`
 })
 

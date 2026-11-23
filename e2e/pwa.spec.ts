@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { openTab } from './helpers'
 
 test('manifest is linked and valid', async ({ page, request }) => {
   await page.goto('./')
@@ -45,7 +46,7 @@ test('works offline after the service worker takes over', async ({ page, context
   await context.setOffline(true)
   await page.reload()
   await expect(page.getByRole('heading', { level: 1, name: 'Fonetyka' })).toBeVisible()
-  await page.getByRole('link', { name: 'Słowa' }).click()
+  await openTab(page, 'Słowa')
   await expect(page.getByRole('heading', { level: 1, name: 'Słowa' })).toBeVisible()
 })
 

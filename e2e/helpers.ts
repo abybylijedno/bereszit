@@ -18,7 +18,11 @@ export async function expectEnhancedContrast(page: Page) {
         const c = parse(getComputedStyle(e).backgroundColor)
         if ((c[3] ?? 1) > 0) return c
       }
-      return parse(getComputedStyle(document.documentElement).backgroundColor === 'rgba(0, 0, 0, 0)' ? 'rgb(255,255,255)' : getComputedStyle(document.documentElement).backgroundColor)
+      return parse(
+        getComputedStyle(document.documentElement).backgroundColor === 'rgba(0, 0, 0, 0)'
+          ? 'rgb(255,255,255)'
+          : getComputedStyle(document.documentElement).backgroundColor,
+      )
     }
     const bad: string[] = []
     for (const el of document.querySelectorAll('body *')) {
@@ -33,7 +37,10 @@ export async function expectEnhancedContrast(page: Page) {
       const px = parseFloat(st.fontSize)
       const bold = parseInt(st.fontWeight) >= 700
       const large = px >= 24 || (bold && px >= 18.66)
-      if (ratio < (large ? 4.5 : 7)) bad.push(`${el.tagName}.${el.className} "${el.textContent!.trim().slice(0, 30)}" ${ratio.toFixed(2)}:1`)
+      if (ratio < (large ? 4.5 : 7))
+        bad.push(
+          `${el.tagName}.${el.className} "${el.textContent!.trim().slice(0, 30)}" ${ratio.toFixed(2)}:1`,
+        )
     }
     return bad
   })
@@ -50,3 +57,43 @@ export async function expectAccessible(page: Page) {
 }
 
 export const GENESIS_1_1 = 'בְּרֵאשִׁית בָּרָא אֱלֹהִים'
+
+/** The path bar: tab, topic and (for verb tables) verb form are selects in it. */
+export const pathBar = (page: Page) => page.getByRole('navigation', { name: 'Ścieżka' })
+
+/** True on wide screens, where the tabs are in the sidebar and not in the path bar. */
+export const hasSidebar = (page: Page) =>
+  page.getByRole('navigation', { name: 'Główna nawigacja' }).isVisible()
+
+/** Opens a tab the way a user does: sidebar link on a wide screen, path bar select on a phone. */
+export async function openTab(page: Page, label: string) {
+  if (await hasSidebar(page)) {
+    await page
+      .getByRole('navigation', { name: 'Główna nawigacja' })
+      .getByRole('link', { name: label })
+      .click()
+  } else {
+    await pathBar(page).getByRole('combobox', { name: 'Zakładka' }).selectOption({ label })
+  }
+}
+
+/**
+ * Chooses a level of the path bar. When the bar is shrunk to the tab and one button (a narrow
+ * screen or large text), the level is chosen in the "Gdzie jestem" dialog.
+ */
+async function chooseLevel(page: Page, level: 'Temat' | 'Forma czasownika', label: string) {
+  const bar = pathBar(page)
+  const select = bar.getByRole('combobox', { name: level })
+  if (await select.isVisible()) {
+    await select.selectOption({ label })
+    return
+  }
+  await bar.getByRole('button').click()
+  const dialog = page.getByRole('dialog', { name: 'Gdzie jestem' })
+  await dialog.getByLabel(level).selectOption({ label })
+  await dialog.getByRole('button', { name: 'Gotowe' }).click()
+}
+
+export const openTopic = (page: Page, label: string) => chooseLevel(page, 'Temat', label)
+
+export const openForma = (page: Page, label: string) => chooseLevel(page, 'Forma czasownika', label)

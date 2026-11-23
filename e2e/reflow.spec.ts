@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
-import { GENESIS_1_1 } from './helpers'
+import { GENESIS_1_1, openForma, openTopic } from './helpers'
 
 /**
  * Stress tests for WCAG 1.4.10 (reflow at 320 px) and 1.4.12 (text spacing).
@@ -33,18 +33,19 @@ const expectNoOverflow = async (page: Page, label: string) => {
 const ROUTES = [
   'fonetyka/teksty?tryb=quiz',
   'fonetyka/teksty?tryb=konwerter',
-  'gramatyka/sciagawki?temat=formy',
-  'gramatyka/sciagawki?temat=perfectum',
-  'gramatyka/sciagawki?temat=imperfectum',
-  'gramatyka/sciagawki?temat=przedimek',
-  'gramatyka/sciagawki?temat=przyimki',
-  'gramatyka/sciagawki?temat=zaimki',
-  'gramatyka/sciagawki?temat=rzeczowniki',
-  'gramatyka/sciagawki?temat=przyrostki',
-  'gramatyka/sciagawki?temat=inne',
-  'gramatyka/sciagawki?temat=inne&forma=nifal',
-  'gramatyka/sciagawki?temat=imperfectum&forma=hitpael',
-  'gramatyka/cwiczenia',
+  'gramatyka/formy',
+  'gramatyka/perfectum',
+  'gramatyka/imperfectum',
+  'gramatyka/przedimek',
+  'gramatyka/przyimki',
+  'gramatyka/zaimki',
+  'gramatyka/rzeczowniki',
+  'gramatyka/przyrostki',
+  'gramatyka/rozkaz',
+  'gramatyka/rozkaz?forma=nifal',
+  'gramatyka/imperfectum?forma=hitpael',
+  'gramatyka/perfectum?tryb=cwiczenia',
+  'gramatyka/przyimki?tryb=cwiczenia',
   'fonetyka/alfabet',
   'fonetyka/nazwy',
   'fonetyka/nikud',
@@ -91,15 +92,15 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
     await page.getByRole('group').getByRole('button').first().click()
   },
   'grammar exercise: recognise question with feedback': async (page) => {
-    await page.goto('./#/gramatyka/cwiczenia')
-    await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+    await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
+    await openForma(page, 'Wszystkie')
     await page.getByRole('radio', { name: 'Oba czasy' }).check()
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await page.locator('.choices .choice').first().click()
   },
   'grammar exercise: build question with feedback': async (page) => {
     await page.addInitScript(() => (Math.random = () => 0))
-    await page.goto('./#/gramatyka/cwiczenia')
+    await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
     await page.getByRole('radio', { name: 'Oba czasy' }).check()
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     await page.locator('.choices .choice').first().click()
@@ -108,9 +109,9 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
   },
   // A whole session with random verbs in all forms: the longest forms must fit, too.
   'grammar exercise: random verbs, whole session': async (page) => {
-    await page.goto('./#/gramatyka/cwiczenia')
+    await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
     await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
-    await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+    await openForma(page, 'Wszystkie')
     await page.getByRole('radio', { name: 'Oba czasy' }).check()
     await page.getByRole('button', { name: 'Zaczynamy' }).click()
     for (let i = 1; i <= 10; i++) {
@@ -124,9 +125,9 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
   // Whole sessions of the small-word exercises: long Hebrew words must fit in 320px as answers.
   'grammar word exercises: whole sessions': async (page) => {
     for (const section of ['Przedimek i spójnik', 'Przyimki', 'Zaimki', 'Przyrostki zaimkowe']) {
-      await page.goto('./#/gramatyka/cwiczenia')
+      await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
       await page.reload()
-      await page.getByRole('radio', { name: section, exact: true }).check()
+      await openTopic(page, section)
       await page.getByRole('button', { name: 'Zaczynamy' }).click()
       for (let i = 1; i <= 10; i++) {
         await page.getByText(`Pytanie ${i} z 10`).waitFor()

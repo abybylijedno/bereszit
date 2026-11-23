@@ -1,20 +1,23 @@
 import { expect, test, type Page } from '@playwright/test'
-import { expectAccessible } from './helpers'
+import { expectAccessible, openForma, pathBar } from './helpers'
 
 // Math.random = 0 picks the first questions of the pool in order:
 // perfect-3-m-sg "recognise", then the same form as a "build" question, and so on.
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => (Math.random = () => 0))
-  await page.goto('./#/gramatyka/cwiczenia')
+  await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
 })
 
 const start = (page: Page) => page.getByRole('button', { name: 'Zaczynamy' }).click()
 
 test('intro offers topics and starts with perfectum', async ({ page }) => {
-  const group = page.getByRole('group', { name: 'Temat' })
+  const group = page.getByRole('group', { name: 'Czas', exact: true })
   await expect(group.getByRole('radio')).toHaveCount(3)
   await expect(group.getByRole('radio', { name: 'Perfectum', exact: true })).toBeChecked()
-  await expect(page.getByRole('navigation', { name: 'Części gramatyki' })).toBeVisible()
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' })).toHaveValue('perfectum')
+  await expect(
+    page.getByRole('group', { name: 'Tryb' }).getByRole('radio', { name: 'Ćwiczenia' }),
+  ).toBeChecked()
 })
 
 test('a recognise question: pick the description of a word', async ({ page }) => {
@@ -106,15 +109,23 @@ test('exercises pass axe checks in every phase (light and dark)', async ({ page 
   }
 })
 
-test('intro offers the seven verb forms and "Wszystkie formy", Kal first', async ({ page }) => {
-  const forms = page.getByRole('group', { name: 'Forma czasownika' })
-  await expect(forms.getByRole('radio')).toHaveCount(8)
-  await expect(forms.getByRole('radio', { name: 'Kal', exact: true })).toBeChecked()
-  await expect(forms.getByRole('radio', { name: 'Wszystkie formy' })).toBeVisible()
+test('the path bar offers the seven verb forms and "Wszystkie", Kal first', async ({ page }) => {
+  const forms = pathBar(page).getByRole('combobox', { name: 'Forma czasownika' })
+  await expect(forms.locator('option')).toHaveText([
+    'Kal',
+    'Nifal',
+    'Piel',
+    'Pual',
+    'Hifil',
+    'Hofal',
+    'Hitpael',
+    'Wszystkie',
+  ])
+  await expect(forms).toHaveValue('kal')
 })
 
 test('a chosen verb form is practised and named in the question', async ({ page }) => {
-  await page.getByRole('radio', { name: 'Hifil' }).check()
+  await openForma(page, 'Hifil')
   await start(page)
   await expect(page.getByText('Pytanie 1 z 10')).toBeVisible()
   await expect(page.locator('#question')).toContainText('(hifil, perfectum)')
@@ -129,7 +140,7 @@ test('a chosen verb form is practised and named in the question', async ({ page 
 })
 
 test('"Wszystkie formy": answers name the verb form', async ({ page }) => {
-  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await openForma(page, 'Wszystkie')
   await start(page)
   await expect(page.locator('#question')).toContainText('(perfectum)')
   const choices = page.locator('.choices .choice')
@@ -139,7 +150,7 @@ test('"Wszystkie formy": answers name the verb form', async ({ page }) => {
 })
 
 test('"Wszystkie formy" with both tenses names the tense as well', async ({ page }) => {
-  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await openForma(page, 'Wszystkie')
   await page.getByRole('radio', { name: 'Oba czasy' }).check()
   await start(page)
   await expect(page.locator('#question')).not.toContainText('(')
@@ -149,7 +160,7 @@ test('"Wszystkie formy" with both tenses names the tense as well', async ({ page
 })
 
 test('exercises with all verb forms pass axe checks (light and dark)', async ({ page }) => {
-  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await openForma(page, 'Wszystkie')
   await page.getByRole('radio', { name: 'Oba czasy' }).check()
   for (const scheme of ['light', 'dark'] as const) {
     await page.emulateMedia({ colorScheme: scheme })
@@ -187,7 +198,7 @@ test('the number of random verbs follows the verb form', async ({ page }) => {
   const count = async () =>
     Number((await page.getByText(/Do wyboru jest \d+ czasowników/).textContent())!.match(/\d+/)![0])
   const kal = await count()
-  await page.getByRole('radio', { name: 'Hitpael' }).check()
+  await openForma(page, 'Hitpael')
   const hitpael = await count()
   expect(kal).toBeGreaterThanOrEqual(50)
   expect(hitpael).toBeGreaterThanOrEqual(30)
@@ -214,7 +225,7 @@ test('a random verb: the question names it with its meaning, the word is made fr
 
 test('a random verb: every answer of a build question is a form of that verb', async ({ page }) => {
   await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
-  await page.getByRole('radio', { name: 'Hifil' }).check()
+  await openForma(page, 'Hifil')
   await start(page)
   await page.locator('.choices .choice').first().click()
   await page.getByRole('button', { name: 'Dalej' }).click()
@@ -232,7 +243,7 @@ test('a random verb with all forms: sessions run to the end and list the verb in
   page,
 }) => {
   await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
-  await page.getByRole('radio', { name: 'Wszystkie formy' }).check()
+  await openForma(page, 'Wszystkie')
   await page.getByRole('radio', { name: 'Oba czasy' }).check()
   await start(page)
   for (let i = 1; i <= 10; i++) {

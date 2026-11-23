@@ -17,7 +17,6 @@ import {
   contextFor,
   describeForm,
   fixedPart,
-  FORM_LABELS,
   poolOf,
   questionKey,
   questionsFor,
@@ -30,18 +29,15 @@ import {
 } from '@/lib/grammar/verbQuiz'
 import { stats } from '@/lib/stats'
 
-const emit = defineEmits<{ active: [boolean] }>()
+/** The verb form comes from the path bar; the tense starts as the topic of the bar. */
+const props = defineProps<{ tense: 'perfectum' | 'imperfectum'; binyan: FormChoice }>()
 
-const topic = ref<VerbTopic>('perfectum')
+const topic = ref<VerbTopic>(props.tense)
 const topicOptions = (Object.keys(TOPIC_LABELS) as VerbTopic[]).map((value) => ({
   value,
   label: TOPIC_LABELS[value],
 }))
-const binyan = ref<FormChoice>('kal')
-const formOptions = (Object.keys(FORM_LABELS) as FormChoice[]).map((value) => ({
-  value,
-  label: FORM_LABELS[value],
-}))
+const binyan = computed(() => props.binyan)
 type VerbSource = 'wzorzec' | 'losowy'
 const source = ref<VerbSource>('wzorzec')
 const sourceOptions: { value: VerbSource; label: string }[] = [
@@ -65,8 +61,11 @@ const session = useQuizSession<Question>({
 })
 const { phase, current, index, total, score, mistakes, lastCorrect } = session
 
-/** Tells the parent when a session is running, so it can hide the section picker. */
-watch(phase, (value) => emit('active', value !== 'intro'), { immediate: true })
+/** Another verb form in the path bar means other questions: back to the start, settings stay. */
+watch(
+  () => props.binyan,
+  () => session.backToIntro(),
+)
 
 const form = computed(() => current.value?.form)
 const kind = computed(() => current.value?.kind)
@@ -149,18 +148,17 @@ const explanation = computed(() => {
     <div v-if="phase === 'intro'">
       <p>
         Ćwiczysz odmianę czasowników mocnych, czyli takich, w których żadna litera rdzenia nie
-        zmienia odmiany. Wybierz czasownik, jego formę i czas. Pytania są dwojakie: raz widzisz
-        słowo i wybierasz, jaka to forma (osoba, rodzaj, liczba), raz widzisz opis i wybierasz
-        słowo. Sesja ma 10 pytań i nie ma limitu czasu. Formy, które sprawiają Ci kłopot, będą
-        wracać częściej.
+        zmienia odmiany. Wybierz czasownik i czas. Formę czasownika wybierasz na pasku na dole.
+        Pytania są dwojakie: raz widzisz słowo i wybierasz, jaka to forma (osoba, rodzaj, liczba),
+        raz widzisz opis i wybierasz słowo. Sesja ma 10 pytań i nie ma limitu czasu. Formy, które
+        sprawiają Ci kłopot, będą wracać częściej.
       </p>
       <PillRadios v-model="source" legend="Czasownik" :options="sourceOptions" />
       <p v-if="source === 'losowy'" class="note">
         Do wyboru jest {{ roots.length }} czasowników z listy w zakładce „Słowa", bez „słabych"
         liter. Polskie znaczenie pokazujemy przy pytaniu.
       </p>
-      <PillRadios v-model="binyan" legend="Forma czasownika" :options="formOptions" />
-      <PillRadios v-model="topic" legend="Temat" :options="topicOptions" />
+      <PillRadios v-model="topic" legend="Czas" :options="topicOptions" />
       <p v-if="weakest.length">
         Najtrudniejsze dla Ciebie:
         <template v-for="(f, i) in weakest" :key="f.id">

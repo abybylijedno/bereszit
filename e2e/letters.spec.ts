@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
-import { expectAccessible } from './helpers'
+import { expectAccessible, hasSidebar, openTab, openTopic, pathBar } from './helpers'
 
 /** Makes question order deterministic: with rng = 0 the first items of each pool are picked in order. */
 const deterministic = (page: Page) => page.addInitScript(() => (Math.random = () => 0))
@@ -26,22 +26,22 @@ test.describe('alphabet', () => {
   test('sub-mode links show the active mode and the Fonetyka tab stays current', async ({
     page,
   }) => {
-    const modes = page.getByRole('navigation', { name: 'Rodzaje ćwiczeń z fonetyki' })
-    await expect(modes.getByRole('link', { name: 'Alfabet' })).toHaveAttribute(
-      'aria-current',
-      'page',
-    )
-    await modes.getByRole('link', { name: 'Nazwy liter' }).click()
+    const topic = pathBar(page).getByRole('combobox', { name: 'Temat' })
+    await expect(topic).toHaveValue('alfabet')
+    await openTopic(page, 'Nazwy liter')
     await expect(page).toHaveURL(/#\/fonetyka\/nazwy$/)
-    await expect(modes.getByRole('link', { name: 'Nazwy liter' })).toHaveAttribute(
-      'aria-current',
-      'page',
-    )
-    await expect(
-      page
-        .getByRole('navigation', { name: 'Główna nawigacja' })
-        .getByRole('link', { name: 'Fonetyka' }),
-    ).toHaveAttribute('aria-current', 'page')
+    await expect(topic).toHaveValue('nazwy')
+    if (await hasSidebar(page)) {
+      await expect(
+        page
+          .getByRole('navigation', { name: 'Główna nawigacja' })
+          .getByRole('link', { name: 'Fonetyka' }),
+      ).toHaveAttribute('aria-current', 'page')
+    } else {
+      await expect(pathBar(page).getByRole('combobox', { name: 'Zakładka' })).toHaveValue(
+        'fonetyka',
+      )
+    }
   })
 })
 
@@ -146,12 +146,12 @@ test.describe('letters with nikud quiz', () => {
     await page.getByRole('button', { name: 'Koniec' }).click()
     await expect(page.getByText('Najtrudniejsze dla Ciebie')).toBeVisible()
 
-    await page.getByRole('link', { name: 'Ustawienia' }).click()
+    await openTab(page, 'Ustawienia')
     await page.getByRole('button', { name: 'Wyczyść postępy' }).click()
     await expect(page.getByText('Postępy zostały wyczyszczone.')).toBeVisible()
 
-    await page.getByRole('link', { name: 'Fonetyka' }).click()
-    await page.getByRole('link', { name: 'Litery z nikudem' }).click()
+    await openTab(page, 'Fonetyka')
+    await openTopic(page, 'Litery z nikudem')
     await expect(page.getByText('Najtrudniejsze dla Ciebie')).toHaveCount(0)
   })
 

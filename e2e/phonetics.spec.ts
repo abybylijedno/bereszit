@@ -1,24 +1,19 @@
 import { expect, test } from '@playwright/test'
-import { expectAccessible, GENESIS_1_1 } from './helpers'
+import { expectAccessible, GENESIS_1_1, pathBar } from './helpers'
 
 test('the app opens on the alphabet in Fonetyka', async ({ page }) => {
   await page.goto('./')
   await expect(page).toHaveURL(/#\/fonetyka\/alfabet$/)
-  const sub = page.getByRole('navigation', { name: 'Rodzaje ćwiczeń z fonetyki' })
-  await expect(sub.getByRole('link', { name: 'Alfabet' })).toHaveAttribute('aria-current', 'page')
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' })).toHaveValue('alfabet')
   await expect(page.locator('.letter')).toHaveCount(27)
 })
 
 test('Fonetyka offers the alphabet, two letter quizzes and texts', async ({ page }) => {
   await page.goto('./#/fonetyka')
   await expect(page).toHaveURL(/#\/fonetyka\/alfabet$/)
-  const sub = page.getByRole('navigation', { name: 'Rodzaje ćwiczeń z fonetyki' })
-  await expect(sub.getByRole('link')).toHaveText([
-    'Alfabet',
-    'Nazwy liter',
-    'Litery z nikudem',
-    'Teksty',
-  ])
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' }).locator('option')).toHaveText(
+    ['Alfabet', 'Nazwy liter', 'Litery z nikudem', 'Teksty'],
+  )
 })
 
 test('Teksty starts in Quiz mode with the mode picker before the text source', async ({ page }) => {

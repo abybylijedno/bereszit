@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { expectAccessible } from './helpers'
+import { expectAccessible, openTopic, pathBar } from './helpers'
 
 test('Słowa redirects to the verb list', async ({ page }) => {
   await page.goto('./#/slowa')
@@ -20,16 +20,13 @@ test('lists the most frequent verb first and shows the total', async ({ page }) 
 
 test('switches between verbs and nouns', async ({ page }) => {
   await page.goto('./#/slowa/czasowniki')
-  await page.getByRole('link', { name: 'Rzeczowniki' }).click()
+  await openTopic(page, 'Rzeczowniki')
   await expect(page).toHaveURL(/#\/slowa\/rzeczowniki$/)
   await expect(page.getByRole('heading', { level: 2, name: 'Rzeczowniki' })).toBeVisible()
   await expect(page.getByRole('status').filter({ hasText: 'Pokazano' })).toHaveText(
     'Pokazano 700 z 700.',
   )
-  await expect(page.getByRole('link', { name: 'Rzeczowniki' })).toHaveAttribute(
-    'aria-current',
-    'page',
-  )
+  await expect(pathBar(page).getByRole('combobox', { name: 'Temat' })).toHaveValue('rzeczowniki')
 })
 
 test('nouns show phonetics', async ({ page }) => {
