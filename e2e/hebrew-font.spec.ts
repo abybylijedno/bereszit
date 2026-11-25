@@ -95,7 +95,6 @@ test('small-word exercises use one typeface for Hebrew', async ({ page }) => {
 
 test('grammar exercises with a random verb use one typeface', async ({ page }) => {
   await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
-  await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
   await page.getByRole('button', { name: 'Zaczynamy' }).click()
   await expectHebrewFont(page)
   await page.locator('.choices .choice').first().click()

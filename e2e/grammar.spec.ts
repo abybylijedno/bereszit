@@ -1,6 +1,9 @@
 import { expect, test } from '@playwright/test'
 import { expectAccessible, openForma, openTopic, pathBar } from './helpers'
 
+/** Marks may be typed in any order; the page has them in the canonical (NFC) order. */
+const nfc = (s: string) => s.normalize('NFC')
+
 test('Gramatyka opens on the verb forms cheat sheet', async ({ page }) => {
   await page.goto('./#/gramatyka')
   await expect(page).toHaveURL(/#\/gramatyka\/formy$/)
@@ -34,8 +37,8 @@ test('the perfect table has the Kal forms of the strong verb', async ({ page }) 
   await expect(page).toHaveURL(/#\/gramatyka\/perfectum$/)
   const table = page.getByRole('table', { name: /perfectum/ })
   await expect(table.getByRole('row')).toHaveCount(6)
-  await expect(table.getByRole('row', { name: /3 os\. r\. męski/ })).toContainText('קָטַל')
-  await expect(table.getByRole('row', { name: /1 os\./ })).toContainText('קָטַלְנוּ')
+  await expect(table.getByRole('row', { name: /3 os\. r\. męski/ })).toContainText(nfc('כָּתַב'))
+  await expect(table.getByRole('row', { name: /1 os\./ })).toContainText(nfc('כָּתַבְנוּ'))
 })
 
 test('the imperfect table marks forms that sound the same', async ({ page }) => {
@@ -85,8 +88,8 @@ test('prefixes and endings are highlighted and the root is not', async ({ page }
     .getByRole('table', { name: /imperfectum/ })
     .getByRole('row', { name: /^2 os\. r\. żeński/ })
   const word = row.locator('.he').first()
-  await expect(word.locator('.affix')).toHaveText(['תִּ', 'י'])
-  await expect(word).toHaveText('תִּקְטְלִי')
+  await expect(word.locator('.affix')).toHaveText([nfc('תִּ'), 'י'])
+  await expect(word).toHaveText(nfc('תִּכְתְּבִי'))
   await expect(page.getByText('Ten kolor')).toBeVisible()
   // Affixes differ in colour only; they keep the weight and size of the root.
   const style = (selector: string) =>
@@ -239,19 +242,19 @@ test('hifil perfect: the textbook forms, with the added yod highlighted', async 
   const table = page.getByRole('table', { name: /perfectum, forma hifil/ })
   await expect(table.getByRole('row')).toHaveCount(6)
   const first = table.getByRole('row', { name: /^3 os\. r\. męski/ })
-  await expect(first).toContainText('הִקְטִיל')
+  await expect(first).toContainText(nfc('הִכְתִּיב'))
   await expect(first.locator('.affix').first()).toHaveText('הִ')
   await expect(first.locator('.affix').nth(1)).toHaveText('י')
-  await expect(table.getByRole('row', { name: /^1 os\./ })).toContainText('הִקְטַלְנוּ')
+  await expect(table.getByRole('row', { name: /^1 os\./ })).toContainText(nfc('הִכְתַּבְנוּ'))
 })
 
 test('every form has its imperfect table with "tak samo" notes', async ({ page }) => {
   for (const [forma, third] of [
-    ['nifal', 'יִקָּטֵל'],
-    ['piel', 'יְקַטֵּל'],
-    ['pual', 'יְקֻטַּל'],
-    ['hofal', 'יָקְטַל'],
-    ['hitpael', 'יִתְקַטֵּל'],
+    ['nifal', nfc('יִכָּתֵב')],
+    ['piel', nfc('יְכַתֵּב')],
+    ['pual', nfc('יְכֻתַּב')],
+    ['hofal', nfc('יָכְתַּב')],
+    ['hitpael', nfc('יִתְכַּתֵּב')],
   ]) {
     await page.goto(`./#/gramatyka/imperfectum?forma=${forma}`)
     await page.reload()
@@ -268,14 +271,117 @@ test('imperative, infinitive and participle: kal and nifal have them, the rest s
 }) => {
   await page.goto('./#/gramatyka/rozkaz?forma=kal')
   await expect(page.getByRole('list', { name: 'Tryb rozkazujący (imperativus)' })).toContainText(
-    'קְטֹלְנָה',
+    nfc('כְּתֹבְנָה'),
   )
-  await expect(page.getByRole('list', { name: 'Bezokolicznik (inf.)' })).toContainText('קָטוֹל')
+  await expect(page.getByRole('list', { name: 'Bezokolicznik (inf.)' })).toContainText(
+    nfc('כָּתוֹב'),
+  )
   await expect(
     page.getByRole('list', { name: 'Imiesłów (part.)' }).getByRole('listitem'),
   ).toHaveCount(2)
   await openForma(page, 'Nifal')
-  await expect(page.getByRole('list', { name: 'Imiesłów (part.)' })).toContainText('נִקְטָל')
+  await expect(page.getByRole('list', { name: 'Imiesłów (part.)' })).toContainText(nfc('נִכְתָּב'))
   await openForma(page, 'Piel')
   await expect(page.getByText('Tych form nie ma jeszcze w materiałach')).toBeVisible()
+})
+
+test('the cheat sheets use "pisać" (כתב) by default, not "zabijać"', async ({ page }) => {
+  await page.goto('./#/gramatyka/perfectum')
+  await expect(page.getByLabel('Czasownik wzorcowy')).toHaveValue('כתב')
+  await expect(page.getByText('(pisać)').first()).toBeVisible()
+  await expect(page.getByText('zabijać')).toHaveCount(0)
+  await expect(page.getByText('קטל')).toHaveCount(0)
+})
+
+test('the pattern verb picker is on the sheets with verb tables only', async ({ page }) => {
+  for (const topic of ['formy', 'perfectum', 'imperfectum', 'rozkaz']) {
+    await page.goto(`./#/gramatyka/${topic}`)
+    await expect(page.getByLabel('Czasownik wzorcowy')).toBeVisible()
+  }
+  for (const address of ['przyimki', 'zaimki', 'perfectum?tryb=cwiczenia']) {
+    await page.goto(`./#/gramatyka/${address}`)
+    await page.getByRole('heading', { level: 2 }).first().waitFor({ state: 'attached' })
+    await expect(page.getByLabel('Czasownik wzorcowy')).toHaveCount(0)
+  }
+})
+
+test('the picker lists the verbs by meaning, with "pisać" among them', async ({ page }) => {
+  await page.goto('./#/gramatyka/perfectum')
+  const options = page.getByLabel('Czasownik wzorcowy').locator('option')
+  expect(await options.count()).toBeGreaterThanOrEqual(30)
+  const meanings = await options.allTextContents()
+  expect(meanings).toContain('pisać')
+  expect(meanings).toEqual([...meanings].sort((a, b) => a.localeCompare(b, 'pl')))
+  await expect(page.locator('.picker .he')).toHaveText('כתב')
+})
+
+test('choosing another pattern verb changes every table and example', async ({ page }) => {
+  await page.goto('./#/gramatyka/perfectum?forma=hifil')
+  const table = page.getByRole('table', { name: /perfectum, forma hifil/ })
+  await expect(table.getByRole('row', { name: /^3 os\. r\. męski/ })).toContainText(
+    nfc('הִכְתִּיב'),
+  )
+  await page.getByLabel('Czasownik wzorcowy').selectOption('למד')
+  await expect(page.locator('.picker .he')).toHaveText('למד')
+  await expect(table.getByRole('row', { name: /^3 os\. r\. męski/ })).toContainText(nfc('הִלְמִיד'))
+  await expect(table.getByRole('row', { name: /^1 os\./ })).toContainText(nfc('הִלְמַדְנוּ'))
+  // The choice stays when the topic changes, and the other sheets follow it.
+  await openTopic(page, 'Imperfectum')
+  await expect(page.getByLabel('Czasownik wzorcowy')).toHaveValue('למד')
+  await expect(
+    page
+      .getByRole('table', { name: /imperfectum/ })
+      .getByRole('row', { name: /^3 os\. r\. męski/ }),
+  ).toContainText(nfc('יַלְמִיד'))
+  await openTopic(page, 'Rozkaz, bezokolicznik, imiesłów')
+  await openForma(page, 'Kal')
+  await expect(page.getByRole('list', { name: 'Imiesłów (part.)' })).toContainText(nfc('לֹמֵד'))
+  await openTopic(page, 'Czasowniki: formy')
+  await expect(page.getByRole('heading', { level: 4, name: 'Hifil' }).locator('..')).toContainText(
+    nfc('הִלְמִיד'),
+  )
+})
+
+test('the pattern verb is remembered between visits', async ({ page }) => {
+  await page.goto('./#/gramatyka/perfectum')
+  await page.getByLabel('Czasownik wzorcowy').selectOption('למד')
+  await page.reload()
+  await expect(page.getByLabel('Czasownik wzorcowy')).toHaveValue('למד')
+  await expect(page.locator('.picker .he')).toHaveText('למד')
+})
+
+test('a sheet says what the chosen verb form does, with an example', async ({ page }) => {
+  await page.goto('./#/gramatyka/perfectum?forma=nifal')
+  const info = page.getByRole('region', { name: 'Forma nifal' })
+  await expect(info).toContainText('Forma nifal: odpowiada formie biernej')
+  await expect(info).toContainText(nfc('נִכְתַּב'))
+  await expect(info).toContainText('„został napisany”')
+  // The meaning is known for "pisać" only; for other verbs the example has just its pronunciation.
+  await page.getByLabel('Czasownik wzorcowy').selectOption('למד')
+  await expect(info).toContainText(nfc('נִלְמַד'))
+  await expect(info).not.toContainText('został napisany')
+  await openForma(page, 'Hitpael')
+  await expect(page.getByRole('region', { name: 'Forma hitpael' })).toContainText(
+    'forma zwrotna czasownika',
+  )
+})
+
+test('every verb form has its short description on the tense sheets', async ({ page }) => {
+  const expected: Record<string, string> = {
+    Kal: 'podstawowa forma',
+    Nifal: 'odpowiada formie biernej',
+    Piel: 'wyraża intensyfikację czynności',
+    Pual: 'forma bierna czasownika',
+    Hifil: 'forma aktywna czasownika',
+    Hofal: 'forma bierna czasownika',
+    Hitpael: 'forma zwrotna czasownika',
+  }
+  for (const tense of ['perfectum', 'imperfectum']) {
+    for (const [forma, text] of Object.entries(expected)) {
+      await page.goto(`./#/gramatyka/${tense}?forma=${forma.toLowerCase()}`)
+      await expect(
+        page.getByRole('region', { name: `Forma ${forma.toLowerCase()}` }),
+      ).toContainText(text)
+    }
+  }
 })

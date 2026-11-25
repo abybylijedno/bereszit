@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { analyze } from '@/lib/converter'
 import RootWord from '@/components/RootWord.vue'
-import { binyanim, EXAMPLE_ROOT, EXAMPLE_ROOT_MEANING } from '@/lib/grammar/binyanim'
+import { usePatternVerb } from '@/composables/usePatternVerb'
+import { BINYAN_IDS } from '@/lib/grammar/binyanParadigms'
+import { formInfo } from '@/lib/grammar/patternVerb'
+
+const { root } = usePatternVerb()
+const forms = computed(() => BINYAN_IDS.map((id) => formInfo(id, root.value)))
 
 const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
 </script>
@@ -11,22 +17,22 @@ const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
     <h3>Czasownik: formy (koniugacje)</h3>
     <p>
       Hebrajski czasownik ma 7 form. Każda zmienia znaczenie rdzenia. Poniżej wszystkie formy
-      czasownika <span lang="he" dir="rtl">{{ EXAMPLE_ROOT }}</span> ({{ EXAMPLE_ROOT_MEANING }}), w
-      3 osobie liczby pojedynczej rodzaju męskiego.
+      czasownika <span lang="he" dir="rtl">{{ root.he }}</span> ({{ root.pl }}), w 3 osobie liczby
+      pojedynczej rodzaju męskiego.
     </p>
     <p>
       <span class="affix-sample">Ten kolor</span> oznacza dodatki: przedrostki dodane do rdzenia.
       Rdzeń ma zwykły kolor.
     </p>
     <ul class="forms">
-      <li v-for="b in binyanim" :key="b.name" class="card">
+      <li v-for="b in forms" :key="b.name" class="card">
         <h4>{{ b.name }}</h4>
         <p class="desc">{{ b.description }}</p>
         <p class="example">
-          <RootWord class="he" :word="b.he" :root="EXAMPLE_ROOT" />
+          <RootWord class="he" :word="b.he" :root="root.letters" />
           <span>
             <span class="ph">{{ phonetics(b.he) }}</span>
-            <span class="meaning">{{ b.meaning }}</span>
+            <span v-if="b.meaning" class="meaning">{{ b.meaning }}</span>
           </span>
         </p>
       </li>
@@ -34,6 +40,9 @@ const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
     <p class="note">
       Nie trzymaj się tego schematu zbyt ściśle. Dokładne znaczenie czasownika w danej formie
       sprawdź w słowniku.
+      <template v-if="!forms[0]!.meaning">
+        Znaczenia przy przykładach podajemy tylko dla czasownika „pisać".
+      </template>
     </p>
 
     <h3>Jak rozpoznać formę po wymowie</h3>

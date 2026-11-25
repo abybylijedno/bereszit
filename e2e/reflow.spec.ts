@@ -110,7 +110,6 @@ const scenarios: Record<string, (page: Page) => Promise<void>> = {
   // A whole session with random verbs in all forms: the longest forms must fit, too.
   'grammar exercise: random verbs, whole session': async (page) => {
     await page.goto('./#/gramatyka/perfectum?tryb=cwiczenia')
-    await page.getByRole('radio', { name: 'Losowy czasownik' }).check()
     await openForma(page, 'Wszystkie')
     await page.getByRole('radio', { name: 'Oba czasy' }).check()
     await page.getByRole('button', { name: 'Zaczynamy' }).click()

@@ -38,12 +38,6 @@ const topicOptions = (Object.keys(TOPIC_LABELS) as VerbTopic[]).map((value) => (
   label: TOPIC_LABELS[value],
 }))
 const binyan = computed(() => props.binyan)
-type VerbSource = 'wzorzec' | 'losowy'
-const source = ref<VerbSource>('wzorzec')
-const sourceOptions: { value: VerbSource; label: string }[] = [
-  { value: 'wzorzec', label: 'Wzorzec (zabijać)' },
-  { value: 'losowy', label: 'Losowy czasownik' },
-]
 /** Regular verbs that work in the chosen verb form. */
 const roots = computed(() => rootsFor(binyan.value))
 
@@ -55,8 +49,7 @@ const FULL: Context = { tense: true, binyan: true }
 
 const session = useQuizSession<Question>({
   bucket: 'grammar',
-  getPool: () =>
-    questionsFor(topic.value, binyan.value, source.value === 'losowy' ? roots.value : undefined),
+  getPool: () => questionsFor(topic.value, binyan.value, roots.value),
   keyOf: questionKey,
 })
 const { phase, current, index, total, score, mistakes, lastCorrect } = session
@@ -148,13 +141,12 @@ const explanation = computed(() => {
     <div v-if="phase === 'intro'">
       <p>
         Ćwiczysz odmianę czasowników mocnych, czyli takich, w których żadna litera rdzenia nie
-        zmienia odmiany. Wybierz czasownik i czas. Formę czasownika wybierasz na pasku na dole.
-        Pytania są dwojakie: raz widzisz słowo i wybierasz, jaka to forma (osoba, rodzaj, liczba),
-        raz widzisz opis i wybierasz słowo. Sesja ma 10 pytań i nie ma limitu czasu. Formy, które
-        sprawiają Ci kłopot, będą wracać częściej.
+        zmienia odmiany. Czasownik jest za każdym razem inny (losujemy go), a formę czasownika
+        wybierasz na pasku u góry. Pytania są dwojakie: raz widzisz słowo i wybierasz, jaka to forma
+        (osoba, rodzaj, liczba), raz widzisz opis i wybierasz słowo. Sesja ma 10 pytań i nie ma
+        limitu czasu. Formy, które sprawiają Ci kłopot, będą wracać częściej.
       </p>
-      <PillRadios v-model="source" legend="Czasownik" :options="sourceOptions" />
-      <p v-if="source === 'losowy'" class="note">
+      <p class="note">
         Do wyboru jest {{ roots.length }} czasowników z listy w zakładce „Słowa", bez „słabych"
         liter. Polskie znaczenie pokazujemy przy pytaniu.
       </p>

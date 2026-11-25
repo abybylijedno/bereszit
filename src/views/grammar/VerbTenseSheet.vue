@@ -2,18 +2,21 @@
 import { computed } from 'vue'
 import { analyze } from '@/lib/converter'
 import RootWord from '@/components/RootWord.vue'
-import {
-  BINYAN_NAMES,
-  getBinyanRows,
-  getParadigm,
-  type BinyanId,
-} from '@/lib/grammar/binyanParadigms'
-import { personLabel, PARADIGM_ROOT, type Tense, type VerbForm } from '@/lib/grammar/verbParadigm'
+import { usePatternVerb } from '@/composables/usePatternVerb'
+import { BINYAN_NAMES, type BinyanId } from '@/lib/grammar/binyanParadigms'
+import { formInfo, patternForms, patternRows } from '@/lib/grammar/patternVerb'
+import { personLabel, type Tense, type VerbForm } from '@/lib/grammar/verbParadigm'
 
 const props = withDefaults(defineProps<{ tense: Tense; binyan?: BinyanId }>(), { binyan: 'kal' })
 
-const rows = computed(() => getBinyanRows(props.binyan, props.tense))
-const forms = computed(() => getParadigm(props.binyan, props.tense))
+const { root } = usePatternVerb()
+const rows = computed(() => patternRows(props.binyan, props.tense, root.value))
+const forms = computed(() => patternForms(props.binyan, props.tense, root.value))
+const info = computed(() => formInfo(props.binyan, root.value))
+/** Pronunciation of the example, with its meaning when we know it ("pisać" only). */
+const exampleNote = computed(
+  () => `${phonetics(info.value.he)}${info.value.meaning ? `, „${info.value.meaning}”` : ''}`,
+)
 const name = computed(() => BINYAN_NAMES[props.binyan])
 const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
 const sameAsLabel = (form: VerbForm) => {
@@ -27,20 +30,28 @@ const sameAsLabel = (form: VerbForm) => {
     <template v-if="tense === 'perfect'">
       <h3>Perfectum (forma {{ name.toLowerCase() }})</h3>
       <p>
-        Perfectum zazwyczaj odpowiada polskiemu czasowi przeszłemu. Wzorzec to czasownik mocny
-        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> (zabijać) w formie
+        Perfectum zazwyczaj odpowiada polskiemu czasowi przeszłemu. Wzorcem jest czasownik mocny
+        <span lang="he" dir="rtl">{{ root.he }}</span> ({{ root.pl }}) w formie
         {{ name.toLowerCase() }}. Perfectum dodaje końcówki na końcu rdzenia.
       </p>
     </template>
     <template v-else>
       <h3>Imperfectum, czyli futurum (forma {{ name.toLowerCase() }})</h3>
       <p>
-        Imperfectum zazwyczaj odpowiada polskiemu czasowi przyszłemu. Wzorzec to czasownik mocny
-        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> (zabijać) w formie
+        Imperfectum zazwyczaj odpowiada polskiemu czasowi przyszłemu. Wzorcem jest czasownik mocny
+        <span lang="he" dir="rtl">{{ root.he }}</span> ({{ root.pl }}) w formie
         {{ name.toLowerCase() }}. Imperfectum dodaje przedrostki na początku rdzenia, a czasem też
         końcówki.
       </p>
     </template>
+    <section class="form-info" :aria-label="`Forma ${name.toLowerCase()}`">
+      <p>
+        <strong>Forma {{ name.toLowerCase() }}:</strong> {{ info.description.toLowerCase() }}.
+        Przykład: <RootWord class="example-he" :word="info.he" :root="root.letters" /> ({{
+          exampleNote
+        }}).
+      </p>
+    </section>
     <p class="note">
       Pierwszy wiersz (3 os. r. męski, liczba pojedyncza) to forma podstawowa, tak podaje się
       czasownik w słowniku.
@@ -48,14 +59,14 @@ const sameAsLabel = (form: VerbForm) => {
 
     <p class="legend">
       <span class="affix-sample">Ten kolor</span> oznacza dodatki: przedrostki, końcówki i litery
-      wstawione w środku. Rdzeń (spółgłoski <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span
+      wstawione w środku. Rdzeń (spółgłoski <span lang="he" dir="rtl">{{ root.he }}</span
       >) ma zwykły kolor.
     </p>
 
     <table class="paradigm" role="table">
       <caption class="sr-only">
         Odmiana czasownika
-        <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span>
+        <span lang="he" dir="rtl">{{ root.he }}</span>
         w
         {{
           tense === 'perfect' ? 'perfectum' : 'imperfectum'
@@ -80,7 +91,7 @@ const sameAsLabel = (form: VerbForm) => {
             role="cell"
             :data-label="i === 0 ? 'Liczba pojedyncza' : 'Liczba mnoga'"
           >
-            <RootWord class="he" :word="form.he" :root="PARADIGM_ROOT" />
+            <RootWord class="he" :word="form.he" :root="root.letters" />
             <span class="ph">{{ phonetics(form.he) }}</span>
             <span v-if="form.sameAs" class="same">tak samo jak: {{ sameAsLabel(form) }}</span>
             <span v-else-if="form.gender === 'c' && form.person === 3" class="same">
@@ -119,6 +130,19 @@ const sameAsLabel = (form: VerbForm) => {
 </template>
 
 <style scoped>
+.form-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0 1rem;
+}
+.form-info p {
+  margin: 0;
+}
+.example-he {
+  font-size: 1.6rem;
+}
 .affix-sample {
   color: var(--affix);
   /* Large text (>= 24px) needs only 4.5:1 for AAA, as the highlighted Hebrew affixes do. */

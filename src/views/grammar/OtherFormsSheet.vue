@@ -3,12 +3,14 @@
 import { computed } from 'vue'
 import RootWord from '@/components/RootWord.vue'
 import { analyze } from '@/lib/converter'
-import { BINYAN_NAMES, otherForms, type BinyanId } from '@/lib/grammar/binyanParadigms'
-import { PARADIGM_ROOT } from '@/lib/grammar/verbParadigm'
+import { usePatternVerb } from '@/composables/usePatternVerb'
+import { BINYAN_NAMES, type BinyanId } from '@/lib/grammar/binyanParadigms'
+import { patternOtherForms } from '@/lib/grammar/patternVerb'
 
 const props = defineProps<{ binyan: BinyanId }>()
 
-const forms = computed(() => otherForms[props.binyan])
+const { root } = usePatternVerb()
+const forms = computed(() => patternOtherForms(props.binyan, root.value))
 const name = computed(() => BINYAN_NAMES[props.binyan])
 const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
 </script>
@@ -23,7 +25,7 @@ const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
     </p>
     <template v-else>
       <p>
-        Wzorzec to czasownik mocny <span lang="he" dir="rtl">{{ PARADIGM_ROOT }}</span> (zabijać).
+        Wzorcem jest czasownik mocny <span lang="he" dir="rtl">{{ root.he }}</span> ({{ root.pl }}).
       </p>
       <p class="legend">
         <span class="affix-sample">Ten kolor</span> oznacza dodatki: przedrostki, końcówki i litery
@@ -41,7 +43,7 @@ const phonetics = (he: string) => analyze(he)[0]?.phonetics ?? ''
         <h4>{{ group.title }}</h4>
         <ul class="forms" :aria-label="group.title">
           <li v-for="f in group.items" :key="f.label" class="card">
-            <RootWord class="he" :word="f.he" :root="PARADIGM_ROOT" />
+            <RootWord class="he" :word="f.he" :root="root.letters" />
             <span class="text">
               <span class="ph">{{ phonetics(f.he) }}</span>
               <span class="label">{{ f.label }}</span>

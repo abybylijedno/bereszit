@@ -1,6 +1,8 @@
 /**
- * The seven verb forms ("formy", binyanim) as taught in class, with the example verb כתב.
- * Vocalisation follows the author's cheat sheet and slides (e.g. Nifal = Niktaw).
+ * The seven verb forms ("formy", binyanim) as taught in class, with the example verb כתב:
+ * what each form does and the meaning of the example (`meaning` fits כתב only; the cheat sheets
+ * show it only while that verb is the pattern verb). `he` is the teacher's spelling from the
+ * slides (e.g. Nifal = Niktaw); the sheets make their examples with `lib/grammar/patternVerb.ts`.
  */
 export interface Binyan {
   name: string
@@ -8,9 +10,6 @@ export interface Binyan {
   he: string
   meaning: string
 }
-
-export const EXAMPLE_ROOT = 'כתב'
-export const EXAMPLE_ROOT_MEANING = 'proces pisania'
 
 export const binyanim: Binyan[] = [
   {

@@ -101,7 +101,8 @@ const isLong = (marks: number[], index: number, binyan: BinyanId) =>
  * A shwa under part `i` is silent when it closes a syllable after a short vowel, and vocal at
  * the start of a word, after another shwa, after a long vowel and on a doubled letter.
  */
-const hasSilentShwa = (parts: Part[], i: number, binyan: BinyanId): boolean => {
+const hasSilentShwa = (parts: Part[], i: number, binyan: BinyanId, vocalShwa: boolean): boolean => {
+  if (vocalShwa) return false
   const part = parts[i]!
   if (!part.marks.includes(SHWA) || part.marks.includes(DAGESH) || i === 0) return false
   const before = parts[i - 1]!
@@ -116,10 +117,24 @@ const render = (parts: Part[]): string =>
     .join('')
     .normalize('NFC')
 
-/** The paradigm form (written for קטל) with the letters of `root` put in. */
-export const generateForm = (template: VerbForm, root: StrongRoot): VerbForm => {
+export interface GenerateOptions {
+  /**
+   * Every shwa in the word is vocal (no dagesh after it). Needed for forms such as the imperative
+   * קִטְלִי → כִּתְבִי, where a short vowel is followed by a vocal shwa.
+   */
+  vocalShwa?: boolean
+}
+
+/** A word written for the paradigm verb קטל, with the letters of `root` put in. */
+export const generateWord = (
+  word: string,
+  binyan: BinyanId,
+  root: StrongRoot,
+  options: GenerateOptions = {},
+): string => {
+  const vocalShwa = options.vocalShwa ?? false
   const rootDots = splitClusters(root.he.normalize('NFD')).map((c) => codes(c))
-  const parts: Part[] = rootClusters(template.he.normalize('NFD'), PARADIGM_ROOT).map(
+  const parts: Part[] = rootClusters(word.normalize('NFD'), PARADIGM_ROOT).map(
     ({ cluster, slot }) => ({
       letter: slot >= 0 ? root.letters[slot]! : cluster[0]!,
       marks:
@@ -136,7 +151,7 @@ export const generateForm = (template: VerbForm, root: StrongRoot): VerbForm => 
   parts.forEach((part, i) => {
     if (part.slot < 0 || part.marks.includes(DAGESH) || !BEGADKEFAT.includes(part.letter)) return
     // A dagesh at the start of the word or after a silent shwa; not after a vowel.
-    if (i === 0 || hasSilentShwa(parts, i - 1, template.binyan)) part.marks.push(DAGESH)
+    if (i === 0 || hasSilentShwa(parts, i - 1, binyan, vocalShwa)) part.marks.push(DAGESH)
   })
 
   const last = parts[parts.length - 1]!
@@ -145,5 +160,11 @@ export const generateForm = (template: VerbForm, root: StrongRoot): VerbForm => 
     // The final ך is written with a shwa when it has no vowel.
     if (last.letter === 'ך' && !last.marks.some((m) => m !== DAGESH)) last.marks.push(SHWA)
   }
-  return { ...template, he: render(parts) }
+  return render(parts)
 }
+
+/** The paradigm form (written for קטל) with the letters of `root` put in. */
+export const generateForm = (template: VerbForm, root: StrongRoot): VerbForm => ({
+  ...template,
+  he: generateWord(template.he, template.binyan, root),
+})

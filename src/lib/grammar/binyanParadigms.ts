@@ -208,6 +208,8 @@ export const getBinyanRows = (binyan: BinyanId, tense: Tense): ParadigmRow[] =>
 export interface LabelledForm {
   label: string
   he: string
+  /** A short vowel is followed by a vocal shwa here (needed when making forms of other verbs). */
+  vocalShwa?: boolean
 }
 
 export interface OtherForms {
@@ -221,8 +223,8 @@ export const otherForms: Partial<Record<BinyanId, OtherForms>> = {
   kal: {
     imperative: [
       { label: '2 os. r. męski, l. poj.', he: 'קְטֹל' },
-      { label: '2 os. r. żeński, l. poj.', he: 'קִטְלִי' },
-      { label: '2 os. r. męski, l. mn.', he: 'קִטְלוּ' },
+      { label: '2 os. r. żeński, l. poj.', he: 'קִטְלִי', vocalShwa: true },
+      { label: '2 os. r. męski, l. mn.', he: 'קִטְלוּ', vocalShwa: true },
       { label: '2 os. r. żeński, l. mn.', he: 'קְטֹלְנָה' },
     ],
     infinitive: [

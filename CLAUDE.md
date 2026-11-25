@@ -27,7 +27,7 @@ Menu (4 zakładki): **Fonetyka** (scalone Litery + Quiz + Konwerter; `views/Phon
 przełączający rodzeństwo; wybór jest w adresie (ścieżka = zakładka i temat, `?forma=`, `?tryb=`). Pasek jest zadokowany **na górze** (tam, gdzie i tak są przełączniki trybów w treści, więc kciuk działa w jednej strefie) i na telefonie ma wszystkie poziomy; od 56rem zakładki są w pasku bocznym,
 a pasek (bez zakładki) zaczyna się obok niego. `html` ma `scroll-padding-top`, żeby fokus i kotwice nie chowały się pod paskiem (WCAG 2.4.11). Gdy robi się za wąski (< 17,5 rem: mały telefon albo duży tekst; zapytanie kontenerowe w `rem`, bez JS) zwija się do ikony zakładki i jednego przycisku „Gdzie jestem”,
 który otwiera okno ze wszystkimi poziomami. Przy trzech poziomach zakładka pokazuje tylko ikonę. Powrót do zakładki ląduje w ostatnim temacie (`remember`).
-**Zasada: pasek = gdzie jestem (nawigacja); ustawienia ćwiczenia i tryby w treści (`PillRadios`: Tryb, Źródło tekstu, Czas, Czasownik) to nie nawigacja.** Nie dodawaj nowych podmenu ani grup pigułek do nawigowania
+**Zasada: pasek = gdzie jestem (nawigacja); ustawienia ćwiczenia i tryby w treści (`PillRadios`: Tryb, Źródło tekstu, Czas) to nie nawigacja.** Nie dodawaj nowych podmenu ani grup pigułek do nawigowania
 po stronie; nowy temat = wpis w `SECTIONS` (+ trasa). Testy e2e wybierają poziomy przez `openTab` / `openTopic` / `openForma` z `e2e/helpers.ts` (obsługują też zwiniętą wersję paska).
 Wspólne przyciski trybu: `components/PillRadios.vue`.
 Zakładka **Słowa** (podtrasy `/slowa/czasowniki`, `/slowa/rzeczowniki`): listy frekwencyjne z wyszukiwaniem i sortowaniem
@@ -51,14 +51,19 @@ rzeczowniki, przyrostki), w treści przełącznik **Tryb: Ściągawka | Ćwiczen
 **Ściągawki**: perfectum, imperfectum i rozkaz mają wybór formy czasownika `?forma=` (w pasku): kal…hitpael, a w ćwiczeniach też „Wszystkie”;
 z ściągawek „Gramatyka”, „Gramatyka cz 2” i zeskanowanych tabel z podręcznika (`input/odmiana *.png`); dane w `lib/grammar/sheets.ts`, `lib/grammar/suffixes.ts` i
 `lib/grammar/binyanParadigms.ts` (7 form × perfectum/imperfectum; rozkaz/bezokolicznik/imiesłów tylko kal i nifal, bo tylko te są w materiałach;
-ćwiczenia: wybór formy czasownika (7 form lub wszystkie) i czasu; źródło: wzorzec קטל albo **losowy czasownik** z `src/data/verbs.json`:
+ćwiczenia: wybór formy czasownika (7 form lub wszystkie) i czasu; czasownik jest **zawsze losowany** (bez opcji wzorca) z `src/data/verbs.json`:
 tylko czasowniki regularne (bez gardłowych, ר, ו/י, נ na początku, podwojonych liter, נ/ת na końcu; 64, a dla hitpaelu i „wszystkich form” 36),
 formy z wzorca przez `lib/grammar/strongVerbs.ts`: dagesz lene w בגדכפת (na początku wyrazu lub po niemym szwa), formy końcowe (ך dostaje szwa),
 kropka szin; słabych czasowników nie generujemy, bo ich jeszcze nie było na lekcjach),
 ćwiczenia z małych słów (`views/grammar/WordExercises.vue`, logika w `lib/grammar/wordQuiz.ts`; dane z `sheets.ts` i `suffixes.ts`): przedimek i spójnik,
 przyimki, zaimki, przyrostki zaimkowe; rodzaje pytań: znaczenie słowa, budowa słowa, początek słowa (przedimek/spójnik/partykuła), znaczenie przyimka;
-bez ćwiczeń z rzeczownikami, wyróżnienie dodatku: `components/AffixWord.vue`; tabele danych: globalna klasa `.data-table` w `main.css`) i **Ćwiczenia czasowników** (`views/grammar/VerbExercises.vue`; forma z paska, w treści ustawienia „Czasownik” i „Czas”: perfectum / imperfectum / oba czasy; pula = forma × rodzaj pytania („jaka to forma?” i „które słowo to…?”), sesje po 10 pytań, statystyki w buckecie `grammar`, przełącznik „Zaznacz dodatki kolorem”; logika w `lib/grammar/verbQuiz.ts`; kolejne tematy dojdą po ściągawkach). Dane ręcznie przepisane z ściągawek autora
+bez ćwiczeń z rzeczownikami, wyróżnienie dodatku: `components/AffixWord.vue`; tabele danych: globalna klasa `.data-table` w `main.css`) i **Ćwiczenia czasowników** (`views/grammar/VerbExercises.vue`; forma z paska, w treści ustawienie „Czas”: perfectum / imperfectum / oba czasy; pula = forma × rodzaj pytania („jaka to forma?” i „które słowo to…?”), sesje po 10 pytań, statystyki w buckecie `grammar`, przełącznik „Zaznacz dodatki kolorem”; logika w `lib/grammar/verbQuiz.ts`; kolejne tematy dojdą po ściągawkach). Dane ręcznie przepisane z ściągawek autora
 (PDF-y w `input/`, gitignore) i slajdów z lekcji: `lib/grammar/verbParadigm.ts` (kal perfectum/imperfectum wzorca `קטל`), `lib/grammar/binyanim.ts`.
+**Czasownik wzorcowy** (`components/PatternVerbPicker.vue`, `composables/usePatternVerb.ts`, `lib/grammar/patternVerb.ts`): tabele i przykłady ściągawek z odmianą (formy,
+perfectum, imperfectum, rozkaz/bezokolicznik/imiesłów) są generowane dla wybranego czasownika mocnego (domyślnie כתב „pisać”, jak na lekcjach; do wyboru 36 czasowników działających
+we wszystkich formach; wybór w localStorage, wspólny dla wszystkich ściągawek). Szablony tabel są napisane dla קטל (`verbParadigm`, `binyanParadigms`), a `strongVerbs.generateWord`
+podstawia litery rdzenia (opcja `vocalShwa` dla rozkaźnika `קִטְלִי`/`קִטְלוּ`). Znaczenia przykładów („napisał” itd.) znamy tylko dla כתב. W ściągawce perfectum/imperfectum jest krótka
+informacja o wybranej formie (opis + przykład). W UI nie używamy już „zabijać” ani קטל.
 Tylko czasownik mocny; słabych jeszcze nie było na lekcjach. Każdą tabelę autor sprawdza po przepisaniu.
 Plan jest uzgodniony z autorem i opisany niżej. Nie odbiegaj od niego bez pytania.
 

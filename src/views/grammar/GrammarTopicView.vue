@@ -5,6 +5,7 @@
  */
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import PatternVerbPicker from '@/components/PatternVerbPicker.vue'
 import PillRadios from '@/components/PillRadios.vue'
 import type { WordTopic } from '@/lib/grammar/wordQuiz'
 import { formaOf, getSection, grammarMode, type GrammarMode } from '@/lib/navigation'
@@ -39,6 +40,10 @@ const modeOptions = [
 ]
 /** The topics that have word exercises (the template only reaches them for those). */
 const wordTopic = computed(() => topic.value.id as WordTopic)
+/** The sheets with verb tables and examples; they are made for the chosen pattern verb. */
+const usesPattern = computed(() =>
+  ['formy', 'perfectum', 'imperfectum', 'rozkaz'].includes(topic.value.id),
+)
 const tense = computed(() => (topic.value.id === 'imperfectum' ? 'imperfect' : 'perfect'))
 </script>
 
@@ -57,6 +62,7 @@ const tense = computed(() => (topic.value.id === 'imperfectum' ? 'imperfect' : '
       <WordExercises v-else :key="topic.id" :topic="wordTopic" />
     </template>
     <template v-else>
+      <PatternVerbPicker v-if="usesPattern" />
       <VerbFormsSheet v-if="topic.id === 'formy'" />
       <VerbTenseSheet
         v-else-if="topic.id === 'perfectum' || topic.id === 'imperfectum'"
